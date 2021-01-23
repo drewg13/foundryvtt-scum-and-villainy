@@ -12,40 +12,29 @@ export class BladesItem extends Item {
     const item_data = this.data;
     const data = item_data.data;
 
-    if (item_data.type === "cohort") {
+    if (item_data.type === "crew_type") {
     
-      this._prepareCohort(data);
+      this._prepareUpkeep(data);
     
     }
   }
 
   /**
-   * Prepares Cohort data
+   * Prepares Upkeep data
    *
    * @param {object} data 
    */
-  _prepareCohort(data) {
+  _prepareUpkeep(data) {
 
-    let quality = 0;
-    let scale = 0;
-
+    let upkeep = 0;
+    
     // Adds Scale and Quality
     if (this.actor) {
-      switch (data.cohort[0]) {
-        case "Gang":
-          scale = parseInt(this.actor.data.data.tier[0]);
-          quality = parseInt(this.actor.data.data.tier[0]);
-          break;
-        case "Expert":
-          scale = 1;
-          quality = parseInt(this.actor.data.data.tier[0]) + 1;
-          break;
-      }
-    }
+        upkeep = floor((parseInt(this.actor.data.data.crew) + parseInt(this.data.data.systems.engines.value) + parseInt(this.data.data.systems.hull.value) + parseInt(this.data.data.systems.comms.value) + parseInt(this.data.data.systems.weapons.value)) / 4);
+        }
 
-    data.scale = scale;
-    data.quality = quality;
-    
+    this.actor.data.data.upkeep = upkeep;
+        
     this.data.data = data;
 }
 }
