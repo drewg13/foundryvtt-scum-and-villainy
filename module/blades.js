@@ -23,7 +23,7 @@ window.BladesHelpers = BladesHelpers;
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 Hooks.once("init", async function() {
-  console.log(`Initializing Blades In the Dark System`);
+  console.log(`Initializing Scum and Villainy System`);
 
   game.blades = {
     dice: bladesRoll
@@ -268,7 +268,7 @@ Hooks.once("init", async function() {
 Hooks.once("ready", function() {
 
   // Determine whether a system migration is required
-  const currentVersion = game.settings.get("bitd", "systemMigrationVersion");
+  const currentVersion = game.settings.get("sav", "systemMigrationVersion");
   const NEEDS_MIGRATION_VERSION = 2.15;
   
   let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
