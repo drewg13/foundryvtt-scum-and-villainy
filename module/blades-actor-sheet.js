@@ -10,8 +10,8 @@ export class BladesActorSheet extends BladesSheet {
   /** @override */
 	static get defaultOptions() {
 	  return mergeObject(super.defaultOptions, {
-  	  classes: ["blades-in-the-dark", "sheet", "actor"],
-  	  template: "systems/blades-in-the-dark/templates/actor-sheet.html",
+  	  classes: ["scum-and-villainy", "sheet", "actor"],
+  	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
       width: 700,
       height: 970,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
@@ -30,8 +30,8 @@ export class BladesActorSheet extends BladesSheet {
     data.data.loadout = loadout;
     
     // Encumbrance Levels
-    let load_level=["light","light","light","light","normal","normal","heavy","Encumbered",
-			"Encumbered","Encumbered","over max"];
+    let load_level=["light","light","light","light","normal","normal","heavy","heavy",
+			"heavy","over max"];
     let mule_level=["light","light","light","light","light","light","normal","normal",
 			"heavy","Encumbered","over max"];
     let mule_present=0;
@@ -40,17 +40,17 @@ export class BladesActorSheet extends BladesSheet {
     if (loadout < 0) {
       loadout = 0;
     }
-    if (loadout > 10) {
-      loadout = 10;
+    if (loadout > 9) {
+      loadout = 9;
     }
 
     //look for Mule ability
     // @todo - fix translation.
-    data.items.forEach(i => {
-      if (i.type == "ability" && i.name == "(C) Mule") {
-        mule_present = 1;
-      }
-    });
+    //data.items.forEach(i => {
+    //  if (i.type == "ability" && i.name == "(C) Mule") {
+    //    mule_present = 1;
+    //  }
+    //});
 
     //set encumbrance level
     if (mule_present) {
