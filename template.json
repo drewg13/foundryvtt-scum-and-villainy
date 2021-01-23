@@ -139,6 +139,7 @@
     },
     "heat": [0],
     "wanted": [0],
+    "systems": [4],
     "upkeep": [0],
     "skips": {
       "max": 4,
