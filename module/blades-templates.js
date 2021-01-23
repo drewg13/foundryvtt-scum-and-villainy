@@ -9,10 +9,10 @@ export const preloadHandlebarsTemplates = async function() {
   const templatePaths = [
 
     // Actor Sheet Partials
-    "systems/blades-in-the-dark/templates/parts/coins.html",
-    "systems/blades-in-the-dark/templates/parts/attributes.html",
-    "systems/blades-in-the-dark/templates/parts/turf-list.html",
-    "systems/blades-in-the-dark/templates/parts/cohort-block.html"
+    "systems/scum-and-villainy/templates/parts/coins.html",
+    "systems/scum-and-villainy/templates/parts/attributes.html",
+    //"systems/scum-and-villainy/templates/parts/turf-list.html",
+    //"systems/scum-and-villainy/templates/parts/cohort-block.html"
   ];
 
   // Load the template parts
