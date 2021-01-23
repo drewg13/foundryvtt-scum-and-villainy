@@ -135,10 +135,15 @@
     },
     "gambits": {
       "max": 8,
-      "value": [1]
+      "value": [0]
     },
     "heat": [0],
-    "wanted": [0]
+    "wanted": [0],
+    "upkeep": [0],
+    "skips": {
+      "max": 4,
+      "value": [0]
+    }
   },
   "\uD83D\uDD5B clock": {
     "name": "",
@@ -212,25 +217,25 @@
     "systems": {
       "engines": {
         "name": "",
-        "value": "",
+        "value": [0],
         "description": "",
         "upgrades": []
       },
       "hull": {
         "name": "",
-        "value": "",
+        "value": [0],
         "description": "",
         "upgrades": []
       },
       "comms": {
         "name": "",
-        "value": "",
+        "value": [0],
         "description": "",
         "upgrades": []
       },
       "weapons": {
         "name": "",
-        "value": "",
+        "value": [0],
         "description": "",
         "upgrades": []
       }
