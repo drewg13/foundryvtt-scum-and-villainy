@@ -175,17 +175,17 @@
     "templates": ["default", "logic"],
     "experience_clues": "",
     "base_skills": {
-      "attune": [0],
-      "command": [0],
-      "consort": [0],
       "doctor": [0],
       "hack": [0],
-      "helm": [0],
       "rig": [0],
+      "study": [0],
+      "helm": [0],
       "scramble": [0],
       "scrap": [0],
       "skulk": [0],
-      "study": [0],
+      "attune": [0],
+      "command": [0],
+      "consort": [0],
       "sway": [0]
     }
   },
