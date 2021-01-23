@@ -1,12 +1,12 @@
 {
-  "name": "blades-in-the-dark",
-  "title": "Blades in the Dark",
-  "description": "Blades in the dark game system.",
-  "version": "2.15",
+  "name": "scum-and-villainy",
+  "title": "Scum and Villainy",
+  "description": "Scum and Villainy game system.",
+  "version": "0.1",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
-  "author": "megastruktur",
+  "author": "drewg13",
   "esmodules": [
     "module/blades.js"
   ],
@@ -18,94 +18,79 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
-    },
-    {
-      "lang": "ru",
-      "name": "Russian",
-      "path": "lang/ru.json"
-    },
-    {
-      "lang": "es",
-      "name": "Spanish",
-      "path": "lang/es.json"
-    },
-    {
-      "lang": "pl",
-      "name": "Polish",
-      "path": "lang/pl.json"
     }
   ],
-  "url": "https://github.com/megastruktur/foundryvtt-blades-in-the-dark/",
-  "manifest": "https://raw.githubusercontent.com/megastruktur/foundryvtt-blades-in-the-dark/master/system.json",
-  "download": "https://github.com/megastruktur/foundryvtt-blades-in-the-dark/archive/2.15.zip",
+  "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
+  "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/0.1.zip",
   "packs": [
     {
       "name": "class",
       "label": "Classes",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/classes.db",
       "entity": "Item"
     },
     {
       "name": "heritage",
       "label": "Heritages",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/heritages.db",
       "entity": "Item"
     },
     {
       "name": "vice",
       "label": "Vices",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/vices.db",
       "entity": "Item"
     },
     {
       "name": "background",
       "label": "Backgrounds",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/backgrounds.db",
       "entity": "Item"
     },
     {
       "name": "item",
       "label": "Items",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/items.db",
       "entity": "Item"
     },
     {
       "name": "ability",
       "label": "Abilities",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/abilities.db",
       "entity": "Item"
     },
     {
       "name": "crew_reputation",
       "label": "Crew Reputation",
-      "system": "blades-in-the-dark",
+      "system": "scum-and-villainy",
       "path": "./packs/crew_reputation.db",
       "entity": "Item"
     },
     {
       "name": "crew_type",
-      "label": "Crew Types",
-      "system": "blades-in-the-dark",
+      "label": "Ship Types",
+      "system": "scum-and-villainy",
       "path": "./packs/crew_types.db",
       "entity": "Item"
     },
     {
       "name": "crew_upgrade",
-      "label": "Crew Upgrades",
-      "system": "blades-in-the-dark",
+      "label": "Ship Upgrades",
+      "system": "scum-and-villainy",
       "path": "./packs/crew_upgrades.db",
       "entity": "Item"
     },
     {
       "name": "crew_ability",
-      "label": "Crew Abilities",
-      "system": "blades-in-the-dark",
+      "label": "Ship Abilities",
+      "system": "scum-and-villainy",
       "path": "./packs/crew_abilities.db",
       "entity": "Item"
     }
