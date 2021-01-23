@@ -9,8 +9,8 @@ export class BladesCrewSheet extends BladesSheet {
   /** @override */
 	static get defaultOptions() {
 	  return mergeObject(super.defaultOptions, {
-  	  classes: ["blades-in-the-dark", "sheet", "actor"],
-  	  template: "systems/blades-in-the-dark/templates/crew-sheet.html",
+  	  classes: ["scum-and-villainy", "sheet", "actor"],
+  	  template: "systems/scum-and-villainy/templates/crew-sheet.html",
       width: 930,
       height: 1020,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "turfs"}]
@@ -20,29 +20,29 @@ export class BladesCrewSheet extends BladesSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData() {
-    const data = super.getData();
+  //getData() {
+  //  const data = super.getData();
 
     // Calculate Turfs amount.
     // We already have Lair, so set to -1.
-    let turfs_amount = 0
+  //  let turfs_amount = 0
 
-    data.items.forEach(item => {
+  //  data.items.forEach(item => {
 
-      if (item.type === "crew_type") {
+  //    if (item.type === "crew_type") {
         // Object.entries(item.data.turfs).forEach(turf => {turfs_amount += (turf.value === true) ? 1 : 0});
-        Object.entries(item.data.turfs).forEach(([key, turf]) => {
-          if (turf.name === 'BITD.Turf') {
-            turfs_amount += (turf.value === true) ? 1 : 0;
-          }
-        });
-      }
+  //      Object.entries(item.data.turfs).forEach(([key, turf]) => {
+  //        if (turf.name === 'BITD.Turf') {
+  //          turfs_amount += (turf.value === true) ? 1 : 0;
+  //        }
+  //      });
+  //    }
 
-    });
-    data.data.turfs_amount = turfs_amount;
+  //  });
+  //  data.data.turfs_amount = turfs_amount;
 
-    return data;
-  }
+  //  return data;
+  //}
 
   /* -------------------------------------------- */
 
@@ -68,37 +68,37 @@ export class BladesCrewSheet extends BladesSheet {
     });
 
     // Add a new Cohort
-    html.find('.add-item').click(ev => {
-      BladesHelpers._addOwnedItem(ev, this.actor);
-    });
+    //html.find('.add-item').click(ev => {
+    //  BladesHelpers._addOwnedItem(ev, this.actor);
+    //});
 
     // Toggle Turf
-    html.find('.turf-select').click(ev => {
-      const element = $(ev.currentTarget).parents(".item");
+    //html.find('.turf-select').click(ev => {
+    //  const element = $(ev.currentTarget).parents(".item");
       
-      let item_id = element.data("itemId")
-      let turf_id = $(ev.currentTarget).data("turfId");
-      let turf_current_status = $(ev.currentTarget).data("turfStatus");
-      let turf_checkbox_name = 'data.turfs.' + turf_id + '.value';
+    //  let item_id = element.data("itemId")
+    //  let turf_id = $(ev.currentTarget).data("turfId");
+    //  let turf_current_status = $(ev.currentTarget).data("turfStatus");
+    //  let turf_checkbox_name = 'data.turfs.' + turf_id + '.value';
 
-      this.actor.updateEmbeddedEntity('OwnedItem', {
-        _id: item_id,
-        [turf_checkbox_name]: !turf_current_status});
-      this.render(false);
-    });
+    //  this.actor.updateEmbeddedEntity('OwnedItem', {
+    //    _id: item_id,
+    //    [turf_checkbox_name]: !turf_current_status});
+    //  this.render(false);
+    //});
 
     // Cohort Block Harm handler
-    html.find('.cohort-block-harm input[type="radio"]').change(ev => {
-      const element = $(ev.currentTarget).parents(".item");
+    //html.find('.cohort-block-harm input[type="radio"]').change(ev => {
+    //  const element = $(ev.currentTarget).parents(".item");
       
-      let item_id = element.data("itemId")
-      let harm_id = $(ev.currentTarget).val();
+    //  let item_id = element.data("itemId")
+    //  let harm_id = $(ev.currentTarget).val();
 
-      this.actor.updateEmbeddedEntity('OwnedItem', {
-        _id: item_id,
-        "data.harm": [harm_id]});
-      this.render(false);
-    });
+    //  this.actor.updateEmbeddedEntity('OwnedItem', {
+    //    _id: item_id,
+    //    "data.harm": [harm_id]});
+    //  this.render(false);
+    //});
   }
 
   /* -------------------------------------------- */
