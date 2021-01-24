@@ -15,7 +15,7 @@ export class BladesActor extends Actor {
     // For Crew and Character set the Token to sync with charsheet.
     switch (data.type) {
       case 'character':
-      case 'crew':
+      case 'ship':
         data.token.actorLink = true;
         break;
     }
