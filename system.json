@@ -22,7 +22,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/0.1.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.1.zip",
   "packs": [
     {
       "name": "class",
