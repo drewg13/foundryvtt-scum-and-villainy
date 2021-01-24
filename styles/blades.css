@@ -881,7 +881,7 @@
 * #crew-hold input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.png");
 }
-* #crew-tier {
+* #crew-qual {
   background-color: #999;
   height: 33px;
   width: 145px;
@@ -891,15 +891,15 @@
   display: flex;
   /* Hide the browser's default checkbox */
 }
-* #crew-tier label {
+* #crew-qual label {
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #crew-tier label:hover {
+* #crew-qual label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #crew-tier label:not([for$="-0"]) {
+* #crew-qual label:not([for$="-0"]) {
   height: 18px;
   width: 18px;
   background-color: #191813;
@@ -907,18 +907,18 @@
   border: 2px solid #191813;
   border-radius: 9px;
 }
-* #crew-tier input {
+* #crew-qual input {
   display: none;
 }
-* #crew-tier input:checked ~ label:not([for$="-0"]) {
+* #crew-qual input:checked ~ label:not([for$="-0"]) {
   border-color: gray;
   background-color: #EEEFFF;
 }
-* #crew-tier input:checked + label:not([for$="-0"]) {
+* #crew-qual input:checked + label:not([for$="-0"]) {
   background-color: #191813;
   border-color: #191813;
 }
-* #crew-tier > * {
+* #crew-qual > * {
   margin-right: 5px;
 }
 * #heat-wanted {
