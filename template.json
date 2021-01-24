@@ -219,25 +219,93 @@
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "1": {
+            "name": "",
+            "enabled": false
+          },
+          "2": {
+            "name": "",
+            "enabled": false
+          },
+          "3": {
+            "name": "",
+            "enabled": false
+          },
+          "4":{
+            "name": "",
+            "enabled": false
+          }
+        }
       },
       "hull": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "1": {
+            "name": "",
+            "enabled": false
+          },
+          "2": {
+            "name": "",
+            "enabled": false
+          },
+          "3": {
+            "name": "",
+            "enabled": false
+          },
+          "4":{
+            "name": "",
+            "enabled": false
+          }
+        }
       },
       "comms": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "1": {
+            "name": "",
+            "enabled": false
+          },
+          "2": {
+            "name": "",
+            "enabled": false
+          },
+          "3": {
+            "name": "",
+            "enabled": false
+          },
+          "4":{
+            "name": "",
+            "enabled": false
+          }
+        }
       },
       "weapons": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "1": {
+            "name": "",
+            "enabled": false
+          },
+          "2": {
+            "name": "",
+            "enabled": false
+          },
+          "3": {
+            "name": "",
+            "enabled": false
+          },
+          "4":{
+            "name": "",
+            "enabled": false
+          }
+        }
       }
     }
   }
