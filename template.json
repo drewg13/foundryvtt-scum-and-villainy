@@ -219,25 +219,25 @@
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {}
+        "upgrades": []
       },
       "hull": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {}
+        "upgrades": []
       },
       "comms": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {}
+        "upgrades": []
       },
       "weapons": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {}
+        "upgrades": []
       }
     }
   }
