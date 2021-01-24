@@ -139,10 +139,10 @@
     },
     "heat": [0],
     "wanted": [0],
-    "upkeep": [0],
+    "upkeep": 0,
     "skips": {
       "max": 4,
-      "value": [0]
+      "value": 0
     }
   },
   "\uD83D\uDD5B clock": {
@@ -217,27 +217,39 @@
     "systems": {
       "engines": {
         "name": "",
-        "value": [0],
+        "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "description": "",
+          "value": false
+        }
       },
       "hull": {
         "name": "",
-        "value": [0],
+        "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "description": "",
+          "value": false
+        }
       },
       "comms": {
         "name": "",
-        "value": [0],
+        "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "description": "",
+          "value": false
+        }
       },
       "weapons": {
         "name": "",
-        "value": [0],
+        "value": 0,
         "description": "",
-        "upgrades": []
+        "upgrades": {
+          "description": "",
+          "value": false
+        }
       }
     }
   }
