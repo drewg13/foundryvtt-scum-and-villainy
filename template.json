@@ -222,19 +222,23 @@
         "upgrades": {
           "1": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "2": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "3": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "4":{
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           }
         }
       },
@@ -245,19 +249,23 @@
         "upgrades": {
           "1": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "2": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "3": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "4":{
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           }
         }
       },
@@ -268,19 +276,23 @@
         "upgrades": {
           "1": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "2": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "3": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "4":{
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           }
         }
       },
@@ -291,19 +303,23 @@
         "upgrades": {
           "1": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "2": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "3": {
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           },
           "4":{
             "name": "",
-            "enabled": false
+            "enabled": false,
+            "available": false
           }
         }
       }
