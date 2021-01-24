@@ -11,8 +11,8 @@ export const preloadHandlebarsTemplates = async function() {
     // Actor Sheet Partials
     "systems/scum-and-villainy/templates/parts/coins.html",
     "systems/scum-and-villainy/templates/parts/attributes.html",
-    //"systems/scum-and-villainy/templates/parts/turf-list.html",
-    //"systems/scum-and-villainy/templates/parts/cohort-block.html"
+    "systems/scum-and-villainy/templates/parts/turf-list.html",
+    "systems/scum-and-villainy/templates/parts/cohort-block.html"
   ];
 
   // Load the template parts
