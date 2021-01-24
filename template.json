@@ -219,37 +219,25 @@
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {
-          "description": "",
-          "value": false
-        }
+        "upgrades": {}
       },
       "hull": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {
-          "description": "",
-          "value": false
-        }
+        "upgrades": {}
       },
       "comms": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {
-          "description": "",
-          "value": false
-        }
+        "upgrades": {}
       },
       "weapons": {
         "name": "",
         "value": 0,
         "description": "",
-        "upgrades": {
-          "description": "",
-          "value": false
-        }
+        "upgrades": {}
       }
     }
   }
