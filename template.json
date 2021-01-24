@@ -120,10 +120,7 @@
     "reputation": [0],
     "look": "",
     "experience": [0],
-    "crew": {
-      "max": 3,
-      "value": [0]
-    },
+    "crew": [0],
     "size": "",
     "coins": {
       "max": 4,
@@ -142,7 +139,7 @@
     "upkeep": 0,
     "skips": {
       "max": 4,
-      "value": 0
+      "value": [0]
     }
   },
   "\uD83D\uDD5B clock": {
