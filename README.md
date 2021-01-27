@@ -9,32 +9,27 @@ An attempt to adapt the Blades in the Dark system created by megastruktur to Scu
 - To reset reputation, exp, etc counters just click on the label name.
 - Health clock can be reset by clicking on "Healing" table header.
 - To add items you can click a corresponding link or drag items from compendium/game to the sheet.
-- All "class/crew" specific items are prefixed with first letters
+- All "class/ship" specific items are prefixed with first letters
 
-- I don't want the "class/crew items" to be prepopulated, so the character sheet contains less "compendium" info.
+- I don't want the "class/ship items" to be prepopulated, so the character sheet contains less "compendium" info.
 - To see the description of Class, Vice, Background, etc you can just click added item and see all the info in the popup.
-- When adding a new item you can hower a "question-circle" icon to see the item's description.
+- When adding a new item you can hover over a "question-circle" icon to see the item's description.
 - To add Custom abilities just add a new "Foundry Item" of the corresponding type and fill all the necessary info. Then drag it to the sheet or add via button on a sheet.
 
 Classes:
-- (C)  Cutter
-- (G)  Ghost
-- (H)  Hound
-- (Hu) Hull
-- (Le) Leech
-- (Lu) Lurk
-- (Sl) Slide
-- (Sp) Spider
-- (V)  Vampire
-- (W)  Whisper
+- (Me)  Mechanic
+- (Mu)  Muscle
+- (My)  Mystic
+- (P)   Pilot
+- (Sc)  Scoundrel
+- (Sp)  Speaker
+- (St)  Stitch
 
-Crew Types:
-- (A)  Assassins
-- (B)  Bravos
-- (C)  Cult
-- (H)  Hawkers
-- (Sh) Shadows
-- (Sm) Smugglers
+Ship Types:
+- (S)  Stardancer
+- (C)  Cerberus
+- (F)  Firedrake
+
 
 ## Screenshots
 
