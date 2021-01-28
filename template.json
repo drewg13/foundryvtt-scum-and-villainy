@@ -117,19 +117,11 @@
   },
   "ship": {
     "name": "",
-    "reputation": [0],
     "look": "",
-    "experience": [0],
     "crew": [0],
     "size": "",
-    "coins": {
-      "max": 4,
-      "value": [0]
-    },
-    "debt": {
-      "value": [0],
-      "max": 8
-    },
+    "coins": [0],
+    "debt": [0],
     "gambits": {
       "max": 8,
       "value": [0]
@@ -137,10 +129,29 @@
     "heat": [0],
     "wanted": [0],
     "upkeep": 0,
-    "skips": {
-      "max": 4,
-      "value": [0]
-    }
+    "skips": [0],
+	"systems": {
+        "engines": {
+          "label": "BITD.SystemsEngines",
+          "value": [0],
+		  "max": 0
+		},
+        "hull": {
+          "label": "BITD.SystemsHull",
+          "value": [0],
+		  "max": 0
+		},
+		"comms": {
+          "label": "BITD.SystemsComms",
+          "value": [0],
+		  "max": 0
+		},
+		"weapons": {
+          "label": "BITD.SystemsWeapons",
+          "value": [0],
+		  "max": 0
+		}
+	}
   },
   "\uD83D\uDD5B clock": {
     "name": "",
@@ -203,7 +214,7 @@
   },
   "crew_upgrade": {
     "templates": ["ability", "logic"],
-    "crew_type": ""
+	"crew_type": ""
   },
   "crew_ability": {
     "templates": ["ability"]
@@ -213,117 +224,7 @@
   },
   "crew_type": {
     "description": "",
-    "experience_clues": "",
-    "systems": {
-      "engines": {
-        "name": "",
-        "value": 0,
-        "description": "",
-        "upgrades": {
-          "1": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "2": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "3": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "4":{
-            "name": "",
-            "enabled": false,
-            "available": false
-          }
-        }
-      },
-      "hull": {
-        "name": "",
-        "value": 0,
-        "description": "",
-        "upgrades": {
-          "1": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "2": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "3": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "4":{
-            "name": "",
-            "enabled": false,
-            "available": false
-          }
-        }
-      },
-      "comms": {
-        "name": "",
-        "value": 0,
-        "description": "",
-        "upgrades": {
-          "1": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "2": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "3": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "4":{
-            "name": "",
-            "enabled": false,
-            "available": false
-          }
-        }
-      },
-      "weapons": {
-        "name": "",
-        "value": 0,
-        "description": "",
-        "upgrades": {
-          "1": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "2": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "3": {
-            "name": "",
-            "enabled": false,
-            "available": false
-          },
-          "4":{
-            "name": "",
-            "enabled": false,
-            "available": false
-          }
-        }
-      }
-    }
+    "experience_clues": ""
   }
 }
 }
