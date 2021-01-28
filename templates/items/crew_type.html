@@ -11,7 +11,9 @@
     <textarea name="data.description">{{data.description}}</textarea>
     <label class="label-stripe">{{localize "BITD.ExpClues"}}</label>
     <textarea name="data.experience_clues">{{data.experience_clues}}</textarea>
+	<label class="label-stripe">{{localize "BITD.Logic"}}</label>
+    {{editor content=data.logic target="data.logic" button=true owner=owner editable=editable}}
   </section>
 
-  {{> "systems/scum-and-villainy/templates/parts/turf-list.html" turfs_data=data.turfs can_edit=true editable=editable}}
+  
 </form>
