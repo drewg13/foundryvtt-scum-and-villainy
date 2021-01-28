@@ -2,7 +2,7 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
@@ -93,6 +93,13 @@
       "system": "scum-and-villainy",
       "path": "./packs/crew_abilities.db",
       "entity": "Item"
+    },
+    {
+      "name": "tables",
+      "label": "Job Tables",
+      "system": "scum-and-villainy",
+      "path": "./packs/tables.db",
+      "entity": "RollTable"
     }
   ]
 }
