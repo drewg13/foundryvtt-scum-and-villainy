@@ -34,6 +34,7 @@
   "BITD.Information": "Information",
   "BITD.CohortType": "Cohort Type",
   "BITD.GangType": "Gang Type",
+  "BITD.ShipSize": "Ship Size",
   "BITD.ExpertType": "Expert Type",
   "BITD.ScaleAndQuality": "Scale and Quality",
   "BITD.ChooseOneOrTwoEdges": "Choose one or two edges and an equal number of flaws",
