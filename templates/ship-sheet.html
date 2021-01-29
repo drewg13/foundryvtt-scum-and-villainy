@@ -140,7 +140,7 @@
 
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
-          <p><label for="character-{{actor._id}}-experience-0">{{localize "BITD.Abilities"}}</label></p>
+          <p>{{localize "BITD.Abilities"}}</p>
           <p><a class="item-add-popup" data-item-type="crew_ability"><i class="fas fa-plus-square"></i></a></p>
         </div>
 
@@ -163,8 +163,8 @@
 
       {{!-- Owned Items Tab --}}
       <div id="upgrades" class="tab flex-vertical" data-tab="upgrades">
-        <div class="label-stripe flex-horizontal">
-           
+        <div class="label-stripe">
+          <p>{{localize "BITD.Upgrades"}}</p>
           <p><a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
         </div>
         <div>
@@ -215,7 +215,7 @@
 
 		<div id="systems-{{system_name}}" class="system">
 			<div id="systems-{{system_name}}-title" class="systems-value">
-				<div class="stripe">
+				<div class="stripe flex-horizontal">
 				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
 				</div>
 			<div class="stripe-tooth-body">
@@ -226,18 +226,38 @@
 						class="fab fa-creative-commons-zero nullifier"></i></label>
 				<input type="radio" id="{{../actor._id}}-{{system_name}}-value-0"
 					name="data.systems.{{system_name}}.value" value="0" checked="checked">
+				
+				{{#if (eq system.max 4)}}
+				{{#times_from_1 4}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 6)}}
+				{{#times_from_1 6}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 8)}}
 				{{#times_from_1 8}}
 				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
 						name="data.systems.{{system_name}}.value" value="{{this}}">
 				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
 				{{/times_from_1}}
+				{{/if}}
+				
 				{{/multiboxes}}
 			</div>
 			</div>
     
     
 		</div>
-		<br><br>
+		<br>
 		{{/each}}
 
 
