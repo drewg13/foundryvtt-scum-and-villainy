@@ -177,12 +177,34 @@ export class BladesHelpers {
   static getAttributeLabel(attribute_name) {
         // Calculate Dice to throw.
         let attribute_labels = {};
-        const attributes = game.system.model.Actor.character.attributes;
         
-        for (var attibute_name in attributes) {
-          attribute_labels[attibute_name] = attributes[attibute_name].label;
-          for (var skill_name in attributes[attibute_name].skills) {
-            attribute_labels[skill_name] = attributes[attibute_name].skills[skill_name].label;
+		// There has to be a better way to to do this
+		const skills = ["insight","doctor","hack","rig","study","prowess","helm","scramble","scrap","skulk","resolve","attune","command","consort","sway"];
+		const systems = ["engines","comms","weapons","hull"];
+		
+		if (skills.indexOf(attribute_name) !== -1 ) {
+			
+			var attributes = game.system.model.Actor.character.attributes;
+		//	console.log("character");
+			
+		} else if (systems.indexOf(attribute_name) !== -1 ) {
+			
+			var attributes = game.system.model.Actor.ship.systems;
+		//	console.log("ship");
+			
+		} else {
+		
+			console.log(`Called for Roll using attribute ${attribute_name} not in Actor models!`)
+			
+		}
+		
+		// console.log(attribute_name);
+		// console.log(attributes);
+			
+        for (var a in attributes) {
+          attribute_labels[a] = attributes[a].label;
+          for (var skill_name in attributes[a].skills) {
+            attribute_labels[skill_name] = attributes[a].skills[skill_name].label;
           }
     
         }
