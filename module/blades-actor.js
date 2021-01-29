@@ -41,19 +41,31 @@ export class BladesActor extends Actor {
 
     // Calculate Dice to throw.
     let dice_amount = {};
-    for (var attibute_name in this.data.data.attributes) {
-      dice_amount[attibute_name] = 0;
-      for (var skill_name in this.data.data.attributes[attibute_name].skills) {
-        dice_amount[skill_name] = parseInt(this.data.data.attributes[attibute_name].skills[skill_name]['value'][0])
+			
+	switch (this.data.type) {
+		case 'character':
+			for (var a in this.data.data.attributes) {
+			dice_amount[a] = 0;
+			for (var s in this.data.data.attributes[a].skills) {
+				dice_amount[s] = parseInt(this.data.data.attributes[a].skills[s]['value'][0])
 
-        // We add a +1d for every skill higher than 0.
-        if (dice_amount[skill_name] > 0) {
-          dice_amount[attibute_name]++;
-        }
-      }
+				// We add a +1d for every skill higher than 0.
+				if (dice_amount[s] > 0) {
+				dice_amount[a]++;
+				}
+			}
+			}
+			break;
+			
+		case 'ship':
+			for (var a in this.data.data.systems) {
+			
+				dice_amount[a] = parseInt(this.data.data.systems[a]['value'][0])
 
-    }
-
+			}
+			break;
+	}
+	
     return dice_amount;
   }
 
