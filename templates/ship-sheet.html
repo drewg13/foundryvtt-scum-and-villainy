@@ -216,7 +216,7 @@
 		<div id="systems-{{system_name}}" class="system">
 			<div id="systems-{{system_name}}-title" class="systems-value">
 				<div class="stripe">
-				<a class="system-label roll-die-system rollable-text" data-roll-system="{{system_name}}">{{localize system.label}}</a>
+				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
 				</div>
 			<div class="stripe-tooth-body">
 				{{#multiboxes system.value}}
@@ -237,6 +237,7 @@
     
     
 		</div>
+		<br><br>
 		{{/each}}
 
 
