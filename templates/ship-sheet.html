@@ -88,6 +88,26 @@
 			</div>
 		</div>
 
+		<div id="vault">
+			<div class="stripe">
+			<label for="coins-{{actor._id}}-vault-0">{{localize "BITD.Vault"}}
+				<i class="fab fa-creative-commons-zero nullifier"></i></label>
+			</div>
+			<div class="coins vault">
+			{{#multiboxes data.vault}}
+			<input type="radio" id="coins-{{actor._id}}-vault-0" name="data.vault" value="0" checked="checked">
+			<input type="radio" id="coins-{{actor._id}}-vault-1" name="data.vault" value="1">
+			<label for="coins-{{actor._id}}-vault-1"></label>
+			<input type="radio" id="coins-{{actor._id}}-vault-2" name="data.vault" value="2">
+			<label for="coins-{{actor._id}}-vault-2"></label>
+			<input type="radio" id="coins-{{actor._id}}-vault-3" name="data.vault" value="3">
+			<label for="coins-{{actor._id}}-vault-3"></label>
+			<input type="radio" id="coins-{{actor._id}}-vault-4" name="data.vault" value="4">
+			<label for="coins-{{actor._id}}-vault-4"></label>
+			{{/multiboxes}}
+			</div>
+		</div>
+
 		<div id="coins-debt">
     
 			<div class="stripe">
