@@ -323,7 +323,7 @@
 * .teeth-experience label {
   height: 30px;
   width: 10px;
-  background-image: url("assets/teeth/stresstooth-red.png");
+  background-image: url("assets/teeth/stresstooth-blue.png");
   background-repeat: no-repeat;
   background-size: contain;
   margin-right: 5px;
@@ -353,7 +353,7 @@
   background-image: url("assets/teeth/stresstooth-halfgrey.png");
 }
 * .teeth-experience input:checked + label {
-  background-image: url("assets/teeth/stresstooth-red.png");
+  background-image: url("assets/teeth/stresstooth-blue.png");
 }
 * #harm-armor {
   display: flex;
@@ -447,14 +447,21 @@
   position: relative;
   margin-bottom: 10px;
 }
-* #attributes .attributes-exp .stripe-tooth-body {
+* #attributes .attributes-exp .stripe-tooth-body-red {
   display: flex;
   /* Hide the browser's default checkbox */
   position: absolute;
   top: 0px;
   right: 0px;
 }
-* #attributes .attributes-exp .stripe-tooth-body label {
+* #attributes .attributes-exp .stripe-tooth-body-blue {
+  display: flex;
+  /* Hide the browser's default checkbox */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/xptooth-red.png");
@@ -464,30 +471,65 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #attributes .attributes-exp .stripe-tooth-body label:last-of-type {
+* #attributes .attributes-exp .stripe-tooth-body-blue label {
+  height: 30px;
+  width: 10px;
+  background-image: url("assets/teeth/xptooth-blue.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red label:last-of-type {
   margin-right: 0px;
 }
-* #attributes .attributes-exp .stripe-tooth-body label[for$="-0"] {
+* #attributes .attributes-exp .stripe-tooth-body-blue label:last-of-type {
+  margin-right: 0px;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #attributes .attributes-exp .stripe-tooth-body label[for$="-0"] i {
+* #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"] {
+  width: auto;
+  height: auto;
+  background-image: none !important;
+  color: #EEEFFF;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] i {
   margin-top: 4px;
 }
-* #attributes .attributes-exp .stripe-tooth-body label:hover {
+* #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"] i {
+  margin-top: 4px;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #attributes .attributes-exp .stripe-tooth-body input {
+* #attributes .attributes-exp .stripe-tooth-body-blue label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red input {
   display: none;
 }
-* #attributes .attributes-exp .stripe-tooth-body input:checked ~ label {
+* #attributes .attributes-exp .stripe-tooth-body-blue input {
+  display: none;
+}
+* #attributes .attributes-exp .stripe-tooth-body-red input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.png");
 }
-* #attributes .attributes-exp .stripe-tooth-body input:checked + label {
+* #attributes .attributes-exp .stripe-tooth-body-blue input:checked ~ label {
+  background-image: url("assets/teeth/xptooth-white.png");
+}
+* #attributes .attributes-exp .stripe-tooth-body-red input:checked + label {
   background-image: url("assets/teeth/xptooth-red.png");
+}
+* #attributes .attributes-exp .stripe-tooth-body-blue input:checked + label {
+  background-image: url("assets/teeth/xptooth-blue.png");
 }
 * #attributes .attributes-container {
   display: flex;
@@ -558,14 +600,21 @@
   position: relative;
   margin-bottom: 10px;
 }
-* #systems .systems-value .stripe-tooth-body {
+* #systems .systems-value .stripe-tooth-body-red {
   display: flex;
   /* Hide the browser's default checkbox */
   position: absolute;
   top: 0px;
   right: 0px;
 }
-* #systems .systems-value .stripe-tooth-body label {
+* #systems .systems-value .stripe-tooth-body-blue {
+  display: flex;
+  /* Hide the browser's default checkbox */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+* #systems .systems-value .stripe-tooth-body-red label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/xptooth-red.png");
@@ -575,30 +624,65 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #systems .systems-value .stripe-tooth-body label:last-of-type {
+* #systems .systems-value .stripe-tooth-body-blue label {
+  height: 30px;
+  width: 10px;
+  background-image: url("assets/teeth/xptooth-blue.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* #systems .systems-value .stripe-tooth-body-red label:last-of-type {
   margin-right: 0px;
 }
-* #systems .systems-value .stripe-tooth-body label[for$="-0"] {
+* #systems .systems-value .stripe-tooth-body-blue label:last-of-type {
+  margin-right: 0px;
+}
+* #systems .systems-value .stripe-tooth-body-red label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #systems .systems-value .stripe-tooth-body label[for$="-0"] i {
+* #systems .systems-value .stripe-tooth-body-blue label[for$="-0"] {
+  width: auto;
+  height: auto;
+  background-image: none !important;
+  color: #EEEFFF;
+}
+* #systems .systems-value .stripe-tooth-body-red label[for$="-0"] i {
   margin-top: 4px;
 }
-* #systems .systems-value .stripe-tooth-body label:hover {
+* #systems .systems-value .stripe-tooth-body-blue label[for$="-0"] i {
+  margin-top: 4px;
+}
+* #systems .systems-value .stripe-tooth-body-red label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #systems .systems-value .stripe-tooth-body input {
+* #systems .systems-value .stripe-tooth-body-blue label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+* #systems .systems-value .stripe-tooth-body-red input {
   display: none;
 }
-* #systems .systems-value .stripe-tooth-body input:checked ~ label {
+* #systems .systems-value .stripe-tooth-body-blue input {
+  display: none;
+}
+* #systems .systems-value .stripe-tooth-body-red input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.png");
 }
-* #systems .systems-value .stripe-tooth-body input:checked + label {
+* #systems .systems-value .stripe-tooth-body-blue input:checked ~ label {
+  background-image: url("assets/teeth/xptooth-white.png");
+}
+* #systems .systems-value .stripe-tooth-body-red input:checked + label {
   background-image: url("assets/teeth/xptooth-red.png");
+}
+* #systems .systems-value .stripe-tooth-body-blue input:checked + label {
+  background-image: url("assets/teeth/xptooth-blue.png");
 }
 * #systems .systems-container {
   display: flex;
