@@ -191,9 +191,41 @@
       <nav class="tabs flex-horizontal">
         <a class="item" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
         <a class="item" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
-        <a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
+		<a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
         <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
       </nav>
+
+      {{!-- Owned Items Tab --}}
+      <div id="upgrades" class="tab flex-vertical" data-tab="upgrades">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Upgrades"}}</p>
+          <p><a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
+          
+		</div>
+        <div>
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "crew_upgrade")}}
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">
+              <div class="item-body flex-horizontal">
+                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                <b><div class="item-name">{{item.name}}</div></b>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_upgrade">{{localize "BITD.AddUpgrade"}}</a></div>
+        </div>
+      </div>
+
+      <div class="tab flex-vertical" data-tab="character-notes">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Notes"}}</p>
+        </div>
+        <textarea rows="13" name="data.description">{{{data.description}}}</textarea>
+      </div>
+
 
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
@@ -241,36 +273,6 @@
         </div>
       </div>
 
-      {{!-- Owned Items Tab --}}
-      <div id="upgrades" class="tab flex-vertical" data-tab="upgrades">
-        <div class="label-stripe">
-          <p>{{localize "BITD.Upgrades"}}</p>
-          <p><a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
-        </div>
-        <div>
-          {{#each actor.items as |item id|}}
-          {{#if (eq item.type "crew_upgrade")}}
-            <div class="item flex-horizontal" data-item-id="{{item._id}}">
-              <div class="item-body flex-horizontal">
-                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                <b><div class="item-name">{{item.name}}</div></b>
-                <div class="item-description">{{item.data.description}}</div>
-              </div>
-              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-            </div>
-          {{/if}}
-          {{/each}}
-          <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_upgrade">{{localize "BITD.AddUpgrade"}}</a></div>
-        </div>
-      </div>
-
-      <div class="tab flex-vertical" data-tab="character-notes">
-        <div class="label-stripe">
-          <p>{{localize "BITD.Notes"}}</p>
-        </div>
-        <textarea rows="13" name="data.description">{{{data.description}}}</textarea>
-      </div>
-
       {{!-- Full Item List --}}
       <div class="tab grow-two flex-vertical" data-tab="all-character-items">
         <div class="label-stripe">
@@ -290,17 +292,22 @@
     </div>
     {{!-- Attributes --}}
 	<div id="systems">
-
+		<br><br>
 		{{#each data.systems as |system system_name|}}
 		{{#unless (eq system.max 0)}}
 		<div id="systems-{{system_name}}" class="system">
 			<div id="systems-{{system_name}}-title" class="systems-value">
-				<div class="stripe flex-horizontal">
+				<div class="stripe flex-horizontal system-label">
 				{{#if (eq system_name "upkeep")}}
-				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}} = {{system.value}} {{localize "BITD.Coin"}}</a>
+				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}} = {{system.value}} {{localize "BITD.Coin"}}</a>
+				{{/if}}
+				{{#if (eq system_name "shields")}}
+				{{localize (concat system.label 'Short')}}
 				{{/if}}
 				{{#unless (eq system_name "upkeep")}}
+				{{#unless (eq system_name "shields")}}
 				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
+				{{/unless}}
 				{{/unless}}
 				</div>
 			{{#unless (eq system_name "upkeep")}}
