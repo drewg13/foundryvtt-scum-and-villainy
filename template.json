@@ -135,22 +135,26 @@
         "engines": {
           "label": "BITD.SystemsEngines",
           "value": [0],
-		  "max": 8
+          "damage": [0],
+          "max": 4
 		},
         "hull": {
           "label": "BITD.SystemsHull",
           "value": [0],
-		  "max": 8
+          "damage": [0],
+          "max": 4
 		},
 		"comms": {
           "label": "BITD.SystemsComms",
           "value": [0],
-		  "max": 8
+          "damage": [0],
+          "max": 4
 		},
 		"weapons": {
           "label": "BITD.SystemsWeapons",
           "value": [0],
-		  "max": 8
+          "damage": [0],
+          "max": 4
 		}
 	}
   },
