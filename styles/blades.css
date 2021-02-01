@@ -721,7 +721,7 @@
   opacity: 0.9;
 }
 * .coins.coins-hands {
-  width: 36px;
+  /* width: 36px; */
 }
 * .coins.coins-stashed {
   width: 190px;
