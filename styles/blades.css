@@ -588,9 +588,19 @@
   font-size: 17px;
   padding-left: 5px;
 }
+* #systems .stripe-damage {
+  background-color: #6E0101;
+  color: #EEEFFF;
+  font-size: 17px;
+  padding-left: 5px;
+}
 * #systems .system-label,
 * #systems .system-skill-label {
   font-weight: bold;
+  text-transform: uppercase;
+}
+* #systems .system-label-damage {
+  padding-left: 25px;
   text-transform: uppercase;
 }
 * #systems .system-skill-label {
@@ -775,6 +785,24 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+* .coins.debt label {
+  height: 15px;
+  width: 15px;
+  background-color: #FC0303;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* .coins.gambits label {
+  height: 15px;
+  width: 15px;
+  background-color: #03A33E;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
 * .coins label[for$="-0"] {
   margin-right: 0px;
 }
@@ -791,6 +819,12 @@
 * .coins input:checked + label {
   background-color: #DAA520;
 }
+* .coins.debt input:checked + label {
+  background-color: #FC0303;
+}
+* .coins.gambits input:checked + label {
+  background-color: #03A33E;
+}
 * .coins input ~ label {
   margin-right: 3px;
   margin-bottom: 3px;
@@ -805,7 +839,7 @@
   opacity: 0.9;
 }
 * .coins.coins-hands {
-  /* width: 36px; */
+  width: 72px;
 }
 * .coins.coins-stashed {
   width: 190px;
