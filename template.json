@@ -118,21 +118,31 @@
   "ship": {
     "name": "",
     "look": "",
-    "crew": [0],
+	"designation": "",
     "size": "",
     "coins": [0],
+	"vault_inst": 0,
     "vault": [0],
-    "debt": [0],
+    "debt-clock": [0],
+	"crew_experience": [0],
     "gambits": {
       "refresh": 2,
       "max": 8,
       "value": [0]
     },
-    "heat": [0],
-    "wanted": [0],
-    "upkeep": 0,
-    "skips": [0],
     "systems": {
+		"crew": {
+		  "label": "BITD.SystemsCrew",
+		  "value": [0],
+		  "damage": [0],
+		  "max": 3
+		},
+		"upkeep": {
+		  "label": "BITD.SystemsUpkeep",
+		  "value": 0,
+		  "damage": [0],
+		  "max": 4
+		},
         "engines": {
           "label": "BITD.SystemsEngines",
           "value": [0],
@@ -145,6 +155,12 @@
           "damage": [0],
           "max": 4
         },
+		"shields": {
+          "label": "BITD.SystemsShields",
+		  "value": [0],
+          "damage": [0],
+		  "max": 0
+		},
         "comms": {
           "label": "BITD.SystemsComms",
           "value": [0],
@@ -187,21 +203,7 @@
   },
   "class": {
     "templates": ["default", "logic"],
-    "experience_clues": "",
-    "base_skills": {
-      "doctor": [0],
-      "hack": [0],
-      "rig": [0],
-      "study": [0],
-      "helm": [0],
-      "scramble": [0],
-      "scrap": [0],
-      "skulk": [0],
-      "attune": [0],
-      "command": [0],
-      "consort": [0],
-      "sway": [0]
-    }
+    "experience_clues": ""
   },
   "ability": {
     "templates": ["ability", "logic"]
@@ -226,7 +228,7 @@
     "templates": ["ability"]
   },
   "ship_size": {
-    "templates": ["default"]
+    "templates": ["default", "logic"]
   },
   "crew_type": {
     "templates": ["default", "logic"],
