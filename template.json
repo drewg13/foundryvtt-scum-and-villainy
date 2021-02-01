@@ -121,6 +121,7 @@
     "crew": [0],
     "size": "",
     "coins": [0],
+    "vault": [0],
     "debt": [0],
     "gambits": {
       "refresh": 2,
