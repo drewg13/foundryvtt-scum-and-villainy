@@ -238,7 +238,7 @@
 				<div class="stripe flex-horizontal">
 				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
 				</div>
-			<div class="stripe-tooth-body">
+			<div class="stripe-tooth-body-blue">
 				{{#multiboxes system.value}}
 
 				<label
@@ -246,6 +246,22 @@
 						class="fab fa-creative-commons-zero nullifier"></i></label>
 				<input type="radio" id="{{../actor._id}}-{{system_name}}-value-0"
 					name="data.systems.{{system_name}}.value" value="0" checked="checked">
+				
+				{{#if (eq system.max 2)}}
+				{{#times_from_1 2}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 3)}}
+				{{#times_from_1 3}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
 				
 				{{#if (eq system.max 4)}}
 				{{#times_from_1 4}}
@@ -255,19 +271,43 @@
 				{{/times_from_1}}
 				{{/if}}
 				
-				{{#if (eq system.max 6)}}
-				{{#times_from_1 6}}
-				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
-						name="data.systems.{{system_name}}.value" value="{{this}}">
-				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/multiboxes}}
+			</div>
+			</div>
+			<div id="systems-{{system_name}}-damage" class="systems-value">
+				<div class="stripe flex-horizontal system-label">
+				{{localize "BITD.SystemsDamage"}}
+				</div>
+			<div class="stripe-tooth-body-red">
+				{{#multiboxes system.damage}}
+
+				<label
+						for="{{../actor._id}}-{{system_name}}-damage-0"><i
+						class="fab fa-creative-commons-zero nullifier"></i></label>
+				<input type="radio" id="{{../actor._id}}-{{system_name}}-damage-0"
+					name="data.systems.{{system_name}}.damage" value="0" checked="checked">
+				
+				{{#if (eq system.max 2)}}
+				{{#times_from_1 2}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
 				{{/times_from_1}}
 				{{/if}}
 				
-				{{#if (eq system.max 8)}}
-				{{#times_from_1 8}}
-				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
-						name="data.systems.{{system_name}}.value" value="{{this}}">
-				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{#if (eq system.max 3)}}
+				{{#times_from_1 3}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 4)}}
+				{{#times_from_1 4}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
 				{{/times_from_1}}
 				{{/if}}
 				
