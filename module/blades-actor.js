@@ -59,9 +59,15 @@ export class BladesActor extends Actor {
 			
 		case 'ship':
 			for (var a in this.data.data.systems) {
-			
-				dice_amount[a] = parseInt(this.data.data.systems[a]['value'][0])
-
+			dice_amount[a] = 0;
+				if ([a] == "upkeep") {
+					dice_amount[a] = parseInt(this.data.data.systems[a]['damage'][0])
+				}
+				else {
+					dice_amount[a] = parseInt(this.data.data.systems[a]['value'][0]) - parseInt(this.data.data.systems[a]['damage'][0]);
+				
+					if (dice_amount[a] < 0) dice_amount[a] = 0
+				}
 			}
 			break;
 	}

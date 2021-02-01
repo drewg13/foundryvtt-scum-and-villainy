@@ -180,7 +180,7 @@ export class BladesHelpers {
         
 		// There has to be a better way to to do this
 		const skills = ["insight","doctor","hack","rig","study","prowess","helm","scramble","scrap","skulk","resolve","attune","command","consort","sway"];
-		const systems = ["engines","comms","weapons","hull"];
+		const systems = ["crew","upkeep","engines","comms","weapons","hull"];
 		
 		if (skills.indexOf(attribute_name) !== -1 ) {
 			
