@@ -203,7 +203,8 @@
   },
   "class": {
     "templates": ["default", "logic"],
-    "experience_clues": ""
+    "def_abilities": "",
+	"experience_clues": ""
   },
   "ability": {
     "templates": ["ability", "logic"]
@@ -232,6 +233,7 @@
   },
   "crew_type": {
     "templates": ["default", "logic"],
+	"upgrades": "",
 	"experience_clues": ""
   }
 }
