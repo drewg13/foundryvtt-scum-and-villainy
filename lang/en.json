@@ -169,6 +169,7 @@
   "BITD.SystemsHullShort": "Hull",
   "BITD.SystemsCommsShort": "Comms",
   "BITD.SystemsWeaponsShort": "Weapons",
+  "BITD.SystemsDamage": "Damage",
 
   "BITD.AddAbility": "Add Ability",
   "BITD.AddItem": "Add Item",
