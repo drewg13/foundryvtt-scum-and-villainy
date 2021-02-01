@@ -27,7 +27,7 @@
   "BITD.LessEffect": "Less Effect",
   "BITD.Description": "Description",
   "BITD.Loadout": "Loadout",
-  "BITD.Upgrades": "Ship Upgrades and Gear",
+  "BITD.Upgrades": "Ship Upgrades/Gear",
   "BITD.CrewType": "Ship Type",
   "BITD.Debt": "Debt",
   "BITD.Price": "Price",
@@ -77,6 +77,7 @@
   "BITD.CrewXP": "Crew XP",
   "BITD.CrewExpClue1": "At the end of each session, for each item below, mark 1 xp (or instead mark 2xp if that item occurred multiple times).",
   "BITD.SpecialAbilities": "Special Abilities",
+  "BITD.AddUpgrades": "Default upgrades/abilities to add to sheet during creation",
 
   "BITD.Gang": "Gang",
   "BITD.Expert": "Expert",
