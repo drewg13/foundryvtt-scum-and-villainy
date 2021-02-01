@@ -742,6 +742,7 @@
 }
 * .item {
   justify-content: space-between;
+  font-weight: bold;
 }
 * .item .item-body {
   margin-bottom: 10px;
