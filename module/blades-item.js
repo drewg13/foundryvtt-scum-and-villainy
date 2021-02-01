@@ -32,7 +32,7 @@ export class BladesItem extends Item {
     if (this.actor) {
     
 		// calculates upkeep value from (crew quality + engine quality + hull quality + comms quality + weapons quality) / 4, rounded down
-		upkeep = Math.floor((parseInt(this.actor.data.data.systems.crew.value[0]) + parseInt(this.actor.data.data.systems.engines.value[0]) + parseInt(this.actor.data.data.systems.hull.value[0]) + parseInt(this.actor.data.data.systems.comms.value[0]) + parseInt(this.actor.data.data.systems.weapons.value[0])) / 4);
+		upkeep = Math.floor((parseInt(this.actor.data.data.systems.crew.value) + parseInt(this.actor.data.data.systems.engines.value) + parseInt(this.actor.data.data.systems.hull.value) + parseInt(this.actor.data.data.systems.comms.value) + parseInt(this.actor.data.data.systems.weapons.value)) / 4);
     
 		this.actor.data.data.systems.upkeep.value = upkeep;
 		
