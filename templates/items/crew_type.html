@@ -10,7 +10,11 @@
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea name="data.description">{{data.description}}</textarea>
     <label class="label-stripe">{{localize "BITD.ExpClues"}}</label>
-    <textarea name="data.experience_clues">{{data.experience_clues}}</textarea>
+    <div>{{localize "BITD.CrewExpClueDescription"}}</div>
+	<div><i>- {{localize "BITD.CrewExpClue2"}}</i></div>
+    <div><i>- {{localize "BITD.CrewExpClue3"}}</i></div>
+    <div><i>- {{localize "BITD.CrewExpClue4"}}</i></div>
+    <div><i>{{data.experience_clues}}</i></div><br>
 	<label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
     <textarea name="data.upgrades">{{data.upgrades}}</textarea>
 	

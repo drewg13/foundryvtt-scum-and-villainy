@@ -20,7 +20,7 @@
 	
     {{isG}}
     <label class="label-stripe">{{localize "BITD.Logic"}}</label>
-    <textarea name="data.logic">{{data.logic}}</textarea>
+    {{editor content=data.logic target="data.logic" button=true owner=owner editable=editable}}
   </section>
 
 </form>
