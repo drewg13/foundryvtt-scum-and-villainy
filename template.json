@@ -124,8 +124,9 @@
     "size": "",
 	"size_default": "",
     "coins": [0],
-	"vault_inst": 0,
-	"vault_inst_default": 0,
+    "coins_default": [0],
+    "vault_inst": 0,
+    "vault_inst_default": 0,
     "vault": [0],
     "debt-clock": [0],
 	"crew_experience": [0],
@@ -136,7 +137,8 @@
 	  "refresh_default": 2,
       "max": 8,
 	  "max_default": 8,
-      "value": [0]
+      "value": [0],
+      "value_default": [0]
     },
     "systems": {
 		"crew": {
