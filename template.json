@@ -54,19 +54,23 @@
           "skills": {
             "doctor": {
               "label": "BITD.SkillsDoctor",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "hack": {
               "label": "BITD.SkillsHack",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "rig": {
               "label": "BITD.SkillsRig",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "study": {
               "label": "BITD.SkillsStudy",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             }
           }
         },
@@ -76,19 +80,23 @@
           "skills": {
             "helm": {
               "label": "BITD.SkillsHelm",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "scramble": {
               "label": "BITD.SkillsScramble",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "scrap": {
               "label": "BITD.SkillsScrap",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "skulk": {
               "label": "BITD.SkillsSkulk",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             }
           }
         },
@@ -98,19 +106,23 @@
           "skills": {
             "attune": {
               "label": "BITD.SkillsAttune",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "command": {
               "label": "BITD.SkillsCommand",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "consort": {
               "label": "BITD.SkillsConsort",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             },
             "sway": {
               "label": "BITD.SkillsSway",
-              "value": [0]
+              "value": [0],
+              "value_default": [0]
             }
           }
         }
