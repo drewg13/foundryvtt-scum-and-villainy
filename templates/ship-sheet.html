@@ -195,42 +195,10 @@
         <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
       </nav>
 
-      {{!-- Owned Items Tab --}}
-      <div id="upgrades" class="tab flex-vertical" data-tab="upgrades">
-        <div class="label-stripe">
-          <p>{{localize "BITD.Upgrades"}}</p>
-          <p><a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
-          
-		</div>
-        <div>
-          {{#each actor.items as |item id|}}
-          {{#if (eq item.type "crew_upgrade")}}
-            <div class="item flex-horizontal" data-item-id="{{item._id}}">
-              <div class="item-body flex-horizontal">
-                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                <b><div class="item-name">{{item.name}}</div></b>
-                <div class="item-description">{{item.data.description}}</div>
-              </div>
-              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-            </div>
-          {{/if}}
-          {{/each}}
-          <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_upgrade">{{localize "BITD.AddUpgrade"}}</a></div>
-        </div>
-      </div>
-
-      <div class="tab flex-vertical" data-tab="character-notes">
-        <div class="label-stripe">
-          <p>{{localize "BITD.Notes"}}</p>
-        </div>
-        <textarea rows="13" name="data.description">{{{data.description}}}</textarea>
-      </div>
-
-
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
           <p>{{localize "BITD.Abilities"}}</p>
-          <p><a class="item-add-popup" data-item-type="crew_ability"><i class="fas fa-plus-square"></i></a></p>
+          <p><a class="item-add-popup" data-item-type="crew_ability" data-limiter=data.ship_class><i class="fas fa-plus-square"></i></a></p>
           <div id="crew_experience" class="teeth-experience">
             <label for="ship-{{actor._id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
             {{#multiboxes data.crew_experience}}
@@ -259,7 +227,7 @@
         <div id="abilities-list">
           {{#each actor.items as |item id|}}
           {{#if (eq item.type "crew_ability")}}
-            <div class="item flex-horizontal" data-item-id="{{item._id}}">
+		    <div class="item flex-horizontal" data-item-id="{{item._id}}">
               <div class="item-body flex-horizontal">
 				<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                 <b><div class="item-name">{{item.name}}</div></b>
@@ -271,6 +239,36 @@
           {{/each}}
           <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_ability">{{localize "BITD.AddAbility"}}</a></div>
         </div>
+      </div>
+
+      {{!-- Owned Items Tab --}}
+      <div id="upgrades" class="tab flex-vertical" data-tab="upgrades">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Upgrades"}}</p>
+          <p><a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
+        </div>
+        <div>
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "crew_upgrade")}}
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">
+              <div class="item-body flex-horizontal">
+                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                <b><div class="item-name">{{item.name}}</div></b>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_upgrade">{{localize "BITD.AddUpgrade"}}</a></div>
+        </div>
+      </div>
+
+      <div class="tab flex-vertical" data-tab="character-notes">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Notes"}}</p>
+        </div>
+        <textarea rows="13" name="data.description">{{{data.description}}}</textarea>
       </div>
 
       {{!-- Full Item List --}}

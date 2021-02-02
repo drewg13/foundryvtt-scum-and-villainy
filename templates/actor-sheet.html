@@ -239,7 +239,7 @@
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
           <p><label for="character-{{actor._id}}-experience-0">{{localize "BITD.Abilities"}}</label></p>
-          <p><a class="item-add-popup" data-item-type="ability"><i class="fas fa-plus-square"></i></a></p>
+          <p><a class="item-add-popup" data-item-type="ability" data-limiter=data.character_class><i class="fas fa-plus-square"></i></a></p>
           <div id="character-experience" class="teeth-experience">
             <label for="character-{{actor._id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
             {{#multiboxes data.experience}}
