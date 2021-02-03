@@ -301,15 +301,19 @@
 * #character-stress label[for$="-0"] {
   margin-right: 0px;
 }
+* #upgrades .item-name,
 * #abilities .item-name {
   width: 70px;
 }
+* #upgrades .item-body,
 * #abilities .item-body {
   width: auto;
 }
+* #upgrades .item-description,
 * #abilities .item-description {
-  width: 200px;
+  width: 300px;
 }
+* #upgrades .label-stripe p:first-child,
 * #abilities .label-stripe p:first-child {
   margin-right: 10px;
 }
@@ -755,14 +759,14 @@
   text-align: justify;
 }
 * .item div {
-  flex-grow: 2;
+  flex-grow: 3;
 }
 * .item .item-control {
   flex-grow: 1;
 }
 * .item .item-body,
 * .item .item-class-label {
-  width: 120px;
+  width: 135px;
 }
 * .item-class-label {
   margin-bottom: 10px;
