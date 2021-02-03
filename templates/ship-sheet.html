@@ -75,12 +75,13 @@
 
 		<div id="coins-hands">
 			<div class="stripe">
-			<label for="coins-{{actor._id}}-hands-0">{{localize "BITD.Coin"}}
-				<i class="fab fa-creative-commons-zero nullifier"></i></label>
+				<label for="coins-{{actor._id}}-hands-0">{{localize "BITD.Coin"}}
+					<i class="fab fa-creative-commons-zero nullifier"></i>
+				</label>
 			</div>
 			<div class="coins coins-hands">
 			{{#multiboxes data.coins}}
-			<input type="radio" id="coins-{{actor._id}}-hands-0" name="data.coins" value="0" checked="checked">
+			<input type="radio" id="coins-{{actor._id}}-hands-0" name="data.coins" value="0">
 			<input type="radio" id="coins-{{actor._id}}-hands-1" name="data.coins" value="1">
 			<label for="coins-{{actor._id}}-hands-1"></label>
 			<input type="radio" id="coins-{{actor._id}}-hands-2" name="data.coins" value="2">
@@ -93,7 +94,7 @@
 			</div>
 		</div>
 		
-		{{#if (eq data.vault_inst 1)}}
+		{{#if (eq data.installs.vault_inst 1)}}
 		<div id="vault">
 			<div class="stripe">
 			<label for="coins-{{actor._id}}-vault-0">{{localize "BITD.Vault"}}
@@ -189,7 +190,7 @@
 
       {{!-- Nav menu --}}
       <nav class="tabs flex-horizontal">
-        <a class="item" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
+        <a class="item" data-tab="abilities">{{localize "BITD.SpecialAbilities"}}</a>
         <a class="item" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
 		<a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
         <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
@@ -197,7 +198,7 @@
 
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
-          <p>{{localize "BITD.Abilities"}}</p>
+          <p>{{localize "BITD.SpecialAbilities"}}</p>
           <p><a class="item-add-popup" data-item-type="crew_ability" data-limiter=data.ship_class><i class="fas fa-plus-square"></i></a></p>
           <div id="crew_experience" class="teeth-experience">
             <label for="ship-{{actor._id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
@@ -297,14 +298,19 @@
 			<div id="systems-{{system_name}}-title" class="systems-value">
 				<div class="stripe flex-horizontal system-label">
 				{{#if (eq system_name "upkeep")}}
-				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}} = {{system.value}} {{localize "BITD.Coin"}}</a>
+				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a> = {{system.value}} {{localize "BITD.Coin"}}
 				{{/if}}
 				{{#if (eq system_name "shields")}}
 				{{localize (concat system.label 'Short')}}
 				{{/if}}
+				{{#if (eq system_name "encryptor")}}
+				{{localize (concat system.label 'Short')}}
+				{{/if}}
 				{{#unless (eq system_name "upkeep")}}
 				{{#unless (eq system_name "shields")}}
+				{{#unless (eq system_name "encryptor")}}
 				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
+				{{/unless}}
 				{{/unless}}
 				{{/unless}}
 				</div>
@@ -357,6 +363,7 @@
 			
 			{{#unless (eq system_name "crew")}}
 			{{#unless (eq system_name "shields")}}
+			{{#unless (eq system_name "encryptor")}}
 			<div id="systems-{{system_name}}-damage" class="systems-value">
 				<div class="stripe-damage flex-horizontal system-label-damage">
 				{{#if (eq system_name "upkeep")}}
@@ -410,6 +417,7 @@
 				{{/multiboxes}}
 			</div>
 			</div>
+			{{/unless}}
 			{{/unless}}
 			{{/unless}}
 		  
