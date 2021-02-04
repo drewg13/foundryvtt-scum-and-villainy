@@ -301,18 +301,22 @@
 * #character-stress label[for$="-0"] {
   margin-right: 0px;
 }
+* #loadout .item-name,
 * #upgrades .item-name,
 * #abilities .item-name {
   width: 70px;
 }
+* #loadout .item-body,
 * #upgrades .item-body,
 * #abilities .item-body {
   width: auto;
 }
+* #loadout .item-description,
 * #upgrades .item-description,
 * #abilities .item-description {
   width: 300px;
 }
+* #loadout .label-stripe p:first-child,
 * #upgrades .label-stripe p:first-child,
 * #abilities .label-stripe p:first-child {
   margin-right: 10px;
@@ -431,7 +435,7 @@
 * #attributes {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 215px;
 }
 * #attributes .stripe {
   background-color: #191813;
@@ -776,6 +780,7 @@
 * #alias {
   margin-bottom: 10px;
 }
+* .character-healing-clock,
 * .coins {
   display: flex;
   /* Hide the browser's default checkbox */
@@ -790,6 +795,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+* .coins.healing label,
 * .coins.debt label {
   height: 15px;
   width: 15px;
@@ -824,6 +830,7 @@
 * .coins input:checked + label {
   background-color: #DAA520;
 }
+* .coins.healing input:checked + label,
 * .coins.debt input:checked + label {
   background-color: #FC0303;
 }
@@ -842,6 +849,9 @@
 * .coins input ~ label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
+}
+* .coins.healing {
+  width: 42px;
 }
 * .coins.coins-hands {
   width: 72px;
