@@ -71,7 +71,8 @@
                 {{/if}}
             {{/each}}
           </div>
-
+		  
+		
       </div>
     </div>
 
@@ -177,7 +178,25 @@
             <td>{{localize "BITD.NeedHelp"}}</td>
             <td rowspan="3">
               <div id="character-health-clock">
-                {{{blades-clock "data.healing-clock" 4 data.healing-clock actor._id}}}
+				{{{blades-clock "data.healing-clock" 4 data.healing-clock actor._id}}}
+			  {{!--
+			  <label for="healing-{{actor._id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+                {{#multiboxes data.healing-clock}}
+					<input type="radio" id="healing-{{actor._id}}-0" name="data.healing-clock" value="0" checked="checked">
+					<input type="radio" id="healing-{{actor._id}}-1" name="data.healing-clock" value="1">
+					<label for="healing-{{actor._id}}-1"></label>
+					<input type="radio" id="healing-{{actor._id}}-2" name="data.healing-clock" value="2">
+					<label for="healing-{{actor._id}}-2"></label>
+					<input type="radio" id="healing-{{actor._id}}-3" name="data.healing-clock" value="3">
+					<label for="healing-{{actor._id}}-3"></label>
+					<input type="radio" id="healing-{{actor._id}}-4" name="data.healing-clock" value="4">
+					<label for="healing-{{actor._id}}-4"></label>
+					<input type="radio" id="healing-{{actor._id}}-5" name="data.healing-clock" value="5">
+					<label for="healing-{{actor._id}}-5"></label>
+					<input type="radio" id="healing-{{actor._id}}-6" name="data.healing-clock" value="6">
+					<label for="healing-{{actor._id}}-6"></label>
+				{{/multiboxes}}
+				--}}
               </div>
             </td>
             <td rowspan="3" id="character-armor-uses">
@@ -282,7 +301,7 @@
 
       {{!-- Owned Items Tab --}}
       <div id="loadout" class="tab flex-vertical" data-tab="loadout">
-        <div class="label-stripe flex-horizontal">
+        <div class="label-stripe">
            <p>{{localize "BITD.Loadout"}}: {{data.loadout}}/{{data.load_level}} </p>
           <p><a class="item-add-popup" data-item-type="item"><i class="fas fa-plus-square"></i></a></p>
         </div>
