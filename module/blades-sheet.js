@@ -24,7 +24,7 @@ export class BladesSheet extends ActorSheet {
 
   async _onItemAddClick(event) {
     event.preventDefault();
-    const item_type = $(event.currentTarget).data("itemType")
+	const item_type = $(event.currentTarget).data("itemType")
 	const limiter = $(event.currentTarget).data("limiter")
     const distinct = $(event.currentTarget).data("distinct")
     let input_type = "checkbox";
@@ -33,8 +33,9 @@ export class BladesSheet extends ActorSheet {
       input_type = "radio";
     }
 
-    let items = await BladesHelpers.getAllItemsByType(item_type, game);
-
+		
+	let items = await BladesHelpers.getAllItemsByType(item_type, game);
+	
     let html = `<div id="items-to-add">`;
 
     items.forEach(e => {
@@ -90,11 +91,15 @@ export class BladesSheet extends ActorSheet {
 
   async addItemsToSheet(item_type, el) {
 
-    let items = await BladesHelpers.getAllItemsByType(item_type, game);
-    let items_to_add = [];
+    
+	let items = await BladesHelpers.getAllItemsByType(item_type, game);
+	let items_to_add = [];
     el.find("input:checked").each(function() {
 
-      items_to_add.push(items.find(e => e._id === $(this).val()));
+	
+		items_to_add.push(items.find(e => e._id === $(this).val()));
+	
+	  
     });
     this.actor.createEmbeddedEntity("OwnedItem", items_to_add);
   }

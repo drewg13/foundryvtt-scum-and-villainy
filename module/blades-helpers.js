@@ -166,6 +166,16 @@ export class BladesHelpers {
 
   }
 
+  static async getAllActorsByType(item_type, game) {
+
+    let game_actors = [];
+        
+    game_actors = game.actors.filter(e => e.data.type === item_type).map(e => {return e.data});
+
+    return game_actors;
+
+  }
+
   /* -------------------------------------------- */
 
   /**
