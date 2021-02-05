@@ -13,7 +13,8 @@
       <div id="character-traits" class="flex-column">
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="heritage">{{localize "BITD.Heritage"}}</a></div>
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="heritage">{{localize "BITD.Heritage"}}</a>
+		  </div>
           {{#each actor.items as |item id|}}
               {{#if (eq item.type "heritage")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
@@ -28,7 +29,8 @@
         </div>
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="background">{{localize "BITD.Background"}}</a></div>
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="background">{{localize "BITD.Background"}}</a>
+		  </div>
           {{#each actor.items as |item id|}}
             {{#if (eq item.type "background")}}
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
@@ -43,7 +45,8 @@
         </div>
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="vice">{{localize "BITD.Vice"}}</a></div>
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="vice">{{localize "BITD.Vice"}}</a>
+		  </div>
           {{#each actor.items as |item id|}}
               {{#if (eq item.type "vice")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
@@ -58,7 +61,8 @@
         </div>
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class">{{localize "BITD.Class"}}</a></div>
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class">{{localize "BITD.Class"}}</a>
+		  </div>
             {{#each actor.items as |item id|}}
                 {{#if (eq item.type "class")}}
                 <div class="item flex-horizontal" data-item-id="{{item._id}}">
@@ -70,10 +74,25 @@
                 </div>
                 {{/if}}
             {{/each}}
-          </div>
-		  
+        </div>
+
 		
-      </div>
+		<div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="flag-add-popup" data-distinct="true" data-item-type="ship">{{localize "BITD.Ship"}}</a>
+		  </div>
+            {{#each actor.flags.scum-and-villainy.ship as |item id|}}
+                {{#unless (eq item.name "")}}
+                <div class="item flex-horizontal" data-item-id="{{item._id}}" data-item-type="{{item.type}}">
+                  <div class="item-body flex-horizontal">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <div class="item-name">{{item.name}}</div>
+                  </div>
+                  <a class="item-control flag-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+                </div>
+                {{/unless}}
+            {{/each}}
+        </div>
+	  </div>
     </div>
 
     <div class="grow-two">
