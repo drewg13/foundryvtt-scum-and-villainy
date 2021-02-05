@@ -1,0 +1,17 @@
+Character sheet
+ - change healing clock from 4-clock to 6-clock
+ - add field to track preset loadout amount before job (UI change if exceeded?)
+ - update Home Cooking (auto-add vice)
+ - update Stun Weapons logic (change available items in loadout)
+ - auto-add starting ability on Class selection
+ 
+ 
+System sheet
+  - track available Systems (based on items present in compendium? game?)
+  - track heat and wanted levels per system
+  - add faction tracker (based on items present in compendium?  game?)
+  - track per faction: name, category [Hegemony, Syndicate, Weirdness], tier, status, #jobs
+  - color UI based on status
+
+All sheets
+  - "space" look, black background?, change teeth shapes?, use more holo-blue?  
