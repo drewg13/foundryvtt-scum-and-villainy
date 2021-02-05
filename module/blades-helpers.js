@@ -8,7 +8,7 @@ export class BladesHelpers {
    */
   static removeDuplicatedItemType(item_data, actor) {
 
-    let distinct_types = ["crew_reputation", "class", "vice", "background", "heritage", "ship_size"];
+    let distinct_types = ["crew_reputation", "class", "background", "heritage", "ship_size", "crew_type"];
     let should_be_distinct = distinct_types.includes(item_data.type);
     // If the Item has the exact same name - remove it from list.
     // Remove Duplicate items from the array.
@@ -189,6 +189,7 @@ export class BladesHelpers {
         let attribute_labels = {};
         
 		// There has to be a better way to to do this
+		// @todo - pull skill list dynamically
 		const skills = ["insight","doctor","hack","rig","study","prowess","helm","scramble","scrap","skulk","resolve","attune","command","consort","sway"];
 		const systems = ["crew","upkeep","engines","comms","weapons","hull","shields","encryptor"];
 		
@@ -224,4 +225,5 @@ export class BladesHelpers {
 
   /* -------------------------------------------- */
 
+  
 }

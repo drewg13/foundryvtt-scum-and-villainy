@@ -23,7 +23,8 @@ export class BladesActorSheet extends BladesSheet {
   /** @override */
   getData() {
     const data = super.getData();
-
+	let actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
+	
     // Calculate Load
     let loadout = 0;
     data.items.forEach(i => {loadout += (i.type === "item") ? parseInt(i.data.load) : 0});
@@ -32,9 +33,9 @@ export class BladesActorSheet extends BladesSheet {
     // Encumbrance Levels
     let load_level=["light","light","light","light","normal","normal","heavy","heavy",
 			"heavy","over max"];
-    let mule_level=["light","light","light","light","light","light","normal","normal",
-			"heavy","Encumbered","over max"];
-    let mule_present=0;
+    let mule_level=["light","light","light","light","light","normal","normal",
+			"heavy","heavy","heavy","over max"];
+    let mule_present = 0;
  
     //Sanity Check
     if (loadout < 0) {
@@ -44,19 +45,46 @@ export class BladesActorSheet extends BladesSheet {
       loadout = 9;
     }
 
-    //look for Mule ability
-    // @todo - fix translation.
-    //data.items.forEach(i => {
-    //  if (i.type == "ability" && i.name == "(C) Mule") {
-    //    mule_present = 1;
-    //  }
-    //});
+    //look for Loaded ability on assigned ship in flags
+    actor_flags.forEach(i => {
+      if (i.data.installs.loaded_inst == "1") {
+        mule_present = 1;
+      }
+    });
 
     //set encumbrance level
     if (mule_present) {
       data.data.load_level=mule_level[loadout];
     } else {
       data.data.load_level=load_level[loadout];   
+    }
+
+	//look for Thrillseekers/Smooth Criminals ability on assigned ship in flags
+    let stress_max_up = 0;
+	actor_flags.forEach(i => {
+      if (i.data.installs.stress_max_up == "1") {
+        stress_max_up = 1;
+      }
+    });
+
+	if (stress_max_up == 1) {
+      data.data.stress.max++;
+    } else {
+      data.data.stress.max = data.data.stress.max_default;   
+    }
+
+	//look for Driven ability on assigned ship in flags
+    let trauma_max_up = 0;
+	actor_flags.forEach(i => {
+      if (i.data.installs.trauma_max_up == "1") {
+        trauma_max_up = 1;
+      }
+    });
+
+	if (trauma_max_up == 1) {
+      data.data.trauma.max++;
+    } else {
+      data.data.trauma.max = data.data.trauma.max_default;   
     }
 
     return data;
@@ -84,6 +112,14 @@ export class BladesActorSheet extends BladesSheet {
       this.actor.deleteOwnedItem(element.data("itemId"));
       element.slideUp(200, () => this.render(false));
     });
+	
+	// Clear Flag
+	html.find('.flag-delete').click(ev => {
+      const element = $(ev.currentTarget).parents(".item");
+      this.actor.setFlag("scum-and-villainy", element.data("itemType"), "");
+      element.slideUp(200, () => this.render(false));
+    });
+	
   }
 
   /* -------------------------------------------- */

@@ -46,6 +46,15 @@ export class BladesActor extends Actor {
 		case 'character':
 			for (var a in this.data.data.attributes) {
 			dice_amount[a] = 0;
+			
+			// Add +1d to resistance rolls only for Forged item on ship
+			let actor_flags = this.getFlag("scum-and-villainy", "ship") || [];
+			actor_flags.forEach(i => {
+				if (i.data.installs.forged_inst == "1") {
+				dice_amount[a]++;
+				}
+			});
+			
 			for (var s in this.data.data.attributes[a].skills) {
 				dice_amount[s] = parseInt(this.data.data.attributes[a].skills[s]['value'][0])
 
@@ -53,6 +62,7 @@ export class BladesActor extends Actor {
 				if (dice_amount[s] > 0) {
 				dice_amount[a]++;
 				}
+				
 			}
 			}
 			break;

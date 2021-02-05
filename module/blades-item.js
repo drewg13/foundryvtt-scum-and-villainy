@@ -12,6 +12,8 @@ export class BladesItem extends Item {
     const item_data = this.data;
     const data = item_data.data;
 
+		
+	
     if (item_data.type === "crew_type") {
     
       this._prepareUpkeep(data);

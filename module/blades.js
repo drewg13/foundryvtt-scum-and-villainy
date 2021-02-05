@@ -92,7 +92,7 @@ Hooks.once("init", async function() {
       }
     }
 
-    if (count > 4) count = 4;
+    if (count > 5) count = 5;
     
     const rgx = new RegExp(' value=\"' + count + '\"');
     return html.replace(rgx, "$& checked=\"checked\"");
