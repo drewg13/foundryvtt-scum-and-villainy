@@ -6,7 +6,7 @@
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
-  "author": "Andrew Garinger [agaringer#6498]",
+  "author": "megastruktur, Andrew Garinger [agaringer#6498]",
   "esmodules": [
     "module/blades.js"
   ],
