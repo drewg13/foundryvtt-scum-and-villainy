@@ -301,7 +301,7 @@ $hover-brightness: 0.8;
     // Clock
     #character-health-clock {
       margin: 0 auto;
-      @include clock(4, 88);
+      @include clock(6, 88);
     }
 
     #character-armor-uses {
