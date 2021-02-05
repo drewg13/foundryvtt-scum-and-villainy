@@ -1,9 +1,11 @@
 Character sheet
- - change healing clock from 4-clock to 6-clock
+ - change healing clock from 4-clock to 6-clock - DONE Thanks Myriddin!
  - add field to track preset loadout amount before job (UI change if exceeded?)
  - update Home Cooking (auto-add vice)
  - update Stun Weapons logic (change available items in loadout)
  - auto-add starting ability on Class selection
+ - fix first segment on healing clock
+ - link ship sheet to ship field as per items above it
  
  
 System sheet
