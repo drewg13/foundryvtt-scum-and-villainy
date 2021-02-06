@@ -30,10 +30,7 @@ export class BladesActorSheet extends BladesSheet {
     let loadout = 0;
     data.items.forEach(i => {loadout += (i.type === "item") ? parseInt(i.data.load) : 0});
     data.data.loadout.current = loadout;
-	var loadout_test = 0;
-	if (data.data.loadout.planned < loadout) {
-		loadout = 10;
-	};
+	
     
     // Encumbrance Levels
     let load_level=["light","light","light","light","normal","normal","heavy","heavy",
@@ -82,10 +79,14 @@ export class BladesActorSheet extends BladesSheet {
 
 	//set encumbrance level
     if (data.data.loadout.max == 9) {
-      data.data.loadout.load_level=mule_level[loadout];
+      data.data.loadout.load_level=mule_level[data.data.loadout.planned];
     } else {
-      data.data.loadout.load_level=load_level[loadout];   
+      data.data.loadout.load_level=load_level[data.data.loadout.planned];   
     };
+		
+	if (data.data.loadout.planned < loadout) {
+		data.data.loadout.load_level = "over max";
+	};
 	
     return data;
   }
