@@ -758,9 +758,11 @@
   justify-content: space-between;
   font-weight: bold;
 }
+* .item .ship-body,
 * .item .item-body {
   margin-bottom: 10px;
 }
+* .item .ship-body *,
 * .item .item-body * {
   margin-right: 10px;
 }
@@ -774,6 +776,7 @@
 * .item .item-control {
   flex-grow: 1;
 }
+* .item .ship-body,
 * .item .item-body,
 * .item .item-class-label {
   width: 135px;
@@ -820,6 +823,15 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+* .coins.loadout label {
+  height: 15px;
+  width: 15px;
+  background-color: #191813;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
 * .coins label[for$="-0"] {
   margin-right: 0px;
 }
@@ -842,6 +854,9 @@
 }
 * .coins.gambits input:checked + label {
   background-color: #03A33E;
+}
+* .coins.loadout input:checked + label {
+  background-color: #191813;
 }
 * .coins input ~ label {
   margin-right: 3px;
