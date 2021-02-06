@@ -1,11 +1,13 @@
 Character sheet
  - change healing clock from 4-clock to 6-clock - DONE Thanks Myriddin!
- - add field to track preset loadout amount before job (UI change if exceeded?)
- - update Home Cooking (auto-add vice)
+ - add UI to track preset loadout amount before job - DONE
  - update Stun Weapons logic (change available items in loadout)
+ - add Home Cooking vice based on ship logic flag
  - auto-add starting ability on Class selection
  - fix first segment on healing clock
- - link ship sheet to ship field as per items above it
+ - open linked ship sheet w/ click on ship field as per items above it - DONE  Thanks Spearhead!
+ - figure out how to re-render character sheet on changes to the linked ship sheet
+ - change the color of the current load if greater than chosen loadout
  
  
 System sheet
@@ -13,7 +15,7 @@ System sheet
   - track heat and wanted levels per system
   - add faction tracker (based on items present in compendium?  game?)
   - track per faction: name, category [Hegemony, Syndicate, Weirdness], tier, status, #jobs
-  - color UI based on status
+  - color UI based on faction status
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?  
