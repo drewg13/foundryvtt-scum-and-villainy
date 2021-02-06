@@ -131,6 +131,17 @@
   display: flex;
   font-weight: bold;
 }
+* .label-stripe-red {
+  text-transform: uppercase;
+  background-color: #191813;
+  color: red;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  font-weight: bold;
+}
 * .label-stripe-gray {
   text-transform: uppercase;
   background-color: #999;
@@ -317,6 +328,7 @@
   width: 300px;
 }
 * #loadout .label-stripe p:first-child,
+* #loadout .label-stripe-red p:first-child,
 * #upgrades .label-stripe p:first-child,
 * #abilities .label-stripe p:first-child {
   margin-right: 10px;
