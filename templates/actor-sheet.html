@@ -83,7 +83,7 @@
             {{#each actor.flags.scum-and-villainy.ship as |item id|}}
                 {{#unless (eq item.name "")}}
                 <div class="item flex-horizontal" data-item-id="{{item._id}}" data-item-type="{{item.type}}">
-                  <div class="item-body flex-horizontal">
+                  <div class="ship-body flex-horizontal">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                     <div class="item-name">{{item.name}}</div>
                   </div>
@@ -321,7 +321,7 @@
       {{!-- Owned Items Tab --}}
       <div id="loadout" class="tab flex-vertical" data-tab="loadout">
         <div class="label-stripe">
-           <p>{{localize "BITD.Loadout"}}: {{data.loadout}}/{{data.load_level}} </p>
+           <p>{{localize "BITD.Loadout"}}: {{data.loadout.current}} / {{data.loadout.load_level}} </p>
           <p><a class="item-add-popup" data-item-type="item"><i class="fas fa-plus-square"></i></a></p>
         </div>
         <div>
