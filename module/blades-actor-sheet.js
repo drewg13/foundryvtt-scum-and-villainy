@@ -23,6 +23,7 @@ export class BladesActorSheet extends BladesSheet {
   /** @override */
   getData() {
     const data = super.getData();
+	
 	let actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
 	
     // Calculate Load
@@ -70,7 +71,7 @@ export class BladesActorSheet extends BladesSheet {
 	  
 	  if (i.data.installs.stun_inst == "1") {
         data.data.stun_weapons = 1;
-      } else {
+	  } else {
 		data.data.stun_weapons = 0;
 	  };
     });

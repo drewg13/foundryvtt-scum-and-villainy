@@ -39,6 +39,18 @@ export class BladesSheet extends ActorSheet {
 	
     let html = `<div id="items-to-add">`;
 
+	var nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades", "Engines", "Comms", "Hull", "Weapons"];
+	let actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
+	var stun_weapons = 0;
+	actor_flags.forEach(i => {
+      if (i.data.installs.stun_inst == "1") {
+        stun_weapons = 1;
+      } else {
+		stun_weapons = 0;
+	  };
+	});
+
+	
     items.forEach(e => {
       let addition_price_load = ``;
       
@@ -48,17 +60,37 @@ export class BladesSheet extends ActorSheet {
         addition_price_load += `(${e.data.price})`
       }
 	  
-	  var nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades", "Engines", "Comms", "Hull", "Weapons"];
 	  
-	  if ((e.type !== "crew_upgrade") || nonclass_upgrades.includes(e.data.class,0) ||(e.data.class == this.actor.data.data.ship_class)) {
-	  if ((e.type !== "crew_ability") || (e.data.class == this.actor.data.data.ship_class)) {
-      if ((e.type !== "ability") || (e.data.class == this.actor.data.data.character_class)) {
-	  if ((e.type !== "item") || (e.data.class == "Standard") ||(e.data.class == this.actor.data.data.character_class)) {
-	  html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
-      html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-      html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
-      html += `</label>`;
-	  }}}}
+	  
+	  if (e.type == "crew_upgrade") {
+		  if (nonclass_upgrades.includes(e.data.class,0) || (e.data.class == this.actor.data.data.ship_class)) {
+			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+			html += `</label>`;
+		  };
+	  } else if (e.type == "crew_ability") {
+		  if (e.data.class == this.actor.data.data.ship_class) {
+			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+			html += `</label>`;
+		  };
+	  } else if (e.type == "ability") {
+		  if (e.data.class == this.actor.data.data.character_class) {
+			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+			html += `</label>`;
+		  };
+	  } else if (e.type == "item") {
+		  if ((e.data.class == "Standard") || ((stun_weapons == 1) && (e.data.class == "Non-Lethal")) || (e.data.class == this.actor.data.data.character_class)) {
+			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+			html += `</label>`;
+		  };
+	  };
     });
 
     html += `</div>`;
