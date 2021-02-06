@@ -10,7 +10,9 @@ Character sheet
  - track planned loadout and register if current load is over - DONE
  - change the color of the current load if greater than chosen loadout - DONE
  - auto-generate gambits w/ 6 on risky roll where no gambit used, indicate gambit earned on roll (Scoundrel special)
- 
+
+Ship sheet
+ - List modules under their relevant systems, once added.  Provide marker for active vs inactive?
  
 System sheet
   - track available Systems (based on items present in compendium? game?)
