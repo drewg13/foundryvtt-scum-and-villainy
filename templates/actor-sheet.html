@@ -323,7 +323,7 @@
 		
 		<div class="label-stripe{{#if (eq data.loadout.load_level "over max")}}-red{{/if}}">
 		
-           <p>{{localize "BITD.Loadout"}}: {{data.loadout.current}} / {{data.loadout.load_level}} </p>
+           <p>{{localize "BITD.Loadout"}}:  {{data.loadout.current}}{{#if (eq data.loadout.load_level "over max")}}  {{data.loadout.load_level}}{{/if}}</p>
           <p><a class="item-add-popup" data-item-type="item"><i class="fas fa-plus-square"></i></a></p>
         </div>
         <div>
