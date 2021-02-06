@@ -9,6 +9,7 @@ Character sheet
  - figure out how to re-render character sheet on changes to the linked ship sheet
  - track planned loadout and register if current load is over - DONE
  - change the color of the current load if greater than chosen loadout - DONE
+ - auto-generate gambits w/ 6 on risky roll where no gambit used, indicate gambit earned on roll (Scoundrel special)
  
  
 System sheet
