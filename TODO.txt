@@ -7,7 +7,8 @@ Character sheet
  - fix first segment on healing clock
  - open linked ship sheet w/ click on ship field as per items above it - DONE  Thanks Spearhead!
  - figure out how to re-render character sheet on changes to the linked ship sheet
- - change the color of the current load if greater than chosen loadout
+ - track planned loadout and register if current load is over - DONE
+ - change the color of the current load if greater than chosen loadout - DONE
  
  
 System sheet
