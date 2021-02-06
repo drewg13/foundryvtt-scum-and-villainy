@@ -1,8 +1,8 @@
 Character sheet
  - change healing clock from 4-clock to 6-clock - DONE Thanks Myriddin!
  - add UI to track preset loadout amount before job - DONE
- - update Stun Weapons logic (change available items in loadout)
- - add Home Cooking vice based on ship logic flag
+ - update Stun Weapons logic (change available items in loadout) - DONE
+ - add Home Cooking vice based on ship logic flag - defer, not strictly needed
  - auto-add starting ability on Class selection
  - fix first segment on healing clock
  - open linked ship sheet w/ click on ship field as per items above it - DONE  Thanks Spearhead!
