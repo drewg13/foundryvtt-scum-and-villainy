@@ -28,65 +28,60 @@ export class BladesActorSheet extends BladesSheet {
     // Calculate Load
     let loadout = 0;
     data.items.forEach(i => {loadout += (i.type === "item") ? parseInt(i.data.load) : 0});
-    data.data.loadout = loadout;
+    data.data.loadout.current = loadout;
     
     // Encumbrance Levels
     let load_level=["light","light","light","light","normal","normal","heavy","heavy",
 			"heavy","over max"];
     let mule_level=["light","light","light","light","light","normal","normal",
 			"heavy","heavy","heavy","over max"];
-    let mule_present = 0;
+    
  
     //Sanity Check
     if (loadout < 0) {
       loadout = 0;
-    }
+    };
     if (loadout > 9) {
       loadout = 9;
-    }
+    };
 
-    //look for Loaded ability on assigned ship in flags
-    actor_flags.forEach(i => {
+    
+
+	//look for abilities in assigned ship flags and set actor results
+    	
+	actor_flags.forEach(i => {
       if (i.data.installs.loaded_inst == "1") {
-        mule_present = 1;
-      }
+        data.data.loadout.max++ ;
+      } else {
+		data.data.loadout.max = data.data.loadout.max_default;
+	  };
+	  
+	  if (i.data.installs.stress_max_up == "1") {
+        data.data.stress.max++;
+      } else {
+		data.data.stress.max = data.data.stress.max_default;
+	  };
+	  
+	  if (i.data.installs.trauma_max_up == "1") {
+        data.data.trauma.max++;
+      } else {
+		data.data.trauma.max = data.data.trauma.max_default;
+	  };
+	  
+	  if (i.data.installs.stun_inst == "1") {
+        data.data.stun_weapons = 1;
+      } else {
+		data.data.stun_weapons = 0;
+	  };
     });
 
-    //set encumbrance level
-    if (mule_present) {
-      data.data.load_level=mule_level[loadout];
+	//set encumbrance level
+    if (data.data.loadout.max == 9) {
+      data.data.loadout.load_level=mule_level[loadout];
     } else {
-      data.data.load_level=load_level[loadout];   
-    }
-
-	//look for Thrillseekers/Smooth Criminals ability on assigned ship in flags
-    let stress_max_up = 0;
-	actor_flags.forEach(i => {
-      if (i.data.installs.stress_max_up == "1") {
-        stress_max_up = 1;
-      }
-    });
-
-	if (stress_max_up == 1) {
-      data.data.stress.max++;
-    } else {
-      data.data.stress.max = data.data.stress.max_default;   
-    }
-
-	//look for Driven ability on assigned ship in flags
-    let trauma_max_up = 0;
-	actor_flags.forEach(i => {
-      if (i.data.installs.trauma_max_up == "1") {
-        trauma_max_up = 1;
-      }
-    });
-
-	if (trauma_max_up == 1) {
-      data.data.trauma.max++;
-    } else {
-      data.data.trauma.max = data.data.trauma.max_default;   
-    }
-
+      data.data.loadout.load_level=load_level[loadout];   
+    };
+	
     return data;
   }
 
@@ -104,6 +99,13 @@ export class BladesActorSheet extends BladesSheet {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.getOwnedItem(element.data("itemId"));
       item.sheet.render(true);
+    });
+	
+	// Update Ship
+    html.find('.ship-body').click(ev => {
+      const element = $(ev.currentTarget).parents(".item");
+      const actor = game.actors.get(element.data("itemId"));
+      actor.sheet.render(true);
     });
 
     // Delete Inventory Item
