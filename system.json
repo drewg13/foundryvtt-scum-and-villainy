@@ -2,7 +2,7 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
@@ -22,7 +22,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.7.2.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.7.3.zip",
   "packs": [
     {
       "name": "class",
@@ -100,6 +100,34 @@
       "system": "scum-and-villainy",
       "path": "./packs/tables.db",
       "entity": "RollTable"
+    },
+	{
+      "name": "universe",
+      "label": "Universe",
+      "system": "scum-and-villainy",
+      "path": "./packs/universe.db",
+      "entity": "Actor"
+    },
+	{
+      "name": "star_system",
+      "label": "Star Systems",
+      "system": "scum-and-villainy",
+      "path": "./packs/star_systems.db",
+      "entity": "Item"
+    },
+	{
+      "name": "planet",
+      "label": "Planets",
+      "system": "scum-and-villainy",
+      "path": "./packs/planets.db",
+      "entity": "Item"
+    },
+	{
+      "name": "faction",
+      "label": "Factions",
+      "system": "scum-and-villainy",
+      "path": "./packs/factions.db",
+      "entity": "Item"
     },
     {
       "name": "ship_size",

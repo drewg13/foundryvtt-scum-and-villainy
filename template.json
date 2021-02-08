@@ -1,6 +1,6 @@
 {
 "Actor": {
-  "types": ["character", "ship", "\uD83D\uDD5B clock"],
+  "types": ["character", "ship", "\uD83D\uDD5B clock", "universe"],
   "character": {
     "alias": "",
 	"character_class": "",
@@ -241,10 +241,13 @@
     "name": "",
     "type": 4,
     "value": "0"
+  },
+  "universe": {
+	"name": ""
   }
 },
 "Item": {
-  "types": ["item", "class", "ability", "heritage", "background", "vice", "crew_type", "crew_reputation", "crew_upgrade", "crew_ability", "ship_size"],
+  "types": ["item", "class", "ability", "heritage", "background", "vice", "crew_type", "crew_reputation", "crew_upgrade", "crew_ability", "star_system", "planet", "faction", "ship_size"],
   "templates": {
     "default": {
       "description": ""
@@ -280,6 +283,11 @@
   "vice": {
     "templates": ["default"]
   },
+  "crew_type": {
+    "templates": ["default", "logic"],
+	"upgrades": "",
+	"experience_clues": ""
+  },
   "crew_reputation": {
     "templates": ["default"]
   },
@@ -290,13 +298,44 @@
   "crew_ability": {
     "templates": ["ability", "logic"]
   },
+  "star_system": {
+    "templates": ["default"],
+	"notables": "",
+	"heat": [0],
+	"heat_default": [0],
+	"wanted": [0],
+	"wanted_default": [0]
+  },
+  "planet": {
+    "templates": ["default", "logic"],
+	"system": "",
+	"scene": "",
+	"notables": "",
+	"rule": "",
+	"wealth": 0,
+	"crime": 0,
+	"tech": 0,
+	"weird": 0
+  },
+  "faction": {
+    "templates": ["default"],
+	"type": "",
+	"tier": 0,
+	"goal": "",
+	"goal_clock_max": 0,
+	"turf": "",
+	"assets": "",
+	"quirks": "",
+	"notables": "",
+	"allies": "",
+	"enemies": "",
+	"situation": "",
+	"goal_clock": 0,
+	"status": 0,
+	"jobs": 0
+  },
   "ship_size": {
     "templates": ["default", "logic"]
-  },
-  "crew_type": {
-    "templates": ["default", "logic"],
-	"upgrades": "",
-	"experience_clues": ""
   }
 }
 }
