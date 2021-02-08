@@ -1,0 +1,79 @@
+<form class="{{cssClass}} actor-sheet" autocomplete="off">
+
+  <section class="flex-horizontal">
+	
+    <div id="name">
+      <label for="campaign-{{actor._id}}-name">{{localize "BITD.CampaignName"}}</label>
+      <input type="text" id="campaign-{{actor._id}}-name" name="name" value="{{actor.name}}">
+    </div>
+
+  </section>
+
+  <section class="flex-horizontal">
+
+    <div class="tab-content flex-vertical grow-two">
+
+      {{!-- Nav menu --}}
+      <nav class="tabs flex-horizontal">
+        {{#each actor.items as |item id|}}
+		{{#if (eq item.type "star_system")}}
+			<a class="item" data-tab="{{item.name}}">{{localize "BITD.System"}}</a>
+        {{/if}}
+		{{/each}}
+      </nav>
+
+	{{#each actor.items as |item id|}}
+	{{#if (eq item.type "star_system")}}
+      <div id="{{item.name}}" class="tab flex-vertical" data-tab="{{item.name}}">
+        <div class="label-stripe">
+          <p><label for="system-heat-{{actor._id}}-0">{{localize "BITD.System"}}</label></p>
+          <p><a class="item-add-popup" data-item-type="star_system"><i class="fas fa-plus-square"></i></a></p>
+          <div id="system-heat" class="teeth-experience">
+            <label for="system-heat-{{actor._id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+            {{#multiboxes item.data.}}
+            <input type="radio" id="character-{{actor._id}}-experience-0" name="data.experience" value="0" dtype="Radio">
+            <input type="radio" id="character-{{actor._id}}-experience-1" name="data.experience" value="1" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-1"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-2" name="data.experience" value="2" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-2"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-3" name="data.experience" value="3" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-3"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-4" name="data.experience" value="4" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-4"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-5" name="data.experience" value="5" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-5"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-6" name="data.experience" value="6" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-6"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-7" name="data.experience" value="7" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-7"></label>
+            <input type="radio" id="character-{{actor._id}}-experience-8" name="data.experience" value="8" dtype="Radio">
+            <label for="character-{{actor._id}}-experience-8"></label>
+            {{/multiboxes}}
+          </div>
+        </div>
+
+        <div id="abilities-list">
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "ability")}}
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">
+              <div class="item-body flex-horizontal">
+                <b><div class="item-name">{{item.name}}</div></b>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="ability">{{localize "BITD.AddAbility"}}</a></div>
+        </div>
+      </div>
+	  {{/if}}
+	  {{/each}}
+
+	
+  </section>
+  <section class="flex-horizontal">
+	{{> "systems/scum-and-villainy/templates/parts/factions.html" actor=actor}}
+  </section>
+
+</form>
