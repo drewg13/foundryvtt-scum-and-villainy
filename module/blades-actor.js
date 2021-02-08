@@ -16,6 +16,7 @@ export class BladesActor extends Actor {
     switch (data.type) {
       case 'character':
       case 'ship':
+	  case 'universe':
         data.token.actorLink = true;
         break;
     }

@@ -15,6 +15,7 @@ import { BladesItemSheet } from "./blades-item-sheet.js";
 import { BladesActorSheet } from "./blades-actor-sheet.js";
 import { BladesShipSheet } from "./blades-ship-sheet.js";
 import { BladesClockSheet } from "./blades-clock-sheet.js";
+//import { BladesUniverseSheet } from "./blades-universe-sheet.js";
 import * as migrations from "./migration.js";
 
 window.BladesHelpers = BladesHelpers;
@@ -44,6 +45,7 @@ Hooks.once("init", async function() {
   Actors.registerSheet("blades", BladesActorSheet, { types: ["character"], makeDefault: true });
   Actors.registerSheet("blades", BladesShipSheet, { types: ["ship"], makeDefault: true });
   Actors.registerSheet("blades", BladesClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
+  //Actors.registerSheet("blades", BladesUniverseSheet, { types: ["universe"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("blades", BladesItemSheet, {makeDefault: true});
   preloadHandlebarsTemplates();
@@ -269,7 +271,7 @@ Hooks.once("ready", function() {
 
   // Determine whether a system migration is required
   const currentVersion = game.settings.get("sav", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = 2.15;
+  const NEEDS_MIGRATION_VERSION = 1.0;
   
   let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
   
