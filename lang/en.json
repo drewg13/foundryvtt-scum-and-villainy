@@ -10,6 +10,20 @@
   "BITD.Alias": "Alias",
   "BITD.Designation": "Designation",
   "BITD.Look": "Colors/Look",
+  "BITD.System": "System",
+  "BITD.Planet": "Planet",
+  "BITD.Faction": "Faction",
+  "BITD.Notables": "Notable Locations",
+  "BITD.NotableNPCs": "Notable People",
+  "BITD.Scene": "Scene",
+  "BITD.Rule": "Rule",
+  "BITD.Stats": "Stats",
+  "BITD.Goal": "Goal",
+  "BITD.Assets": "Assets",
+  "BITD.Quirks": "Quirks",
+  "BITD.Allies": "Allies",
+  "BITD.Enemies": "Enemies",
+  "BITD.Situation": "Situation",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Cold",
   "BITD.TraumaHaunted": "Haunted",
@@ -31,6 +45,7 @@
   "BITD.Upgrades": "Upgrades and Gear",
   "BITD.CrewType": "Ship Type",
   "BITD.UpgradeType": "Upgrade Type",
+  "BITD.FactionType": "Faction Type",
   "BITD.Debt": "Debt",
   "BITD.Price": "Price",
   "BITD.Logic": "Logic",
@@ -203,5 +218,6 @@
   "BITD.Wear": "Wear",
   "BITD.Gloom": "Gloom",
 
-  "BITD.Name": "Name"
+  "BITD.Name": "Name",
+  "BITD.CampaignName": "Campaign Name"
 }
