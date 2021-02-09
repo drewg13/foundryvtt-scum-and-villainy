@@ -17,8 +17,8 @@ Ship sheet
 Planet sheet
  - Edit fields are ugly
  
-System sheet
-  - track available Systems (based on items present in game) - DONE
+Universe sheet
+  - track available Systems and Planets (dynamically added based on items present in game) - DONE
   - track heat and wanted levels per system
   - add faction tracker (based on items present in compendium?  game?)
   - track per faction: name, category [Hegemony, Syndicate, Weirdness], tier, status, #jobs
