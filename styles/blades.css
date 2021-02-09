@@ -333,6 +333,7 @@
 * #abilities .label-stripe p:first-child {
   margin-right: 10px;
 }
+* .teeth-experience-red,
 * .teeth-experience {
   display: flex;
   /* Hide the browser's default checkbox */
@@ -350,27 +351,46 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+* .teeth-experience-red label {
+  height: 30px;
+  width: 10px;
+  background-image: url("assets/teeth/stresstooth-red.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* .teeth-experience-red label:last-of-type,
 * .teeth-experience label:last-of-type {
   margin-right: 0px;
 }
+* .teeth-experience-red label[for$="-0"],
 * .teeth-experience label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
+* .teeth-experience-red label[for$="-0"] i,
 * .teeth-experience label[for$="-0"] i {
   margin-top: 4px;
 }
+* .teeth-experience-red label:hover,
 * .teeth-experience label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
+* .teeth-experience-red input,
 * .teeth-experience input {
   display: none;
 }
+* .teeth-experience-red input:checked ~ label,
 * .teeth-experience input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.png");
+}
+* .teeth-experience-red input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.png");
 }
 * .teeth-experience input:checked + label {
   background-image: url("assets/teeth/stresstooth-blue.png");
