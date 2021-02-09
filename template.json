@@ -243,10 +243,20 @@
     "value": "0"
   },
   "universe": {
-	"heat": [0],
-	"heat_max": 8,
-	"wanted": [0],
-	"wanted_max": 4
+	"heat": {
+      "value": [0],
+      "max": 8,
+      "max_default": 8,
+      "name_default": "BITD.Heat",
+      "name": "BITD.Heat"
+    },
+	"wanted": {
+      "value": [0],
+      "max": 4,
+      "max_default": 4,
+      "name_default": "BITD.Wanted",
+      "name": "BITD.Wanted"
+    }
   }
 },
 "Item": {
