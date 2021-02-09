@@ -243,7 +243,10 @@
     "value": "0"
   },
   "universe": {
-	"name": ""
+	"heat": [0],
+	"heat_max": 8,
+	"wanted": [0],
+	"wanted_max": 4
   }
 },
 "Item": {
@@ -300,11 +303,7 @@
   },
   "star_system": {
     "templates": ["default"],
-	"notables": "",
-	"heat": [0],
-	"heat_default": [0],
-	"wanted": [0],
-	"wanted_default": [0]
+	"notables": ""
   },
   "planet": {
     "templates": ["default", "logic"],
