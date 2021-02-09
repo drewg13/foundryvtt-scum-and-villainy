@@ -3,13 +3,13 @@ Character sheet
  - add UI to track preset loadout amount before job - DONE
  - update Stun Weapons logic (change available items in loadout) - DONE
  - add Home Cooking vice based on ship logic flag - defer, not strictly needed
- - auto-add starting ability on Class selection
- - fix first segment on healing clock
  - open linked ship sheet w/ click on ship field as per items above it - DONE  Thanks Spearhead!
- - figure out how to re-render character sheet on changes to the linked ship sheet
  - track planned loadout and register if current load is over - DONE
  - change the color of the current load if greater than chosen loadout - DONE
- - auto-generate gambits w/ 6 on risky roll where no gambit used, indicate gambit earned on roll (Scoundrel special)
+ - figure out how to re-render character sheet on changes to the linked ship sheet
+ - auto-add starting ability on Class selection
+ - fix first segment on healing clock
+ - auto-generate gambits w/ 6 on risky roll where no gambit used, indicate gambit earned on roll chat message (also Scoundrel special)
 
 Ship sheet
  - List modules under their relevant systems, once added.  Provide marker for active vs inactive?
@@ -18,13 +18,13 @@ Planet sheet
  - Edit fields are ugly
  
 Clocks
- - add 10- and 12-clocks (clock-sheet.html, blades.css, style.scss)
+ - add 10- and 12-clocks (clock-sheet.html, blades.css, style.scss, ./styles/assets/progressclocks-svg SVG files)
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
   - track heat and wanted levels per system
-  - add faction tracker (based on items present in compendium?  game?)
-  - track per faction: name, category [Hegemony, Syndicate, Weirdness], tier, status, #jobs
+  - add factions (similar to items, user-added) - DONE
+  - track faction information (status, jobs, goal clock?)
   - color UI based on faction status
 
 All sheets
