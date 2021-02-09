@@ -17,6 +17,9 @@ Ship sheet
 Planet sheet
  - Edit fields are ugly
  
+Clocks
+ - add 10- and 12-clocks (blades.css and styles.scss too)
+ 
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
   - track heat and wanted levels per system
