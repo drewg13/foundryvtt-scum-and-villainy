@@ -235,7 +235,8 @@ async _onFlagAddClick(event) {
 	event.preventDefault();
 	const item_type = $(event.currentTarget).data("itemType");
 	const limiter = $(event.currentTarget).data("limiter");
-    
+    const system = "scum-and-villainy";
+	
 	//find all items of type in world	
 	const world_items = await BladesHelpers.getAllItemsByType(item_type, game);
 	//find all items of type attached to actor
@@ -252,7 +253,26 @@ async _onFlagAddClick(event) {
 			return obj._id == obj2._id;
 		});
 	});
-	const delete_items = d_items.map(i => i._id);
+	
+	const delete_items = d_items.map( i => i._id );
+	const flag_items = world_items.map( f => f.name );
+	
+	
+	//add flags for all systems
+	if ( item_type == "star_system" ) {
+		
+	flag_items.forEach( item => {
+		if( !( this.actor.getFlag( system, "h" + item ) ) ){
+			this.actor.setFlag( system, "h" + item, 0 );
+		};
+	});
+	
+	flag_items.forEach( item => {
+		if( !( this.actor.getFlag( system, "w" + item ) ) ){
+			this.actor.setFlag( system, "w" + item, 0 );
+		};
+	});
+	};
 	
 	//delete all items attached to actor, but not in world
 	await this.actor.deleteEmbeddedEntity("OwnedItem", delete_items);
@@ -263,40 +283,33 @@ async _onFlagAddClick(event) {
   /* -------------------------------------------- */
   async _onUpdateSysClick(event) {
 	event.preventDefault();
-	//const item_type = $(event.currentTarget).data("itemType");
-	const limiter = $(event.currentTarget).data("tab");
-    var sys_heat = 0;
-	var sys_wanted = 0;
-	
-	//find all items of type in world	
-	//const world_items = await BladesHelpers.getAllItemsByType(item_type, game);
-	//find items that match limiter
-	//const curr_system = this.actor.data.items.filter(i => i.name === limiter);
-	console.log(limiter);
-	
-		sys_heat = await this.actor.getFlag("scum-and-villainy", limiter + "_heat");
-		if (sys_heat == undefined) { sys_heat = 0 };
-		console.log("success " + limiter + " " + sys_heat);
-	
-	
-	
-		sys_wanted = await this.actor.getFlag("scum-and-villainy", limiter + "_wanted");
-		if (sys_wanted == undefined) { sys_wanted = 0 };
-		console.log("success " + limiter + " " + sys_wanted);
+	const tab = $(event.currentTarget).data("tab");
+    	
+		let sys_heat = await this.actor.getFlag("scum-and-villainy", tab + "_heat");
+		
+			console.log("success " + tab + " heat is " + sys_heat);
 		
 	
-	console.log(sys_heat);
-	this.actor.data.data.heat = sys_heat;
-	this.actor.data.data.wanted = sys_wanted;
+		let sys_wanted = await this.actor.getFlag("scum-and-villainy", tab + "_wanted");
+		
+			console.log("success " + tab + " wanted is " + sys_wanted);
+		
+		
+	
+	
+	this.actor.data.data.heat.value = String(sys_heat);
+	console.log("actor heat is " + this.actor.data.data.heat.value);
+	this.actor.data.data.wanted.value = String(sys_wanted);
+	console.log("actor wanted is " + this.actor.data.data.heat.value);
   }
   
  /* -------------------------------------------- */
   async _onUpdateHeatClick(event) {
 	event.preventDefault();
-	//const item_type = $(event.currentTarget).data("itemType");
+	
 	const update = $(event.currentTarget).data("update");
     console.log(update);
-	let sys_heat = this.actor.data.data.heat;
+	let sys_heat = this.actor.data.data.heat.value;
 	if (sys_heat == undefined) { sys_heat = 0 };
 	
 	await this.actor.setFlag("scum-and-villainy", update + "_heat", sys_heat);
@@ -307,14 +320,14 @@ async _onFlagAddClick(event) {
  /* -------------------------------------------- */
   async _onUpdateWantedClick(event) {
 	event.preventDefault();
-	//const item_type = $(event.currentTarget).data("itemType");
-	const update = $(event.currentTarget).data("update");
-    console.log(update);
-	let sys_wanted = this.actor.data.data.wanted;
-	if (sys_wanted == undefined) { sys_wanted = 0 };
 	
-	await this.actor.setFlag("scum-and-villainy", update + "_wanted", sys_wanted);
-	console.log("wanted " + update + " " + sys_wanted);
+	const update = $(event.currentTarget).data("update");
+	const ivalue = $(event.currentTarget).data("ivalue");
+    let sys_wanted = this.actor.data.data.wanted.value;
+	console.log("actor wanted was " + sys_wanted);
+		
+	await this.actor.setFlag("scum-and-villainy", update + "_wanted", String(ivalue));
+	console.log("wanted " + update + " " + ivalue);
 	
   }
   
