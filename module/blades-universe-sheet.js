@@ -11,9 +11,9 @@ export class BladesUniverseSheet extends BladesSheet {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["scum-and-villainy", "sheet", "actor"],
   	  template: "systems/scum-and-villainy/templates/universe-sheet.html",
-      width: 'auto',
-      height: 'auto'
-      
+      width: 800,
+      height: 'auto',
+      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
     });
   }
   

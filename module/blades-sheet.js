@@ -12,13 +12,18 @@ export class BladesSheet extends ActorSheet {
     super.activateListeners(html);
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
 	html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
-
+	html.find(".update-sheet").click(this._onUpdateClick.bind(this));
+	html.find(".update-system").click(this._onUpdateSysClick.bind(this));
+	html.find(".update-heat").click(this._onUpdateHeatClick.bind(this));
+	html.find(".update-wanted").click(this._onUpdateWantedClick.bind(this));
+	html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
+	
     // This is a workaround until is being fixed in FoundryVTT.
     if ( this.options.submitOnChange ) {
       html.on("change", "textarea", this._onChangeInput.bind(this));  // Use delegated listener on the form
     }
 
-    html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
+    
   }
 
   /* -------------------------------------------- */
@@ -226,5 +231,91 @@ async _onFlagAddClick(event) {
   }
 
   /* -------------------------------------------- */
+  async _onUpdateClick(event) {
+	event.preventDefault();
+	const item_type = $(event.currentTarget).data("itemType");
+	const limiter = $(event.currentTarget).data("limiter");
+    
+	//find all items of type in world	
+	const world_items = await BladesHelpers.getAllItemsByType(item_type, game);
+	//find all items of type attached to actor
+	const curr_items = this.actor.data.items.filter(i => i.type === item_type);
+	//find all items in world, but not attached to actor
+	const add_items = world_items.filter(function(obj) {
+		return !curr_items.some(function(obj2) {
+			return obj._id == obj2._id;
+		});
+	});
+	//find all items attached to actor, but not in world
+	const d_items = curr_items.filter(function(obj) {
+		return !world_items.some(function(obj2) {
+			return obj._id == obj2._id;
+		});
+	});
+	const delete_items = d_items.map(i => i._id);
+	
+	//delete all items attached to actor, but not in world
+	await this.actor.deleteEmbeddedEntity("OwnedItem", delete_items);
+	//attach any new items
+	await this.actor.createEmbeddedEntity("OwnedItem", add_items);
+  }
+  
+  /* -------------------------------------------- */
+  async _onUpdateSysClick(event) {
+	event.preventDefault();
+	//const item_type = $(event.currentTarget).data("itemType");
+	const limiter = $(event.currentTarget).data("tab");
+    var sys_heat = 0;
+	var sys_wanted = 0;
+	
+	//find all items of type in world	
+	//const world_items = await BladesHelpers.getAllItemsByType(item_type, game);
+	//find items that match limiter
+	//const curr_system = this.actor.data.items.filter(i => i.name === limiter);
+	console.log(limiter);
+	
+		sys_heat = await this.actor.getFlag("scum-and-villainy", limiter + "_heat");
+		if (sys_heat == undefined) { sys_heat = 0 };
+		console.log("success " + limiter + " " + sys_heat);
+	
+	
+	
+		sys_wanted = await this.actor.getFlag("scum-and-villainy", limiter + "_wanted");
+		if (sys_wanted == undefined) { sys_wanted = 0 };
+		console.log("success " + limiter + " " + sys_wanted);
+		
+	
+	console.log(sys_heat);
+	this.actor.data.data.heat = sys_heat;
+	this.actor.data.data.wanted = sys_wanted;
+  }
+  
+ /* -------------------------------------------- */
+  async _onUpdateHeatClick(event) {
+	event.preventDefault();
+	//const item_type = $(event.currentTarget).data("itemType");
+	const update = $(event.currentTarget).data("update");
+    console.log(update);
+	let sys_heat = this.actor.data.data.heat;
+	if (sys_heat == undefined) { sys_heat = 0 };
+	
+	await this.actor.setFlag("scum-and-villainy", update + "_heat", sys_heat);
+	console.log("heat " + update + " " + sys_heat);
+	
+  }
 
+ /* -------------------------------------------- */
+  async _onUpdateWantedClick(event) {
+	event.preventDefault();
+	//const item_type = $(event.currentTarget).data("itemType");
+	const update = $(event.currentTarget).data("update");
+    console.log(update);
+	let sys_wanted = this.actor.data.data.wanted;
+	if (sys_wanted == undefined) { sys_wanted = 0 };
+	
+	await this.actor.setFlag("scum-and-villainy", update + "_wanted", sys_wanted);
+	console.log("wanted " + update + " " + sys_wanted);
+	
+  }
+  
 }
