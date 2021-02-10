@@ -333,7 +333,13 @@
 * #abilities .label-stripe p:first-child {
   margin-right: 10px;
 }
-* .teeth-experience-red,
+* .teeth-experience-red {
+  display: flex;
+  /* Hide the browser's default checkbox */
+  position: float;
+  top: 0px;
+  right: 10px;
+}
 * .teeth-experience {
   display: flex;
   /* Hide the browser's default checkbox */
