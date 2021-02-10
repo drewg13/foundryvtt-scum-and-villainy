@@ -13,9 +13,8 @@ export class BladesSheet extends ActorSheet {
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
 	html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
 	html.find(".update-sheet").click(this._onUpdateClick.bind(this));
-	html.find(".update-system").click(this._onUpdateSysClick.bind(this));
-	html.find(".update-heat").click(this._onUpdateHeatClick.bind(this));
-	html.find(".update-wanted").click(this._onUpdateWantedClick.bind(this));
+	html.find(".update-hbox").click(this._onUpdateHBoxClick.bind(this));
+	html.find(".update-wbox").click(this._onUpdateWBoxClick.bind(this));
 	html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
 	
     // This is a workaround until is being fixed in FoundryVTT.
@@ -239,96 +238,50 @@ async _onFlagAddClick(event) {
 	
 	//find all items of type in world	
 	const world_items = await BladesHelpers.getAllItemsByType(item_type, game);
+	
 	//find all items of type attached to actor
 	const curr_items = this.actor.data.items.filter(i => i.type === item_type);
+	
 	//find all items in world, but not attached to actor
-	const add_items = world_items.filter(function(obj) {
-		return !curr_items.some(function(obj2) {
-			return obj._id == obj2._id;
-		});
-	});
+	
+	const add_items = world_items.filter(({ _id: id1 }) => !curr_items.some(({ _id: id2 }) => id2 === id1));
+	
 	//find all items attached to actor, but not in world
-	const d_items = curr_items.filter(function(obj) {
-		return !world_items.some(function(obj2) {
-			return obj._id == obj2._id;
-		});
-	});
 	
-	const delete_items = d_items.map( i => i._id );
-	const flag_items = world_items.map( f => f.name );
+	const rem_items = curr_items.filter(({ _id: id1 }) => !world_items.some(({ _id: id2 }) => id2 === id1));
 	
-	
-	//add flags for all systems
-	if ( item_type == "star_system" ) {
+	const delete_items = rem_items.map( i => i._id );
 		
-	flag_items.forEach( item => {
-		if( !( this.actor.getFlag( system, "h" + item ) ) ){
-			this.actor.setFlag( system, "h" + item, 0 );
-		};
-	});
-	
-	flag_items.forEach( item => {
-		if( !( this.actor.getFlag( system, "w" + item ) ) ){
-			this.actor.setFlag( system, "w" + item, 0 );
-		};
-	});
-	};
-	
 	//delete all items attached to actor, but not in world
 	await this.actor.deleteEmbeddedEntity("OwnedItem", delete_items);
 	//attach any new items
 	await this.actor.createEmbeddedEntity("OwnedItem", add_items);
   }
   
-  /* -------------------------------------------- */
-  async _onUpdateSysClick(event) {
+/* -------------------------------------------- */
+  async _onUpdateHBoxClick(event) {
 	event.preventDefault();
-	const tab = $(event.currentTarget).data("tab");
-    	
-		let sys_heat = await this.actor.getFlag("scum-and-villainy", tab + "_heat");
-		
-			console.log("success " + tab + " heat is " + sys_heat);
-		
+	const item_id = $(event.currentTarget).data("item");
+	const update_value = $(event.currentTarget).data("value");
+   
+	const update = {_id: item_id, data:{heat:{value: update_value}}};
+	//console.log(update);
+	await this.actor.updateEmbeddedEntity("OwnedItem", update);
 	
-		let sys_wanted = await this.actor.getFlag("scum-and-villainy", tab + "_wanted");
-		
-			console.log("success " + tab + " wanted is " + sys_wanted);
-		
-		
-	
-	
-	this.actor.data.data.heat.value = String(sys_heat);
-	console.log("actor heat is " + this.actor.data.data.heat.value);
-	this.actor.data.data.wanted.value = String(sys_wanted);
-	console.log("actor wanted is " + this.actor.data.data.heat.value);
-  }
-  
- /* -------------------------------------------- */
-  async _onUpdateHeatClick(event) {
-	event.preventDefault();
-	
-	const update = $(event.currentTarget).data("update");
-    console.log(update);
-	let sys_heat = this.actor.data.data.heat.value;
-	if (sys_heat == undefined) { sys_heat = 0 };
-	
-	await this.actor.setFlag("scum-and-villainy", update + "_heat", sys_heat);
-	console.log("heat " + update + " " + sys_heat);
-	
+   
   }
 
- /* -------------------------------------------- */
-  async _onUpdateWantedClick(event) {
+/* -------------------------------------------- */
+  async _onUpdateWBoxClick(event) {
 	event.preventDefault();
+	const item_id = $(event.currentTarget).data("item");
+	const update_value = $(event.currentTarget).data("value");
+   
+	const update = {_id: item_id, data:{wanted:{value: update_value}}};
+	//console.log(update);
+	await this.actor.updateEmbeddedEntity("OwnedItem", update);
 	
-	const update = $(event.currentTarget).data("update");
-	const ivalue = $(event.currentTarget).data("ivalue");
-    let sys_wanted = this.actor.data.data.wanted.value;
-	console.log("actor wanted was " + sys_wanted);
-		
-	await this.actor.setFlag("scum-and-villainy", update + "_wanted", String(ivalue));
-	console.log("wanted " + update + " " + ivalue);
-	
+   
   }
   
 }
