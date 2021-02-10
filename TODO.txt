@@ -22,10 +22,13 @@ Clocks
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
-  - track heat and wanted levels per system
+  - track heat and wanted levels per system - DONE
   - add factions (similar to items, user-added) - DONE
   - track faction information (status, jobs, goal clock?)
   - color UI based on faction status
+  - find a way to cleanly update systems without deleting and reloading (this clears heat/wanted)
+  - figure out why adding new factions deletes old ones?  should work the same as inventory items
+  - edit fields are ugly for faction info
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?  
