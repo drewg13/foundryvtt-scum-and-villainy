@@ -6,31 +6,19 @@
       <label for="campaign-{{actor._id}}-name">{{localize "BITD.CampaignName"}}</label>
       <input type="text" id="campaign-{{actor._id}}-name" name="name" value="{{actor.name}}">
     </div>
-	<p><a class="update-sheet" data-item-type="star_system">{{localize "BITD.Update"}} {{localize "BITD.Systems"}}</a></p>
+	<p><a class="update-sheet" data-item-type="star_system">{{localize "BITD.Update"}} {{localize "BITD.Systems"}}</a><br>{{localize "BITD.Warning"}}</p>
 	<p><a class="update-sheet" data-item-type="planet">{{localize "BITD.Update"}} {{localize "BITD.Planets"}}</a></p>
   </section>
 
-<!--
-  <section class="flex-horizontal">
-	<div id="heat-wanted">
 
-
-
-
-
-
-	</div>
-  </section>
--->
-
-  <section class="flex-horizontal">
+  <section id="system-heat-wanted" class="flex-horizontal">
     <div class="tab-content flex-vertical grow-two">
 
       {{!-- Nav menu --}}
       <nav class="tabs flex-horizontal">
         {{#each actor.items as |item id|}}
 			{{#if (eq item.type "star_system")}}
-				<a class="item update-system" data-tab="{{item.name}}">{{item.name}} {{localize "BITD.System"}}</a>
+				<a class="item" data-tab="{{item.name}}">{{item.name}} {{localize "BITD.System"}}</a>
 			{{/if}}
 		{{/each}}
       </nav>
@@ -39,70 +27,37 @@
 	  {{!-- Planet List --}}
 		{{#each actor.items as |system id|}}
 		{{#if (eq system.type "star_system")}}
-		<div id="planets" class="tab flex-vertical" data-tab="{{system.name}}">
+		<div id="systems-tab" class="tab flex-vertical" data-tab="{{system.name}}">
 		
 		<div id="system-label" class="label-stripe item" data-item-id="{{system._id}}">
-          <div class="item-body"><p>{{system.name}}</p></div>
-		
-		<!-- new bar, large
-		<div id="system-heat-wanted" class="section big-teeth-section">
-			<div id="system-{{../actor._id}}-heat" class="big-teeth">
-			{{#multiboxes ../data.heat.value}}
-		
-			<input type="radio" id="system-{{../actor._id}}-heat-0" name="data.heat.value" value="0" dtype="Radio">
-			<label class="black-label" for="system-{{../actor._id}}-heat-0">{{localize "BITD.Heat"}}</label>
-
-			{{#times_from_1 ../data.heat.max}}
-				<input type="radio" id="system-{{../../actor._id}}-heat-{{this}}" name="data.heat.value" value="{{this}}" dtype="Radio">
-				<label for="system-{{../../actor._id}}-heat-{{this}}"></label>
-			{{/times_from_1}}
-
-			{{/multiboxes}}
-			</div>
-			<div id="system-{{../actor._id}}-wanted" class="big-teeth">
-			{{#multiboxes ../data.wanted.value}}
-
-			<input type="radio" id="system-{{../actor._id}}-wanted-0" name="../data.wanted.value" value="0" dtype="Radio">
-			<label class="black-label update-wanted" data-update="{{system.name}}" data-ivalue="0" for="system-{{../actor._id}}-wanted-0">{{localize "BITD.Wanted"}}</label>
-			{{#times_from_1 ../data.wanted.max}}
-
-				<input type="radio" id="system-{{../../actor._id}}-wanted-{{this}}" name="../data.wanted.value" value="{{this}}" dtype="Radio">
-				<label class="update-wanted" data-update="{{system.name}}" data-ivalue="{{this}}" for="system-{{../../actor._id}}-wanted-{{this}}"></label>
-			{{/times_from_1}}
-
-			{{/multiboxes}}
-			</div>
-		</div>
+          <div class="item-body">{{system.name}}</div>
 		
 		  
-		<!-- on bar, small
-		  <div id="system-heat-wanted" class="teeth-experience-red">
-            <p>{{localize "BITD.Heat"}}</p>
-			
-            <label for="system-{{../actor._id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-            {{#multiboxes ../data.heat.value}}
-            <input type="radio" id="system-{{../actor._id}}-heat-0" name="data.heat.value" value="0" dtype="Radio">
-            {{#times_from_1 ../data.heat.max}}
-			<input type="radio" id="system-{{../../actor._id}}-heat-{{this}}" name="data.heat.value" value="{{this}}" dtype="Radio">
-            <label for="system-{{../../actor._id}}-heat-{{this}}"></label>
-            {{/times_from_1}}
-            {{/multiboxes}}
-			
-			<p>{{localize "BITD.Wanted"}}</p>
-			
-            <label for="system-{{../actor._id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-            {{#multiboxes ../data.wanted.value}}
-            <input type="radio" id="system-{{../actor._id}}-wanted-0" name="data.wanted.value" value="0" dtype="Radio">
-            {{#times_from_1 ../data.wanted.max}}
-			<input type="radio" id="system-{{../../actor._id}}-wanted-{{this}}" name="data.wanted.value" value="{{this}}" dtype="Radio">
-            <label for="system-{{../../actor._id}}-wanted-{{this}}"></label>
-            {{/times_from_1}}
-            {{/multiboxes}}
-          </div>
-		-->
-		</div>
-        
 		
+		  <div id="system-heat" class="teeth-experience-red" style="position: float !important;">
+            <label for="system-{{id}}-heat-0">{{localize "BITD.Heat"}}</label>
+            <label for="system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+			{{#multiboxes system.data.heat.value}}
+            <input class="update-hbox" data-item="{{system._id}}" data-value="0" type="radio" id="system-{{id}}-heat-0" value="0" dtype="Radio">
+            {{#times_from_1 system.data.heat.max}}
+			<input class="update-hbox" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="system-{{id}}-heat-{{this}}" value="{{this}}" dtype="Radio">
+            <label for="system-{{id}}-heat-{{this}}"></label>
+			{{/times_from_1}}
+            {{/multiboxes}}
+		  </div>
+		  <div id="system-wanted" class="teeth-experience-red">
+			<label for="system-{{id}}-wanted-0">{{localize "BITD.Wanted"}}</label>
+            <label for="system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+			{{#multiboxes system.data.wanted.value}}
+            <input class="update-wbox" data-item="{{system._id}}" data-value="0" type="radio" id="system-{{id}}-wanted-0" value="0" dtype="Radio">
+            {{#times_from_1 system.data.wanted.max}}
+			<input class="update-wbox" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="system-{{id}}-wanted-{{this}}" value="{{this}}" dtype="Radio">
+            <label for="system-{{id}}-wanted-{{this}}"></label>
+			{{/times_from_1}}
+            {{/multiboxes}}
+		  </div>
+		</div>
+
 		<div id="planet-list">
 			{{#each ../actor.items as |planet|}}
 				{{#if (eq planet.type "planet")}}
@@ -134,8 +89,36 @@
 
 	</div>
   </section>
-  <section class="flex-horizontal grow-two">
-	{{> "systems/scum-and-villainy/templates/parts/factions.html" actor=actor}}
+  <!--
+  <section class="flex-horizontal">
+	<div id="factions" class="flex-vertical">
+	
+		<div class="label-stripe">
+           <p>{{localize "BITD.Factions"}}</p>
+          <p><a class="item-add-popup" data-item-type="faction"><i class="fas fa-plus-square"></i></a></p>
+        </div>
+		
+        <div>
+          {{#each actor.items as |faction id|}}
+          {{#if (eq faction.type "faction")}}
+            <div class="item flex-horizontal" data-item-id="{{faction._id}}">
+              <div class="item-body flex-horizontal">
+                <img src="{{faction.img}}" title="{{faction.name}}" width="24" height="24"/>
+				<div class="item-name">{{faction.name}}  {{localize "BITD.Tier"}}:{{faction.data.tier}}</div>
+              </div>
+			  <input type="number" id="fac-status-{{faction._id}}" value="{{faction.data.status}}">
+			  <label for="fac-status-{{faction._id}}">{{localize "BITD.Status"}}</label>
+			  <input type="number" id="fac-jobs-{{faction._id}}" value="{{faction.data.jobs}}">
+			  <label for="fac-jobs-{{faction._id}}">{{localize "BITD.Jobs"}}</label>
+              
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="faction">{{localize "BITD.AddItem"}}</a></div>
+        </div>
+	
+	</div>
   </section>
-
+-->
 </form>
