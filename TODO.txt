@@ -24,11 +24,11 @@ Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
   - track heat and wanted levels per system - DONE
   - add factions (similar to items, user-added) - DONE
+  - hover over system/planet/faction should hint that they're clickable - DONE
   - track faction information (status, jobs, goal clock?)
   - color UI based on faction status
   - find a way to cleanly update systems without deleting and reloading (this clears heat/wanted)
   - figure out why adding new factions deletes old ones?  should work the same as inventory items
-  - hover over system/planet/faction should hint that they're clickable
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?  
