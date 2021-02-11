@@ -13,9 +13,10 @@ export class BladesSheet extends ActorSheet {
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
 	html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
 	html.find(".update-sheet").click(this._onUpdateClick.bind(this));
-	html.find(".update-hbox").click(this._onUpdateHBoxClick.bind(this));
-	html.find(".update-wbox").click(this._onUpdateWBoxClick.bind(this));
+	html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
 	html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
+	
+	
 	
     // This is a workaround until is being fixed in FoundryVTT.
     if ( this.options.submitOnChange ) {
@@ -259,29 +260,34 @@ async _onFlagAddClick(event) {
   }
   
 /* -------------------------------------------- */
-  async _onUpdateHBoxClick(event) {
+  async _onUpdateBoxClick(event) {
 	event.preventDefault();
 	const item_id = $(event.currentTarget).data("item");
-	const update_value = $(event.currentTarget).data("value");
-   
-	const update = {_id: item_id, data:{heat:{value: update_value}}};
-	//console.log(update);
+	var update_value = $(event.currentTarget).data("value");
+    const update_type = $(event.currentTarget).data("utype");
+    if ( update_value == undefined) {
+		update_value = document.getElementById('fac-' + update_type + '-' + item_id).value;
+	};
+	
+	if ( update_type == "heat" ) {
+		var update = {_id: item_id, data:{heat:{value: update_value}}};
+	} else if ( update_type == "wanted" ) {
+		var update = {_id: item_id, data:{wanted:{value: update_value}}};
+	} else if ( update_type == "status" ) {
+		var update = {_id: item_id, data:{status:{value: update_value}}};
+	} else if (update_type == "jobs" ) {
+		var update = {_id: item_id, data:{jobs:{value: update_value}}};
+	} else {
+		console.log("update attempted for type undefined in blades-sheet.js onUpdateBoxClick function");
+		return;
+	};
+	console.log(update);
 	await this.actor.updateEmbeddedEntity("OwnedItem", update);
 	
    
   }
 
 /* -------------------------------------------- */
-  async _onUpdateWBoxClick(event) {
-	event.preventDefault();
-	const item_id = $(event.currentTarget).data("item");
-	const update_value = $(event.currentTarget).data("value");
-   
-	const update = {_id: item_id, data:{wanted:{value: update_value}}};
-	//console.log(update);
-	await this.actor.updateEmbeddedEntity("OwnedItem", update);
-	
-   
-  }
+  
   
 }
