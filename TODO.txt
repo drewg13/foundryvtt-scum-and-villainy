@@ -28,7 +28,7 @@ Universe sheet
   - color UI based on faction status
   - find a way to cleanly update systems without deleting and reloading (this clears heat/wanted)
   - figure out why adding new factions deletes old ones?  should work the same as inventory items
-  - edit fields are ugly for faction info
+  - hover over system/planet/faction should hint that they're clickable
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?  
