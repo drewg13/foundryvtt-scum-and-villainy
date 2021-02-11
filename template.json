@@ -341,8 +341,20 @@
 	"enemies": "",
 	"situation": "",
 	"goal_clock": 0,
-	"status": 0,
-	"jobs": 0
+	"status": {
+      "value": [4],
+      "max": 7,
+      "max_default": 7,
+      "name_default": "BITD.Status",
+      "name": "BITD.Status"
+    },
+	"jobs": {
+      "value": [0],
+      "max": 3,
+      "max_default": 3,
+      "name_default": "BITD.Jobs",
+      "name": "BITD.Jobs"
+    }
   },
   "ship_size": {
     "templates": ["default", "logic"]
