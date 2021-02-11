@@ -312,21 +312,27 @@
 * #character-stress label[for$="-0"] {
   margin-right: 0px;
 }
+* #faction-items .item-name {
+  width: 150px;
+}
 * #loadout .item-name,
 * #upgrades .item-name,
 * #abilities .item-name {
   width: 70px;
 }
+* #faction-items .item-body,
 * #loadout .item-body,
 * #upgrades .item-body,
 * #abilities .item-body {
   width: auto;
 }
+* #faction-items .item-description,
 * #loadout .item-description,
 * #upgrades .item-description,
 * #abilities .item-description {
   width: 300px;
 }
+* #factions .label-stripe p:first-child,
 * #loadout .label-stripe p:first-child,
 * #loadout .label-stripe-red p:first-child,
 * #upgrades .label-stripe p:first-child,
@@ -334,6 +340,13 @@
   margin-right: 10px;
 }
 * .teeth-experience-red {
+  display: flex;
+  /* Hide the browser's default checkbox */
+  position: float;
+  top: 0px;
+  right: 10px;
+}
+* #faction-status .teeth-experience {
   display: flex;
   /* Hide the browser's default checkbox */
   position: float;
