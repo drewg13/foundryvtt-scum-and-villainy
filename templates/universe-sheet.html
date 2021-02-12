@@ -6,7 +6,7 @@
       <label for="campaign-{{actor._id}}-name">{{localize "BITD.CampaignName"}}</label>
       <input type="text" id="campaign-{{actor._id}}-name" name="name" value="{{actor.name}}">
     </div>
-	<p><a class="update-sheet" data-item-type="star_system">{{localize "BITD.Update"}} {{localize "BITD.Systems"}}</a><br>{{localize "BITD.Warning"}}</p>
+	<p><a class="update-sheet" data-item-type="star_system">{{localize "BITD.Update"}} {{localize "BITD.Systems"}}</a></p>
 	<p><a class="update-sheet" data-item-type="planet">{{localize "BITD.Update"}} {{localize "BITD.Planets"}}</a></p>
   </section>
 
@@ -90,35 +90,47 @@
 
 	</div>
   </section>
-  <!--
+  
   <section id="factions" class="flex-horizontal">
-	<div id="factions-list" class="flex-vertical grow-two">
-	
+	<div id="factions-section" class="flex-vertical grow-two">
+	  <div class="tab flex-vertical">
 		<div class="label-stripe">
            <p>{{localize "BITD.Factions"}}</p>
           <p><a class="item-add-popup" data-item-type="faction"><i class="fas fa-plus-square"></i></a></p>
         </div>
 		
-        <div>
+        <div id="faction-list">
           {{#each actor.items as |faction id|}}
           {{#if (eq faction.type "faction")}}
-            <div id="faction-items" class="label-stripe-gray item" data-item-id="{{faction._id}}">
-              <a class="item-body">
+          
+			<div id="faction-items" class="label-stripe-gray item flex-horizontal" data-item-id="{{faction._id}}">
+              <a class="item-body flex-horizontal">
                 <img src="{{faction.img}}" title="{{faction.name}}" width="24" height="24"/>
 				<div class="item-name">{{faction.name}}<br>{{localize "BITD.Tier"}}: {{faction.data.tier}}</div>
 			  </a>
-			  <div><a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a></div>
-			
-			  <div id="faction-status" class="teeth-experience" style="position: float !important;">
-				<label for="faction-{{id}}-status-0">{{localize "BITD.Status"}}</label>
-				<label for="faction-{{id}}-status-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+			  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+			  
+			  <div id="faction-status" class="teeth-experience-faction" style="color: #eeefff;">
+				{{localize "BITD.Status"}}<br>{{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}
+				<!-- <label for="faction-{{id}}-status-0"><i class="fab fa-creative-commons-zero nullifier"></i></label> -->
 				{{#multiboxes faction.data.status.value}}
 					<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="faction-{{id}}-status-0" value="0" dtype="Radio">
-					{{#times_from_1 faction.data.status.max}}
-						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="faction-{{id}}-status-{{this}}" value="{{this}}" dtype="Radio">
-						<label for="faction-{{id}}-status-{{this}}"></label>
-					{{/times_from_1}}
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="1" type="radio" id="faction-{{id}}-status-1" value="1" dtype="Radio">
+						<label for="faction-{{id}}-status-1"></label>
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="2" type="radio" id="faction-{{id}}-status-2" value="2" dtype="Radio">
+						<label for="faction-{{id}}-status-2"></label>
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="3" type="radio" id="faction-{{id}}-status-3" value="3" dtype="Radio">
+						<label for="faction-{{id}}-status-3"></label>
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="4" type="radio" id="faction-{{id}}-status-4" value="4" dtype="Radio">
+						<label for="faction-{{id}}-status-4"></label>
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="5" type="radio" id="faction-{{id}}-status-5" value="5" dtype="Radio">
+						<label for="faction-{{id}}-status-5"></label>
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="6" type="radio" id="faction-{{id}}-status-6" value="6" dtype="Radio">
+						<label for="faction-{{id}}-status-6"></label>
+						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="7" type="radio" id="faction-{{id}}-status-7" value="7" dtype="Radio">
+						<label for="faction-{{id}}-status-7"></label>
 				{{/multiboxes}}
+				
 			  </div>
 			
 			  <div id="faction-jobs" class="teeth-experience">
@@ -135,13 +147,14 @@
 			
               
               
-            </div>
+           
+		  </div>
           {{/if}}
           {{/each}}
           <div class="item-class-label"><a class="item-add-popup" data-item-type="faction">{{localize "BITD.AddItem"}}</a></div>
         </div>
-	
+	  </div>
 	</div>
   </section>
--->
+
 </form>
