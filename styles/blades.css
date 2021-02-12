@@ -346,12 +346,65 @@
   top: 0px;
   right: 10px;
 }
-* #faction-status .teeth-experience {
+* .teeth-experience-faction {
   display: flex;
   /* Hide the browser's default checkbox */
-  position: float;
+  position: float !important;
   top: 0px;
   right: 10px;
+}
+* .teeth-experience-faction label {
+  height: 30px;
+  width: 10px;
+  background-image: url("assets/teeth/stresstooth-blue.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* .teeth-experience-faction label:last-of-type {
+  margin-right: 0px;
+}
+* .teeth-experience-faction label[for$="-0"] {
+  width: auto;
+  height: auto;
+  background-image: none !important;
+  color: #EEEFFF;
+}
+* .teeth-experience-faction label[for$="-0"] i {
+  margin-top: 4px;
+}
+* .teeth-experience-faction label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+* .teeth-experience-faction input {
+  display: none;
+}
+* .teeth-experience-faction input + label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-7"] {
+  background-image: url("assets/teeth/stresstooth-blue.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-6"] {
+  background-image: url("assets/teeth/stresstooth-6.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-5"] {
+  background-image: url("assets/teeth/stresstooth-5.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-4"] {
+  background-image: url("assets/teeth/stresstooth-4.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-3"] {
+  background-image: url("assets/teeth/stresstooth-3.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-2"] {
+  background-image: url("assets/teeth/stresstooth-2.png");
+}
+* .teeth-experience-faction input:checked + label[for$="-1"] {
+  background-image: url("assets/teeth/stresstooth-red.png");
 }
 * .teeth-experience {
   display: flex;
