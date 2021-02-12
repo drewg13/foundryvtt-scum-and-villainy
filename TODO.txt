@@ -19,6 +19,7 @@ Planet sheet
  
 Clocks
  - add 10- and 12-clocks (clock-sheet.html, blades.css, style.scss, ./styles/assets/progressclocks-svg SVG files)
+ - change the clock design to something clean/sci-fi
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
@@ -33,4 +34,4 @@ Universe sheet
   - onhover hinting to system name in label-stripe header
 
 All sheets
-  - "space" look, black background?, change teeth shapes?, use more holo-blue?  
+  - "space" look, black background?, change teeth shapes?, use more holo-blue?
