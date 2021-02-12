@@ -25,10 +25,12 @@ Universe sheet
   - track heat and wanted levels per system - DONE
   - add factions (similar to items, user-added) - DONE
   - hover over system/planet/faction should hint that they're clickable - DONE
-  - track faction information (status, jobs, goal clock?)
-  - color UI based on faction status
-  - find a way to cleanly update systems without deleting and reloading (this clears heat/wanted)
-  - figure out why adding new factions deletes old ones?  should work the same as inventory items
+  - track faction information (status, jobs) - DONE
+  - dynamic text label based on faction status - DONE
+  - find a way to cleanly update systems without deleting and reloading (this clears heat/wanted) - DONE
+  - figure out why adding new factions deletes old ones?  should work the same as inventory items - DONE
+  - figure out how to get the Neutral default status to display on first add
+  - onhover hinting to system name in label-stripe header
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?  
