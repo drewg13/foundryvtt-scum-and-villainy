@@ -128,7 +128,7 @@ export class BladesSheet extends ActorSheet {
     }, options);
 
     dialog.render(true);
-  };
+  }
 
 async _onFlagAddClick(event) {
     event.preventDefault();
@@ -192,7 +192,7 @@ async _onFlagAddClick(event) {
 	let items_to_add = [];
     el.find("input:checked").each(function() {
 
-	
+
 		items_to_add.push(items.find(e => e._id === $(this).val()));
 	
 	  
@@ -235,24 +235,25 @@ async _onFlagAddClick(event) {
 	event.preventDefault();
 	const item_type = $(event.currentTarget).data("itemType");
 	const limiter = $(event.currentTarget).data("limiter");
-    const system = "scum-and-villainy";
+    
 	
 	//find all items of type in world	
 	const world_items = await BladesHelpers.getAllItemsByType(item_type, game);
-	
+	//console.log(world_items);
 	//find all items of type attached to actor
 	const curr_items = this.actor.data.items.filter(i => i.type === item_type);
-	
+	//console.log("Current");
+	//console.log(curr_items);
 	//find all items in world, but not attached to actor
-	
-	const add_items = world_items.filter(({ _id: id1 }) => !curr_items.some(({ _id: id2 }) => id2 === id1));
-	
+	const add_items = world_items.filter(({ name: id1 }) => !curr_items.some(({ name: id2 }) => id2 === id1));
+	//console.log("Add");
+	//console.log(add_items);
 	//find all items attached to actor, but not in world
-	
-	const rem_items = curr_items.filter(({ _id: id1 }) => !world_items.some(({ _id: id2 }) => id2 === id1));
+	const rem_items = curr_items.filter(({ name: id1 }) => !world_items.some(({ name: id2 }) => id2 === id1));
 	
 	const delete_items = rem_items.map( i => i._id );
-		
+	//console.log("Delete");
+	//console.log(delete_items);
 	//delete all items attached to actor, but not in world
 	await this.actor.deleteEmbeddedEntity("OwnedItem", delete_items);
 	//attach any new items

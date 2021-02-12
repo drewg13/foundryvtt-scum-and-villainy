@@ -19,6 +19,13 @@ export class BladesItem extends Item {
       this._prepareUpkeep(data);
     
     }
+	
+	if (item_data.type === "faction") {
+    
+      this._prepareStatusDefault(data);
+    
+    }
+	
   }
 
   /**
@@ -37,11 +44,27 @@ export class BladesItem extends Item {
 		upkeep = Math.floor((parseInt(this.actor.data.data.systems.crew.value) + parseInt(this.actor.data.data.systems.engines.value) + parseInt(this.actor.data.data.systems.hull.value) + parseInt(this.actor.data.data.systems.comms.value) + parseInt(this.actor.data.data.systems.weapons.value)) / 4);
     
 		this.actor.data.data.systems.upkeep.value = upkeep;
-		
 	
 	};
 
             
     this.data.data = data;
-}
+  }
+  
+  _prepareStatusDefault(data) {
+	
+	var status = data.status.value;
+	
+	if (this) {
+		if ( status == "0" ) { status = "4";  };
+	
+		data.status.value = status;
+		
+		
+	};
+	
+	this.data.data = data;
+	
+  }
+  
 }

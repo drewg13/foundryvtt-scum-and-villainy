@@ -8,7 +8,7 @@ export class BladesHelpers {
    */
   static removeDuplicatedItemType(item_data, actor) {
 
-    let distinct_types = ["crew_reputation", "class", "background", "heritage", "ship_size", "crew_type", "star_system", "planet", "faction"];
+    let distinct_types = ["crew_reputation", "class", "background", "heritage", "ship_size", "crew_type"];
     let should_be_distinct = distinct_types.includes(item_data.type);
     // If the Item has the exact same name - remove it from list.
     // Remove Duplicate items from the array.
