@@ -31,7 +31,8 @@ Universe sheet
   - find a way to cleanly update systems without deleting and reloading (this clears heat/wanted) - DONE
   - figure out why adding new factions deletes old ones?  should work the same as inventory items - DONE
   - figure out how to get the Neutral default status to display on first add
-  - onhover hinting to system name in label-stripe header
+  - figure out how to keep the Status tracker from shifting around based on the length of the text hinting
+  - onhover hinting to System name in label-stripe header
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?
