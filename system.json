@@ -2,7 +2,7 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "0.9",
+  "version": "0.9.1",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
@@ -22,7 +22,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.9.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.9.1.zip",
   "packs": [
     {
       "name": "class",
