@@ -12,7 +12,7 @@ export class BladesActorSheet extends BladesSheet {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["scum-and-villainy", "sheet", "actor"],
   	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
-      width: 700,
+      width: 720,
       height: 970,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
     });
@@ -33,9 +33,9 @@ export class BladesActorSheet extends BladesSheet {
 	
     
     // Encumbrance Levels
-    let load_level=["light","light","light","light","normal","normal","heavy","heavy",
+    let load_level=["empty","light","light","light","normal","normal","heavy","heavy",
 			"heavy","over max","over max"];
-    let mule_level=["light","light","light","light","light","normal","normal",
+    let mule_level=["empty","light","light","light","light","normal","normal",
 			"heavy","heavy","heavy","over max"];
     
  
@@ -53,9 +53,13 @@ export class BladesActorSheet extends BladesSheet {
     	
 	actor_flags.forEach(i => {
       if (i.data.installs.loaded_inst == "1") {
-        data.data.loadout.max++ ;
+        data.data.loadout.heavy++;
+		data.data.loadout.normal++;
+		data.data.loadout.light++;
       } else {
-		data.data.loadout.max = data.data.loadout.max_default;
+		data.data.loadout.heavy = data.data.loadout.heavy_default;
+		data.data.loadout.normal = data.data.loadout.normal_default;
+		data.data.loadout.light = data.data.loadout.light_default;
 	  };
 	  
 	  if (i.data.installs.stress_max_up == "1") {
@@ -78,10 +82,10 @@ export class BladesActorSheet extends BladesSheet {
     });
 
 	//set encumbrance level
-    if (data.data.loadout.max == 9) {
-      data.data.loadout.load_level=mule_level[data.data.loadout.planned];
+    if (data.data.loadout.heavy == 9) {
+      data.data.loadout.load_level=mule_level[data.data.loadout.current];
     } else {
-      data.data.loadout.load_level=load_level[data.data.loadout.planned];   
+      data.data.loadout.load_level=load_level[data.data.loadout.current];   
     };
 		
 	if (data.data.loadout.planned < loadout) {

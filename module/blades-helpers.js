@@ -8,7 +8,7 @@ export class BladesHelpers {
    */
   static removeDuplicatedItemType(item_data, actor) {
 
-    let distinct_types = ["crew_reputation", "class", "background", "heritage", "ship_size", "crew_type"];
+    let distinct_types = ["crew_reputation", "class", "background", "vice", "heritage", "ship_size", "crew_type"];
     let should_be_distinct = distinct_types.includes(item_data.type);
     // If the Item has the exact same name - remove it from list.
     // Remove Duplicate items from the array.
@@ -40,18 +40,34 @@ export class BladesHelpers {
 	};
 	
 	let abilities = actor.items.filter(a => a.type === item_type).map(e => {return e.data.name});
+	
+	if ( actor.data.type == "ship" ) {
 		
+		let size = actor.items.filter(a => a.type === "ship_size").map(e => {return e.data.name}) || [""];
+		//console.log(size);
+		if ( size.length > 0 ) { abilities.push( size ); };
+		
+	};
+	//console.log(abilities);
+	
 	let items = await BladesHelpers.getAllItemsByType(item_type, game);
 	
+	if ( actor.data.type == "ship" ) {
+		
+		let all_sizes = await BladesHelpers.getAllItemsByType("ship_size", game);
+		all_sizes.forEach( s => { items.push( s ); });
+		//console.log(items);
+	}
+	
     let trim_abil_list = abil_list.filter( x => !abilities.includes( x ) );
-	console.log(trim_abil_list);
+	//console.log(trim_abil_list);
 	trim_abil_list.forEach(i => {
 			
 			items_to_add.push( items.find( e => ( e.name === i ) ));
 		  
     });
     
-	console.log(items_to_add);
+	//console.log(items_to_add);
 	actor.createEmbeddedEntity("OwnedItem", items_to_add);
 	
   }
