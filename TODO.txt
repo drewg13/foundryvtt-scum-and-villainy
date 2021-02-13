@@ -8,8 +8,8 @@ Character sheet
  - change the color of the current load if greater than chosen loadout - DONE
  - hover over items should hint that they're clickable - DONE
  - fix spacing of item names in tables - DONE
- - figure out how to re-render character sheet on changes to the linked ship sheet
  - auto-add starting ability on Class selection - DONE
+ - figure out how to re-render character sheet on changes to the linked ship sheet
  - fix first segment on healing clock
  - auto-generate gambits w/ 6 on risky roll where no gambit used, indicate gambit earned on roll chat message (also Scoundrel special)
 
