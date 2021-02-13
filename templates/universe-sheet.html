@@ -30,7 +30,7 @@
 		<div id="systems-tab" class="tab flex-vertical" data-tab="{{system.name}}">
 		
 		<div id="system-label" class="label-stripe item" data-item-id="{{system._id}}">
-          <div class="item-body" style="cursor: pointer;">{{system.name}}</div>
+          <div class="item-body hoverlink">{{system.name}}</div>
 		
 		  
 		
@@ -110,9 +110,10 @@
 			  </a>
 			  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
 			  
-			  <div id="faction-status" class="teeth-experience-faction" style="color: #eeefff;">
-				{{localize "BITD.Status"}}<br>{{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}
+			  <div id="faction-status">
+				<div id="faction-status-label" style="float:left; width: 10em; text-align: right; padding-right: 10px; color: var(--almost_white);">{{localize "BITD.Status"}}<br><span style="color: var(--{{#if (eq faction.data.status.value 7)}}holoblue{{/if}}{{#if (eq faction.data.status.value 6)}}holobluemed{{/if}}{{#if (eq faction.data.status.value 5)}}holobluelt{{/if}}{{#if (eq faction.data.status.value 4)}}almost_white{{/if}}{{#if (eq faction.data.status.value 3)}}redlt{{/if}}{{#if (eq faction.data.status.value 2)}}redmed{{/if}}{{#if (eq faction.data.status.value 1)}}red{{/if}}{{#if (eq faction.data.status.value 0)}}almost_white{{/if}});">{{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}</span></div>
 				<!-- <label for="faction-{{id}}-status-0"><i class="fab fa-creative-commons-zero nullifier"></i></label> -->
+				<div id="faction-status-meter" class="teeth-experience-faction" style="float:left; width: 14em;">
 				{{#multiboxes faction.data.status.value}}
 					<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="faction-{{id}}-status-0" value="0" dtype="Radio">
 						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="1" type="radio" id="faction-{{id}}-status-1" value="1" dtype="Radio">
@@ -130,7 +131,7 @@
 						<input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="7" type="radio" id="faction-{{id}}-status-7" value="7" dtype="Radio">
 						<label for="faction-{{id}}-status-7"></label>
 				{{/multiboxes}}
-				
+				</div>
 			  </div>
 			
 			  <div id="faction-jobs" class="teeth-experience">
