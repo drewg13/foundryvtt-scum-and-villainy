@@ -5,14 +5,15 @@
           <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Faction'}}"/></h1>
       </div>
   </header>
-  
+
+
   <section class="flex-vertical">
-    <label class="label-stripe">{{localize "BITD.Description"}}</label>
+	<label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea rows="2" name="data.description">{{data.description}}</textarea>
 	<label class="label-stripe">{{localize "BITD.FactionType"}}</label>
     {{data.type}}<br><br>
 	<label class="label-stripe">{{localize "BITD.Tier"}}</label>
-    {{data.tier}}<br><br>
+    <textarea rows="1" name="data.tier">{{data.tier}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Goal"}}</label>
     {{data.goal}}<br><br>
     <label class="label-stripe">{{localize "BITD.NotableNPCs"}}</label>
@@ -29,7 +30,9 @@
     <textarea rows="1" name="data.enemies">{{data.enemies}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Situation"}}</label>
     <textarea rows="10" name="data.situation">{{data.situation}}</textarea>
-    
+
+
+
   </section>
 
 </form>
