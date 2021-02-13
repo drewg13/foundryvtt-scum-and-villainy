@@ -126,13 +126,19 @@
     <div class="coins loadout">
       {{#multiboxes data.loadout.planned}}
       <input type="radio" id="loadout-{{actor._id}}-max-0" name="data.loadout.planned" value="0" checked="checked">
-      {{#times_from_1 data.loadout.max}}
-	  <input type="radio" id="loadout-{{actor._id}}-max-{{this}}" name="data.loadout.planned" value="{{this}}">
-      <label for="loadout-{{actor._id}}-max-{{this}}"></label>
-      {{/times_from_1}}
+      
+	  <input type="radio" id="loadout-{{actor._id}}-max-{{data.loadout.light}}" name="data.loadout.planned" value="{{data.loadout.light}}">
+      <label for="loadout-{{actor._id}}-max-{{data.loadout.light}}"></label>
+      {{data.loadout.light}} {{localize "BITD.Light"}}
+	  <input type="radio" id="loadout-{{actor._id}}-max-{{data.loadout.normal}}" name="data.loadout.planned" value="{{data.loadout.normal}}">
+      <label for="loadout-{{actor._id}}-max-{{data.loadout.normal}}"></label>
+	  {{data.loadout.normal}} {{localize "BITD.Normal"}}
+	  <input type="radio" id="loadout-{{actor._id}}-max-{{data.loadout.heavy}}" name="data.loadout.planned" value="{{data.loadout.heavy}}">
+      <label for="loadout-{{actor._id}}-max-{{data.loadout.heavy}}"></label>
+	  {{data.loadout.heavy}} {{localize "BITD.Heavy"}}
       {{/multiboxes}}
     </div>
-	<div class="stripe" style="text-transform:capitalize;{{#if (eq data.loadout.load_level "over max")}}color:red;{{/if}}">{{data.loadout.load_level}}</div>
+	<div class="stripe" style="text-transform:capitalize;{{#if (eq data.loadout.load_level "over max")}}color:red;{{/if}}">Current load: {{data.loadout.load_level}}</div>
   </div>
   
 
