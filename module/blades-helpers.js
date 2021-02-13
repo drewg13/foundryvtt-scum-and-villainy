@@ -21,6 +21,43 @@ export class BladesHelpers {
   }
 
   /**
+   * Adds default abilities when class is chosen for character
+   * 
+   * @param {Object} item_data 
+   * @param {Entity} actor 
+   */
+  static async addDefaultAbilities(item_data, actor) {
+
+    let def_abilities = item_data.data.def_abilities;
+	let abil_list = def_abilities.split(', ');
+	var item_type = "";
+	let items_to_add = [];
+	
+	if ( actor.data.type == "character" ) {
+		item_type = "ability";
+	} else if ( actor.data.type == "ship" ) {
+		item_type = "crew_upgrade";
+	};
+	
+	let abilities = actor.items.filter(a => a.type === item_type).map(e => {return e.data.name});
+		
+	let items = await BladesHelpers.getAllItemsByType(item_type, game);
+	
+    let trim_abil_list = abil_list.filter( x => !abilities.includes( x ) );
+	console.log(trim_abil_list);
+	trim_abil_list.forEach(i => {
+			
+			items_to_add.push( items.find( e => ( e.name === i ) ));
+		  
+    });
+    
+	console.log(items_to_add);
+	actor.createEmbeddedEntity("OwnedItem", items_to_add);
+	
+  }
+
+
+  /**
    * Add item modification if logic exists.
    * @param {Object} item_data 
    * @param {Entity} entity 

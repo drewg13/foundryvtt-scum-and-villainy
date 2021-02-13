@@ -287,7 +287,9 @@ Hooks.once("ready", function() {
 Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
 
   BladesHelpers.removeDuplicatedItemType(child_data, parent_entity);
-
+  
+  if ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) { BladesHelpers.addDefaultAbilities( child_data, parent_entity ); };
+  
   return true;
 });
 

@@ -56,7 +56,7 @@ export class BladesItem extends Item {
 	var status = data.status.value;
 	
 	if (this) {
-		if ( status == "0" ) { status = "4";  };
+		if ( status == "0" ) { status = 4; };
 	
 		data.status.value = status;
 		
