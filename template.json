@@ -285,7 +285,7 @@
   },
   "crew_type": {
     "templates": ["default", "logic"],
-	"upgrades": "",
+	"def_abilities": "",
 	"experience_clues": ""
   },
   "crew_reputation": {
