@@ -51,6 +51,8 @@
   "BITD.Healing": "Healing",
   "BITD.Armor": "Armor",
   "BITD.NeedHelp": "Need Help",
+  "BITD.Light": "Light",
+  "BITD.Normal": "Normal",
   "BITD.Heavy": "Heavy",
   "BITD.Special": "Special",
   "BITD.LessEffect": "Less Effect",
