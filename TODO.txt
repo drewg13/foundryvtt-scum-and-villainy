@@ -43,3 +43,5 @@ Universe sheet
 
 All sheets
   - "space" look, black background?, change teeth shapes?, use more holo-blue?
+  - clean out Blades-specific code that's not needed
+  
