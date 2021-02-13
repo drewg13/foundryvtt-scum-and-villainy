@@ -28,6 +28,15 @@
 /*
  * General Styles
  */
+:root {
+	--almost_white: #eeefff;
+	--red: #ff0000;
+	--holoblue: #33b5e5;
+	--holobluemed: #84d2ef;
+	--holobluelt: #ade1f4;
+	--redmed: #ff6666;
+	--redlt: #ffb2b2;
+}
 * {
   font-family: Georgia, "Bitstream Charter", "Times New Roman", serif;
 }
@@ -130,6 +139,14 @@
   padding-right: 10px;
   display: flex;
   font-weight: bold;
+}
+* .label-stripe .hoverlink {
+  cursor: pointer;
+  transition: filter 0.1s;
+}
+* .label-stripe .hoverlink:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
 }
 * .label-stripe-red {
   text-transform: uppercase;
@@ -315,10 +332,12 @@
 * #faction-items .item-name {
   width: 150px;
 }
+* #all-items .item-name,
 * #loadout .item-name,
 * #upgrades .item-name,
 * #abilities .item-name {
-  width: 70px;
+  width: auto;
+  text-align: left;
 }
 * #faction-items .item-body,
 * #loadout .item-body,
@@ -874,11 +893,17 @@
   font-style: italic;
   text-align: justify;
 }
+* #all-items .item div {
+	flex-grow: 0;
+}
 * .item div {
   flex-grow: 3;
 }
 * .item .item-control {
   flex-grow: 1;
+}
+* #all-items .item .item-body {
+	width: auto;
 }
 * .item .ship-body,
 * .item .item-body,
