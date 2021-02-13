@@ -27,8 +27,12 @@
     "loadout": {
 		"current": 0,
 		"planned": [0],
-		"max": 8,
-		"max_default": 8,
+		"heavy": 8,
+		"heavy_default": 8,
+		"normal": 5,
+		"normal_default": 5,
+		"light": 3,
+		"light_default": 3,
 		"load_level": ""
 	},
 	"stun_weapons": 0,
