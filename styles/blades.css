@@ -564,7 +564,7 @@
 * #attributes {
   display: flex;
   flex-direction: column;
-  width: 215px;
+  width: 245px;
 }
 * #attributes .stripe {
   background-color: #191813;
@@ -576,6 +576,7 @@
 * #attributes .attribute-skill-label {
   font-weight: bold;
   text-transform: uppercase;
+  margin-right: 10px;
 }
 * #attributes .attribute-skill-label {
   letter-spacing: 1px;
@@ -597,6 +598,7 @@
   position: absolute;
   top: 0px;
   right: 0px;
+  margin-left: 40px;
 }
 * #attributes .attributes-exp .stripe-tooth-body-red label {
   height: 30px;
@@ -986,6 +988,9 @@
 }
 * .coins.loadout input:checked + label {
   background-color: #191813;
+}
+* #loadout-max .coins label {
+  margin-left: 15px;
 }
 * .coins input ~ label {
   margin-right: 3px;
