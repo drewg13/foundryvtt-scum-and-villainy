@@ -24,8 +24,8 @@ Planet sheet
  - Edit fields are ugly
  
 Clocks
- - add 10- and 12-clocks (clock-sheet.html, blades.css, style.scss, ./styles/assets/progressclocks-svg SVG files)
- - change the clock design to something clean/sci-fi
+ - add 10- and 12-clocks - DONE
+ - change the clock design to something clean/sci-fi - DONE
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
