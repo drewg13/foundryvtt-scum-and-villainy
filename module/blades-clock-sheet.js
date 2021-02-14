@@ -12,8 +12,8 @@ export class BladesClockSheet extends BladesSheet {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["scum-and-villainy", "sheet", "actor"],
   	  template: "systems/scum-and-villainy/templates/actors/clock-sheet.html",
-      width: 700,
-      height: 970,
+      width: 215,
+      height: 350,
     });
   }
 
