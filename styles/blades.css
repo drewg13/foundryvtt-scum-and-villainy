@@ -538,7 +538,7 @@
 * #harm-armor #character-health-clock .blades-clock input[value="0"] {
   display: none;
 }
-* #harm-armor #character-health-clock .blades-clock *:nth-child(1) {
+* #harm-armor #character-health-clock .blades-clock *:nth-child(3) {
   transform: rotate(0deg) skewY(150deg);
 }
 * #harm-armor #character-health-clock .blades-clock *:nth-child(5) {
