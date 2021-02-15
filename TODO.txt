@@ -26,6 +26,7 @@ Planet sheet
 Clocks
  - add 10- and 12-clocks - DONE
  - change the clock design to something clean/sci-fi - DONE
+ - incorporate code from Clocks module?
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
