@@ -19,6 +19,7 @@ Ship sheet
  - auto-add starting abilities/upgrades on Class selection - DONE
  - include ship size in auto-add on Class selection - DONE
  - List modules under their relevant systems, once added, including damage marker - DONE
+ - Limit modules available to add for a system if current modules for system >= system rating - DONE
  
 Planet sheet
  - Edit fields are ugly
