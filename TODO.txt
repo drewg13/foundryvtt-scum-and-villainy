@@ -18,7 +18,7 @@ Ship sheet
  - hover over items should hint that they're clickable - DONE
  - auto-add starting abilities/upgrades on Class selection - DONE
  - include ship size in auto-add on Class selection - DONE
- - List modules under their relevant systems, once added.  Provide marker for active vs inactive?
+ - List modules under their relevant systems, once added, including damage marker - DONE
  
 Planet sheet
  - Edit fields are ugly
