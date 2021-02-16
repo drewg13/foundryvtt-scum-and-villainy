@@ -51,9 +51,9 @@
   <ol class="dice-rolls">
     {{#each this.rolls}}
     {{#if this.result}}
-    <li class="roll die d6">{{{this.result}}}</li>
+    <li class="roll die d6"{{#if (eq this.result 6)}} style="color: var(--holoblue);"{{/if}}{{#if (lteq this.result 3)}} style="color: red;"{{/if}}>{{{this.result}}}</li>
     {{else}}
-    <li class="roll die d6">{{{this.roll}}}</li>
+    <li class="roll die d6"{{#if (eq this.roll 6)}} style="color: var(--holoblue);"{{/if}}{{#if (lteq this.roll 3)}} style="color: red;"{{/if}}>{{{this.roll}}}</li>
     {{/if}}
     {{/each}}
   </ol>
