@@ -17,11 +17,12 @@ Also, I've occasionally seen item popups show up empty or missing class-specific
 
 
 ## Usage
-`"Item" - all classes, crew types, upgrades, items, abilities, upgrades, etc.`
+`"Actor" - Universe (system/planet/faction trackers), ships, characters, clocks
+`"Item" - all classes, ship types, upgrades, items, abilities, etc.`
 
 - 1st thing, create a Universe sheet to track systems, planets, and factions.  Click Update Systems and Update Planets to auto-populate the sheet with all available systems and planets.
-- If, at a later date, you add a custom system/planet to your game, click the relevant update link to bring it onto the sheet.
-- Only currently relevant factions should be tracked, as the sheet will get huge otherwise.
+- If, at a later date, you add a custom system/planet to your game, click the relevant update link again to bring it onto the sheet.
+- Only currently relevant factions should be tracked, as the sheet will get huge otherwise.  If there's a strong need for a separate faction sheet, let me know.
 - PLEASE NOTE that deleting a faction from the sheet will delete all associated status and job info.  Faction tiers are editable from the faction item sheet linked from the faction name.
 - To reset reputation, exp, etc counters just click on the label name or the nearby 0 icon.
 - To add items, you can click a corresponding label to bring up a popup containing all eligible items.
@@ -29,7 +30,7 @@ Also, I've occasionally seen item popups show up empty or missing class-specific
 - If you want/need to add an item that does not appear in the popup list (for example, adding a Veteran ability), just drag and drop it from the proper compendium.
 - To see the description of Class, Vice, Background, etc you can just click added item and see all the info in the popup.
 - When adding a new item you can hover over a "question-circle" icon to see the item's description.
-- To add Custom abilities, systems, planets, etc.,  just add a new "Foundry Item" of the corresponding type and fill all the necessary info. Then drag it to the sheet or add via button on a sheet.
+- To add Custom abilities, items, systems, planets, factions, etc.,  just add a new "Foundry Item" of the corresponding type and fill all the necessary info. Then drag it to the sheet or add via button on a sheet.
 - When editing/adding new abilities to the Ship sheet, if they have an effect on the linked Character sheets, you must unlink and relink the Ship to see the effects.
 - BE CAREFUL removing items.  Any item removed from an actor sheet will lose all linked data and will have to be recreated.
 
