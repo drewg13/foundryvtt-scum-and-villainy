@@ -5,7 +5,7 @@
   <div id="attributes-{{attribute_name}}" class="attribute">
     <div id="attributes-{{attribute_name}}-title" class="attributes-exp">
       <div class="stripe">
-        <a class="attribute-label roll-die-attribute rollable-text" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}</a>
+        <a class="attribute-label roll-die-attribute rollable-text" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}{{#if (eq ../data.forged 1)}}<span style="color: red;"> (+1)</span>{{/if}}</a>
       </div>
       <div class="stripe-tooth-body-blue">
         {{#multiboxes attribute.exp}}
@@ -33,7 +33,7 @@
 
         {{#multiboxes skill.value}}
 
-        {{#times_from_0 4}}
+        {{#times_from_0 3}}
         <input type="radio" id="attributes-{{../../../actor._id}}-{{skill_name}}-{{this}}"
                name="data.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
         <label for="attributes-{{../../../actor._id}}-{{skill_name}}-{{this}}"></label>
