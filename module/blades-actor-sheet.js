@@ -12,7 +12,7 @@ export class BladesActorSheet extends BladesSheet {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["scum-and-villainy", "sheet", "actor"],
   	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
-      width: 720,
+      width: 780,
       height: 970,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
     });
@@ -76,8 +76,18 @@ export class BladesActorSheet extends BladesSheet {
 	  
 	  if (i.data.installs.stun_inst == "1") {
         data.data.stun_weapons = 1;
+		
 	  } else {
 		data.data.stun_weapons = 0;
+		
+	  };
+	  
+	  if (i.data.installs.forged_inst == "1") {
+        data.data.forged = 1;
+		
+	  } else {
+		data.data.forged = 0;
+		
 	  };
     });
 

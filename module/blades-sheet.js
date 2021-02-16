@@ -44,7 +44,6 @@ export class BladesSheet extends ActorSheet {
 	
     let html = `<div id="items-to-add">`;
 
-	var nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades", "Engines", "Comms", "Hull", "Weapons"];
 	let actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
 	var stun_weapons = 0;
 	actor_flags.forEach(i => {
@@ -54,8 +53,26 @@ export class BladesSheet extends ActorSheet {
 		stun_weapons = 0;
 	  };
 	});
-
 	
+	if ( this.actor.data.type == "ship" ) {
+		var main_systems = ["Engines", "Hull", "Comms", "Weapons"];
+		var overloaded = new Object;
+		main_systems.forEach( m => {
+		
+			let actor_items = this.actor.data.items.filter(i => i.data.class === m);
+			let total = actor_items.length;
+		
+			if ( total >= eval( "this.actor.data.data.systems." + m.toLowerCase() + ".value" )) {
+				overloaded[m] = 1;
+
+			} else {
+				overloaded[m] = 0;
+
+			};
+		});
+	};
+	
+
     items.forEach(e => {
       let addition_price_load = ``;
       
@@ -65,15 +82,15 @@ export class BladesSheet extends ActorSheet {
         addition_price_load += `(${e.data.price})`
       }
 	  
-	  
-	  
+	  	  
+	  var nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades"];
 	  if (e.type == "crew_upgrade") {
-		  if (nonclass_upgrades.includes(e.data.class,0) || (e.data.class == this.actor.data.data.ship_class)) {
+		if ( ( ( main_systems.includes( e.data.class ) ) && ( overloaded[ ( e.data.class.charAt(0).toUpperCase() + e.data.class.slice(1) ) ] == 0 ) ) || ( nonclass_upgrades.includes(e.data.class) ) || ( e.data.class == this.actor.data.data.ship_class ) ) {
 			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
 			html += `</label>`;
-		  };
+		};
 	  } else if (e.type == "crew_ability") {
 		  if (e.data.class == this.actor.data.data.ship_class) {
 			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
@@ -110,17 +127,17 @@ export class BladesSheet extends ActorSheet {
     }
     
     let dialog = new Dialog({
-      title: `${game.i18n.localize('Add')} ${item_type}`,
+      title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
       content: html,
       buttons: {
         one: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize('Add'),
+          label: game.i18n.localize('BITD.Add'),
           callback: () => this.addItemsToSheet(item_type, $(document).find('#items-to-add'))
         },
         two: {
           icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('Cancel'),
+          label: game.i18n.localize('BITD.Cancel'),
           callback: () => false
         }
       },
@@ -162,17 +179,17 @@ async _onFlagAddClick(event) {
     }
     
     let dialog = new Dialog({
-      title: `${game.i18n.localize('Add')} ${item_type}`,
+      title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
       content: html,
       buttons: {
         one: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize('Add'),
+          label: game.i18n.localize('BITD.Add'),
           callback: () => this.addFlagsToSheet(item_type, $(document).find('#items-to-add'))
         },
         two: {
           icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('Cancel'),
+          label: game.i18n.localize('BITD.Cancel'),
           callback: () => false
         }
       },
@@ -278,6 +295,8 @@ async _onFlagAddClick(event) {
 		var update = {_id: item_id, data:{status:{value: update_value}}};
 	} else if (update_type == "jobs" ) {
 		var update = {_id: item_id, data:{jobs:{value: update_value}}};
+	} else if (update_type == "is_damaged" ) {
+		var update = {_id: item_id, data:{is_damaged: update_value}};
 	} else {
 		console.log("update attempted for type undefined in blades-sheet.js onUpdateBoxClick function");
 		return;

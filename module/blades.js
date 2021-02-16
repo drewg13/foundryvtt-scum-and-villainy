@@ -106,6 +106,10 @@ Hooks.once("init", async function() {
     return (a !== b) ? options.fn(this) : '';
   });
 
+Handlebars.registerHelper('caseeq', (a, b) => {
+    return (a.toUpperCase() == b.toUpperCase());
+  });
+
   // ReputationTurf handlebar.
   Handlebars.registerHelper('repturf', (turfs_amount, options) => {
     let html = options.fn(this);
