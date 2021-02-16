@@ -43,7 +43,9 @@ Universe sheet
   - figure out how to keep the Status tracker from shifting around based on the length of the status text label - DONE
   - color text label to match status tracker color - DONE
   - onhover hinting to System name in label-stripe header - DONE
-  
+
+Roll sheets
+  - Color code failure rolls red, full success blue - DONE
 
 All sheets
   - clean out Blades-specific code that's not needed - DONE
