@@ -36,6 +36,7 @@
 		"load_level": ""
 	},
 	"stun_weapons": 0,
+	"forged": 0,
     "harm": {
         "light": {
           "one": "",
@@ -297,7 +298,8 @@
   },
   "crew_upgrade": {
     "templates": ["ability", "logic"],
-	"crew_type": ""
+	"crew_type": "",
+	"is_damaged": 0
   },
   "crew_ability": {
     "templates": ["ability", "logic"]
