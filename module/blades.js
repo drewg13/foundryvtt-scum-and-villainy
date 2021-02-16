@@ -106,8 +106,14 @@ Hooks.once("init", async function() {
     return (a !== b) ? options.fn(this) : '';
   });
 
-Handlebars.registerHelper('caseeq', (a, b) => {
+  //Case-insensitive comparison
+  Handlebars.registerHelper('caseeq', (a, b) => {
     return (a.toUpperCase() == b.toUpperCase());
+  });
+
+  //Less than comparison
+  Handlebars.registerHelper('lteq', (a, b) => {
+    return (a <= b);
   });
 
   // ReputationTurf handlebar.
