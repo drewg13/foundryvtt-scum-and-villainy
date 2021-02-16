@@ -37,6 +37,7 @@
 	--redmed: #ff6666;
 	--redlt: #ffb2b2;
 	--darkblue: #001324;
+	
 }
 * header {
   margin-bottom: 10px;
@@ -46,6 +47,10 @@
 }
 * form.actor-sheet {
   padding: 20px;
+}
+.window-app .window-content {
+	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
+    url('assets/brushed_metal.jpg') repeat;
 }
 * textarea {
   margin-top: 10px;
@@ -159,7 +164,7 @@
 }
 * .label-stripe-gray {
   text-transform: uppercase;
-  background-color: #999;
+  background-color: #92a6ad;
   margin-bottom: 10px;
   position: relative;
   padding-left: 10px;
