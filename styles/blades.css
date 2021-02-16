@@ -36,9 +36,7 @@
 	--holobluelt: #ade1f4;
 	--redmed: #ff6666;
 	--redlt: #ffb2b2;
-}
-* {
-  font-family: Georgia, "Bitstream Charter", "Times New Roman", serif;
+	--darkblue: #001324;
 }
 * header {
   margin-bottom: 10px;
@@ -735,7 +733,6 @@
 }
 * #systems .system-label,
 * #systems .system-skill-label {
-  font-weight: bold;
   text-transform: uppercase;
 }
 * #systems .system-label-damage {
@@ -752,14 +749,12 @@
 * #systems .systems-value .stripe-tooth-body-red {
   display: flex;
   /* Hide the browser's default checkbox */
-  position: absolute;
   top: 0px;
   right: 0px;
 }
 * #systems .systems-value .stripe-tooth-body-blue {
   display: flex;
   /* Hide the browser's default checkbox */
-  position: absolute;
   top: 0px;
   right: 0px;
 }
