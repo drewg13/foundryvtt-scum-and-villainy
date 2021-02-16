@@ -299,7 +299,7 @@
 			<div id="systems-{{system_name}}-title" class="systems-value">
 				<div class="stripe flex-horizontal system-label">
 				{{#if (eq system_name "upkeep")}}
-				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a> = {{system.value}} {{localize "BITD.Coin"}}
+				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a><span style="margin-right: 5px;"> = {{system.value}} {{localize "BITD.Coin"}}</span>
 				{{/if}}
 				{{#if (eq system_name "shields")}}
 				{{localize (concat system.label 'Short')}}
@@ -314,14 +314,12 @@
 				{{/unless}}
 				{{/unless}}
 				{{/unless}}
-				</div>
+				<!-- </div> -->
 			{{#unless (eq system_name "upkeep")}}
 			<div class="stripe-tooth-body-blue">
 				{{#multiboxes system.value}}
 
-				<label
-						for="{{../actor._id}}-{{system_name}}-value-0"><i
-						class="fab fa-creative-commons-zero nullifier"></i></label>
+				<label for="{{../actor._id}}-{{system_name}}-value-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 				<input type="radio" id="{{../actor._id}}-{{system_name}}-value-0"
 					name="data.systems.{{system_name}}.value" value="0" checked="checked">
 				
@@ -361,7 +359,7 @@
 			</div>
 			{{/unless}}
 			</div>
-			
+			</div>
 			{{#unless (eq system_name "crew")}}
 			{{#unless (eq system_name "shields")}}
 			{{#unless (eq system_name "encryptor")}}
@@ -373,7 +371,7 @@
 				{{#unless (eq system_name "upkeep")}}
 				{{localize "BITD.SystemsDamage"}}
 				{{/unless}}
-				</div>
+				
 			<div class="stripe-tooth-body-red">
 				{{#multiboxes system.damage}}
 
@@ -418,6 +416,36 @@
 				{{/multiboxes}}
 			</div>
 			</div>
+			</div>
+			
+			<div id="system-upgrades" class="systems-value">
+				{{#each ../actor.items as |item id|}}
+					
+					{{#if (eq item.type "crew_upgrade")}}
+					
+					{{#if (caseeq item.data.class system_name)}}
+						<div class="label-stripe-gray item flex-horizontal system-label" data-item-id="{{item._id}}">
+							<div class="item-body">
+								<a class="item-name">{{item.name}}</a>
+							
+							</div>
+							<div id="system-subitem" class="stripe-tooth-body-red">
+								<label for="item-{{id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+								{{#multiboxes item.data.is_damaged}}
+									<input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="0"  type="radio" id="item-{{id}}-0" value="0" dtype="Radio">
+									{{#times_from_1 1}}
+										<input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="item-{{id}}-{{this}}" value="{{this}}" dtype="Radio">
+										<label for="item-{{id}}-{{this}}"></label>
+									{{/times_from_1}}
+								{{/multiboxes}}
+							</div>
+							
+						</div>
+					{{/if}}
+					{{/if}}
+				{{/each}}
+			</div>
+			
 			{{/unless}}
 			{{/unless}}
 			{{/unless}}
