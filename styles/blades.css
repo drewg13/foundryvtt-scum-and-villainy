@@ -752,6 +752,12 @@
   top: 0px;
   right: 0px;
 }
+* #system-upgrades .item .item-body {
+	max-width: 150px;
+}
+* #system-subitem.stripe-tooth-body-red {
+	position: absolute;
+}
 * #systems .systems-value .stripe-tooth-body-blue {
   display: flex;
   /* Hide the browser's default checkbox */
