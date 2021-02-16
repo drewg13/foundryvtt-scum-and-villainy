@@ -18,6 +18,7 @@ Also, I've occasionally seen item popups show up empty or missing class-specific
 
 ## Usage
 `"Actor" - Universe (system/planet/faction trackers), ships, characters, clocks`
+
 `"Item" - all classes, ship types, upgrades, items, abilities, etc.`
 
 - 1st thing, create a Universe sheet to track systems, planets, and factions.  Click Update Systems and Update Planets to auto-populate the sheet with all available systems and planets.
