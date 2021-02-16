@@ -21,13 +21,13 @@ Ship sheet
  - List modules under their relevant systems, once added, including damage marker - DONE
  - Limit modules available to add for a system if current modules for system >= system rating - DONE
  
-Planet sheet
+Planet item sheet
  - Edit fields are ugly
  
 Clocks
  - add 10- and 12-clocks - DONE
  - change the clock design to something clean/sci-fi - DONE
- - incorporate code from Clocks module?
+ - incorporate code from Clocks module
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
@@ -43,6 +43,7 @@ Universe sheet
   - figure out how to keep the Status tracker from shifting around based on the length of the status text label - DONE
   - color text label to match status tracker color - DONE
   - onhover hinting to System name in label-stripe header - DONE
+  - scan for duplicates on addition to prevent double-add when items are imported from compendiums
 
 Roll sheets
   - Color code failure rolls red, full success blue - DONE
