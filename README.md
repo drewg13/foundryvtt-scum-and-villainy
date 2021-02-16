@@ -8,6 +8,8 @@ I've seen some reports of loss-of-data from the Notes fields on the character sh
 
 Also, I've occasionally seen item popups show up empty or missing class-specific items.  This may be a product of my frequent changes during testing, but if you see this, screenshot your sheet FIRST and try removing the Class/Ship Type, then re-adding it.  In a pinch, items can be added the old-fashioned way by dragging them from the relevant compendium.
 
+You DO NOT need to import any items out of the compendiums in order to use them.  Currently, if you do import them, the system will display them twice or even add them twice in the case of the Universe sheet.  The only time I can think you would need to import an item would be if you wanted to use it as a starting template for a custom item.
+
 
 ## Recommended Modules
 
