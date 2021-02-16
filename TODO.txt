@@ -47,7 +47,8 @@ Universe sheet
 
 All sheets
   - clean out Blades-specific code that's not needed - DONE
-  - "space" look, black background?, change teeth shapes?, use more holo-blue?
+  - "space" look - first pass - DONE
+  - Additional color/design tweaks
   - add code to restrict editing item sheets to GM-only?
   - icon improvements to factions?
   
