@@ -29,6 +29,7 @@ Clocks
  - change the clock design to something clean/sci-fi - DONE
  - incorporate code from Clocks module - DONE
  - add Red clock theme option
+ - override token-hud for clock actor to use tile UI
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
