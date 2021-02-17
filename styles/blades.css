@@ -37,7 +37,13 @@
 	--redmed: #ff6666;
 	--redlt: #ffb2b2;
 	--darkblue: #001324;
-	
+}
+@font-face {
+  font-family: 'Exo2';
+  src: url("assets/fonts/Exo2-Regular.ttf"); 
+}
+* {
+	font-family: 'Exo2', 'Signika', sans-serif;
 }
 * header {
   margin-bottom: 10px;
@@ -1748,6 +1754,69 @@
   filter: brightness(0.8);
   opacity: 0.9;
   color: red;
+}
+.clocks.sheet .clock-progress {
+  text-align: center;
+}
+.clocks.sheet .clock-name {
+  height: 60px;
+  text-align: left;
+}
+.clocks.sheet .clock-name input {
+  height: 40px;
+  line-height: 48px;
+  font-size: 32px;
+  width: 100%;
+  background: none;
+  border: 1px solid transparent;
+  padding: 1px 3px;
+  font-family: "Exo2", "Signika", sans-serif;
+  border-radius: 3px;
+  color: rgb(25, 24, 19);
+  margin: 0;
+}
+.clocks.sheet .clock-name.editable input:hover, .clocks.sheet .clock-name.editable input:focus {
+  border: 1px solid rgb(25, 24, 19);
+}
+.clocks.sheet .clock-progress button {
+  width: 140px;
+  margin: 0;
+}
+.clocks.sheet .clock-progress button[name=reset] {
+  width: 40px;
+}
+.clocks.sheet .clock-progress button:disabled {
+  color: #aaaaaa;
+  border: none;
+}
+.clocks.sheet .clock-image img {
+  border: none;
+  padding: 10px;
+}
+.clocks.sheet .clock-config {
+  text-align: center;
+}
+.clocks.sheet .clock-config .clock-config-group {
+  margin-left: 1.5em;
+  display: inline-block;
+}
+.clocks.sheet .clock-config .clock-config-group:first-child {
+  margin-left: 0;
+}
+.clocks.sheet .clock-config .clock-config-group label {
+  margin-right: 3px;
+}
+.clocks.sheet .clock-config .clock-config-group select {
+  width: 50px;
+}
+.clocks.sheet .clock-config .clock-config-group.theme select {
+  width: 175px;
+}
+.clocks.sheet .clock-debug {
+  background-color: #ff0000;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: monospace;
 }
 
 /*# sourceMappingURL=blades.css.map */
