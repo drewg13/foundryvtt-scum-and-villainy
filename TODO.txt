@@ -27,7 +27,8 @@ Planet item sheet
 Clocks
  - add 10- and 12-clocks - DONE
  - change the clock design to something clean/sci-fi - DONE
- - incorporate code from Clocks module
+ - incorporate code from Clocks module - DONE
+ - add Red clock theme option
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
@@ -51,6 +52,7 @@ Roll sheets
 All sheets
   - clean out Blades-specific code that's not needed - DONE
   - "space" look - first pass - DONE
+  - use Exo2 font used by S&V rulebook system-wide - DONE
   - Additional color/design tweaks
   - add code to restrict editing item sheets to GM-only?
   - icon improvements to factions?
