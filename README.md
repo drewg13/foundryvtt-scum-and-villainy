@@ -68,7 +68,7 @@ TBD
 
 Clock Actors
 
-Clock Actors live in your Actors tab (and can be dragged onto a scene as a token). To get started, create a new actor and select the "{system}.ClockSheet" sheet. You'll still see the default actor artwork; change a clock setting (such as theme or size) or hit the Reset button (between the plus/minus buttons) to generate the correct clock artwork.
+Clock Actors live in your Actors tab (and can be dragged onto a scene as a token). To get started, create a new actor and select the clock actor type. Change a clock setting (such as theme or size) or hit the Reset button (between the plus/minus buttons) to generate the correct clock artwork, if it doesn't appear as expected.
 
 Clock Tiles
 
