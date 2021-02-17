@@ -14,8 +14,8 @@ You DO NOT need to import any items out of the compendiums in order to use them.
 ## Recommended Modules
 
 - Ernie's Modern UI
-- Clocks
 - DSN (with chrome dice!)
+- (Clocks module is no longer needed)
 
 
 ## Usage
@@ -63,9 +63,14 @@ TBD
 ### Rolls
 TBD
 
-## Clocks
-- To add clock go to Actors tab and create a new Actor of type "🕛 clock".
-- To share it with other players just drag it to a scene.
+## Clocks (thanks to TyrannosaurusRoy for the UI code from his great Clocks module!)
+Clock Actors
+
+Clock Actors live in your Actors tab (and can be dragged onto a scene as a token). To get started, create a new actor and select the "{system}.ClockSheet" sheet. You'll still see the default actor artwork; change a clock setting (such as theme or size) or hit the Reset button (between the plus/minus buttons) to generate the correct clock artwork.
+
+Clock Tiles
+
+Clock Tiles are useful for quick, disposable clocks you'd like to drop onto the scene but don't plan to keep around for long. Click the new Clock button in the Tiles toolbar and a new clock will be dropped into the middle of your scene (you may need to scroll to see it). When you select and right-click the clock you'll see a new set of controls on the left that let you switch the clock's theme, cycle through clock sizes, and increment/decrement progress on the clock.
 
 ## Logic field
 
@@ -86,6 +91,7 @@ Logic field is a json with params which allows to implement some logic when the 
 
 ## Credits
 - Initial system forked from megastruktur's Blades in the Dark
+- Clock UI is adapted from the Clocks module by TyrannosaurusRoy (troygoode) under the MIT license
 - This work is based on Scum and Villainy (http://offguardgames.com/scum-and-villainy/), a product of Off Guard Games (https://offguardgames.com/) and designed by John LeBoeuf-Little and Stras Acimovic.
 - Scum and Villainy is based on Blades in the Dark (found at http://www.bladesinthedark.com/), product of One Seven Design, developed and authored by John Harper, and licensed for use under the Creative Commons Attribution 3.0 Unported license (http://creativecommons.org/licenses/by/3.0/).
 - Some assets were taken from here (thank you to timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
