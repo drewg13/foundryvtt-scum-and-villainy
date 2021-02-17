@@ -14,9 +14,13 @@ import { BladesItem } from "./blades-item.js";
 import { BladesItemSheet } from "./blades-item-sheet.js";
 import { BladesActorSheet } from "./blades-actor-sheet.js";
 import { BladesShipSheet } from "./blades-ship-sheet.js";
-import { BladesClockSheet } from "./blades-clock-sheet.js";
+//import { BladesClockSheet } from "./blades-clock-sheet.js";
 import { BladesUniverseSheet } from "./blades-universe-sheet.js";
 import * as migrations from "./migration.js";
+/* For Clocks UI */
+import { ClockSheet } from "./sheet.js";
+import Tiles from "./tiles.js";
+import { log } from "./util.js";
 
 window.BladesHelpers = BladesHelpers;
 
@@ -44,21 +48,13 @@ Hooks.once("init", async function() {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("blades", BladesActorSheet, { types: ["character"], makeDefault: true });
   Actors.registerSheet("blades", BladesShipSheet, { types: ["ship"], makeDefault: true });
-  Actors.registerSheet("blades", BladesClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
+  Actors.registerSheet("blades", ClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
   Actors.registerSheet("blades", BladesUniverseSheet, { types: ["universe"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("blades", BladesItemSheet, {makeDefault: true});
   preloadHandlebarsTemplates();
 
 
-  // Is the value Turf side.
-  Handlebars.registerHelper('is_turf_side', function(value, options) {
-    if (["left", "right", "top", "bottom"].includes(value)) {
-      return options.fn(this);
-    } else {
-      return options.inverse(this);
-    }
-  });
 
   // Multiboxes.
   Handlebars.registerHelper('multiboxes', function(selected, options) {
@@ -116,23 +112,7 @@ Hooks.once("init", async function() {
     return (a <= b);
   });
 
-  // ReputationTurf handlebar.
-  Handlebars.registerHelper('repturf', (turfs_amount, options) => {
-    let html = options.fn(this);
-    var turfs_amount_int = parseInt(turfs_amount);
-
-    // Can't be more than 6.
-    if (turfs_amount_int > 6) {
-      turfs_amount_int = 6;
-    }
-
-    for (let i = 13 - turfs_amount_int; i <= 12; i++) {
-      const rgx = new RegExp(' value=\"' + i + '\"');
-      html = html.replace(rgx, "$& disabled=\"disabled\"");
-    }
-    return html;
-  });
-
+  
   Handlebars.registerHelper('crew_vault_coins', (max_coins, options) => {
 
     let html = options.fn(this);
@@ -322,4 +302,17 @@ Hooks.on("renderSceneControls", async (app, html) => {
     simpleRollPopup();
   });
   html.append(dice_roller);
+});
+
+//For Clocks UI
+Hooks.once("init", () => {
+  log(`Init ${game.data.system.id}`);
+});
+
+Hooks.on("getSceneControlButtons", (controls) => {
+  Tiles.getSceneControlButtons(controls);
+});
+
+Hooks.on("renderTileHUD", async (hud, html, tile) => {
+  await Tiles.renderTileHUD(hud, html, tile);
 });
