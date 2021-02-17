@@ -5,14 +5,14 @@ const onClick = async () => {
   log('Tool Clicked');
   const clock = new Clock();
   const dim = {
-    x: ((canvas.dimensions.sceneRect.width - clock.image.width) / 2) + canvas.dimensions.paddingX,
-    y: ((canvas.dimensions.sceneRect.height - clock.image.height) / 2) + canvas.dimensions.paddingY
+    x: ((canvas.dimensions.sceneRect.width - clock.image.widthTile) / 2) + canvas.dimensions.paddingX,
+    y: ((canvas.dimensions.sceneRect.height - clock.image.heightTile) / 2) + canvas.dimensions.paddingY
   };
 
   const tile = new Tile({
     img: clock.image.img,
-    width: clock.image.width,
-    height: clock.image.height,
+    width: clock.image.widthTile,
+    height: clock.image.heightTile,
     x: dim.x,
     y: dim.y,
     z: 900,

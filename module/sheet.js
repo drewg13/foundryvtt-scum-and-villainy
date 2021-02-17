@@ -54,8 +54,8 @@ export class ClockSheet extends ActorSheet {
         theme: clock.theme,
         image: {
           url: clock.image.img,
-          width: clock.image.width,
-          height: clock.image.height
+          width: clock.image.widthSheet,
+          height: clock.image.heightSheet
         },
         settings: {
           sizes: Clock.sizes,

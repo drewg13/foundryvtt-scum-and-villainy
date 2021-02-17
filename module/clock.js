@@ -37,8 +37,10 @@ export class Clock {
   get image () {
     return { 
       img: `/systems/scum-and-villainy/themes/${this.theme}/${this.size}clock_${this.progress}.webp`,
-      width: 200,
-      height: 200
+      widthTile: 200,
+      heightTile: 200,
+	  widthSheet: 350,
+	  heightSheet: 350
     };
   }
 
