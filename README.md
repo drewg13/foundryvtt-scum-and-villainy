@@ -63,7 +63,9 @@ TBD
 ### Rolls
 TBD
 
-## Clocks (thanks to TyrannosaurusRoy for the UI code from his great Clocks module!)
+## Clocks 
+(thanks to TyrannosaurusRoy for permission to use the UI code from his great Clocks module!)
+
 Clock Actors
 
 Clock Actors live in your Actors tab (and can be dragged onto a scene as a token). To get started, create a new actor and select the "{system}.ClockSheet" sheet. You'll still see the default actor artwork; change a clock setting (such as theme or size) or hit the Reset button (between the plus/minus buttons) to generate the correct clock artwork.
