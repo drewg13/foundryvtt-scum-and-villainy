@@ -26,7 +26,7 @@ You DO NOT need to import any items out of the compendiums in order to use them.
 - 1st thing, create a Universe sheet to track systems, planets, and factions.  Click Update Systems and Update Planets to auto-populate the sheet with all available systems and planets.
 - If, at a later date, you add a custom system/planet to your game, click the relevant update link again to bring it onto the sheet.
 - Only currently relevant factions should be tracked, as the sheet will get huge otherwise.  If there's a strong need for a separate faction sheet, let me know.
-- PLEASE NOTE that deleting a faction from the sheet will delete all associated status and job info.  Faction tiers are editable from the faction item sheet linked from the faction name.
+- PLEASE NOTE that deleting a faction from the sheet (or re-adding an already present faction) will delete all associated status and job info.  Faction tiers are editable from the faction item sheet linked from the faction name.
 - To reset reputation, exp, etc counters just click on the label name or the nearby 0 icon.
 - To add items, you can click a corresponding label to bring up a popup containing all eligible items.
 - All "class/ship" specific items are prefixed with first letters, but item lists on the character sheet should be correctly limited to the appropriate items.
