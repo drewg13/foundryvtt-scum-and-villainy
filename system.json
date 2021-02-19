@@ -2,16 +2,17 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
   "author": "megastruktur, Andrew Garinger [agaringer#6498]",
   "esmodules": [
-    "module/blades.js"
+    "module/sav.js"
   ],
   "styles": [
-    "styles/blades.css"
+    "styles/sav.css",
+	"styles/hide-ui.css"
   ],
   "languages": [
     {
@@ -22,7 +23,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.9.11.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.9.12.zip",
   "packs": [
     {
       "name": "class",
@@ -100,13 +101,6 @@
       "system": "scum-and-villainy",
       "path": "./packs/tables.db",
       "entity": "RollTable"
-    },
-	{
-      "name": "universe",
-      "label": "Universe",
-      "system": "scum-and-villainy",
-      "path": "./packs/universe.db",
-      "entity": "Actor"
     },
 	{
       "name": "star_system",
