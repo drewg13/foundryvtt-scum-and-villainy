@@ -307,7 +307,8 @@
           {{#if (eq item.type "ability")}}
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
               <div class="item-body flex-horizontal">
-                <b><a class="item-name">{{item.name}}</a></b>
+                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+				<a class="item-name">{{item.name}}</a>
                 <div class="item-description">{{item.data.description}}</div>
               </div>
               <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -326,7 +327,7 @@
            <p>{{localize "BITD.Loadout"}}:  {{data.loadout.current}} / {{data.loadout.load_level}}</p>
           <p><a class="item-add-popup" data-item-type="item"><i class="fas fa-plus-square"></i></a></p>
         </div>
-        <div>
+        <div id="loadout-list">
           {{#each actor.items as |item id|}}
           {{#if (eq item.type "item")}}
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
