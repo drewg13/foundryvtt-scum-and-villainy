@@ -1,0 +1,6 @@
+.hide-ui #token-hud .control-icon.effects,
+.hide-ui #token-hud .control-icon.combat,
+.hide-ui #token-hud .control-icon.target,
+.hide-ui #token-hud .attribute.elevation {
+    display: none;
+}
