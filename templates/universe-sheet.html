@@ -64,9 +64,11 @@
 				{{#if (eq planet.data.system system.name)}}
 				<div class="item flex-horizontal" data-item-id="{{planet._id}}">
 				<div class="item-body flex-horizontal">
-					<a class="item-name"><b>{{planet.name}}</b></a>
+					<p><a class="item-name"><b>{{planet.name}}</b></a><br><br>
+					<a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a></p>
 				</div>
-					<table style="width: 28rem;">
+				
+					<table style="max-width: 10rem;">
 						<tr><td>Wealth:</td>
 							<td>{{data.wealth}} / 3</td></tr>
 						<tr><td>Crime/Syndicate:</td>
