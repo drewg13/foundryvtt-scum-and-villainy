@@ -65,7 +65,7 @@
   "BITD.Debt": "Debt",
   "BITD.Price": "Price",
   "BITD.Logic": "Logic",
-  "BITD.ExpClues": "XP Clues",
+  "BITD.ExpClues": "XP Triggers",
   "BITD.AbilityPrice": "Ability Price",
   "BITD.AbilityClass": "Ability Class",
   "BITD.Information": "Information",
@@ -124,6 +124,7 @@
   "BITD.RollFailurePositionRisky": "Things go badly. You suffer <strong>harm</strong> a <strong>complication</strong> occurs, you end up in a <strong>desperate</strong> position, you <strong>lose this opportunity</strong>.",
   "BITD.RollFailurePositionDesperate": "It’s the worst outcome. You suffer <strong>severe harm</strong>, a <strong>serious complication occurs</strong>, you <strong>lose this opportunity for action</strong>.",
   "BITD.RollGambit": "If you didn't spend a <strong>gambit</strong> on this roll, gain one <strong>gambit</strong>.",
+  "BITD.RollXP": "Mark <strong>XP</strong> for the related attribute.", 
 
   "BITD.PositionControlled": "Controlled",
   "BITD.PositionRisky": "Risky",
@@ -175,7 +176,13 @@
   "BITD.PExperience": "Playbook XP ",
   "BITD.CExperience": "Crew XP ",
   "BITD.AExperience": "XP ",
-
+  
+  "BITD.LifestyleBroke": "(Broke, Lifestyle = ",
+  "BITD.LifestylePoor": "(Poor, Lifestyle = ",
+  "BITD.LifestyleMeager": "(Meager, Lifestyle = ",
+  "BITD.LifestyleModest": "(Modest, Lifestyle = ",
+  "BITD.LifestyleFine": "(Fine, Lifestyle = ",
+  
   "BITD.AddAbility": "Add Ability",
   "BITD.AddItem": "Add Item",
   "BITD.AddUpgrade": "Add Upgrade",
