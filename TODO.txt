@@ -11,8 +11,8 @@ Character sheet
  - auto-add starting ability on Class selection - DONE
  - reworked loadout UI - DONE
  - fix first segment on healing clock - DONE
+ - add Lifestyle tracking to Stash - DONE
  - figure out how to re-render character sheet on changes to the linked ship sheet (rework linkage to use ActiveEffects?)
- - auto-generate gambits w/ 6 on risky roll where no gambit used, indicate gambit earned on roll chat message (also Scoundrel special)
 
 Ship sheet
  - hover over items should hint that they're clickable - DONE
@@ -52,6 +52,8 @@ Universe sheet
 Roll sheets
   - Color code failure rolls red, full success blue - DONE
   - change background/dice icons - DONE
+  - add gambit reminder to roll messages when success & risky - DONE
+  - add XP reminder to roll messages when desperate - DONE
 
 All sheets
   - clean out Blades-specific code that's not needed - DONE
