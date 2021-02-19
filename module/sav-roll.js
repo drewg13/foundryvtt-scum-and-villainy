@@ -178,7 +178,7 @@ export async function simpleRollPopup() {
         label: `Roll`,
         callback: (html) => {
           let diceQty = html.find('[name="qty"]')[0].value;  
-          savRoll(diceQty);
+          savRoll(diceQty, "Fortune!");
         },
       },
       no: {

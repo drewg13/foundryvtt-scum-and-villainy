@@ -265,7 +265,7 @@ export class SaVHelpers {
 			
 		} else {
 		
-			console.log(`Called for Roll using attribute ${attribute_name} not in Actor models!`)
+			return attribute_name;
 			
 		}
 		
