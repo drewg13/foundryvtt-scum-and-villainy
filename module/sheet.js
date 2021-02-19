@@ -181,7 +181,7 @@ export default {
           }
         }
       };
-	  console.log(persistObj);
+	  
 	  const visualObj = {
         img: newClock.image.img,
         token: {
@@ -236,7 +236,7 @@ export default {
           }
         }
       };
-	  console.log(persistObj);
+	  
 	  const visualObj = {
         img: newClock.image.img,
         token: {
