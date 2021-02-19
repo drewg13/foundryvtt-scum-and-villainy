@@ -346,15 +346,19 @@
 * #character-stress label[for$="-0"] {
   margin-right: 0px;
 }
-* #faction-items .item-name {
-  width: 150px;
-}
-* #all-items .item-name,
-* #loadout .item-name,
 * #upgrades .item-name,
-* #abilities .item-name {
-  width: auto;
-  text-align: left;
+* #abilities .item-name,
+* #loadout .item-name {
+	width: 120px;
+}
+* #all-items .item-name {
+	width: 300px;
+}
+* #faction-items .item-name {
+  width: 120px;
+}
+* #all-items .item .item-body {
+	max-width: 15rem;
 }
 * #planet-list .item-body {
 	max-width: 5rem;
