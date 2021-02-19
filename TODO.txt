@@ -30,6 +30,8 @@ Clocks
  - incorporate code from Clocks module - DONE
  - add Red clock theme option - DONE
  - override token-hud for clock actor to use tile UI - DONE
+ - add Yellow and Green theme options - DONE
+ - separate tile UI for tokens and ensure sync between token and sheet - DONE
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
