@@ -65,7 +65,7 @@
   "BITD.Debt": "Debt",
   "BITD.Price": "Price",
   "BITD.Logic": "Logic",
-  "BITD.ExpClues": "Exp Clues",
+  "BITD.ExpClues": "XP Clues",
   "BITD.AbilityPrice": "Ability Price",
   "BITD.AbilityClass": "Ability Class",
   "BITD.Information": "Information",
@@ -170,6 +170,10 @@
   "BITD.SystemsWeaponsShort": "Weapons",
   "BITD.SystemsDamage": "Damage",
   "BITD.SystemsSkips": "Skips",
+
+  "BITD.PExperience": "Playbook XP ",
+  "BITD.CExperience": "Crew XP ",
+  "BITD.AExperience": "XP ",
 
   "BITD.AddAbility": "Add Ability",
   "BITD.AddItem": "Add Item",
