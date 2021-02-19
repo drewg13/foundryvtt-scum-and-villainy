@@ -72,5 +72,78 @@ export default {
         flags: newClock.flags
       });
     });
+  },
+  
+  renderTokenHUD: async (_hud, html, token) => {
+    log("Render")
+    let t = game.actors.get(token.actorId);
+
+	if (!t.data.flags.clocks) {
+	  return false;
+    }
+
+    const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/button1.html');
+    const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/button2.html');
+	html.find("div.left").append(button1HTML).click(async (event) => {
+      log("HUD Clicked")
+      // re-get in case there has been an update
+      t = canvas.tokens.get(token._id);
+
+      const oldClock = new Clock(t.data.flags.clocks);
+      let newClock;
+
+      const target = event.target.classList.contains("control-icon")
+        ? event.target
+        : event.target.parentElement;
+      if (target.classList.contains("cycle-size")) {
+        newClock = oldClock.cycleSize();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
+        newClock = oldClock.increment();
+      } else if (target.classList.contains("progress-down")) {
+        newClock = oldClock.decrement();
+	  } else if (target.classList.contains("config")) {
+		return;
+      } else {
+        return error("ERROR: Unknown TokenHUD Button");
+      }
+
+      await t.update({
+        img: newClock.image.img,
+        flags: newClock.flags
+      });
+    });
+	html.find("div.right").append(button2HTML).click(async (event) => {
+      log("HUD Clicked")
+      // re-get in case there has been an update
+      t = canvas.tokens.get(token._id);
+
+      const oldClock = new Clock(t.data.flags.clocks);
+      let newClock;
+
+      const target = event.target.classList.contains("control-icon")
+        ? event.target
+        : event.target.parentElement;
+      if (target.classList.contains("cycle-size")) {
+        newClock = oldClock.cycleSize();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
+        newClock = oldClock.increment();
+      } else if (target.classList.contains("progress-down")) {
+        newClock = oldClock.decrement();
+      } else if (target.classList.contains("visibility")) {
+		return;
+      } else {
+        return error("ERROR: Unknown TokenHUD Button");
+      }
+
+      await t.update({
+        img: newClock.image.img,
+        flags: newClock.flags
+      });
+    });
+	return true;
   }
 };
