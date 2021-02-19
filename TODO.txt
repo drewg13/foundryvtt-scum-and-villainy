@@ -28,8 +28,8 @@ Clocks
  - add 10- and 12-clocks - DONE
  - change the clock design to something clean/sci-fi - DONE
  - incorporate code from Clocks module - DONE
- - add Red clock theme option
- - override token-hud for clock actor to use tile UI
+ - add Red clock theme option - DONE
+ - override token-hud for clock actor to use tile UI - DONE
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
@@ -45,16 +45,17 @@ Universe sheet
   - figure out how to keep the Status tracker from shifting around based on the length of the status text label - DONE
   - color text label to match status tracker color - DONE
   - onhover hinting to System name in label-stripe header - DONE
-  - scan for duplicates on addition to prevent double-add when items are imported from compendiums
+  - scan for duplicates on addition to prevent double-add when items are imported from compendiums - DONE
 
 Roll sheets
   - Color code failure rolls red, full success blue - DONE
+  - change background/dice icons - DONE
 
 All sheets
   - clean out Blades-specific code that's not needed - DONE
   - "space" look - first pass - DONE
   - use Exo2 font used by S&V rulebook system-wide - DONE
-  - Additional color/design tweaks
+  - Additional color/design tweaks - DONE
   - add code to restrict editing item sheets to GM-only?
   - icon improvements to factions?
   
