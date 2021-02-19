@@ -19,6 +19,7 @@ import * as migrations from "./migration.js";
 /* For Clocks UI */
 import { ClockSheet } from "./sheet.js";
 import Tiles from "./tiles.js";
+import Sheet from "./sheet.js";
 import { log } from "./util.js";
 
 window.SaVHelpers = SaVHelpers;
@@ -314,7 +315,7 @@ Hooks.on("renderTileHUD", async (hud, html, tile) => {
 });
 
 Hooks.on("renderTokenHUD", async (hud, html, token) => {
-  if( await Tiles.renderTokenHUD(hud, html, token) ) {
+  if( await Sheet.renderTokenHUD(hud, html, token) ) {
 	  var rootElement = document.getElementsByClassName('vtt game')[0];
       rootElement.classList.add('hide-ui');
   } else {

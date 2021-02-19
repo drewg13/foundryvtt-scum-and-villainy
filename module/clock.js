@@ -9,7 +9,7 @@ export class Clock {
   }
 
   static get themes () {
-    return ["default", "red"];
+    return ["default", "red", "yellow", "green"];
   }
 
   constructor ({ theme, size, progress } = {}) {

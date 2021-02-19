@@ -46,7 +46,7 @@ export class ClockSheet extends ActorSheet {
   }
 
   getData () {
-    const clock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
+	const clock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
     return mergeObject(super.getData(), {
       clock: {
         progress: clock.progress,
@@ -118,10 +118,11 @@ export class ClockSheet extends ActorSheet {
         actorLink: true
       });
     }
-
+	
     // update the Actor
     const persistObj = await this.system.persistClockToActor({ actor, clock });
-    const visualObj = {
+	console.log(persistObj);
+	const visualObj = {
       img: clock.image.img,
       token: {
         img: clock.image.img,
@@ -129,5 +130,133 @@ export class ClockSheet extends ActorSheet {
       }
     };
     await actor.update(mergeObject(visualObj, persistObj));
+  }
+};
+
+export default {
+	
+	renderTokenHUD: async (_hud, html, token) => {
+	
+	log("Render")
+    let t = canvas.tokens.get(token._id);
+	let a = game.actors.get(token.actorId);
+	
+	if (!a.data.flags.clocks) {
+	  return false;
+    }
+
+    const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/button1.html');
+    const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/button2.html');
+	html.find("div.left").append(button1HTML).click(async (event) => {
+      log("HUD Clicked")
+      // re-get in case there has been an update
+      t = canvas.tokens.get(token._id);
+
+      const oldClock = new Clock(a.data.flags.clocks);
+      let newClock;
+
+      const target = event.target.classList.contains("control-icon")
+        ? event.target
+        : event.target.parentElement;
+      if (target.classList.contains("cycle-size")) {
+        newClock = oldClock.cycleSize();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
+        newClock = oldClock.increment();
+      } else if (target.classList.contains("progress-down")) {
+        newClock = oldClock.decrement();
+	  } else if (target.classList.contains("config")) {
+		return;
+      } else {
+        return error("ERROR: Unknown TokenHUD Button");
+      }
+      
+	  const persistObj = {
+        flags: {
+          clocks: {
+            progress: newClock.progress,
+            size: newClock.size,
+            theme: newClock.theme
+          }
+        }
+      };
+	  console.log(persistObj);
+	  const visualObj = {
+        img: newClock.image.img,
+        token: {
+          img: newClock.image.img,
+          //...DEFAULT_TOKEN
+        }
+      };
+      await a.update(mergeObject(visualObj, persistObj));
+	  
+	  const tokens = a.getActiveTokens();
+      for (const t of tokens) {
+        await t.update({
+          name: a.name,
+          img: newClock.image.img,
+		  flags: newClock.flags,
+          actorLink: true
+        });
+      }
+	  
+    });
+	html.find("div.right").append(button2HTML).click(async (event) => {
+      log("HUD Clicked")
+      // re-get in case there has been an update
+      t = canvas.tokens.get(token._id);
+	  
+      const oldClock = new Clock(a.data.flags.clocks);
+      let newClock;
+
+      const target = event.target.classList.contains("control-icon")
+        ? event.target
+        : event.target.parentElement;
+      if (target.classList.contains("cycle-size")) {
+        newClock = oldClock.cycleSize();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
+        newClock = oldClock.increment();
+      } else if (target.classList.contains("progress-down")) {
+        newClock = oldClock.decrement();
+      } else if (target.classList.contains("visibility")) {
+		return;
+      } else {
+        return error("ERROR: Unknown TokenHUD Button");
+      }
+	  
+	  const persistObj = {
+        flags: {
+          clocks: {
+            progress: newClock.progress,
+            size: newClock.size,
+            theme: newClock.theme
+          }
+        }
+      };
+	  console.log(persistObj);
+	  const visualObj = {
+        img: newClock.image.img,
+        token: {
+          img: newClock.image.img,
+          //...DEFAULT_TOKEN
+        }
+      };
+      await a.update(mergeObject(visualObj, persistObj));
+	  
+	  const tokens = a.getActiveTokens();
+      for (const t of tokens) {
+        await t.update({
+          name: a.name,
+          img: newClock.image.img,
+		  flags: newClock.flags,
+          actorLink: true
+        });
+      }
+      
+    });
+	return true;
   }
 }
