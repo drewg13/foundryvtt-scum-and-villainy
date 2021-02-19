@@ -121,7 +121,6 @@ export class ClockSheet extends ActorSheet {
 	
     // update the Actor
     const persistObj = await this.system.persistClockToActor({ actor, clock });
-	console.log(persistObj);
 	const visualObj = {
       img: clock.image.img,
       token: {
