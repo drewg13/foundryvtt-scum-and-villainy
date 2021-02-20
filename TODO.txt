@@ -12,6 +12,7 @@ Character sheet
  - reworked loadout UI - DONE
  - fix first segment on healing clock - DONE
  - add Lifestyle tracking to Stash - DONE
+ - add Friends tab and trackers
  - figure out how to re-render character sheet on changes to the linked ship sheet (rework linkage to use ActiveEffects?)
 
 Ship sheet
