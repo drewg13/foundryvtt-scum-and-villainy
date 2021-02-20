@@ -12,7 +12,8 @@ Character sheet
  - reworked loadout UI - DONE
  - fix first segment on healing clock - DONE
  - add Lifestyle tracking to Stash - DONE
- - add Friends tab and trackers
+ - add Friends tab and trackers - DONE
+ - auto-add friends on Class selection - DONE
  - figure out how to re-render character sheet on changes to the linked ship sheet (rework linkage to use ActiveEffects?)
 
 Ship sheet
@@ -55,6 +56,10 @@ Roll sheets
   - change background/dice icons - DONE
   - add gambit reminder to roll messages when success & risky - DONE
   - add XP reminder to roll messages when desperate - DONE
+
+Compendiums
+  - Add note to starting abilities, not eligible as Veteran advances - DONE
+  - Add Wanted roll tables and journal entries - DONE
 
 All sheets
   - clean out Blades-specific code that's not needed - DONE
