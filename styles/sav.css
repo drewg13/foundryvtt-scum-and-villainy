@@ -346,6 +346,9 @@
 * #character-stress label[for$="-0"] {
   margin-right: 0px;
 }
+* #friend-list .item-name {
+	width: 60px;
+}
 * #upgrades .item-name,
 * #abilities .item-name,
 * #loadout .item-name {
@@ -360,9 +363,13 @@
 * #all-items .item .item-body {
 	max-width: 15rem;
 }
+* #friend-list .item .item-body {
+	margin-left: 20px;
+}
 * #planet-list .item-body {
 	max-width: 5rem;
 }
+* #friend-list .item-body,
 * #faction-items .item-body,
 * #loadout .item-body,
 * #upgrades .item-body,
@@ -373,12 +380,16 @@
 	width: 400px;
 	padding-left: 5px;
 }
+* #friend-list .item-description {
+	width: 300px;
+}
 * #faction-items .item-description,
 * #loadout .item-description,
 * #upgrades .item-description,
 * #abilities .item-description {
   width: 300px;
 }
+* #friends .label-stripe p:first-child,
 * #factions .label-stripe p:first-child,
 * #loadout .label-stripe p:first-child,
 * #loadout .label-stripe-red p:first-child,
@@ -392,6 +403,50 @@
   position: float;
   top: 0px;
   right: 10px;
+}
+* .friend-tracker {
+  display: flex;
+  /* Hide the browser's default checkbox */
+  top: 0px;
+  right: 10px;
+}
+* .friend-tracker label {
+  height: 30px;
+  min-width: 10px;
+  background-image: url("assets/teeth/stresstooth-blue.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 1px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* .friend-tracker label:last-of-type {
+  margin-right: 0px;
+}
+* .friend-tracker label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+* .friend-tracker input {
+  display: none;
+}
+* .friend-tracker input + label[for$="-2"] {
+  background-image: url("assets/teeth/arrow-down.png");
+}
+* .friend-tracker input + label[for$="-1"] {
+  background-image: url("assets/teeth/arrow-grey.png");
+}
+* .friend-tracker input + label[for$="-0"] {
+  background-image: url("assets/teeth/arrow-up.png");
+}
+* .friend-tracker input:checked + label[for$="-2"] {
+  background-image: url("assets/teeth/arrow-red.png");
+}
+* .friend-tracker input:checked + label[for$="-1"] {
+  background-image: url("assets/teeth/arrow-middle.png");
+}
+* .friend-tracker input:checked + label[for$="-0"] {
+  background-image: url("assets/teeth/arrow-blue.png");
 }
 * .teeth-experience-faction {
   display: flex;
@@ -914,6 +969,12 @@
 * .item {
   justify-content: space-between;
   font-weight: bold;
+}
+* #abilities .item,
+* #loadout .item,
+* #friends .item,
+* #upgrades .item {
+    margin-right: 5px;
 }
 * .item .ship-body,
 * .item .item-body {
