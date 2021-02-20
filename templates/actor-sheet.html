@@ -11,7 +11,23 @@
       </div>
 
       <div id="character-traits" class="flex-column">
-
+		
+		<div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class">{{localize "BITD.Class"}}</a>
+		  </div>
+            {{#each actor.items as |item id|}}
+                {{#if (eq item.type "class")}}
+                <div class="item flex-horizontal" data-item-id="{{item._id}}">
+                  <div class="item-body flex-horizontal">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <a class="item-name">{{item.name}}</a>
+                  </div>
+                  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+                </div>
+                {{/if}}
+            {{/each}}
+        </div>
+		
         <div class="item-block flex-horizontal">
           <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="heritage">{{localize "BITD.Heritage"}}</a>
 		  </div>
@@ -60,23 +76,6 @@
           {{/each}}
         </div>
 
-        <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class">{{localize "BITD.Class"}}</a>
-		  </div>
-            {{#each actor.items as |item id|}}
-                {{#if (eq item.type "class")}}
-                <div class="item flex-horizontal" data-item-id="{{item._id}}">
-                  <div class="item-body flex-horizontal">
-                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                    <a class="item-name">{{item.name}}</a>
-                  </div>
-                  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-                </div>
-                {{/if}}
-            {{/each}}
-        </div>
-
-		
 		<div class="item-block flex-horizontal">
           <div class="item-class-label"><a class="flag-add-popup" data-distinct="true" data-item-type="ship">{{localize "BITD.Ship"}}</a>
 		  </div>
@@ -100,7 +99,12 @@
         <label for="character-{{actor._id}}-alias">{{localize "BITD.Alias"}}</label>
         <input type="text" id="character-{{actor._id}}-alias" name="data.alias" value="{{data.alias}}">
       </div>
-
+	  
+	  <div id="look">
+        <label for="character-{{actor._id}}-look">{{localize "BITD.Look"}}</label>
+        <input type="text" id="character-{{actor._id}}-look" name="data.look" value="{{data.look}}">
+      </div>
+	  
       {{> "systems/scum-and-villainy/templates/parts/coins.html" actor=actor}}
     </div>
 
@@ -270,6 +274,7 @@
       <nav class="tabs flex-horizontal">
         <a class="item" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
         <a class="item" data-tab="loadout">{{localize "BITD.Loadout"}}</a>
+		<a class="item" data-tab="friends">{{localize "BITD.Friends"}}</a>
         <a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
         <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
       </nav>
@@ -343,7 +348,42 @@
           <div class="item-class-label"><a class="item-add-popup" data-item-type="item">{{localize "BITD.AddItem"}}</a></div>
         </div>
       </div>
-
+	  
+	  {{!-- Friends Tab --}}
+      <div id="friends" class="tab flex-vertical" data-tab="friends">
+		
+		<div class="label-stripe">
+		  <p>{{localize "BITD.Friends"}}</p>
+          <p><a class="item-add-popup" data-item-type="friend"><i class="fas fa-plus-square"></i></a></p>
+        </div>
+        <div id="friend-list">
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "friend")}} 
+			<div class="friend-tracker">
+			{{#multiboxes item.data.status.value}}
+				<input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="0" type="radio" id="friend-{{item._id}}-status-0" value="0" dtype="Radio">
+				<label for="friend-{{item._id}}-status-0"></label>
+				<input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="1" type="radio" id="friend-{{item._id}}-status-1" value="1" dtype="Radio">
+				<label for="friend-{{item._id}}-status-1"></label>
+				<input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="2" type="radio" id="friend-{{item._id}}-status-2" value="2" dtype="Radio">
+				<label for="friend-{{item._id}}-status-2"></label>
+			{{/multiboxes}}
+			
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">    
+			  <div class="item-body flex-horizontal">
+				<!--<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>-->
+				<a class="item-name">{{item.name}}</a>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+			</div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="friend">{{localize "BITD.AddFriend"}}</a></div>
+        </div>
+      </div>
+	  
       <div class="tab flex-vertical" data-tab="character-notes">
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
