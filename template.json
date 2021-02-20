@@ -5,6 +5,7 @@
     "alias": "",
 	"look": "",
 	"character_class": "",
+	"character_class_default": "",
     "stress": {
       "value": [0],
       "max": 9,
