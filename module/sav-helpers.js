@@ -48,6 +48,15 @@ export class SaVHelpers {
 		if ( size.length > 0 ) { abilities.push( size ); };
 		
 	};
+	
+	if ( actor.data.type == "character" ) {
+		
+		let friends = actor.items.filter(a => a.type === "friend").map(e => {return e.data.name}) || [""];
+		//console.log(size);
+		if ( friends.length > 0 ) { abilities.push( friends ); };
+		
+	};
+	
 	//console.log(abilities);
 	
 	let items = await SaVHelpers.getAllItemsByType(item_type, game);
@@ -56,6 +65,13 @@ export class SaVHelpers {
 		
 		let all_sizes = await SaVHelpers.getAllItemsByType("ship_size", game);
 		all_sizes.forEach( s => { items.push( s ); });
+		//console.log(items);
+	}
+	
+	if ( actor.data.type == "character" ) {
+		
+		let all_friends = await SaVHelpers.getAllItemsByType("friend", game);
+		all_friends.forEach( s => { items.push( s ); });
 		//console.log(items);
 	}
 	

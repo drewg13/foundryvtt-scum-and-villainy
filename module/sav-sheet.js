@@ -112,6 +112,13 @@ export class SaVSheet extends ActorSheet {
 			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
 			html += `</label>`;
 		  };
+	  } else if (e.type == "friend") {
+		  if (e.data.class == this.actor.data.data.character_class) {
+			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+			html += `</label>`;
+		  };
 	  } else {
 			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
