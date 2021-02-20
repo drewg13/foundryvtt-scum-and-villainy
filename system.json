@@ -2,7 +2,7 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "0.9.18",
+  "version": "0.9.19",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.7.9",
   "templateVersion": 1,
@@ -23,7 +23,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.9.18.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v0.9.19.zip",
   "packs": [
     {
       "name": "class",
@@ -96,7 +96,7 @@
       "entity": "Item"
     },
     {
-      "name": "tables",
+      "name": "job_tables",
       "label": "Job Tables",
       "system": "scum-and-villainy",
       "path": "./packs/tables.db",
@@ -129,6 +129,27 @@
       "system": "scum-and-villainy",
       "path": "./packs/size.db",
       "entity": "Item"
-    }
+    },
+	{
+      "name": "wanted",
+      "label": "Wanted Consequences",
+      "system": "scum-and-villainy",
+      "path": "./packs/wanted-consequences.db",
+      "entity": "JournalEntry"
+    },
+	{
+      "name": "wanted_tables",
+      "label": "Wanted Tables",
+      "system": "scum-and-villainy",
+      "path": "./packs/wanted-tables.db",
+      "entity": "RollTable"
+    },
+	{
+	  "name": "friend",
+	  "label": "Friends",
+	  "system": "scum-and-villainy",
+	  "path": "./packs/friends.db",
+	  "entity": "Item"
+	}
   ]
 }

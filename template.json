@@ -3,6 +3,7 @@
   "types": ["character", "ship", "\uD83D\uDD5B clock", "universe"],
   "character": {
     "alias": "",
+	"look": "",
 	"character_class": "",
     "stress": {
       "value": [0],
@@ -252,7 +253,7 @@
   }
 },
 "Item": {
-  "types": ["item", "class", "ability", "heritage", "background", "vice", "crew_type", "crew_reputation", "crew_upgrade", "crew_ability", "star_system", "planet", "faction", "ship_size"],
+  "types": ["item", "class", "ability", "heritage", "background", "vice", "crew_type", "crew_reputation", "crew_upgrade", "crew_ability", "star_system", "planet", "faction", "ship_size", "friend"],
   "templates": {
     "default": {
       "description": ""
@@ -364,6 +365,13 @@
   },
   "ship_size": {
     "templates": ["default", "logic"]
+  },
+  "friend": {
+    "templates": ["default"],
+	"class": "",
+	"status": {
+	  "value": [1]
+	}
   }
 }
 }
