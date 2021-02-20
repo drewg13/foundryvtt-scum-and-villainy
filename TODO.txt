@@ -14,6 +14,10 @@ Character sheet
  - add Lifestyle tracking to Stash - DONE
  - add Friends tab and trackers - DONE
  - auto-add friends on Class selection - DONE
+ - move Class to first spot under name to mirror order during character creation - DONE
+ - add Vice roll button under Stress - DONE
+ - center healing clock better - DONE
+ - add red onhover to new XP labels - DONE
  - figure out how to re-render character sheet on changes to the linked ship sheet (rework linkage to use ActiveEffects?)
 
 Ship sheet
@@ -22,6 +26,8 @@ Ship sheet
  - include ship size in auto-add on Class selection - DONE
  - List modules under their relevant systems, once added, including damage marker - DONE
  - Limit modules available to add for a system if current modules for system >= system rating - DONE
+ - add Contacts tab and trackers - DONE
+ - move Ship Type to first spot under name to mirror order during character creation - DONE
  
 Planet item sheet
  - Edit fields are ugly
@@ -34,6 +40,7 @@ Clocks
  - override token-hud for clock actor to use tile UI - DONE
  - add Yellow and Green theme options - DONE
  - separate tile UI for tokens and ensure sync between token and sheet - DONE
+ - remove accidental dependency on Clocks module installation impacting flags scope - DONE
  
 Universe sheet
   - track available Systems and Planets (dynamically added based on items present in game) - DONE
@@ -56,10 +63,15 @@ Roll sheets
   - change background/dice icons - DONE
   - add gambit reminder to roll messages when success & risky - DONE
   - add XP reminder to roll messages when desperate - DONE
+  - seperate out Fortune/Resistance/Vice rolls and format more appropriately with rule reminders - DONE
+  - add notification when making a 0d roll - DONE
+  - auto-calc the Resistance and Vice roll stress results and pass to chat roll - DONE
+  - automate Upkeep rolls to take into account Skips - DONE
 
 Compendiums
   - Add note to starting abilities, not eligible as Veteran advances - DONE
   - Add Wanted roll tables and journal entries - DONE
+  - Add Friends/Contacts compendium - DONE
 
 All sheets
   - clean out Blades-specific code that's not needed - DONE
