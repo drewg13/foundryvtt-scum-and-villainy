@@ -63,10 +63,10 @@ Roll sheets
   - change background/dice icons - DONE
   - add gambit reminder to roll messages when success & risky - DONE
   - add XP reminder to roll messages when desperate - DONE
-  - seperate out Fortune/Resistance/Vice rolls and format more appropriately with rule reminders - DONE
+  - separate out Fortune/Resistance/Vice/Upkeep rolls and format more appropriately with rule reminders - DONE
   - add notification when making a 0d roll - DONE
   - auto-calc the Resistance and Vice roll stress results and pass to chat roll - DONE
-  - automate Upkeep rolls to take into account Skips - DONE
+  - create simpler roll popup for rolls that don't need position/effect modifiers - DONE
 
 Compendiums
   - Add note to starting abilities, not eligible as Veteran advances - DONE
