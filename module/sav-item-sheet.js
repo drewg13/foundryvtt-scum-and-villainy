@@ -17,6 +17,14 @@ export class SaVItemSheet extends ItemSheet {
 
   /* -------------------------------------------- */
 
+/** @override */
+  getData() {
+    const data = super.getData();
+	data.isGM = game.user.isGM;
+	
+	return data;
+  }
+
   /** @override */
   get template() {
     const path = "systems/scum-and-villainy/templates/items";

@@ -23,6 +23,7 @@ export class SaVActorSheet extends SaVSheet {
   /** @override */
   getData() {
     const data = super.getData();
+	data.isGM = game.user.isGM;
 	
 	let actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
 	

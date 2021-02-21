@@ -18,6 +18,13 @@ export class SaVShipSheet extends SaVSheet {
     });
   }
 
+ /** @override */
+  getData() {
+    const data = super.getData();
+	data.isGM = game.user.isGM;
+	
+	return data;
+  }
 
   /** @override */
 	activateListeners(html) {
