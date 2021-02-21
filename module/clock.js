@@ -46,11 +46,13 @@ export class Clock {
 
   get flags () {
     return {
-      clocks: {
-        theme: this._theme,
-        size: this._size,
-        progress: this._progress
-      }
+      "scum-and-villainy": {
+	    clocks: {
+          theme: this._theme,
+          size: this._size,
+          progress: this._progress
+        }
+	  }
     };
   }
 

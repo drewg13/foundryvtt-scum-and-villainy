@@ -113,7 +113,7 @@ export class SaVSheet extends ActorSheet {
 			html += `</label>`;
 		  };
 	  } else if (e.type == "friend") {
-		  if (e.data.class == this.actor.data.data.character_class) {
+		  if ( (e.data.class == this.actor.data.data.character_class) || (e.data.class == this.actor.data.data.ship_class) ) {
 			html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
@@ -250,8 +250,17 @@ async _onFlagAddClick(event) {
   async _onRollAttributeDieClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
-    this.actor.rollAttributePopup(attribute_name);
+    let actions = ["doctor", "hack", "rig", "study", "helm", "scramble", "scrap", "skulk", "attune", "command", "consort", "sway", "engines", "hull", "comms", "weapons"];
 
+	if ( actions.includes( attribute_name ) ) {
+		
+	  this.actor.rollActionPopup(attribute_name);
+	  
+	} else {
+	  
+	  this.actor.rollSimplePopup(attribute_name);
+	  
+	}
   }
 
   /* -------------------------------------------- */
@@ -308,7 +317,7 @@ async _onFlagAddClick(event) {
 		console.log("update attempted for type undefined in sav-sheet.js onUpdateBoxClick function");
 		return;
 	};
-	console.log(update);
+	//console.log(update);
 	await this.actor.updateEmbeddedEntity("OwnedItem", update);
 	
    

@@ -12,7 +12,7 @@ export class SaVActorSheet extends SaVSheet {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["scum-and-villainy", "sheet", "actor"],
   	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
-      width: 780,
+      width: 800,
       height: 970,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
     });

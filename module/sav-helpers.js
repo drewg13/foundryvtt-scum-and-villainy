@@ -49,13 +49,12 @@ export class SaVHelpers {
 		
 	};
 	
-	if ( actor.data.type == "character" ) {
+	
 		
 		let friends = actor.items.filter(a => a.type === "friend").map(e => {return e.data.name}) || [""];
-		//console.log(size);
 		if ( friends.length > 0 ) { abilities.push( friends ); };
 		
-	};
+	
 	
 	//console.log(abilities);
 	
@@ -68,12 +67,11 @@ export class SaVHelpers {
 		//console.log(items);
 	}
 	
-	if ( actor.data.type == "character" ) {
+	
 		
 		let all_friends = await SaVHelpers.getAllItemsByType("friend", game);
 		all_friends.forEach( s => { items.push( s ); });
-		//console.log(items);
-	}
+
 	
     let trim_abil_list = abil_list.filter( x => !abilities.includes( x ) );
 	//console.log(trim_abil_list);

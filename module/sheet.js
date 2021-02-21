@@ -140,7 +140,7 @@ export default {
     let t = canvas.tokens.get(token._id);
 	let a = game.actors.get(token.actorId);
 	
-	if (!a.data.flags.clocks) {
+	if ( !a.data.flags['scum-and-villainy'].clocks ) {
 	  return false;
     }
 
@@ -151,7 +151,7 @@ export default {
       // re-get in case there has been an update
       t = canvas.tokens.get(token._id);
 
-      const oldClock = new Clock(a.data.flags.clocks);
+      const oldClock = new Clock(a.data.flags['scum-and-villainy'].clocks);
       let newClock;
 
       const target = event.target.classList.contains("control-icon")
@@ -173,12 +173,14 @@ export default {
       
 	  const persistObj = {
         flags: {
-          clocks: {
-            progress: newClock.progress,
-            size: newClock.size,
-            theme: newClock.theme
+          "scum-and-villainy": {
+		    clocks: {
+              progress: newClock.progress,
+              size: newClock.size,
+              theme: newClock.theme
+            }
           }
-        }
+		}
       };
 	  
 	  const visualObj = {
@@ -206,7 +208,7 @@ export default {
       // re-get in case there has been an update
       t = canvas.tokens.get(token._id);
 	  
-      const oldClock = new Clock(a.data.flags.clocks);
+      const oldClock = new Clock(a.data.flags['scum-and-villainy'].clocks);
       let newClock;
 
       const target = event.target.classList.contains("control-icon")
@@ -228,12 +230,14 @@ export default {
 	  
 	  const persistObj = {
         flags: {
-          clocks: {
-            progress: newClock.progress,
-            size: newClock.size,
-            theme: newClock.theme
+          "scum-and-villainy": {
+		    clocks: {
+              progress: newClock.progress,
+              size: newClock.size,
+              theme: newClock.theme
+            }
           }
-        }
+		}
       };
 	  
 	  const visualObj = {

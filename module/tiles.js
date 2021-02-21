@@ -39,7 +39,7 @@ export default {
   renderTileHUD: async (_hud, html, tile) => {
     log("Render")
     let t = canvas.tiles.get(tile._id);
-    if (!t.data.flags.clocks) {
+    if (!t.data.flags['scum-and-villainy'].clocks) {
       return;
     }
 
@@ -49,7 +49,7 @@ export default {
       // re-get in case there has been an update
       t = canvas.tiles.get(tile._id);
 
-      const oldClock = new Clock(t.data.flags.clocks);
+      const oldClock = new Clock(t.data.flags['scum-and-villainy'].clocks);
       let newClock;
 
       const target = event.target.classList.contains("control-icon")

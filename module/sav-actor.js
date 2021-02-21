@@ -48,6 +48,7 @@ export class SaVActor extends Actor {
 			for (var a in this.data.data.attributes) {
 			dice_amount[a] = 0;
 			
+						
 			// Add +1d to resistance rolls only for Forged item on ship
 			let actor_flags = this.getFlag("scum-and-villainy", "ship") || [];
 			actor_flags.forEach(i => {
@@ -71,7 +72,7 @@ export class SaVActor extends Actor {
 		case 'ship':
 			for (var a in this.data.data.systems) {
 			dice_amount[a] = 0;
-				if ([a] == "upkeep") {
+				if ( a == "upkeep" ) {
 					dice_amount[a] = parseInt(this.data.data.systems[a]['damage'][0])
 				}
 				else {
@@ -82,13 +83,13 @@ export class SaVActor extends Actor {
 			}
 			break;
 	}
-	
+	//console.log(dice_amount);
     return dice_amount;
   }
 
   /* -------------------------------------------- */
 
-  rollAttributePopup(attribute_name) {
+  rollActionPopup(attribute_name) {
 
     // const roll = new Roll("1d20 + @abilities.wis.mod", actor.getRollData());
     let attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
@@ -143,20 +144,65 @@ export class SaVActor extends Actor {
 
   }
 
+rollSimplePopup(attribute_name) {
+
+    
+    let attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
+
+    new Dialog({
+      title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
+      content: `
+        <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}</h2>
+		<form>
+          <div class="form-group">
+            <label>${game.i18n.localize('BITD.Modifier')}:</label>
+            <select id="mod" name="mod">
+              ${this.createListOfDiceMods(-3,+3,0)}
+            </select>
+          </div>  
+        </form>
+      `,
+      buttons: {
+        yes: {
+          icon: "<i class='fas fa-check'></i>",
+          label: game.i18n.localize('BITD.Roll'),
+          callback: (html) => {
+            let modifier = parseInt(html.find('[name="mod"]')[0].value);
+            let position = "";
+            let effect = "";
+            this.rollAttribute(attribute_name, modifier, position, effect);
+          }
+        },
+        no: {
+          icon: "<i class='fas fa-times'></i>",
+          label: game.i18n.localize('Close'),
+        },
+      },
+      default: "yes",
+    }).render(true);
+
+  }
+
   /* -------------------------------------------- */
   
   rollAttribute(attribute_name = "", additional_dice_amount = 0, position, effect) {
 
     let dice_amount = 0;
-    if (attribute_name !== "") {
+    let attributes = ["insight", "prowess", "resolve"];
+	if (attribute_name !== "") {
       let roll_data = this.getRollData();
-      dice_amount += roll_data.dice_amount[attribute_name];
+      if ( attribute_name == "Vice" ) {
+		  const attribute_values = attributes.map( a => roll_data.dice_amount[a] );
+		  dice_amount = Math.min( ...attribute_values  );
+	  } else {
+		  dice_amount += roll_data.dice_amount[attribute_name];
+	  }
     }
     else {
       dice_amount = 1;
     }
     dice_amount += additional_dice_amount;
-
+	//console.log(dice_amount);
     savRoll(dice_amount, attribute_name, position, effect);
   }
 
