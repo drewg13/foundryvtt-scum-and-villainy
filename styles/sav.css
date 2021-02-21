@@ -1373,7 +1373,7 @@
 * .sav-die-tooltip .die.partial-success {
   color: #04578f;
 }
-* .sav-die-tooltip .die.damage,
+* .sav-die-tooltip .die.damaged,
 * .sav-die-tooltip .die.poor,
 * .sav-die-tooltip .die.failure {
   color: red;
