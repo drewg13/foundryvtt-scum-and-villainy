@@ -224,5 +224,7 @@
   "BITD.CampaignName": "Campaign Name",
   
   "BITD.Add": "Add",
-  "BITD.Cancel": "Cancel"
+  "BITD.Cancel": "Cancel",
+  
+  "BITD.ClockSettingDefaultTheme": "Default clock theme:"
 }
