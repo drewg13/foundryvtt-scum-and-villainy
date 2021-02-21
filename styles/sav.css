@@ -66,6 +66,9 @@
 	background: url('assets/icons/d6-black.svg');
 	background-size: 24px 24px;
 }
+* .dialog-buttons {
+	margin-top: 5px;
+}
 * textarea {
   margin-top: 10px;
   margin-bottom: 20px;
@@ -146,6 +149,13 @@
   padding: 3px 5px;
   height: 20px !important;
 }
+* .chat-label-small-red {
+  background-color: red;
+  color: #191813;
+  font-size: small;
+  text-align: center;
+  padding: 3px 5px;
+}
 * .label-stripe {
   text-transform: uppercase;
   background-color: #191813;
@@ -201,7 +211,15 @@
   text-transform: capitalize;
   background-color: #999;
   color: #191813;
-  margin-bottom: 10px;
+  position: relative;
+  padding-top: 3px;
+  display: flex;
+  font-weight: bold;
+}
+* .label-stripe-chat-small-red {
+  text-transform: capitalize;
+  background-color: red;
+  color: #191813;
   position: relative;
   padding-top: 3px;
   display: flex;
@@ -216,6 +234,13 @@
 * .rollable-text:hover {
   cursor: pointer;
   color: red;
+}
+* .rollable-text label:hover {
+  cursor: pointer;
+  color: red !important;
+}
+* #stress-vice {
+  width: 72px;
 }
 * .big-teeth-section {
   border-top: 3px solid #191813;
@@ -256,12 +281,11 @@
   background-image: none !important;
   color: #EEEFFF;
 }
+* .big-teeth-section .big-teeth label[for$="-0"]:hover {
+  color: red;
+}
 * .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
-}
-* .big-teeth-section .big-teeth label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
 }
 * .big-teeth-section .big-teeth input {
   display: none;
@@ -547,6 +571,10 @@
   background-image: none !important;
   color: #EEEFFF;
 }
+* .teeth-experience-red label[for$="-0"]:hover,
+* .teeth-experience label[for$="-0"]:hover {
+  color: red;
+}
 * .teeth-experience-red label[for$="-0"] i,
 * .teeth-experience label[for$="-0"] i {
   margin-top: 4px;
@@ -587,7 +615,7 @@
   width: 100%;
 }
 * #harm-armor #character-health-clock {
-  margin: 0 auto;
+  margin-left: 25px;
   position: relative;
 }
 * #harm-armor #character-health-clock .sav-clock {
@@ -721,6 +749,9 @@
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
+}
+* #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"]:hover {
+  color: red;
 }
 * #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] i {
   margin-top: 4px;
@@ -1324,16 +1355,23 @@
   font-weight: bold;
   text-transform: capitalize;
   font-size: large;
+  margin-top: 10px;
 }
+* .sav-die-tooltip .die.great,
+* .sav-die-tooltip .die.critical-resist,
 * .sav-die-tooltip .die.critical-success {
   color: #12a012;
 }
+* .sav-die-tooltip .die.standard,
+* .sav-die-tooltip .die.resist,
 * .sav-die-tooltip .die.success {
   color: #008000;
 }
+* .sav-die-tooltip .die.limited,
 * .sav-die-tooltip .die.partial-success {
   color: #04578f;
 }
+* .sav-die-tooltip .die.poor,
 * .sav-die-tooltip .die.failure {
   color: red;
 }
