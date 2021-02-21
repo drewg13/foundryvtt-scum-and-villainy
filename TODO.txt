@@ -14,6 +14,7 @@ Character sheet
  - add Lifestyle tracking to Stash - DONE
  - add Friends tab and trackers - DONE
  - auto-add friends on Class selection - DONE
+ - added Looks field - DONE
  - move Class to first spot under name to mirror order during character creation - DONE
  - add Vice roll button under Stress - DONE
  - center healing clock better - DONE
