@@ -10,21 +10,23 @@ const SUPPORTED_SYSTEMS = {
 
 const defaultLoadClockFromActor = ({ actor }) => {
   return {
-    progress: actor.getFlag("clocks", "progress"),
-    size: actor.getFlag("clocks", "size"),
-    theme: actor.getFlag("clocks", "theme")
+    progress: actor.getFlag("scum-and-villainy", "clocks.progress"),
+    size: actor.getFlag("scum-and-villainy", "clocks.size"),
+    theme: actor.getFlag("scum-and-villainy", "clocks.theme")
   };
 };
 
 const defaultPersistClockToActor = async ({ clock }) => {
   return {
     flags: {
-      clocks: {
-        progress: clock.progress,
-        size: clock.size,
-        theme: clock.theme
+      "scum-and-villainy": {
+	    clocks: {
+          progress: clock.progress,
+          size: clock.size,
+          theme: clock.theme
+        }
       }
-    }
+	}
   };
 };
 
