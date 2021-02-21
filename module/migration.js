@@ -7,7 +7,7 @@ export const migrateWorld = async function() {
 
   // Migrate World Actors
   for ( let a of game.actors.entities ) {
-    if (a.data.type === 'character') {
+    if ((a.data.type === 'character') || (a.data.type === 'ship') || (a.data.type === 'universe')) {
       try {
         const updateData = _migrateActor(a.data);
         if ( !isObjectEmpty(updateData) ) {
@@ -19,8 +19,8 @@ export const migrateWorld = async function() {
       }
     }
 
-    // Migrate Token Link for Character and Crew
-    if (a.data.type === 'character' || a.data.type === 'crew') {
+    // Migrate Token Link for Character and Ship
+    if (a.data.type === 'character' || a.data.type === 'ship') {
       try {
         const updateData = _migrateTokenLink(a.data);
         if ( !isObjectEmpty(updateData) ) {
@@ -48,7 +48,7 @@ export const migrateWorld = async function() {
   }
 
   // Set the migration as complete
-  game.settings.set("sav", "systemMigrationVersion", game.system.data.version);
+  game.settings.set("scum-and-villainy", "systemMigrationVersion", game.system.data.version);
   ui.notifications.info(`SaV System Migration to version ${game.system.data.version} completed!`, {permanent: true});
 };
 
