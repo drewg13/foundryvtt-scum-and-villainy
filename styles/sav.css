@@ -1362,15 +1362,18 @@
 * .sav-die-tooltip .die.critical-success {
   color: #12a012;
 }
+* .sav-die-tooltip .die.nodamage,
 * .sav-die-tooltip .die.standard,
 * .sav-die-tooltip .die.resist,
 * .sav-die-tooltip .die.success {
   color: #008000;
 }
+* .sav-die-tooltip .die.malfunction,
 * .sav-die-tooltip .die.limited,
 * .sav-die-tooltip .die.partial-success {
   color: #04578f;
 }
+* .sav-die-tooltip .die.damage,
 * .sav-die-tooltip .die.poor,
 * .sav-die-tooltip .die.failure {
   color: red;
