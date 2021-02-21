@@ -6,6 +6,12 @@
     </div>
   {{/if}}
 
+  {{#if zeromode}}
+    <div class="chat-label-small-red label-stripe-chat-small-red">
+      {{{localize "BITD.RollZeromode"}}}
+    </div>
+  {{/if}}
+
   {{#if (eq roll_status "critical-success")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollCriticalSuccess"}}</div>
   <div class="description">
@@ -67,7 +73,97 @@
 	{{/if}}
   </div>
   {{/if}}
-
+  
+  {{#if (eq roll_status "great")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollGreatEffect"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollGreatEffectDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "standard")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollStandardEffect"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollStandardEffectDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "limited")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollLimitedEffect"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollLimitedEffectDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "poor")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollPoorEffect"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollPoorEffectDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "resist")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollResist"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollResistDescription"}}}{{stress_result_display}}.</strong>
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "critical-resist")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollCritResist"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollCritResistDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "vice")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollVice"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollViceDescription"}}}{{vice_result}}{{{localize "BITD.RollViceDescription2"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "damaged")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollUpkeepDamage"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollUpkeepDamageDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "malfunction")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollUpkeepMalf"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollUpkeepMalfDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
+  {{#if (eq roll_status "nodamage")}}
+  <div class="die {{roll_status}}">{{localize "BITD.RollUpkeepNoDamage"}}</div>
+  <div class="description">
+    <p>
+      {{{localize "BITD.RollUpkeepNoDamageDescription"}}}
+    </p>
+  </div>
+  {{/if}}
+  
   <ol class="dice-rolls">
     {{#each this.rolls}}
     {{#if this.result}}
