@@ -385,12 +385,12 @@
           <div class="item-class-label"><a class="item-add-popup" data-item-type="friend">{{localize "BITD.AddFriend"}}</a></div>
         </div>
       </div>
-	  
+
       <div class="tab flex-vertical" data-tab="character-notes">
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
-        <textarea rows="13" name="data.description">{{{data.description}}}</textarea>
+        {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
       </div>
 
       {{!-- Full Item List --}}
