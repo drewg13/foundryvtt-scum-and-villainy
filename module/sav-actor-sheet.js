@@ -14,7 +14,8 @@ export class SaVActorSheet extends SaVSheet {
   	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
       width: 800,
       height: 970,
-      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
+      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+	  scrollY: [".description"]
     });
   }
 

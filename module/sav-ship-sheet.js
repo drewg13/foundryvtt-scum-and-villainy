@@ -14,7 +14,8 @@ export class SaVShipSheet extends SaVSheet {
   	  template: "systems/scum-and-villainy/templates/ship-sheet.html",
       width: 700,
       height: 970,
-      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
+      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+	  scrollY: [".description"]
     });
   }
 
