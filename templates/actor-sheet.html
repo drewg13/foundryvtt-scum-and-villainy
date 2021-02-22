@@ -390,7 +390,10 @@
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
-        <textarea rows="13" name="data.description">{{{data.description}}}</textarea>
+        {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+		{{#if editable}}
+        <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
+        {{/if}}
       </div>
 
       {{!-- Full Item List --}}
