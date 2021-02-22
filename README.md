@@ -4,8 +4,7 @@ An attempt to adapt the Blades in the Dark system created by megastruktur to Scu
 
 ## IMPORTANT NOTES
 
-I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo
-#4626 for the suggestion and example code)
+I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)
 
 Also, I've occasionally seen item popups show up empty or missing class-specific items.  This may be a product of my frequent changes during testing, but if you see this, screenshot your sheet FIRST and try removing the Class/Ship Type, then re-adding it.  In a pinch, items can be added the old-fashioned way by dragging them from the relevant compendium.
 
