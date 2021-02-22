@@ -19,6 +19,7 @@ Character sheet
  - add Vice roll button under Stress - DONE
  - center healing clock better - DONE
  - add red onhover to new XP labels - DONE
+ - fix Notes tab data loss? - DONE
  - figure out how to re-render character sheet on changes to the linked ship sheet (rework linkage to use ActiveEffects?)
 
 Ship sheet
@@ -29,6 +30,7 @@ Ship sheet
  - Limit modules available to add for a system if current modules for system >= system rating - DONE
  - add Contacts tab and trackers - DONE
  - move Ship Type to first spot under name to mirror order during character creation - DONE
+ - fix Notes tab data loss? - DONE
  
 Planet item sheet
  - Edit fields are ugly
@@ -79,6 +81,6 @@ All sheets
   - "space" look - first pass - DONE
   - use Exo2 font used by S&V rulebook system-wide - DONE
   - Additional color/design tweaks - DONE
-  - add code to restrict editing item sheets to GM-only?
+  - add code to restrict editing item sheets to GM-only - use {{if isGM}} - DONE
   - icon improvements to factions?
   
