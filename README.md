@@ -94,8 +94,8 @@ Logic field is a json with params which allows to implement some logic when the 
 ## Credits
 - Initial system forked from megastruktur's Blades in the Dark
 - Clock UI is adapted from the Clocks module by TyrannosaurusRoy (troygoode) under the MIT license
-- This work is based on Scum and Villainy (http://offguardgames.com/scum-and-villainy/), a product of Off Guard Games (https://offguardgames.com/) and designed by John LeBoeuf-Little and Stras Acimovic.
+- This work is based on Scum and Villainy (http://offguardgames.com/scum-and-villainy/), a product of Off Guard Games (https://offguardgames.com/) and designed by John LeBoeuf-Little and Stras Acimovic (expressly approved by Stras).
 - Scum and Villainy is based on Blades in the Dark (found at http://www.bladesinthedark.com/), product of One Seven Design, developed and authored by John Harper, and licensed for use under the Creative Commons Attribution 3.0 Unported license (http://creativecommons.org/licenses/by/3.0/).
-- Some assets were taken from here (thank you to timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
+- Some assets were taken/adapted from here (thank you to timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
 
 
