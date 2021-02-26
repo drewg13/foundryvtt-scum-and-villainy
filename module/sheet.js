@@ -140,7 +140,7 @@ export default {
     let t = canvas.tokens.get(token._id);
 	let a = game.actors.get(token.actorId);
 	
-	if ( !a.data.flags['scum-and-villainy'].clocks ) {
+	if ( a.getFlag( "scum-and-villainy", "clocks" ) == undefined ) {
 	  return false;
     }
 
