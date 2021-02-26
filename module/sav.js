@@ -275,9 +275,69 @@ Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
 
   SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
   
-  if ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) { SaVHelpers.addDefaultAbilities( child_data, parent_entity ); };
+  if ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) { 
+    SaVHelpers.addDefaultAbilities( child_data, parent_entity ); 
+  };
+  
+  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) { 
+    const icon = child_data.img;
+	const icon_update = {
+	  img: icon,
+	  token: {
+        img: icon
+      }
+	};
+	parent_entity.update( icon_update );
+    /**  code to replace all attached tokens as well
+	if ( parent_entity.getActiveTokens() ) {
+      const tokens = parent_entity.getActiveTokens();
+      const token_update = {
+        img: icon
+      };
+	  tokens.forEach( t => t.update( token_update ) );
+    };
+    */    		  
+  };
   
   return true;
+});
+
+Hooks.on("createActor", (actor, options, userId) => {
+  // set default icons for each actor type
+  switch ( actor.data.type  ) {
+    case "universe": {
+	  let icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
+	  let icon_update = {
+        img: icon
+      }
+	  actor.update( icon_update );
+	  break;
+	}
+	case "ship": {
+	  let icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
+	  let icon_update = {
+        img: icon
+      }
+	  actor.update( icon_update );
+	  break;
+	}
+	case "character": {
+	  let icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
+	  let icon_update = {
+        img: icon
+      }
+	  actor.update( icon_update );
+	  break;
+	}
+	case "\uD83D\uDD5B clock": {
+	  let icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
+	  let icon_update = {
+        img: icon
+      }
+	  actor.update( icon_update );
+	  break;
+	}
+  };
 });
 
 Hooks.on("createOwnedItem", (parent_entity, child_data, options, userId) => {
