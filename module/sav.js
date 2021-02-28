@@ -278,7 +278,7 @@ Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
   if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) { 
     SaVHelpers.addDefaultAbilities( child_data, parent_entity ); 
   };
-  /**
+  
   if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) { 
     const icon = child_data.img;
 	const icon_update = {
@@ -296,51 +296,38 @@ Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
       };
 	  tokens.forEach( t => t.update( token_update ) );
     };
-        		  
+    */    		  
   };
-  */
+  
   return true;
 });
 
-/**
-Hooks.once("updateActor", (actor, data, options, userId) => {
+
+Hooks.on("preCreateActor", (data, options, userId) => {
   // set default icons for each actor type
-  switch ( actor.data.type  ) {
+  let icon = "";
+  switch ( data.type ) {
     case "universe": {
-	  let icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
-	  let icon_update = {
-        img: icon
-      }
-	  actor.update( icon_update );
+	  icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
 	  break;
 	}
 	case "ship": {
-	  let icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
-	  let icon_update = {
-        img: icon
-      }
-	  actor.update( icon_update );
+	  icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
 	  break;
 	}
 	case "character": {
-	  let icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
-	  let icon_update = {
-        img: icon
-      }
-	  actor.update( icon_update );
+	  icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
 	  break;
 	}
 	case "\uD83D\uDD5B clock": {
-	  let icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
-	  let icon_update = {
-        img: icon
-      }
-	  actor.update( icon_update );
+	  icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
 	  break;
 	}
   };
+  data.img = icon;
+  
 });
-*/
+
 
 Hooks.on("createOwnedItem", (parent_entity, child_data, options, userId) => {
   if ( parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) {
