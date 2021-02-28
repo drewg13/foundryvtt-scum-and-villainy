@@ -132,7 +132,7 @@ export class SaVSheet extends ActorSheet {
     let options = {
       // width: "500"
     }
-    
+    if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
     let dialog = new Dialog({
       title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
       content: html,
@@ -152,6 +152,7 @@ export class SaVSheet extends ActorSheet {
     }, options);
 
     dialog.render(true);
+	}
   }
 
 async _onFlagAddClick(event) {
@@ -184,7 +185,7 @@ async _onFlagAddClick(event) {
     let options = {
       // width: "500"
     }
-    
+    if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
     let dialog = new Dialog({
       title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
       content: html,
@@ -204,6 +205,7 @@ async _onFlagAddClick(event) {
     }, options);
 
     dialog.render(true);
+	};
   }
 
   
@@ -221,7 +223,9 @@ async _onFlagAddClick(event) {
 	
 	  
     });
-    this.actor.createEmbeddedEntity("OwnedItem", items_to_add);
+    if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+	  this.actor.createEmbeddedEntity("OwnedItem", items_to_add);
+	};
   }
  
   async addFlagsToSheet(item_type, el) {
@@ -236,7 +240,9 @@ async _onFlagAddClick(event) {
 	
 	  
     });
-    await this.actor.setFlag("scum-and-villainy", item_type, items_to_add);
+    if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+	  await this.actor.setFlag("scum-and-villainy", item_type, items_to_add);
+	};
   }
 
 
