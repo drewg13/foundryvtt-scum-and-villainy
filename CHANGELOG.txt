@@ -3,3 +3,5 @@ v1.01-1.03  Testing releases
 v1.04  Fix bad characters in friends.db and mismatch in default adds for Stardancer
 
 v1.05  Add user permissions checking to various actor update code to prevent throwing errors to users without owner permissions
+
+v1.06  Add default icons upon actor creation, change default icons to class/ship_type on add of same, don't overwrite user-modified art
