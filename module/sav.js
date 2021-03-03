@@ -33,7 +33,9 @@ Hooks.once("init", async function() {
   game.sav = {
     dice: savRoll
   }
-
+  game.system.clocks = {
+    choices: ["blue", "red", "yellow", "green"]
+  };
   
   CONFIG.Item.entityClass = SaVItem;
   CONFIG.Actor.entityClass = SaVActor;
