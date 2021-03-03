@@ -1,5 +1,3 @@
-const CONFIG = Object.freeze(window.CONFIG);
-	
 const nextIndexInArray = (arr, el) => {
   const idx = arr.indexOf(el);
   return (idx < 0 || idx >= arr.length) ? 0 : idx + 1;
@@ -11,8 +9,8 @@ export class Clock {
   }
 
   static get themes () {
-	const default_t = CONFIG.clocks.choices[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
-	const all_t = CONFIG.clocks.choices;
+	const default_t = game.system.clocks.choices[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
+	const all_t = game.system.clocks.choices;
 	let curr_t = all_t;
 	
 	if ( curr_t.indexOf( default_t ) != 0 ) {
