@@ -16,19 +16,11 @@ export const registerSystemSettings = function() {
     scope: "world",
     config: true,
     type: Number,
-    choices: CONFIG.clocks.choices,
+    choices: game.system.clocks.choices,
 	default: 0,
 	icon: "fas fa-palette"
   });
   
 };
-
-const CONFIG = window.CONFIG = {
-
-  clocks: {
-
-    choices: ["blue", "red", "yellow", "green"]
-
-  }
   
 };
