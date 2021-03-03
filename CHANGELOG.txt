@@ -6,4 +6,6 @@ v1.0.5  Add user permissions checking to various actor update code to prevent th
 
 v1.0.6  Add default icons upon actor creation, change default icons to class/ship_type on add of same, don't overwrite user-modified art
 
-v1.0.7  Fixed the use of a global variable for the clocks UI from breaking everything
+v1.0.7  Fixed the use of a global variable for the clocks UI from breaking everything  (thanks to Skimble!)
+
+v1.0.8  Fixed dangling bracket
