@@ -4,6 +4,7 @@
   "character": {
     "alias": "",
 	"look": "",
+	"description": "",
 	"character_class": "",
 	"character_class_default": "",
     "stress": {
@@ -144,6 +145,7 @@
   "ship": {
     "name": "",
     "look": "",
+    "description": "",
 	"designation": "",
 	"designation_default": "",
     "size": "",
