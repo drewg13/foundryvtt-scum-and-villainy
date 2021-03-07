@@ -21,10 +21,18 @@ export class SaVShipSheet extends SaVSheet {
 
  /** @override */
   getData() {
-    const data = super.getData();
+    let data = super.getData();
 	  data.isGM = game.user.isGM;
-
-	return data;
+		if (data.options.editable) {
+			data = foundry.utils.mergeObject(data, {
+				editable: true
+			});
+		} else {
+			data = foundry.utils.mergeObject(data, {
+				editable: false
+			});
+		};
+	  return data;
   }
 
   /** @override */

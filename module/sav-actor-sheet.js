@@ -23,7 +23,7 @@ export class SaVActorSheet extends SaVSheet {
 
   /** @override */
   getData() {
-    const data = super.getData();
+    let data = super.getData();
 	  data.isGM = game.user.isGM;
 
 		let actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
@@ -99,7 +99,16 @@ export class SaVActorSheet extends SaVSheet {
 	if (data.data.data.loadout.planned < loadout) {
 		data.data.data.loadout.load_level = "over max";
 	};
-
+	if (data.options.editable) {
+		data = foundry.utils.mergeObject(data, {
+			editable: true
+		});
+	} else {
+		data = foundry.utils.mergeObject(data, {
+			editable: false
+		});
+	};
+	  //console.log(data);
     return data;
   }
 

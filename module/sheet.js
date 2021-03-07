@@ -46,9 +46,8 @@ export class ClockSheet extends ActorSheet {
   }
 
   getData () {
-
     const clock = new Clock(this.system.loadClockFromActor({ actor: this.document }));
-    return foundry.utils.mergeObject(super.getData(), {
+    let data = foundry.utils.mergeObject(super.getData(), {
       clock: {
         progress: clock.progress,
         size: clock.size,
@@ -65,6 +64,17 @@ export class ClockSheet extends ActorSheet {
 		    flags: clock.flags
       }
     });
+    if (data.options.editable) {
+      data = foundry.utils.mergeObject(data, {
+        editable: true
+      });
+    } else {
+      data = foundry.utils.mergeObject(data, {
+        editable: false
+      });
+    };
+    //console.log(data);
+    return data;
   }
 
   activateListeners (html) {
