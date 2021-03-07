@@ -12,14 +12,14 @@ export class Clock {
 	const default_t = game.system.clocks.choices[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
 	const all_t = game.system.clocks.choices;
 	let curr_t = all_t;
-	
+
 	if ( curr_t.indexOf( default_t ) != 0 ) {
-		
+
 		curr_t = curr_t.filter( x => x !== default_t );
 		curr_t.unshift( default_t );
-		
+
 	};
-	
+
 	return curr_t;
   }
 
@@ -46,12 +46,12 @@ export class Clock {
   }
 
   get image () {
-    return { 
+    return {
       img: `/systems/scum-and-villainy/themes/${this.theme}/${this.size}clock_${this.progress}.webp`,
       widthTile: 200,
       heightTile: 200,
-	  widthSheet: 350,
-	  heightSheet: 350
+	    widthSheet: 350,
+	    heightSheet: 350
     };
   }
 

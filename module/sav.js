@@ -36,9 +36,9 @@ Hooks.once("init", async function() {
   game.system.clocks = {
     choices: ["blue", "red", "yellow", "green"]
   };
-  
-  CONFIG.Item.entityClass = SaVItem;
-  CONFIG.Actor.entityClass = SaVActor;
+
+  CONFIG.Item.documentClass = SaVItem;
+  CONFIG.Actor.documentClass = SaVActor;
 
   // Register System Settings
   registerSystemSettings();
@@ -57,14 +57,14 @@ Hooks.once("init", async function() {
 
   // Multiboxes.
   Handlebars.registerHelper('multiboxes', function(selected, options) {
-    
+
     let html = options.fn(this);
 
     // Fix for single non-array values.
     if ( !Array.isArray(selected) ) {
       selected = [selected];
     }
-    
+
     if (typeof selected !== 'undefined') {
       selected.forEach(selected_value => {
         if (selected_value !== false) {
@@ -79,7 +79,7 @@ Hooks.once("init", async function() {
 
   // Trauma Counter
   Handlebars.registerHelper('traumacounter', function(selected, options) {
-    
+
     let html = options.fn(this);
 
     var count = 0;
@@ -90,7 +90,7 @@ Hooks.once("init", async function() {
     }
 
     if (count > 5) count = 5;
-    
+
     const rgx = new RegExp(' value=\"' + count + '\"');
     return html.replace(rgx, "$& checked=\"checked\"");
 
@@ -111,7 +111,7 @@ Hooks.once("init", async function() {
     return (a <= b);
   });
 
-  
+
   Handlebars.registerHelper('crew_vault_coins', (max_coins, options) => {
 
     let html = options.fn(this);
@@ -241,7 +241,7 @@ Hooks.once("init", async function() {
 
     for (let i = 1; i <= parseInt(type); i++) {
       let checked = (parseInt(current_value) === i) ? 'checked="checked"' : '';
-      html += `        
+      html += `
         <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" name="${parameter_name}" ${checked}>
         <label for="clock-${i}-${uniq_id}"></label>
       `;
@@ -261,9 +261,9 @@ Hooks.once("ready", function() {
   // Determine whether a system migration is required
   const currentVersion = game.settings.get("scum-and-villainy", "systemMigrationVersion");
   const NEEDS_MIGRATION_VERSION = 1.0;
-  
+
   let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
-  
+
   // Perform the migration
   if ( needMigration && game.user.isGM ) {
     //migrations.migrateWorld();
@@ -273,17 +273,17 @@ Hooks.once("ready", function() {
 /*
  * Hooks
  */
-Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
-
+Hooks.on("preCreateItem", (parent_entity, child_data, options, userId) => {
+  if (parent_entity.documentName == "Actor") {
   SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
-  
-  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) { 
-    SaVHelpers.addDefaultAbilities( child_data, parent_entity ); 
+  //console.log(child_data);
+  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
+    SaVHelpers.addDefaultAbilities( child_data, parent_entity );
   };
-  
-  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) { 
+
+  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
     const icon = child_data.img;
-	const icon_update = {
+	  const icon_update = {
 	  img: icon,
 	  token: {
         img: icon
@@ -298,48 +298,21 @@ Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
       };
 	  tokens.forEach( t => t.update( token_update ) );
     };
-    */    		  
+    */
   };
-  
+  };
   return true;
 });
 
-
-Hooks.on("preCreateActor", (data, options, userId) => {
-  // set default icons for each actor type
-  let icon = "";
-  switch ( data.type ) {
-    case "universe": {
-	  icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
-	  break;
-	}
-	case "ship": {
-	  icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
-	  break;
-	}
-	case "character": {
-	  icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
-	  break;
-	}
-	case "\uD83D\uDD5B clock": {
-	  icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
-	  break;
-	}
-  };
-  data.img = icon;
-  
-});
-
-
-Hooks.on("createOwnedItem", (parent_entity, child_data, options, userId) => {
-  if ( parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) {
+Hooks.on("createItem", (parent_entity, child_data, options, userId) => {
+  if ( (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     SaVHelpers.callItemLogic(child_data, parent_entity);
   };
   return true;
 });
 
-Hooks.on("deleteOwnedItem", (parent_entity, child_data, options, userId) => {
-  if ( parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) {
+Hooks.on("deleteItem", (parent_entity, child_data, options, userId) => {
+  if ( (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     SaVHelpers.undoItemLogic(child_data, parent_entity);
   };
   return true;

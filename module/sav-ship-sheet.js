@@ -15,15 +15,15 @@ export class SaVShipSheet extends SaVSheet {
       width: 700,
       height: 970,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-	  scrollY: [".description"]
+	    scrollY: [".description"]
     });
   }
 
  /** @override */
   getData() {
     const data = super.getData();
-	data.isGM = game.user.isGM;
-	
+	  data.isGM = game.user.isGM;
+
 	return data;
   }
 
@@ -37,14 +37,14 @@ export class SaVShipSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      const item = this.actor.getOwnedItem(element.data("itemId"));
+      const item = this.document.items.get(element.data("itemId"));
       item.sheet.render(true);
     });
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      this.actor.deleteOwnedItem(element.data("itemId"));
+      this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
       element.slideUp(200, () => this.render(false));
     });
     }
@@ -59,7 +59,7 @@ export class SaVShipSheet extends SaVSheet {
     // Update the Item
     super._updateObject(event, formData);
 
-    if (event.target && event.target.name === "data.crew") {
+    if (event.target && event.target.name === "data.data.crew") {
       this.render(true);
     }
   }

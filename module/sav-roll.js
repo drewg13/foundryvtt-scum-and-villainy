@@ -1,7 +1,7 @@
 /**
  * Roll Dice.
- * @param {int} dice_amount 
- * @param {string} attribute_name 
+ * @param {int} dice_amount
+ * @param {string} attribute_name
  * @param {string} position
  * @param {string} effect
  */
@@ -23,19 +23,19 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
 /**
  * Shows Chat message.
  *
- * @param {Roll} r 
+ * @param {Roll} r
  * @param {Boolean} zeromode
  * @param {String} attribute_name
  * @param {string} position
  * @param {string} effect
  */
 async function showChatRollMessage(r, zeromode, attribute_name = "", position = "", effect = "") {
-  
+
   let speaker = ChatMessage.getSpeaker();
   let isBelow070 = isNewerVersion('0.7.0', game.data.version);
   let rolls = [];
   let attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
-  
+
   // Backward Compat for rolls.
   if (isBelow070) {
     rolls = (r.parts)[0].rolls;
@@ -49,8 +49,8 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let stress_result = 0;
   let stress_result_display = 0;
   let vice_result = 0;
-  
-  
+
+
   if ( attribute_name == "Fortune!" ) {
 	  //console.log("Fortune roll " + attribute_name );
 	  roll_status = getSaVFortuneRollStatus(rolls, zeromode);
@@ -113,7 +113,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
     roll: r
   }
 
-  CONFIG.ChatMessage.entityClass.create(messageData, {})
+  CONFIG.ChatMessage.documentClass.create(messageData, {})
 }
 
 /**
@@ -122,8 +122,8 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
  *  - partial-success
  *  - success
  *  - critical-success
- * @param {Array} rolls 
- * @param {Boolean} zeromode 
+ * @param {Array} rolls
+ * @param {Boolean} zeromode
  */
 export function getSaVActionRollStatus(rolls, zeromode = false) {
 
@@ -263,7 +263,7 @@ export function getSaVResistRollStatus(rolls, zeromode = false) {
 	use_die = sorted_rolls[0];
   }
   else {
-    
+
     let prev_use_die = false;
 
     if (zeromode) {
@@ -355,7 +355,7 @@ export function getSaVUpkeepRollStatus(rolls, zeromode = false) {
 	use_die = sorted_rolls[0];
   }
   else {
-    
+
     let prev_use_die = false;
 
     if (zeromode) {
@@ -399,7 +399,7 @@ export function getSaVUpkeepRollStatus(rolls, zeromode = false) {
  * Call a Roll popup.
  */
 export async function simpleRollPopup() {
-  
+
   new Dialog({
     title: `Fortune Roll`,
     content: `
@@ -419,7 +419,7 @@ export async function simpleRollPopup() {
         icon: "<i class='fas fa-check'></i>",
         label: `Roll`,
         callback: (html) => {
-          let diceQty = html.find('[name="qty"]')[0].value;  
+          let diceQty = html.find('[name="qty"]')[0].value;
           savRoll(diceQty, "Fortune!", "", "");
         },
       },

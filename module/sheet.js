@@ -18,7 +18,7 @@ const DEFAULT_TOKEN = {
 export class ClockSheet extends ActorSheet {
   static get defaultOptions() {
     const supportedSystem = getSystemMapping(game.data.system.id);
-	  return mergeObject(
+	  return foundry.utils.mergeObject(
       super.defaultOptions,
       {
         classes: ["clocks", "sheet", `clocks-system-${game.data.system.id}`, "actor", "npc"],
@@ -46,8 +46,9 @@ export class ClockSheet extends ActorSheet {
   }
 
   getData () {
-	const clock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
-    return mergeObject(super.getData(), {
+
+    const clock = new Clock(this.system.loadClockFromActor({ actor: this.document }));
+    return foundry.utils.mergeObject(super.getData(), {
       clock: {
         progress: clock.progress,
         size: clock.size,
@@ -61,7 +62,7 @@ export class ClockSheet extends ActorSheet {
           sizes: Clock.sizes,
           themes: Clock.themes
         },
-		flags: clock.flags
+		    flags: clock.flags
       }
     });
   }
@@ -71,19 +72,19 @@ export class ClockSheet extends ActorSheet {
 
     html.find("button[name=minus]").click(async (ev) => {
       ev.preventDefault();
-      const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
+      const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.document }));
       this.updateClock(oldClock.decrement());
     });
 
     html.find("button[name=plus]").click(async (ev) => {
       ev.preventDefault();
-      const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
+      const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.document }));
       this.updateClock(oldClock.increment());
     });
 
     html.find("button[name=reset]").click(async (ev) => {
       ev.preventDefault();
-      const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
+      const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.document }));
       this.updateClock(new Clock({
         theme: oldClock.theme,
         progress: 0,
@@ -97,169 +98,187 @@ export class ClockSheet extends ActorSheet {
       name: form.name
     });
 
-    const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.actor }));
+    const oldClock = new Clock(this.system.loadClockFromActor({ actor: this.document }));
     let newClock = new Clock({
       progress: oldClock.progress,
       size: form.size,
       theme: form.theme
     });
+    //console.log(form);
     await this.updateClock(newClock);
   }
 
   async updateClock(clock) {
-    const actor = this.actor;
+    const actor = this.document;
 
     // update associated tokens
     const tokens = actor.getActiveTokens();
+    let update = [];
+    let tokenObj = {};
     for (const t of tokens) {
-      await t.update({
+      tokenObj = {
+        _id: t.id,
         name: actor.name,
         img: clock.image.img,
         actorLink: true
-      });
-    }
-	
+      };
+      update.push(tokenObj);
+    };
+    await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
+
     // update the Actor
     const persistObj = await this.system.persistClockToActor({ actor, clock });
-	const visualObj = {
+	  const visualObj = {
       img: clock.image.img,
       token: {
         img: clock.image.img,
         ...DEFAULT_TOKEN
       }
     };
-    await actor.update(mergeObject(visualObj, persistObj));
+    await actor.update(foundry.utils.mergeObject(visualObj, persistObj));
   }
 };
 
 export default {
-	
+
 	renderTokenHUD: async (_hud, html, token) => {
-	
+
 	log("Render")
-    let t = canvas.tokens.get(token._id);
+  let t = canvas.tokens.get(token.id);
 	let a = game.actors.get(token.actorId);
-	
+
 	if ( !a.data.flags['scum-and-villainy'].clocks ) {
 	  return false;
-    }
+  }
 
-    const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/button1.html');
-    const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/button2.html');
-	html.find("div.left").append(button1HTML).click(async (event) => {
-      log("HUD Clicked")
-      // re-get in case there has been an update
-      t = canvas.tokens.get(token._id);
+  const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/button1.html');
+  const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/button2.html');
 
-      const oldClock = new Clock(a.data.flags['scum-and-villainy'].clocks);
-      let newClock;
+  html.find("div.left").append(button1HTML).click(async (event) => {
+    log("HUD Clicked")
+    // re-get in case there has been an update
+    t = canvas.tokens.get(token.id);
 
-      const target = event.target.classList.contains("control-icon")
-        ? event.target
-        : event.target.parentElement;
+    const oldClock = new Clock(a.data.flags['scum-and-villainy'].clocks);
+    let newClock;
+
+    const target = event.target.classList.contains("control-icon")
+      ? event.target
+      : event.target.parentElement;
       if (target.classList.contains("cycle-size")) {
         newClock = oldClock.cycleSize();
       } else if (target.classList.contains("cycle-theme")) {
         newClock = oldClock.cycleTheme();
-      } else if (target.classList.contains("progress-up")) {
-        newClock = oldClock.increment();
-      } else if (target.classList.contains("progress-down")) {
-        newClock = oldClock.decrement();
-	  } else if (target.classList.contains("config")) {
-		return;
+	    } else if (target.classList.contains("config")) {
+		    return;
       } else {
         return error("ERROR: Unknown TokenHUD Button");
       }
-      
+
 	  const persistObj = {
         flags: {
           "scum-and-villainy": {
-		    clocks: {
+		        clocks: {
               progress: newClock.progress,
               size: newClock.size,
               theme: newClock.theme
             }
           }
-		}
+		    }
       };
-	  
+
 	  const visualObj = {
         img: newClock.image.img,
         token: {
           img: newClock.image.img,
-          //...DEFAULT_TOKEN
+          ...DEFAULT_TOKEN
         }
       };
-      await a.update(mergeObject(visualObj, persistObj));
-	  
-	  const tokens = a.getActiveTokens();
-      for (const t of tokens) {
-        await t.update({
-          name: a.name,
-          img: newClock.image.img,
-		  flags: newClock.flags,
-          actorLink: true
-        });
-      }
-	  
-    });
-	html.find("div.right").append(button2HTML).click(async (event) => {
-      log("HUD Clicked")
-      // re-get in case there has been an update
-      t = canvas.tokens.get(token._id);
-	  
-      const oldClock = new Clock(a.data.flags['scum-and-villainy'].clocks);
-      let newClock;
+    let newObj = foundry.utils.mergeObject(visualObj, persistObj);
+    let tokenObj = {};
+    let update = [];
+    update.push(foundry.utils.mergeObject({"_id":a.id}, newObj));
+    await Actor.updateDocuments(update);
 
-      const target = event.target.classList.contains("control-icon")
-        ? event.target
-        : event.target.parentElement;
-      if (target.classList.contains("cycle-size")) {
-        newClock = oldClock.cycleSize();
-      } else if (target.classList.contains("cycle-theme")) {
-        newClock = oldClock.cycleTheme();
-      } else if (target.classList.contains("progress-up")) {
+    update = [];
+	  const tokens = a.getActiveTokens();
+    for (const t of tokens) {
+      tokenObj = {
+        _id: t.id,
+        name: a.name,
+        img: newClock.image.img,
+		    flags: newClock.flags,
+        actorLink: true
+      };
+      update.push(tokenObj);
+    };
+
+    await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
+
+  });
+
+
+  html.find("div.right").append(button2HTML).click(async (event) => {
+    log("HUD Clicked")
+    // re-get in case there has been an update
+    t = canvas.tokens.get(token.id);
+
+    const oldClock = new Clock(a.data.flags['scum-and-villainy'].clocks);
+    let newClock;
+
+    const target = event.target.classList.contains("control-icon")
+      ? event.target
+      : event.target.parentElement;
+      if (target.classList.contains("progress-up")) {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();
       } else if (target.classList.contains("visibility")) {
-		return;
+		    return;
       } else {
         return error("ERROR: Unknown TokenHUD Button");
       }
-	  
+
 	  const persistObj = {
         flags: {
           "scum-and-villainy": {
-		    clocks: {
+		        clocks: {
               progress: newClock.progress,
               size: newClock.size,
               theme: newClock.theme
             }
           }
-		}
+		    }
       };
-	  
+
 	  const visualObj = {
         img: newClock.image.img,
         token: {
           img: newClock.image.img,
-          //...DEFAULT_TOKEN
+          ...DEFAULT_TOKEN
         }
-      };
-      await a.update(mergeObject(visualObj, persistObj));
-	  
+    };
+    let newObj = foundry.utils.mergeObject(visualObj, persistObj);
+    let tokenObj = {};
+    let update = [];
+    update.push(foundry.utils.mergeObject({"_id":a.id}, newObj));
+    await Actor.updateDocuments(update);
+
+    update = [];
 	  const tokens = a.getActiveTokens();
-      for (const t of tokens) {
-        await t.update({
-          name: a.name,
-          img: newClock.image.img,
-		  flags: newClock.flags,
-          actorLink: true
-        });
-      }
-      
-    });
-	return true;
-  }
-}
+    for (const t of tokens) {
+      tokenObj = {
+        _id: t.id,
+        name: a.name,
+        img: newClock.image.img,
+		    flags: newClock.flags,
+        actorLink: true
+      };
+      update.push(tokenObj);
+    };
+
+    await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
+
+  });
+return true;
+}}
