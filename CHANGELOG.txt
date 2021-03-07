@@ -13,3 +13,7 @@ v1.0.8  Fixed dangling bracket
 v1.0.9  Fixed planet sheet briefly popping open when deleting from a system on the universe sheet
 
 v1.0.10  Add field to template that the Notes tabs were pointing to
+
+v1.1.0  initial 0.8.0 compatibility
+
+v1.1.1  fixed issues with TinyMCE in Notes tabs
