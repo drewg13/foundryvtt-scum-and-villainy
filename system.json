@@ -3,7 +3,7 @@
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
   "version": "1.1.0",
-  "minimumCoreVersion": "0.7.2",
+  "minimumCoreVersion": "0.8.0",
   "compatibleCoreVersion": "0.8.0",
   "templateVersion": 1,
   "author": "megastruktur, Andrew Garinger [agaringer#6498]",
