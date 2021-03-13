@@ -1,5 +1,5 @@
 import { SaVClock } from "./sav-clock.js";
-import { log, error } from "./util.js";
+import { log, error } from "./sav-clock-util.js";
 
 const onClick = async () => {
   log('Tool Clicked');
@@ -9,7 +9,7 @@ const onClick = async () => {
     y: ((canvas.dimensions.sceneRect.height - clock.image.heightTile) / 2) + canvas.dimensions.paddingY
   };
 
-  const tile = new Tile({
+  const tile = new TileDocument({
     img: clock.image.img,
     width: clock.image.widthTile,
     height: clock.image.heightTile,
@@ -21,7 +21,7 @@ const onClick = async () => {
     locked: false,
     flags: clock.flags
   });
-  canvas.scene.createEmbeddedDocuments('Tile', tile.data);
+  canvas.scene.createEmbeddedDocuments("Tile", [tile.data]);
 };
 
 export default {
@@ -67,10 +67,11 @@ export default {
         return error("ERROR: Unknown TileHUD Button");
       }
 
-      await t.update({
+      await TileDocument.updateDocuments([{
+        _id: t.id,
         img: newClock.image.img,
         flags: newClock.flags
-      });
+      }], {parent: canvas.scene});
     });
   }
 };
