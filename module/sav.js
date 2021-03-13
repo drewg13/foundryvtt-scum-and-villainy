@@ -17,10 +17,10 @@ import { SaVShipSheet } from "./sav-ship-sheet.js";
 import { SaVUniverseSheet } from "./sav-universe-sheet.js";
 import * as migrations from "./migration.js";
 /* For Clocks UI */
-import { ClockSheet } from "./sheet.js";
-import Tiles from "./tiles.js";
-import Sheet from "./sheet.js";
-import { log } from "./util.js";
+import { SaVClockSheet } from "./sav-clock-sheet.js";
+import ClockTiles from "./sav-clock-tiles.js";
+import ClockSheet from "./sav-clock-sheet.js";
+import { log } from "./sav-clock-util.js";
 
 window.SaVHelpers = SaVHelpers;
 
@@ -33,7 +33,7 @@ Hooks.once("init", async function() {
   game.sav = {
     dice: savRoll
   }
-  game.system.clocks = {
+  game.system.savclocks = {
     choices: ["blue", "red", "yellow", "green"]
   };
 
@@ -47,7 +47,7 @@ Hooks.once("init", async function() {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("scum-and-villainy", SaVActorSheet, { types: ["character"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVShipSheet, { types: ["ship"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", ClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
+  Actors.registerSheet("scum-and-villainy", SaVClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("scum-and-villainy", SaVItemSheet, {makeDefault: true});
@@ -333,15 +333,15 @@ Hooks.once("init", () => {
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
-  Tiles.getSceneControlButtons(controls);
+  ClockTiles.getSceneControlButtons(controls);
 });
 
 Hooks.on("renderTileHUD", async (hud, html, tile) => {
-  await Tiles.renderTileHUD(hud, html, tile);
+  await ClockTiles.renderTileHUD(hud, html, tile);
 });
 
 Hooks.on("renderTokenHUD", async (hud, html, token) => {
-  if( await Sheet.renderTokenHUD(hud, html, token) ) {
+  if( await ClockSheet.renderTokenHUD(hud, html, token) ) {
 	  var rootElement = document.getElementsByClassName('vtt game')[0];
       rootElement.classList.add('hide-ui');
   } else {

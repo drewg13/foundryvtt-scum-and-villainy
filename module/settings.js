@@ -16,9 +16,9 @@ export const registerSystemSettings = function() {
     scope: "world",
     config: true,
     type: Number,
-    choices: game.system.clocks.choices,
+    choices: game.system.savclocks.choices,
 	default: 0,
 	icon: "fas fa-palette"
   });
-  
+
 };
