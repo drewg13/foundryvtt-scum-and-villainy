@@ -1,0 +1,63 @@
+<form class="{{cssClass}} clock-form" autocomplete="off">
+{{#if editable}}
+  <div class="clock-name editable">
+    <input name="name" value="{{actor.name}}" />
+  </div>
+{{else}}
+  <div class="clock-name">
+    <input name="name" value="{{actor.name}}" readonly/>
+  </div>
+{{/if}}
+{{#if editable}}
+  <div class="clock-progress">
+    {{#if (lte clock.progress 0)}}
+    <button name="minus" disabled>
+      <i class="fa fa-minus"></i>
+    </button>
+    {{else}}
+    <button name="minus">
+      <i class="fa fa-minus"></i>
+    </button>
+    {{/if}}
+    <button name="reset">
+      <i class="fa fa-redo"></i>
+    </button>
+    {{#if (gte clock.progress clock.size)}}
+    <button name="plus" disabled>
+      <i class="fa fa-plus"></i>
+    </button>
+    {{else}}
+    <button name="plus">
+      <i class="fa fa-plus"></i>
+    </button>
+    {{/if}}
+  </div>
+{{/if}}
+  <div class="clock-image">
+    <img src="{{clock.image.url}}" width="{{clock.image.width}}" height="{{clock.image.height}}" />
+  </div>
+{{#if editable}}
+  <div class="clock-config">
+    <div class="clock-config-group theme">
+      <label for="theme"><i class="fa fa-palette"></i></label>
+      <select name="theme">
+        {{#select clock.theme}}
+        {{#each clock.settings.themes as |theme|}}
+        <option value="{{theme}}">{{theme}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+    <div class="clock-config-group">
+      <label for="size"><i class="fa fa-chart-pie"></i></label>
+      <select name="size">
+        {{#select clock.size}}
+        {{#each clock.settings.sizes as |size|}}
+        <option value="{{size}}">{{size}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+  </div>
+{{/if}}
+</form>
