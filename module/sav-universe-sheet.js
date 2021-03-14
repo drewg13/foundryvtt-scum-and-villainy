@@ -40,7 +40,7 @@ export class SaVUniverseSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      const item = {};
+      let item = {};
 			if( game.majorVersion > 7 ) {
 			  item = this.document.items.get(element.data("itemId"));
 			} else {
