@@ -258,7 +258,12 @@ rollSimplePopup(attribute_name) {
   createListOfActions() {
 
     let text, attribute, skill;
-    let attributes = this.data.data.data.attributes;
+    let attributes = {};
+    if( game.majorVersion > 7 ) {
+      attributes = this.data.data.data.attributes;
+    } else {
+      attributes = this.data.data.attributes;
+    };
 
     for ( attribute in attributes ) {
 

@@ -15,7 +15,11 @@ export class SaVHelpers {
     actor.items.forEach(i => {
       let has_double = (item_data.type === i.data.type);
       if (i.data.name === item_data.name || (should_be_distinct && has_double)) {
-        actor.deleteEmbeddedDocuments("Item", [i.id]);
+        if( game.majorVersion > 7 ) {
+          actor.deleteEmbeddedDocuments("Item", [i.id]);
+        } else {
+          actor.deleteOwnedItem(i.id);
+        };
       }
     });
   }
@@ -28,7 +32,12 @@ export class SaVHelpers {
    */
   static async addDefaultAbilities(item_data, actor) {
 
-  let def_abilities = item_data.data.data.def_abilities;
+  let def_abilities = {};
+  if( game.majorVersion > 7 ) {
+    def_abilities = item_data.data.data.def_abilities;
+  } else {
+    def_abilities = item_data.data.def_abilities;
+  };
 	let abil_list = def_abilities.split(', ');
 	var item_type = "";
 	let items_to_add = [];
@@ -82,7 +91,11 @@ export class SaVHelpers {
     });
 
 	//console.log(items_to_add);
-	actor.createEmbeddedDocuments("Item", items_to_add);
+  if( game.majorVersion > 7 ) {
+    actor.createEmbeddedDocuments("Item", items_to_add);
+  } else {
+    actor.createEmbeddedEntity("OwnedItem", items_to_add);
+  };
 
   }
 
@@ -95,8 +108,15 @@ export class SaVHelpers {
   static callItemLogic(item_data, entity) {
     //console.log(item_data);
     //console.log(entity);
-    if ('logic' in item_data.data.data && item_data.data.data.logic !== '') {
-      let logic = JSON.parse(item_data.data.data.logic);
+    let items = {};
+    if( game.majorVersion > 7 ) {
+      items = item_data.data.data;
+    } else {
+      items = item_data.data;
+    };
+
+    if ('logic' in items && items.logic !== '') {
+      let logic = JSON.parse(items.logic);
       //console.log(logic);
       // Should be an array to support multiple expressions
       if (!Array.isArray(logic)) {
@@ -112,8 +132,14 @@ export class SaVHelpers {
 
             // Add when creating.
             case "addition":
+              let prefix = "";
+              if( game.majorVersion > 7 ) {
+                prefix = "data.data.";
+              } else {
+                prefix = "data.";
+              };
               entity.update({
-                [expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, "data.data." + expression.attribute)) + expression.value
+                [expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, prefix + expression.attribute)) + expression.value
               });
               break;
 
@@ -141,9 +167,15 @@ export class SaVHelpers {
    * @param {Entity} entity
    */
   static undoItemLogic(item_data, entity) {
+    let items = {};
+    if( game.majorVersion > 7 ) {
+      items = item_data.data.data;
+    } else {
+      items = item_data.data;
+    };
 
-    if ( ('logic' in item_data.data.data) && (item_data.data.data.logic !== '') ) {
-      let logic = JSON.parse(item_data.data.data.logic)
+    if ( ('logic' in items) && (items.logic !== '') ) {
+      let logic = JSON.parse(items.logic)
 
       // Should be an array to support multiple expressions
       if (!Array.isArray(logic)) {
@@ -160,8 +192,14 @@ export class SaVHelpers {
 
             // Subtract when removing.
             case "addition":
+              let prefix = "";
+              if( game.majorVersion > 7 ) {
+                prefix = "data.data.";
+              } else {
+                prefix = "data.";
+              };
               entity.update({
-                [expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, "data.data." + expression.attribute)) - expression.value
+                [expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, prefix + expression.attribute)) - expression.value
               });
               break;
 
@@ -207,7 +245,11 @@ export class SaVHelpers {
       name: randomID(),
       type: item_type
     };
-    return actor.createEmbeddedDocuments("Item", [data]);
+    if( game.majorVersion > 7 ) {
+      return actor.createEmbeddedDocuments("Item", [data]);
+    } else {
+      return actor.createEmbeddedEntity("OwnedItem", data);
+    };
   }
 
   /**
@@ -226,7 +268,12 @@ export class SaVHelpers {
 	  //console.log(game_items);
     let pack = game.packs.find(e => e.metadata.name === item_type);
     //console.log(pack);
-	  let compendium_content = await pack.getDocuments();
+	  let compendium_content = {};
+    if( game.majorVersion > 7 ) {
+      compendium_content = await pack.getDocuments();
+    } else {
+      compendium_content = await pack.getContent();
+    };
 	  //console.log(compendium_content);
     compendium_items = compendium_content.map(k => {return k.data});
 	  //console.log(compendium_items);

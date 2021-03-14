@@ -8,13 +8,24 @@ export class SaVUniverseSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
-	  return foundry.utils.mergeObject(super.defaultOptions, {
-  	  classes: ["scum-and-villainy", "sheet", "actor"],
-  	  template: "systems/scum-and-villainy/templates/universe-sheet.html",
-      width: 800,
-      height: 'auto',
-      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
-    });
+    if( game.majorVersion > 7 ) {
+			//update to foundry.utils.mergeObject
+		  return mergeObject(super.defaultOptions, {
+  	    classes: ["scum-and-villainy", "sheet", "actor"],
+  	    template: "systems/scum-and-villainy/templates/universe-sheet.html",
+        width: 800,
+        height: 'auto',
+        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
+      });
+		} else {
+			return mergeObject(super.defaultOptions, {
+  	    classes: ["scum-and-villainy", "sheet", "actor"],
+  	    template: "systems/scum-and-villainy/templates/universe-sheet-7.html",
+        width: 800,
+        height: 'auto',
+        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
+      });
+		};
   }
 
 
@@ -29,14 +40,23 @@ export class SaVUniverseSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      const item = this.document.items.get(element.data("itemId"));
+      const item = {};
+			if( game.majorVersion > 7 ) {
+			  item = this.document.items.get(element.data("itemId"));
+			} else {
+				item = this.actor.getOwnedItem(element.data("itemId"));
+			};
       item.sheet.render(true);
     });
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+			if( game.majorVersion > 7 ) {
+        this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+			} else {
+				this.actor.deleteOwnedItem(element.data("itemId"));
+			};
       element.slideUp(200, () => this.render(false));
     });
 

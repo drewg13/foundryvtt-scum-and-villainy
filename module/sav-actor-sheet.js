@@ -9,14 +9,26 @@ export class SaVActorSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
-	  return mergeObject(super.defaultOptions, {
-  	  classes: ["scum-and-villainy", "sheet", "actor"],
-  	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
-      width: 800,
-      height: 970,
-      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-	  scrollY: [".description"]
-    });
+    //update to foundry.utils.mergeObject
+    if( game.majorVersion > 7 ) {
+		  return mergeObject(super.defaultOptions, {
+  	    classes: ["scum-and-villainy", "sheet", "actor"],
+  	    template: "systems/scum-and-villainy/templates/actor-sheet.html",
+        width: 800,
+        height: 970,
+        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+	      scrollY: [".description"]
+      });
+	  } else {
+			return mergeObject(super.defaultOptions, {
+  	    classes: ["scum-and-villainy", "sheet", "actor"],
+  	    template: "systems/scum-and-villainy/templates/actor-sheet-7.html",
+        width: 800,
+        height: 970,
+        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+	      scrollY: [".description"]
+      });
+		};
   }
 
   /* -------------------------------------------- */
@@ -25,13 +37,23 @@ export class SaVActorSheet extends SaVSheet {
   getData() {
     const data = super.getData();
 	  data.isGM = game.user.isGM;
+    data.editable = data.options.editable;
 
-		let actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
+    let actorData = {};
+		let actor_flags = [];
+
+		if( game.majorVersion > 7 ) {
+      actorData = data.data.data;
+			actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
+	  } else {
+      actorData = data.data;
+			actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
+		};
 
     // Calculate Load
     let loadout = 0;
     data.items.forEach(i => {loadout += (i.type === "item") ? parseInt(i.data.load) : 0});
-    data.data.data.loadout.current = loadout;
+    actorData.loadout.current = loadout;
 
 
     // Encumbrance Levels
@@ -55,52 +77,51 @@ export class SaVActorSheet extends SaVSheet {
 
 	actor_flags.forEach(i => {
       if (i.data.installs.loaded_inst == "1") {
-        data.data.data.loadout.heavy++;
-		    data.data.data.loadout.normal++;
-		    data.data.data.loadout.light++;
+        actorData.loadout.heavy++;
+		    actorData.loadout.normal++;
+		    actorData.loadout.light++;
       } else {
-		    data.data.data.loadout.heavy = data.data.data.loadout.heavy_default;
-		    data.data.data.loadout.normal = data.data.data.loadout.normal_default;
-		    data.data.data.loadout.light = data.data.data.loadout.light_default;
+		    actorData.loadout.heavy = actorData.loadout.heavy_default;
+		    actorData.loadout.normal = actorData.loadout.normal_default;
+		    actorData.loadout.light = actorData.loadout.light_default;
 	    };
 
 	  if (i.data.installs.stress_max_up == "1") {
-      data.data.data.stress.max++;
+      actorData.stress.max++;
     } else {
-		  data.data.data.stress.max = data.data.data.stress.max_default;
+		  actorData.stress.max = actorData.stress.max_default;
 	  };
 
 	  if (i.data.installs.trauma_max_up == "1") {
-      data.data.data.trauma.max++;
+      actorData.trauma.max++;
     } else {
-		  data.data.data.trauma.max = data.data.data.trauma.max_default;
+		  actorData.trauma.max = actorData.trauma.max_default;
 	  };
 
 	  if (i.data.installs.stun_inst == "1") {
-      data.data.data.stun_weapons = 1;
+      actorData.stun_weapons = 1;
 	  } else {
-		  data.data.data.stun_weapons = 0;
+		  actorData.stun_weapons = 0;
 	  };
 
 	  if (i.data.installs.forged_inst == "1") {
-      data.data.data.forged = 1;
+      actorData.forged = 1;
 	  } else {
-		  data.data.data.forged = 0;
+		  actorData.forged = 0;
 	  };
   });
 
 	//set encumbrance level
-  if (data.data.data.loadout.heavy == 9) {
-    data.data.data.loadout.load_level=mule_level[data.data.data.loadout.current];
+  if (actorData.loadout.heavy == 9) {
+    actorData.loadout.load_level=mule_level[actorData.loadout.current];
   } else {
-    data.data.data.loadout.load_level=load_level[data.data.data.loadout.current];
+    actorData.loadout.load_level=load_level[actorData.loadout.current];
   };
 
-	if (data.data.data.loadout.planned < loadout) {
-		data.data.data.loadout.load_level = "over max";
+	if (actorData.loadout.planned < loadout) {
+		actorData.loadout.load_level = "over max";
 	};
-	data.editable = data.options.editable;
-	//console.log(data);
+
   return data;
   }
 
@@ -116,7 +137,12 @@ export class SaVActorSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      const item = this.document.items.get(element.data("itemId"));
+      let item = {};
+			if( game.majorVersion > 7 ) {
+			  item = this.document.items.get(element.data("itemId"));
+		  } else {
+				item = this.actor.getOwnedItem(element.data("itemId"));
+			};
       item.sheet.render(true);
     });
 
@@ -124,22 +150,30 @@ export class SaVActorSheet extends SaVSheet {
     html.find('.ship-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       const actor = game.actors.get(element.data("itemId"));
-      console.log(element.data("itemId"));
-			actor.sheet.render(true);
+      //console.log(element.data("itemId"));
+      actor.sheet.render(true);
     });
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
 			//console.log(this.document);
-      this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+      if( game.majorVersion > 7 ) {
+			  this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+		  } else {
+			  this.actor.deleteOwnedItem(element.data("itemId"));
+		  };
       element.slideUp(200, () => this.render(false));
     });
 
 	  // Clear Flag
 	  html.find('.flag-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      this.document.setFlag("scum-and-villainy", element.data("itemType"), "");
+      if( game.majorVersion > 7 ) {
+			  this.document.setFlag("scum-and-villainy", element.data("itemType"), "");
+		  } else {
+				this.actor.setFlag("scum-and-villainy", element.data("itemType"), "");
+			};
       element.slideUp(200, () => this.render(false));
     });
 

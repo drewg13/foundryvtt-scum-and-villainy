@@ -113,7 +113,11 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
     roll: r
   }
 
-  CONFIG.ChatMessage.documentClass.create(messageData, {})
+  if( game.majorVersion > 7 ) {
+    CONFIG.ChatMessage.documentClass.create(messageData, {});
+  } else {
+    CONFIG.ChatMessage.entityClass.create(messageData, {});
+  };
 }
 
 /**

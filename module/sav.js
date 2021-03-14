@@ -37,8 +37,16 @@ Hooks.once("init", async function() {
     choices: ["blue", "red", "yellow", "green"]
   };
 
-  CONFIG.Item.documentClass = SaVItem;
-  CONFIG.Actor.documentClass = SaVActor;
+  const versionParts = game.data.version.split('.');
+  game.majorVersion = parseInt(versionParts[1]);
+
+  if( game.majorVersion > 7 ) {
+    CONFIG.Item.documentClass = SaVItem;
+    CONFIG.Actor.documentClass = SaVActor;
+  } else {
+    CONFIG.Item.entityClass = SaVItem;
+    CONFIG.Actor.entityClass = SaVActor;
+  };
 
   // Register System Settings
   registerSystemSettings();
@@ -256,8 +264,8 @@ Hooks.once("init", async function() {
 /**
  * Once the entire VTT framework is initialized, check to see if we should perform a data migration
  */
-Hooks.once("ready", function() {
-
+Hooks.once("ready", async function() {
+  //game.savclocks = new SaVClock();
   // Determine whether a system migration is required
   const currentVersion = game.settings.get("scum-and-villainy", "systemMigrationVersion");
   const NEEDS_MIGRATION_VERSION = 1.0;
@@ -273,46 +281,84 @@ Hooks.once("ready", function() {
 /*
  * Hooks
  */
-Hooks.on("preCreateItem", (parent_entity, child_data, options, userId) => {
-  if (parent_entity.documentName == "Actor") {
-  SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
-  //console.log(child_data);
-  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
-    SaVHelpers.addDefaultAbilities( child_data, parent_entity );
-  };
 
-  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
-    const icon = child_data.img;
-	  const icon_update = {
-	  img: icon,
-	  token: {
-        img: icon
-      }
-	};
-	parent_entity.update( icon_update );
-    /**  code to replace all attached tokens as well
-	if ( parent_entity.getActiveTokens() ) {
-      const tokens = parent_entity.getActiveTokens();
-      const token_update = {
-        img: icon
-      };
-	  tokens.forEach( t => t.update( token_update ) );
+
+Hooks.on("preCreateItem", (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion > 7 ) && ( parent_entity.documentName == "Actor" ) ) {
+    SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+    //console.log(child_data);
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
+      SaVHelpers.addDefaultAbilities( child_data, parent_entity );
     };
-    */
+
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
+      const icon = child_data.img;
+	    const icon_update = {
+	      img: icon,
+	      token: {
+          img: icon
+        }
+	    };
+	    parent_entity.update( icon_update );
+      /**  code to replace all attached tokens as well
+	    if ( parent_entity.getActiveTokens() ) {
+        const tokens = parent_entity.getActiveTokens();
+        const token_update = {
+          img: icon
+        };
+	      tokens.forEach( t => t.update( token_update ) );
+      };
+      */
+    };
   };
+  return true;
+});
+
+Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
+  if( game.majorVersion = 7 ) {
+    SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
+      SaVHelpers.addDefaultAbilities( child_data, parent_entity );
+    };
+
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
+      const icon = child_data.img;
+	    const icon_update = {
+	      img: icon,
+	      token: {
+          img: icon
+        }
+	    };
+	    parent_entity.update( icon_update );
+    };
   };
   return true;
 });
 
 Hooks.on("createItem", (parent_entity, child_data, options, userId) => {
-  if ( (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    SaVHelpers.callItemLogic(child_data, parent_entity);
+  };
+  return true;
+});
+
+Hooks.on("createOwnedItem", (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     SaVHelpers.callItemLogic(child_data, parent_entity);
   };
   return true;
 });
 
 Hooks.on("deleteItem", (parent_entity, child_data, options, userId) => {
-  if ( (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    SaVHelpers.undoItemLogic(child_data, parent_entity);
+  };
+  return true;
+});
+
+Hooks.on("deleteOwnedItem", (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     SaVHelpers.undoItemLogic(child_data, parent_entity);
   };
   return true;

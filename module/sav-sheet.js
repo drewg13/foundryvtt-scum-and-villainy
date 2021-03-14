@@ -44,7 +44,12 @@ export class SaVSheet extends ActorSheet {
     //console.log(items);
     let html = `<div id="items-to-add">`;
 
-	  let actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
+	  let actor_flags = {};
+    if( game.majorVersion > 7 ) {
+		  actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
+		} else {
+			actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
+		};
 	  var stun_weapons = 0;
 	  actor_flags.forEach(i => {
       if (i.data.installs.stun_inst == "1") {
@@ -54,7 +59,9 @@ export class SaVSheet extends ActorSheet {
 	    };
 	  });
 
-	  if ( this.document.data.type == "ship" ) {
+    if( game.majorVersion > 7 ) {
+
+		if ( this.document.data.type == "ship" ) {
 		  var main_systems = ["Engines", "Hull", "Comms", "Weapons"];
 		  var overloaded = new Object;
 		  main_systems.forEach( m => {
@@ -72,6 +79,28 @@ export class SaVSheet extends ActorSheet {
 		  });
 	  };
 
+	  } else {
+
+		if ( this.actor.data.type == "ship" ) {
+		  var main_systems = ["Engines", "Hull", "Comms", "Weapons"];
+		  var overloaded = new Object;
+		  main_systems.forEach( m => {
+
+			  let actor_items = this.actor.data.items.filter(i => i.data.class === m);
+			  let total = actor_items.length;
+
+			  if ( total >= eval( "this.actor.data.data.systems." + m.toLowerCase() + ".value" )) {
+				  overloaded[m] = 1;
+
+			  } else {
+				  overloaded[m] = 0;
+
+			  };
+		  });
+	  };
+
+	  };
+
 
     items.forEach(e => {
       let addition_price_load = ``;
@@ -84,7 +113,10 @@ export class SaVSheet extends ActorSheet {
 
 
 	    var nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades"];
-	    if (e.type == "crew_upgrade") {
+
+      if( game.majorVersion > 7 ) {
+
+			if (e.type == "crew_upgrade") {
 		    if ( ( ( main_systems.includes( e.data.class ) ) && ( overloaded[ ( e.data.class.charAt(0).toUpperCase() + e.data.class.slice(1) ) ] == 0 ) ) || ( nonclass_upgrades.includes(e.data.class) ) || ( e.data.class == this.document.data.data.ship_class ) ) {
 			    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
@@ -125,6 +157,52 @@ export class SaVSheet extends ActorSheet {
 			  html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
 			  html += `</label>`;
 	    };
+
+		  } else {
+
+				if (e.type == "crew_upgrade") {
+			    if ( ( ( main_systems.includes( e.data.class ) ) && ( overloaded[ ( e.data.class.charAt(0).toUpperCase() + e.data.class.slice(1) ) ] == 0 ) ) || ( nonclass_upgrades.includes(e.data.class) ) || ( e.data.class == this.actor.data.data.ship_class ) ) {
+				    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+				    html += `</label>`;
+			    };
+		    } else if (e.type == "crew_ability") {
+			    if (e.data.class == this.actor.data.data.ship_class) {
+				    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+				    html += `</label>`;
+			    };
+		    } else if (e.type == "ability") {
+			    if (e.data.class == this.actor.data.data.character_class) {
+				    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+				    html += `</label>`;
+			    };
+		    } else if (e.type == "item") {
+			    if ((e.data.class == "Standard") || ((stun_weapons == 1) && (e.data.class == "Non-Lethal")) || (e.data.class == this.actor.data.data.character_class)) {
+				    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+				    html += `</label>`;
+			    };
+		    } else if (e.type == "friend") {
+			    if ( (e.data.class == this.actor.data.data.character_class) || (e.data.class == this.actor.data.data.ship_class) ) {
+				    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+				    html += `</label>`;
+			    };
+		    } else {
+				  html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				  html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				  html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext">${game.i18n.localize(e.data.description)}</span></i>`;
+				  html += `</label>`;
+		    };
+
+		  }
     });
 
     html += `</div>`;
@@ -132,7 +210,13 @@ export class SaVSheet extends ActorSheet {
     let options = {
       // width: "500"
     }
-    if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+    let perms = 0;
+    if( game.majorVersion > 7 ) {
+			perms = this.document.permission;
+		} else {
+			perms = this.actor.permission;
+		};
+		if ( perms >= CONST.ENTITY_PERMISSIONS.OWNER ) {
     let dialog = new Dialog({
       title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
       content: html,
@@ -185,7 +269,14 @@ async _onFlagAddClick(event) {
     let options = {
       // width: "500"
     }
-    if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+		let perms = 0;
+    if( game.majorVersion > 7 ) {
+			perms = this.document.permission;
+		} else {
+			perms = this.actor.permission;
+		};
+
+		if ( perms >= CONST.ENTITY_PERMISSIONS.OWNER ) {
     let dialog = new Dialog({
       title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
       content: html,
@@ -224,9 +315,15 @@ async _onFlagAddClick(event) {
     });
     //console.log(this.document);
     //console.log(items_to_add);
-		if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
-			Item.create(items_to_add, {parent: this.document});
-	  };
+    if( game.majorVersion > 7 ) {
+		  if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+			  Item.create(items_to_add, {parent: this.document});
+	    };
+		} else {
+			if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+	      this.actor.createEmbeddedEntity("OwnedItem", items_to_add);
+	    };
+		};
   }
 
   async addFlagsToSheet(item_type, el) {
@@ -238,9 +335,15 @@ async _onFlagAddClick(event) {
 		  items_to_add.push(items.find(e => e._id === $(this).val()));
 
     });
-    if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
-	    await this.document.setFlag("scum-and-villainy", item_type, items_to_add);
-	  };
+    if( game.majorVersion > 7 ) {
+		  if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+	      await this.document.setFlag("scum-and-villainy", item_type, items_to_add);
+	    };
+		} else {
+			if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+	      await this.actor.setFlag("scum-and-villainy", item_type, items_to_add);
+	    };
+		};
   }
 
 
@@ -257,13 +360,17 @@ async _onFlagAddClick(event) {
     let actions = ["doctor", "hack", "rig", "study", "helm", "scramble", "scrap", "skulk", "attune", "command", "consort", "sway", "engines", "hull", "comms", "weapons"];
 
 	  if ( actions.includes( attribute_name ) ) {
-
-	    this.document.rollActionPopup(attribute_name);
-
+      if( game.majorVersion > 7 ) {
+			  this.document.rollActionPopup(attribute_name);
+			} else {
+				this.actor.rollActionPopup(attribute_name);
+			};
   	} else {
-
-	    this.document.rollSimplePopup(attribute_name);
-
+			if( game.majorVersion > 7 ) {
+				this.document.rollSimplePopup(attribute_name);
+			} else {
+				this.actor.rollSimplePopup(attribute_name);
+			};
 	  }
   }
 
@@ -277,7 +384,12 @@ async _onFlagAddClick(event) {
 	  const world_items = await SaVHelpers.getAllItemsByType(item_type, game);
 	  //console.log(world_items);
 	  //find all items of type attached to actor
-	  const curr_items = this.document.data.items.filter(i => i.type === item_type);
+	  let curr_items = {};
+    if( game.majorVersion > 7 ) {
+		  curr_items = this.document.data.items.filter(i => i.type === item_type);
+		} else {
+			curr_items = this.actor.data.items.filter(i => i.type === item_type);
+		};
 	  //console.log("Current");
 	  //console.log(curr_items);
 	  //find all items in world, but not attached to actor
@@ -290,10 +402,18 @@ async _onFlagAddClick(event) {
 	  const delete_items = rem_items.map( i => i.id );
 	  //console.log("Delete");
 	  //console.log(delete_items);
-	  //delete all items attached to actor, but not in world
-	  await this.document.deleteEmbeddedDocuments("Item", delete_items);
-	  //attach any new items
-	  await this.document.createEmbeddedDocuments("Item", add_items);
+
+    if( game.majorVersion > 7 ) {
+		  //delete all items attached to actor, but not in world
+	    await this.document.deleteEmbeddedDocuments("Item", delete_items);
+	    //attach any new items
+	    await this.document.createEmbeddedDocuments("Item", add_items);
+		} else {
+			//delete all items attached to actor, but not in world
+	    await this.actor.deleteEmbeddedEntity("OwnedItem", delete_items);
+	    //attach any new items
+	    await this.actor.createEmbeddedEntity("OwnedItem", add_items);
+		};
   }
 
 /* -------------------------------------------- */
@@ -306,23 +426,27 @@ async _onFlagAddClick(event) {
 		  update_value = document.getElementById('fac-' + update_type + '-' + item_id).value;
 	  };
 
-	if ( update_type == "heat" ) {
-		var update = [{_id: item_id, data:{heat:{value: update_value}}}];
-	} else if ( update_type == "wanted" ) {
-		var update = [{_id: item_id, data:{wanted:{value: update_value}}}];
-	} else if ( update_type == "status" ) {
-		var update = [{_id: item_id, data:{status:{value: update_value}}}];
-	} else if (update_type == "jobs" ) {
-		var update = [{_id: item_id, data:{jobs:{value: update_value}}}];
-	} else if (update_type == "is_damaged" ) {
-		var update = [{_id: item_id, data:{is_damaged: update_value}}];
-	} else {
-		console.log("update attempted for type undefined in sav-sheet.js onUpdateBoxClick function");
-		return;
-	};
-	//console.log(update);
-	//console.log(this.document);
-	await Item.updateDocuments(update, {parent: this.document});
+	  if ( update_type == "heat" ) {
+		  var update = {_id: item_id, data:{heat:{value: update_value}}};
+	  } else if ( update_type == "wanted" ) {
+		  var update = {_id: item_id, data:{wanted:{value: update_value}}};
+	  } else if ( update_type == "status" ) {
+	  	var update = {_id: item_id, data:{status:{value: update_value}}};
+	  } else if (update_type == "jobs" ) {
+	  	var update = {_id: item_id, data:{jobs:{value: update_value}}};
+	  } else if (update_type == "is_damaged" ) {
+	  	var update = {_id: item_id, data:{is_damaged: update_value}};
+	  } else {
+	  	console.log("update attempted for type undefined in sav-sheet.js onUpdateBoxClick function");
+		  return;
+	  };
+	  //console.log(update);
+	  //console.log(this.document);
+    if( game.majorVersion > 7 ) {
+	    await Item.updateDocuments([update], {parent: this.document});
+	  } else {
+  		await this.actor.updateEmbeddedEntity("OwnedItem", update);
+  	};
 
 
   }
