@@ -200,15 +200,18 @@ export class SaVClockSheet extends ActorSheet {
 
 export default {
 
-	renderTokenHUD: async (_hud, html, token) => {
+  renderTokenHUD: async (_hud, html, token) => {
 
-	log("Render")
+  log("Render")
   let t = canvas.tokens.get(token.id);
-	let a = game.actors.get(token.actorId);
-
-	if ( !a.data.flags['scum-and-villainy'].clocks ) {
-	  return false;
-  }
+  let a = game.actors.get(token.actorId);
+  //console.log(a.data.flags['scum-and-villainy']);
+  if( !a.data.flags['scum-and-villainy'] ) {
+    return false;
+  };
+  if( !a.data.flags['scum-and-villainy'].clocks ) {
+    return false;
+  };
 
   const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
   const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
