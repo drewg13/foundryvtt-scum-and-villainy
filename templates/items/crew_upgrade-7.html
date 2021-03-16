@@ -15,8 +15,9 @@
     <label class="label-stripe">{{localize "BITD.Price"}}</label>
     <input type="text" name="data.price" value="{{data.price}}"><br>
     
-	{{isG}}
+	{{#if isGM}}
 	<label class="label-stripe">{{localize "BITD.Logic"}}</label>
     {{editor content=data.logic target="data.logic" button=true owner=owner editable=editable}}
+	{{/if}}
   </section>
 </form>
