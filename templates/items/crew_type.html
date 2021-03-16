@@ -18,9 +18,10 @@
 	<label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
     <textarea name="data.def_abilities">{{data.def_abilities}}</textarea>
 	
-	{{isG}}
-	<label class="label-stripe">{{localize "BITD.Logic"}}</label>
+  {{#if isGM}}
+    <label class="label-stripe">{{localize "BITD.Logic"}}</label>
     {{editor content=data.logic target="data.logic" button=true owner=owner editable=editable}}
+  {{/if}}
   </section>
 
   
