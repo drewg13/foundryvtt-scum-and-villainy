@@ -139,10 +139,12 @@ export default {
 	log("Render")
     let t = canvas.tokens.get(token._id);
 	let a = game.actors.get(token.actorId);
-	
-	if ( !a.data.flags['scum-and-villainy'].clocks ) {
-	  return false;
-    }
+    if( !a.data.flags['scum-and-villainy'] ) {
+      return false;
+    };
+    if ( !a.data.flags['scum-and-villainy'].clocks ) {
+      return false;
+    };
 
     const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/button1.html');
     const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/button2.html');
