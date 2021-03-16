@@ -16,9 +16,11 @@ export class SaVActor extends Actor {
     switch (data.type) {
       case 'character':
       case 'ship':
-	    case '\uD83D\uDD5B clock':
+      case '\uD83D\uDD5B clock':
       case 'universe':
       data.token.actorLink = true;
+	  data.token.name = data.name;
+	  data.token.displayName = 50;
       break;
     }
 
