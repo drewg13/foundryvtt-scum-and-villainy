@@ -17,3 +17,15 @@ v1.0.10  Add field to template that the Notes tabs were pointing to
 v1.1.0  initial 0.8.0 compatibility
 
 v1.1.1  fixed issues with TinyMCE in Notes tabs
+
+v1.1.2  Updated clocks ui sheet naming
+
+v1.2.0  Initial release to support both 0.7.x and 0.8.x simultaneously
+
+v1.2.1  Fix typos on ship sheet in designation and look fields
+
+v1.2.2  Fix typo const -> let on universe sheet
+
+v1.2.3  Fix token right-click console errors/Hide Logic fields from non-GMs/change icon defaults
+
+v1.2.4  Add async and await functions to Hook calls
