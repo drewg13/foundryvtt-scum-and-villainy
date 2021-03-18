@@ -283,12 +283,12 @@ Hooks.once("ready", async function() {
  */
 
 
-Hooks.on("preCreateItem", (parent_entity, child_data, options, userId) => {
+Hooks.on("preCreateItem", async (parent_entity, child_data, options, userId) => {
   if ( ( game.majorVersion > 7 ) && ( parent_entity.documentName == "Actor" ) ) {
-    SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+    await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
     //console.log(child_data);
     if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
-      SaVHelpers.addDefaultAbilities( child_data, parent_entity );
+      await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
     };
 
     if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
@@ -299,7 +299,7 @@ Hooks.on("preCreateItem", (parent_entity, child_data, options, userId) => {
           img: icon
         }
 	    };
-	    parent_entity.update( icon_update );
+	    await parent_entity.update( icon_update );
       /**  code to replace all attached tokens as well
 	    if ( parent_entity.getActiveTokens() ) {
         const tokens = parent_entity.getActiveTokens();
@@ -314,12 +314,12 @@ Hooks.on("preCreateItem", (parent_entity, child_data, options, userId) => {
   return true;
 });
 
-Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
+Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId) => {
   if( game.majorVersion = 7 ) {
-    SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+    await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
 
     if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
-      SaVHelpers.addDefaultAbilities( child_data, parent_entity );
+      await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
     };
 
     if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
@@ -330,36 +330,36 @@ Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
           img: icon
         }
 	    };
-	    parent_entity.update( icon_update );
+	    await parent_entity.update( icon_update );
     };
   };
   return true;
 });
 
-Hooks.on("createItem", (parent_entity, child_data, options, userId) => {
+Hooks.on("createItem", async (parent_entity, child_data, options, userId) => {
   if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    SaVHelpers.callItemLogic(child_data, parent_entity);
+    await SaVHelpers.callItemLogic(child_data, parent_entity);
   };
   return true;
 });
 
-Hooks.on("createOwnedItem", (parent_entity, child_data, options, userId) => {
+Hooks.on("createOwnedItem", async (parent_entity, child_data, options, userId) => {
   if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    SaVHelpers.callItemLogic(child_data, parent_entity);
+    await SaVHelpers.callItemLogic(child_data, parent_entity);
   };
   return true;
 });
 
-Hooks.on("deleteItem", (parent_entity, child_data, options, userId) => {
+Hooks.on("deleteItem", async (parent_entity, child_data, options, userId) => {
   if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    SaVHelpers.undoItemLogic(child_data, parent_entity);
+    await SaVHelpers.undoItemLogic(child_data, parent_entity);
   };
   return true;
 });
 
-Hooks.on("deleteOwnedItem", (parent_entity, child_data, options, userId) => {
+Hooks.on("deleteOwnedItem", async (parent_entity, child_data, options, userId) => {
   if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    SaVHelpers.undoItemLogic(child_data, parent_entity);
+    await SaVHelpers.undoItemLogic(child_data, parent_entity);
   };
   return true;
 });
@@ -378,8 +378,8 @@ Hooks.once("init", () => {
   log(`Init ${game.data.system.id}`);
 });
 
-Hooks.on("getSceneControlButtons", (controls) => {
-  ClockTiles.getSceneControlButtons(controls);
+Hooks.on("getSceneControlButtons", async (controls) => {
+  await ClockTiles.getSceneControlButtons(controls);
 });
 
 Hooks.on("renderTileHUD", async (hud, html, tile) => {
