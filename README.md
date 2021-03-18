@@ -4,9 +4,9 @@ An attempt to adapt the Blades in the Dark system created by megastruktur to Scu
 
 ## IMPORTANT NOTES
 
-I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)
+NEW NOTE!  I've had reports and seen for myself that some of the logic on the ship sheet reverts after logging out, specifically the designation, the gambit refresh value, and some (but not all!) of the system max values.  I'm working on tracking down the problem, but until then, there is a workaround that I've found.  When creating a ship, before you log out, right click the ship actor and Duplicate it.  From what I can tell, the copy will not revert and you can delete the original.
 
-Also, I've occasionally seen item popups show up empty or missing class-specific items.  This may be a product of my frequent changes during testing, but if you see this, screenshot your sheet FIRST and try removing the Class/Ship Type, then re-adding it.  In a pinch, items can be added the old-fashioned way by dragging them from the relevant compendium.
+I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)
 
 You DO NOT need to import any items out of the compendiums in order to use them.  Currently, if you do import them, the system should ignore the compendium version on the assumption that you imported the item in order to edit it.
 
@@ -68,7 +68,7 @@ TBD
 
 Clock Actors
 
-Clock Actors live in your Actors tab (and can be dragged onto a scene as a token). To get started, create a new actor and select the clock actor type. Change a clock setting (such as theme or size) or hit the Reset button (between the plus/minus buttons) to generate the correct clock artwork, if it doesn't appear as expected.
+Clock Actors live in your Actors tab (and can be dragged onto a scene as a token). To get started, create a new actor and select the clock actor type. Change a clock setting (such as theme or size) or hit the Reset button (between the plus/minus buttons) to generate the correct clock artwork, if it doesn't appear as expected.  Note that you can right-click Clock tokens for some of the same UI buttons from Clock Tiles for modifying the clock which will carry over to the linked actor.  Multiple clock tokens linked to the same actor should stay in sync within the same scene, but tokens in different scenes will have to have the sheet opened to sync up.
 
 Clock Tiles
 
