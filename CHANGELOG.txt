@@ -15,5 +15,3 @@ v1.0.9  Fixed planet sheet briefly popping open when deleting from a system on t
 v1.0.10  Add field to template that the Notes tabs were pointing to
 
 v1.0.11  Fix token right click console errors, hide item logic fields from non-GMs, default tokens to always display name
-
-v1.0.12  Attempt to fix gambit refresh reset
