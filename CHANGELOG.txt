@@ -31,3 +31,5 @@ v1.2.2  Fix typo const -> let on universe sheet
 v1.2.3  Fix token right-click console errors/Hide Logic fields from non-GMs/change icon defaults
 
 v1.2.4  Add async and await functions to Hook calls
+
+v1.2.5  Made faction tier and goal fields editable, merged testing with master
