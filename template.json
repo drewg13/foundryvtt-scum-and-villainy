@@ -3,10 +3,10 @@
   "types": ["character", "ship", "\uD83D\uDD5B clock", "universe"],
   "character": {
     "alias": "",
-	"look": "",
-	"description": "",
-	"character_class": "",
-	"character_class_default": "",
+	  "look": "",
+    "description": "",
+    "character_class": "",
+	  "character_class_default": "",
     "stress": {
       "value": [0],
       "max": 9,
@@ -28,33 +28,33 @@
     "coins_stashed": [0],
     "special_abilities": [],
     "loadout": {
-		"current": 0,
-		"planned": [0],
-		"heavy": 8,
-		"heavy_default": 8,
-		"normal": 5,
-		"normal_default": 5,
-		"light": 3,
-		"light_default": 3,
-		"load_level": ""
-	},
-	"stun_weapons": 0,
-	"forged": 0,
+  	  "current": 0,
+  	  "planned": [0],
+  	  "heavy": 8,
+  	  "heavy_default": 8,
+  	  "normal": 5,
+  	  "normal_default": 5,
+  	  "light": 3,
+  	  "light_default": 3,
+  	  "load_level": ""
+  	},
+	  "stun_weapons": 0,
+	  "forged": 0,
     "harm": {
-        "light": {
-          "one": "",
-          "two": ""
-        },
-        "medium": {
-          "one": "",
-          "two": ""
-        },
-        "heavy": {
-          "one": ""
-        },
-        "deadly": {
-          "one": ""
-        }
+      "light": {
+        "one": "",
+        "two": ""
+      },
+      "medium": {
+        "one": "",
+        "two": ""
+      },
+      "heavy": {
+        "one": ""
+      },
+      "deadly": {
+        "one": ""
+      }
     },
     "armor-uses": {
       "armor": 0,
@@ -62,188 +62,188 @@
       "special": 0
     },
     "attributes": {
-        "insight": {
-          "exp": [0],
-          "label": "BITD.SkillsInsight",
-          "skills": {
-            "doctor": {
-              "label": "BITD.SkillsDoctor",
-              "value": [0],
-              "value_default": [0]
-            },
-            "hack": {
-              "label": "BITD.SkillsHack",
-              "value": [0],
-              "value_default": [0]
-            },
-            "rig": {
-              "label": "BITD.SkillsRig",
-              "value": [0],
-              "value_default": [0]
-            },
-            "study": {
-              "label": "BITD.SkillsStudy",
-              "value": [0],
-              "value_default": [0]
-            }
-          }
-        },
-        "prowess": {
-          "exp": [0],
-          "label": "BITD.SkillsProwess",
-          "skills": {
-            "helm": {
-              "label": "BITD.SkillsHelm",
-              "value": [0],
-              "value_default": [0]
-            },
-            "scramble": {
-              "label": "BITD.SkillsScramble",
-              "value": [0],
-              "value_default": [0]
-            },
-            "scrap": {
-              "label": "BITD.SkillsScrap",
-              "value": [0],
-              "value_default": [0]
-            },
-            "skulk": {
-              "label": "BITD.SkillsSkulk",
-              "value": [0],
-              "value_default": [0]
-            }
-          }
-        },
-        "resolve": {
-          "exp": [0],
-          "label": "BITD.SkillsResolve",
-          "skills": {
-            "attune": {
-              "label": "BITD.SkillsAttune",
-              "value": [0],
-              "value_default": [0]
-            },
-            "command": {
-              "label": "BITD.SkillsCommand",
-              "value": [0],
-              "value_default": [0]
-            },
-            "consort": {
-              "label": "BITD.SkillsConsort",
-              "value": [0],
-              "value_default": [0]
-            },
-            "sway": {
-              "label": "BITD.SkillsSway",
-              "value": [0],
-              "value_default": [0]
-            }
+      "insight": {
+        "exp": [0],
+        "label": "BITD.SkillsInsight",
+        "skills": {
+          "doctor": {
+            "label": "BITD.SkillsDoctor",
+            "value": [0],
+            "value_default": [0]
+          },
+          "hack": {
+            "label": "BITD.SkillsHack",
+            "value": [0],
+            "value_default": [0]
+          },
+          "rig": {
+            "label": "BITD.SkillsRig",
+            "value": [0],
+            "value_default": [0]
+          },
+          "study": {
+            "label": "BITD.SkillsStudy",
+            "value": [0],
+            "value_default": [0]
           }
         }
+      },
+      "prowess": {
+        "exp": [0],
+        "label": "BITD.SkillsProwess",
+        "skills": {
+          "helm": {
+            "label": "BITD.SkillsHelm",
+            "value": [0],
+            "value_default": [0]
+          },
+          "scramble": {
+            "label": "BITD.SkillsScramble",
+            "value": [0],
+            "value_default": [0]
+          },
+          "scrap": {
+            "label": "BITD.SkillsScrap",
+            "value": [0],
+            "value_default": [0]
+          },
+          "skulk": {
+            "label": "BITD.SkillsSkulk",
+            "value": [0],
+            "value_default": [0]
+          }
+        }
+      },
+      "resolve": {
+        "exp": [0],
+        "label": "BITD.SkillsResolve",
+        "skills": {
+          "attune": {
+            "label": "BITD.SkillsAttune",
+            "value": [0],
+            "value_default": [0]
+          },
+          "command": {
+            "label": "BITD.SkillsCommand",
+            "value": [0],
+            "value_default": [0]
+          },
+          "consort": {
+            "label": "BITD.SkillsConsort",
+            "value": [0],
+            "value_default": [0]
+          },
+          "sway": {
+            "label": "BITD.SkillsSway",
+            "value": [0],
+            "value_default": [0]
+          }
+        }
+      }
     }
   },
   "ship": {
     "name": "",
     "look": "",
     "description": "",
-	"designation": "",
-	"designation_default": "",
+  	"designation": "",
+  	"designation_default": "",
     "size": "",
-	"size_default": "",
+  	"size_default": "",
     "coins": [0],
     "coins_default": [0],
     "vault": [0],
     "debt-clock": [0],
-	"crew_experience": [0],
-	"ship_class": "",
-	"ship_class_default": "",
+  	"crew_experience": [0],
+  	"ship_class": "",
+  	"ship_class_default": "",
     "gambits": {
       "refresh": 2,
-	  "refresh_default": 2,
+      "refresh_default": 2,
       "max": 8,
-	  "max_default": 8,
+  	  "max_default": 8,
       "value": [0],
       "value_default": [0]
     },
     "installs": {
-		"vault_inst": 0,
-		"vault_inst_default": 0,
-		"stun_inst": 0,
-		"stun_inst_default": 0,
-		"stress_max_up": 0,
-		"stress_max_up_default": 0,
-		"trauma_max_up": 0,
-		"trauma_max_up_default": 0,
-		"cooking_inst": 0,
-		"cooking_inst_default": 0,
-		"loaded_inst": 0,
-		"loaded_inst_default": 0,
-		"forged_inst": 0,
-		"forged_inst_default": 0
-	},
-	"systems": {
-		"crew": {
-		  "label": "BITD.SystemsCrew",
-		  "value": [0],
-		  "value_default": [0],
-		  "damage": [0],
-		  "max": 3,
-		  "max_default": 3
-		},
-		"upkeep": {
-		  "label": "BITD.SystemsUpkeep",
-		  "value": 0,
-		  "damage": [0],
-		  "max": 4
-		},
-        "engines": {
-          "label": "BITD.SystemsEngines",
-          "value": [0],
-		  "value_default": [0],
-          "damage": [0],
-          "max": 4,
-		  "max_default": 4
-        },
-        "hull": {
-          "label": "BITD.SystemsHull",
-          "value": [0],
-		  "value_default": [0],
-          "damage": [0],
-          "max": 4,
-		  "max_default": 4
-        },
-		"shields": {
-          "label": "BITD.SystemsShields",
-		  "value": [0],
-		  "value_default": [0],
-          "damage": [0],
-		  "max": 0,
-		  "max_default": 0
-		},
-        "comms": {
-          "label": "BITD.SystemsComms",
-          "value": [0],
-		  "value_default": [0],
-          "damage": [0],
-          "max": 4,
-		  "max_default": 4
-        },
-		"encryptor": {
-          "label": "BITD.SystemsEncryptor",
-		  "value": [0],
-		  "value_default": [0],
-          "damage": [0],
-		  "max": 0,
-		  "max_default": 0
-		},
-        "weapons": {
-          "label": "BITD.SystemsWeapons",
-          "value": [0],
-		  "value_default": [0],
-          "damage": [0],
-          "max": 4,
-		  "max_default": 4
-        }
+  		"vault_inst": 0,
+  		"vault_inst_default": 0,
+  		"stun_inst": 0,
+  		"stun_inst_default": 0,
+  		"stress_max_up": 0,
+  		"stress_max_up_default": 0,
+  		"trauma_max_up": 0,
+  		"trauma_max_up_default": 0,
+  		"cooking_inst": 0,
+  		"cooking_inst_default": 0,
+  		"loaded_inst": 0,
+  		"loaded_inst_default": 0,
+  		"forged_inst": 0,
+  		"forged_inst_default": 0
+  	},
+  	"systems": {
+  		"crew": {
+  		  "label": "BITD.SystemsCrew",
+  		  "value": [0],
+  		  "value_default": [0],
+  		  "damage": [0],
+  		  "max": 3,
+  		  "max_default": 3
+  		},
+  		"upkeep": {
+  		  "label": "BITD.SystemsUpkeep",
+  		  "value": 0,
+  		  "damage": [0],
+  		  "max": 4
+  		},
+      "engines": {
+        "label": "BITD.SystemsEngines",
+        "value": [0],
+  		  "value_default": [0],
+        "damage": [0],
+        "max": 4,
+  		  "max_default": 4
+      },
+      "hull": {
+        "label": "BITD.SystemsHull",
+        "value": [0],
+  		  "value_default": [0],
+        "damage": [0],
+        "max": 4,
+  		  "max_default": 4
+      },
+  		"shields": {
+        "label": "BITD.SystemsShields",
+  		  "value": [0],
+  		  "value_default": [0],
+        "damage": [0],
+  		  "max": 0,
+  		  "max_default": 0
+  		},
+      "comms": {
+        "label": "BITD.SystemsComms",
+        "value": [0],
+  		  "value_default": [0],
+        "damage": [0],
+        "max": 4,
+  		  "max_default": 4
+      },
+  		"encryptor": {
+        "label": "BITD.SystemsEncryptor",
+  		  "value": [0],
+  		  "value_default": [0],
+        "damage": [0],
+  		  "max": 0,
+  		  "max_default": 0
+  		},
+      "weapons": {
+        "label": "BITD.SystemsWeapons",
+        "value": [0],
+  		  "value_default": [0],
+        "damage": [0],
+        "max": 4,
+  		  "max_default": 4
+      }
     }
   },
   "\uD83D\uDD5B clock": {
@@ -252,7 +252,7 @@
     "value": "0"
   },
   "universe": {
-	"name": ""
+  	"name": ""
   }
 },
 "Item": {

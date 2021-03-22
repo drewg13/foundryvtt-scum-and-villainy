@@ -10,7 +10,9 @@ export const preloadHandlebarsTemplates = async function() {
 
     // Actor Sheet Partials
     "systems/scum-and-villainy/templates/parts/coins.html",
-    "systems/scum-and-villainy/templates/parts/attributes.html"
+    "systems/scum-and-villainy/templates/parts/attributes.html",
+    "systems/scum-and-villainy/templates/parts/coins-7.html",
+    "systems/scum-and-villainy/templates/parts/attributes-7.html"
   ];
 
   // Load the template parts

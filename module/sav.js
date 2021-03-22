@@ -17,10 +17,10 @@ import { SaVShipSheet } from "./sav-ship-sheet.js";
 import { SaVUniverseSheet } from "./sav-universe-sheet.js";
 import * as migrations from "./migration.js";
 /* For Clocks UI */
-import { ClockSheet } from "./sheet.js";
-import Tiles from "./tiles.js";
-import Sheet from "./sheet.js";
-import { log } from "./util.js";
+import { SaVClockSheet } from "./sav-clock-sheet.js";
+import ClockTiles from "./sav-clock-tiles.js";
+import ClockSheet from "./sav-clock-sheet.js";
+import { log } from "./sav-clock-util.js";
 
 window.SaVHelpers = SaVHelpers;
 
@@ -33,12 +33,20 @@ Hooks.once("init", async function() {
   game.sav = {
     dice: savRoll
   }
-  game.system.clocks = {
+  game.system.savclocks = {
     choices: ["blue", "red", "yellow", "green"]
   };
-  
-  CONFIG.Item.entityClass = SaVItem;
-  CONFIG.Actor.entityClass = SaVActor;
+
+  const versionParts = game.data.version.split('.');
+  game.majorVersion = parseInt(versionParts[1]);
+
+  if( game.majorVersion > 7 ) {
+    CONFIG.Item.documentClass = SaVItem;
+    CONFIG.Actor.documentClass = SaVActor;
+  } else {
+    CONFIG.Item.entityClass = SaVItem;
+    CONFIG.Actor.entityClass = SaVActor;
+  };
 
   // Register System Settings
   registerSystemSettings();
@@ -47,7 +55,7 @@ Hooks.once("init", async function() {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("scum-and-villainy", SaVActorSheet, { types: ["character"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVShipSheet, { types: ["ship"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", ClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
+  Actors.registerSheet("scum-and-villainy", SaVClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("scum-and-villainy", SaVItemSheet, {makeDefault: true});
@@ -57,14 +65,14 @@ Hooks.once("init", async function() {
 
   // Multiboxes.
   Handlebars.registerHelper('multiboxes', function(selected, options) {
-    
+
     let html = options.fn(this);
 
     // Fix for single non-array values.
     if ( !Array.isArray(selected) ) {
       selected = [selected];
     }
-    
+
     if (typeof selected !== 'undefined') {
       selected.forEach(selected_value => {
         if (selected_value !== false) {
@@ -79,7 +87,7 @@ Hooks.once("init", async function() {
 
   // Trauma Counter
   Handlebars.registerHelper('traumacounter', function(selected, options) {
-    
+
     let html = options.fn(this);
 
     var count = 0;
@@ -90,7 +98,7 @@ Hooks.once("init", async function() {
     }
 
     if (count > 5) count = 5;
-    
+
     const rgx = new RegExp(' value=\"' + count + '\"');
     return html.replace(rgx, "$& checked=\"checked\"");
 
@@ -111,7 +119,7 @@ Hooks.once("init", async function() {
     return (a <= b);
   });
 
-  
+
   Handlebars.registerHelper('crew_vault_coins', (max_coins, options) => {
 
     let html = options.fn(this);
@@ -241,7 +249,7 @@ Hooks.once("init", async function() {
 
     for (let i = 1; i <= parseInt(type); i++) {
       let checked = (parseInt(current_value) === i) ? 'checked="checked"' : '';
-      html += `        
+      html += `
         <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" name="${parameter_name}" ${checked}>
         <label for="clock-${i}-${uniq_id}"></label>
       `;
@@ -256,14 +264,14 @@ Hooks.once("init", async function() {
 /**
  * Once the entire VTT framework is initialized, check to see if we should perform a data migration
  */
-Hooks.once("ready", function() {
-
+Hooks.once("ready", async function() {
+  //game.savclocks = new SaVClock();
   // Determine whether a system migration is required
   const currentVersion = game.settings.get("scum-and-villainy", "systemMigrationVersion");
   const NEEDS_MIGRATION_VERSION = 1.0;
-  
+
   let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
-  
+
   // Perform the migration
   if ( needMigration && game.user.isGM ) {
     //migrations.migrateWorld();
@@ -273,74 +281,85 @@ Hooks.once("ready", function() {
 /*
  * Hooks
  */
-Hooks.on("preCreateOwnedItem", (parent_entity, child_data, options, userId) => {
 
-  SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
-  
-  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) { 
-    SaVHelpers.addDefaultAbilities( child_data, parent_entity ); 
-  };
-  
-  if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) { 
-    const icon = child_data.img;
-	const icon_update = {
-	  img: icon,
-	  token: {
-        img: icon
-      }
-	};
-	parent_entity.update( icon_update );
-    /**  code to replace all attached tokens as well
-	if ( parent_entity.getActiveTokens() ) {
-      const tokens = parent_entity.getActiveTokens();
-      const token_update = {
-        img: icon
-      };
-	  tokens.forEach( t => t.update( token_update ) );
+
+Hooks.on("preCreateItem", async (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion > 7 ) && ( parent_entity.documentName == "Actor" ) ) {
+    await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+    //console.log(child_data);
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
+      await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
     };
-    */    		  
-  };
-  
-  return true;
-});
 
-
-Hooks.on("preCreateActor", (data, options, userId) => {
-  // set default icons for each actor type
-  let icon = "";
-  switch ( data.type ) {
-    case "universe": {
-	  icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
-	  break;
-	}
-	case "ship": {
-	  icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
-	  break;
-	}
-	case "character": {
-	  icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
-	  break;
-	}
-	case "\uD83D\uDD5B clock": {
-	  icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
-	  break;
-	}
-  };
-  data.img = icon;
-  
-});
-
-
-Hooks.on("createOwnedItem", (parent_entity, child_data, options, userId) => {
-  if ( parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) {
-    SaVHelpers.callItemLogic(child_data, parent_entity);
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
+      const icon = child_data.img;
+	    const icon_update = {
+	      img: icon,
+	      token: {
+          img: icon
+        }
+	    };
+	    await parent_entity.update( icon_update );
+      /**  code to replace all attached tokens as well
+	    if ( parent_entity.getActiveTokens() ) {
+        const tokens = parent_entity.getActiveTokens();
+        const token_update = {
+          img: icon
+        };
+	      tokens.forEach( t => t.update( token_update ) );
+      };
+      */
+    };
   };
   return true;
 });
 
-Hooks.on("deleteOwnedItem", (parent_entity, child_data, options, userId) => {
-  if ( parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) {
-    SaVHelpers.undoItemLogic(child_data, parent_entity);
+Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId) => {
+  if( game.majorVersion = 7 ) {
+    await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
+      await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
+    };
+
+    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
+      const icon = child_data.img;
+	    const icon_update = {
+	      img: icon,
+	      token: {
+          img: icon
+        }
+	    };
+	    await parent_entity.update( icon_update );
+    };
+  };
+  return true;
+});
+
+Hooks.on("createItem", async (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    await SaVHelpers.callItemLogic(child_data, parent_entity);
+  };
+  return true;
+});
+
+Hooks.on("createOwnedItem", async (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    await SaVHelpers.callItemLogic(child_data, parent_entity);
+  };
+  return true;
+});
+
+Hooks.on("deleteItem", async (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    await SaVHelpers.undoItemLogic(child_data, parent_entity);
+  };
+  return true;
+});
+
+Hooks.on("deleteOwnedItem", async (parent_entity, child_data, options, userId) => {
+  if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    await SaVHelpers.undoItemLogic(child_data, parent_entity);
   };
   return true;
 });
@@ -359,16 +378,16 @@ Hooks.once("init", () => {
   log(`Init ${game.data.system.id}`);
 });
 
-Hooks.on("getSceneControlButtons", (controls) => {
-  Tiles.getSceneControlButtons(controls);
+Hooks.on("getSceneControlButtons", async (controls) => {
+  await ClockTiles.getSceneControlButtons(controls);
 });
 
 Hooks.on("renderTileHUD", async (hud, html, tile) => {
-  await Tiles.renderTileHUD(hud, html, tile);
+  await ClockTiles.renderTileHUD(hud, html, tile);
 });
 
 Hooks.on("renderTokenHUD", async (hud, html, token) => {
-  if( await Sheet.renderTokenHUD(hud, html, token) ) {
+  if( await ClockSheet.renderTokenHUD(hud, html, token) ) {
 	  var rootElement = document.getElementsByClassName('vtt game')[0];
       rootElement.classList.add('hide-ui');
   } else {

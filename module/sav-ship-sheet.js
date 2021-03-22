@@ -9,22 +9,34 @@ export class SaVShipSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
-	  return mergeObject(super.defaultOptions, {
-  	  classes: ["scum-and-villainy", "sheet", "actor"],
-  	  template: "systems/scum-and-villainy/templates/ship-sheet.html",
-      width: 700,
-      height: 970,
-      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-	  scrollY: [".description"]
-    });
+    if( game.majorVersion > 7 ) {
+      //update to foundry.utils.mergeObject
+			return mergeObject(super.defaultOptions, {
+  	    classes: ["scum-and-villainy", "sheet", "actor"],
+  	    template: "systems/scum-and-villainy/templates/ship-sheet.html",
+        width: 700,
+        height: 970,
+        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+	      scrollY: [".description"]
+      });
+		} else {
+			return mergeObject(super.defaultOptions, {
+	  	  classes: ["scum-and-villainy", "sheet", "actor"],
+	  	  template: "systems/scum-and-villainy/templates/ship-sheet-7.html",
+	      width: 700,
+	      height: 970,
+	      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+		    scrollY: [".description"]
+	    });
+		};
   }
 
  /** @override */
   getData() {
     const data = super.getData();
-	data.isGM = game.user.isGM;
-	
-	return data;
+	  data.isGM = game.user.isGM;
+		data.editable = data.options.editable;
+	  return data;
   }
 
   /** @override */
@@ -37,14 +49,23 @@ export class SaVShipSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      const item = this.actor.getOwnedItem(element.data("itemId"));
+      let item = {};
+      if( game.majorVersion > 7 ) {
+			  item = this.document.items.get(element.data("itemId"));
+			} else {
+				item = this.actor.getOwnedItem(element.data("itemId"));
+			};
       item.sheet.render(true);
     });
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      this.actor.deleteOwnedItem(element.data("itemId"));
+      if( game.majorVersion > 7 ) {
+			  this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+			} else {
+				this.actor.deleteOwnedItem(element.data("itemId"));
+			};
       element.slideUp(200, () => this.render(false));
     });
     }
@@ -58,8 +79,13 @@ export class SaVShipSheet extends SaVSheet {
 
     // Update the Item
     super._updateObject(event, formData);
-
-    if (event.target && event.target.name === "data.crew") {
+    let crew_data = "";
+		if( game.majorVersion > 7 ) {
+			crew_data = "data.data.crew";
+		} else {
+			crew_data = "data.crew";
+		};
+    if (event.target && event.target.name === crew_data) {
       this.render(true);
     }
   }

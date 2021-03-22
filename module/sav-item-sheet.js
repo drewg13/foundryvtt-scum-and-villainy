@@ -20,8 +20,9 @@ export class SaVItemSheet extends ItemSheet {
 /** @override */
   getData() {
     const data = super.getData();
-	data.isGM = game.user.isGM;
-	
+	  data.isGM = game.user.isGM;
+		data.editable = data.options.editable;
+
 	return data;
   }
 
@@ -34,8 +35,11 @@ export class SaVItemSheet extends ItemSheet {
     if (simple_item_types.indexOf(this.item.data.type) >= 0) {
       template_name = "simple";
     }
-
-    return `${path}/${template_name}.html`;
+    if( game.majorVersion > 7 ) {
+      return `${path}/${template_name}.html`;
+		} else {
+			return `${path}/${template_name}-7.html`;
+		};
   }
 
   /* -------------------------------------------- */

@@ -1,14 +1,14 @@
 <form class="{{cssClass}} clock-form" autocomplete="off">
-  {{#if editable}}
+{{#if editable}}
   <div class="clock-name editable">
     <input name="name" value="{{actor.name}}" />
   </div>
-  {{else}}
+{{else}}
   <div class="clock-name">
-    <input name="name" value="{{actor.name}}" readonly />
+    <input name="name" value="{{actor.name}}" readonly/>
   </div>
-  {{/if}}
-  {{#if editable}}
+{{/if}}
+{{#if editable}}
   <div class="clock-progress">
     {{#if (lte clock.progress 0)}}
     <button name="minus" disabled>
@@ -32,11 +32,11 @@
     </button>
     {{/if}}
   </div>
-  {{/if}}
+{{/if}}
   <div class="clock-image">
     <img src="{{clock.image.url}}" width="{{clock.image.width}}" height="{{clock.image.height}}" />
   </div>
-  {{#if editable}}
+{{#if editable}}
   <div class="clock-config">
     <div class="clock-config-group theme">
       <label for="theme"><i class="fa fa-palette"></i></label>
@@ -59,5 +59,5 @@
       </select>
     </div>
   </div>
-  {{/if}}
+{{/if}}
 </form>

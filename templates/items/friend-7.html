@@ -5,11 +5,11 @@
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
         </div>
     </header>
-
+    
     {{!-- Sheet Body --}}
     <section class="sheet-body flex-vertical">
-      <textarea name="data.description">{{data.data.description}}</textarea>
+      <textarea name="data.description">{{data.description}}</textarea>
       <label class="label-stripe">{{localize "BITD.Class"}}</label>
-      <input id="item-class" type="text" name="data.class" value="{{data.data.class}}">
+      <input id="item-class" type="text" name="data.class" value="{{data.class}}">
     </section>
 </form>

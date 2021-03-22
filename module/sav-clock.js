@@ -3,34 +3,34 @@ const nextIndexInArray = (arr, el) => {
   return (idx < 0 || idx >= arr.length) ? 0 : idx + 1;
 }
 
-export class Clock {
+export class SaVClock {
   static get sizes () {
       return [4, 6, 8, 10, 12];
   }
 
   static get themes () {
-	const default_t = game.system.clocks.choices[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
-	const all_t = game.system.clocks.choices;
+	const default_t = game.system.savclocks.choices[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
+	const all_t = game.system.savclocks.choices;
 	let curr_t = all_t;
-	
+
 	if ( curr_t.indexOf( default_t ) != 0 ) {
-		
+
 		curr_t = curr_t.filter( x => x !== default_t );
 		curr_t.unshift( default_t );
-		
+
 	};
-	
+
 	return curr_t;
   }
 
   constructor ({ theme, size, progress } = {}) {
-    const isSupportedSize = size && Clock.sizes.indexOf(parseInt(size)) >= 0;
-    this._size = isSupportedSize ? parseInt(size) : Clock.sizes[0];
+    const isSupportedSize = size && SaVClock.sizes.indexOf(parseInt(size)) >= 0;
+    this._size = isSupportedSize ? parseInt(size) : SaVClock.sizes[0];
 
     const p = (!progress || progress < 0) ? 0 : progress < this._size ? progress : this._size;
     this._progress = p || 0;
 
-    this._theme = theme || Clock.themes[0];
+    this._theme = theme || SaVClock.themes[0];
   }
 
   get theme () {
@@ -46,12 +46,12 @@ export class Clock {
   }
 
   get image () {
-    return { 
+    return {
       img: `/systems/scum-and-villainy/themes/${this.theme}/${this.size}clock_${this.progress}.webp`,
       widthTile: 200,
       heightTile: 200,
-	  widthSheet: 350,
-	  heightSheet: 350
+	    widthSheet: 350,
+	    heightSheet: 350
     };
   }
 
@@ -68,16 +68,16 @@ export class Clock {
   }
 
   cycleSize () {
-    return new Clock({
+    return new SaVClock({
       theme: this.theme,
-      size: Clock.sizes[nextIndexInArray(Clock.sizes, this.size)],
+      size: SaVClock.sizes[nextIndexInArray(SaVClock.sizes, this.size)],
       progress: this.progress
     });
   }
 
   cycleTheme () {
-    return new Clock({
-      theme: Clock.themes[nextIndexInArray(Clock.themes, this.theme)],
+    return new SaVClock({
+      theme: SaVClock.themes[nextIndexInArray(SaVClock.themes, this.theme)],
       size: this.size,
       progress: this.progress
     });
@@ -85,7 +85,7 @@ export class Clock {
 
   increment () {
     const old = this;
-    return new Clock({
+    return new SaVClock({
       theme: old.theme,
       size: old.size,
       progress: old.progress + 1
@@ -94,7 +94,7 @@ export class Clock {
 
   decrement () {
     const old = this;
-    return new Clock({
+    return new SaVClock({
       theme: old.theme,
       size: old.size,
       progress: old.progress - 1

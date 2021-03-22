@@ -1,27 +1,43 @@
-import { Clock } from "./clock.js";
-import { log, error } from "./util.js";
+import { SaVClock } from "./sav-clock.js";
+import { log, error } from "./sav-clock-util.js";
 
 const onClick = async () => {
   log('Tool Clicked');
-  const clock = new Clock();
+  const clock = new SaVClock();
   const dim = {
     x: ((canvas.dimensions.sceneRect.width - clock.image.widthTile) / 2) + canvas.dimensions.paddingX,
     y: ((canvas.dimensions.sceneRect.height - clock.image.heightTile) / 2) + canvas.dimensions.paddingY
   };
 
-  const tile = new Tile({
-    img: clock.image.img,
-    width: clock.image.widthTile,
-    height: clock.image.heightTile,
-    x: dim.x,
-    y: dim.y,
-    z: 900,
-    rotation: 0,
-    hidden: false,
-    locked: false,
-    flags: clock.flags
-  });
-  canvas.scene.createEmbeddedEntity('Tile', tile.data);
+  if( game.majorVersion > 7 ) {
+    const tile = new TileDocument({
+      img: clock.image.img,
+      width: clock.image.widthTile,
+      height: clock.image.heightTile,
+      x: dim.x,
+      y: dim.y,
+      z: 900,
+      rotation: 0,
+      hidden: false,
+      locked: false,
+      flags: clock.flags
+    });
+    canvas.scene.createEmbeddedDocuments("Tile", [tile.data]);
+  } else {
+    const tile = new Tile({
+      img: clock.image.img,
+      width: clock.image.widthTile,
+      height: clock.image.heightTile,
+      x: dim.x,
+      y: dim.y,
+      z: 900,
+      rotation: 0,
+      hidden: false,
+      locked: false,
+      flags: clock.flags
+    });
+    canvas.scene.createEmbeddedEntity("Tile", tile.data);
+  };
 };
 
 export default {
@@ -43,13 +59,13 @@ export default {
       return;
     }
 
-    const buttonHTML = await renderTemplate('systems/scum-and-villainy/templates/buttons.html');
+    const buttonHTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-buttons.html');
     html.find("div.left").append(buttonHTML).click(async (event) => {
       log("HUD Clicked")
       // re-get in case there has been an update
       t = canvas.tiles.get(tile._id);
 
-      const oldClock = new Clock(t.data.flags['scum-and-villainy'].clocks);
+      const oldClock = new SaVClock(t.data.flags['scum-and-villainy'].clocks);
       let newClock;
 
       const target = event.target.classList.contains("control-icon")
@@ -66,11 +82,18 @@ export default {
       } else {
         return error("ERROR: Unknown TileHUD Button");
       }
-
-      await t.update({
-        img: newClock.image.img,
-        flags: newClock.flags
-      });
+      if( game.majorVersion > 7 ) {
+        await TileDocument.updateDocuments([{
+          _id: t.id,
+          img: newClock.image.img,
+          flags: newClock.flags
+        }], {parent: canvas.scene});
+      } else {
+        await t.update({
+          img: newClock.image.img,
+          flags: newClock.flags
+        });
+      };
     });
   }
 };
