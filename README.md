@@ -4,8 +4,6 @@ An attempt to adapt the Blades in the Dark system created by megastruktur to Scu
 
 ## IMPORTANT NOTES
 
-NEW NOTE!  I've had reports and seen for myself that some of the logic on the ship sheet reverts after logging out, specifically the designation, the gambit refresh value, and some (but not all!) of the system max values.  I'm working on tracking down the problem, but until then, there is a workaround that I've found.  When creating a ship, before you log out, right click the ship actor and Duplicate it.  From what I can tell, the copy will not revert and you can delete the original.
-
 I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)
 
 You DO NOT need to import any items out of the compendiums in order to use them.  Currently, if you do import them, the system should ignore the compendium version on the assumption that you imported the item in order to edit it.
@@ -15,7 +13,9 @@ You DO NOT need to import any items out of the compendiums in order to use them.
 
 - Ernie's Modern UI
 - DSN (with chrome dice!)
-- (Clocks module is no longer needed)
+- Forien's Easy Polls (for helping players make a final decision)
+- The Furnace (for advanced macros)
+- Tabletop RPG Music (some good sci-fi ambience)
 
 
 ## Usage
