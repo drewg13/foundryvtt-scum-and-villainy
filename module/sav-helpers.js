@@ -32,70 +32,70 @@ export class SaVHelpers {
    */
   static async addDefaultAbilities(item_data, actor) {
 
-  let def_abilities = {};
-  if( game.majorVersion > 7 ) {
-    def_abilities = item_data.data.data.def_abilities;
-  } else {
-    def_abilities = item_data.data.def_abilities;
-  };
-	let abil_list = def_abilities.split(', ');
-	var item_type = "";
-	let items_to_add = [];
+    let def_abilities = {};
+    if( game.majorVersion > 7 ) {
+      def_abilities = item_data.data.data.def_abilities;
+    } else {
+      def_abilities = item_data.data.def_abilities;
+    };
+    let abil_list = def_abilities.split(', ');
+    var item_type = "";
+    let items_to_add = [];
 
-	if ( actor.data.type == "character" ) {
-		item_type = "ability";
-	} else if ( actor.data.type == "ship" ) {
-		item_type = "crew_upgrade";
-	};
+    if ( actor.data.type == "character" ) {
+        item_type = "ability";
+    } else if ( actor.data.type == "ship" ) {
+        item_type = "crew_upgrade";
+    };
 
-	let abilities = actor.items.filter(a => a.type === item_type).map(e => {return e.data.name});
+    let abilities = actor.items.filter(a => a.type === item_type).map(e => {return e.data.name});
 
-	if ( actor.data.type == "ship" ) {
+    if ( actor.data.type == "ship" ) {
 
-		let size = actor.items.filter(a => a.type === "ship_size").map(e => {return e.data.name}) || [""];
-		//console.log(size);
-		if ( size.length > 0 ) { abilities.push( size ); };
+        let size = actor.items.filter(a => a.type === "ship_size").map(e => {return e.data.name}) || [""];
+        //console.log(size);
+        if ( size.length > 0 ) { abilities.push( size ); };
 
-	};
-
-
-
-		let friends = actor.items.filter(a => a.type === "friend").map(e => {return e.data.name}) || [""];
-		if ( friends.length > 0 ) { abilities.push( friends ); };
+    };
 
 
 
-	//console.log(abilities);
-
-	let items = await SaVHelpers.getAllItemsByType(item_type, game);
-
-	if ( actor.data.type == "ship" ) {
-
-		let all_sizes = await SaVHelpers.getAllItemsByType("ship_size", game);
-		all_sizes.forEach( s => { items.push( s ); });
-		//console.log(items);
-	}
+        let friends = actor.items.filter(a => a.type === "friend").map(e => {return e.data.name}) || [""];
+        if ( friends.length > 0 ) { abilities.push( friends ); };
 
 
 
-		let all_friends = await SaVHelpers.getAllItemsByType("friend", game);
-		all_friends.forEach( s => { items.push( s ); });
+    //console.log(abilities);
+
+    let items = await SaVHelpers.getAllItemsByType(item_type, game);
+
+    if ( actor.data.type == "ship" ) {
+
+        let all_sizes = await SaVHelpers.getAllItemsByType("ship_size", game);
+        all_sizes.forEach( s => { items.push( s ); });
+        //console.log(items);
+    }
+
+
+
+        let all_friends = await SaVHelpers.getAllItemsByType("friend", game);
+        all_friends.forEach( s => { items.push( s ); });
 
 
     let trim_abil_list = abil_list.filter( x => !abilities.includes( x ) );
-	//console.log(trim_abil_list);
-	trim_abil_list.forEach(i => {
+    //console.log(trim_abil_list);
+    trim_abil_list.forEach(i => {
 
-			items_to_add.push( items.find( e => ( e.name === i ) ));
+            items_to_add.push( items.find( e => ( e.name === i ) ));
 
     });
 
-	//console.log(items_to_add);
-  if( game.majorVersion > 7 ) {
-    actor.createEmbeddedDocuments("Item", items_to_add);
-  } else {
-    actor.createEmbeddedEntity("OwnedItem", items_to_add);
-  };
+    //console.log(items_to_add);
+    if( game.majorVersion > 7 ) {
+      actor.createEmbeddedDocuments("Item", items_to_add);
+    } else {
+      actor.createEmbeddedEntity("OwnedItem", items_to_add);
+    };
 
   }
 
@@ -105,7 +105,7 @@ export class SaVHelpers {
    * @param {Object} item_data
    * @param {Entity} entity
    */
-  static callItemLogic(item_data, entity) {
+  static async callItemLogic(item_data, entity) {
     //console.log(item_data);
     //console.log(entity);
     let items = {};
@@ -124,8 +124,8 @@ export class SaVHelpers {
       }
 
       if (logic) {
-
-        logic.forEach(expression => {
+        let logic_update = { "_id": entity.data._id };
+        logic.forEach( expression => {
 
           // Different logic behav. dep on operator.
           switch (expression.operator) {
@@ -138,20 +138,31 @@ export class SaVHelpers {
               } else {
                 prefix = "data.";
               };
-              entity.update({
-                [expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, prefix + expression.attribute)) + expression.value
-              });
+              //update to foundry.utils.mergeObject
+              mergeObject(
+                logic_update,
+                {[expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, prefix + expression.attribute)) + expression.value},
+                {insertKeys: true}
+              );
               break;
 
             // Change name property.
             case "attribute_change":
-              entity.update({
-                [expression.attribute]: expression.value
-              });
+              //update to foundry.utils.mergeObject
+              mergeObject(
+                logic_update,
+                {[expression.attribute]: expression.value},
+                {insertKeys: true}
+              );
               break;
 
           }
         });
+        if( game.majorVersion > 7 ) {
+          await Actor.updateDocuments( [logic_update] );
+		} else {
+		  await Actor.update( logic_update );
+        };
       }
 
     }
@@ -166,7 +177,7 @@ export class SaVHelpers {
    * @param {Object} item_data
    * @param {Entity} entity
    */
-  static undoItemLogic(item_data, entity) {
+  static async undoItemLogic(item_data, entity) {
     let items = {};
     if( game.majorVersion > 7 ) {
       items = item_data.data.data;
@@ -183,7 +194,7 @@ export class SaVHelpers {
       }
 
       if (logic) {
-
+        let logic_update = { "_id": entity.data._id };
         var entity_data = entity.data;
         //console.log(entity_data);
         logic.forEach(expression => {
@@ -198,9 +209,12 @@ export class SaVHelpers {
               } else {
                 prefix = "data.";
               };
-              entity.update({
-                [expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, prefix + expression.attribute)) - expression.value
-              });
+              //update to foundry.utils.mergeObject
+              mergeObject(
+                logic_update,
+                {[expression.attribute]: Number(SaVHelpers.getNestedProperty(entity, prefix + expression.attribute)) - expression.value},
+				{insertKeys: true}
+              );
               break;
 
             // Change name back to default.
@@ -209,12 +223,20 @@ export class SaVHelpers {
               let default_expression_attribute_path = expression.attribute + '_default';
               let default_name = default_expression_attribute_path.split(".").reduce((o, i) => o[i], entity_data);
 
-              entity.update({
-                [expression.attribute]: default_name
-              });
+              //update to foundry.utils.mergeObject
+              mergeObject(
+                logic_update,
+                {[expression.attribute]: default_name},
+				{insertKeys: true}
+              );
               break;
           }
         });
+		if( game.majorVersion > 7 ) {
+          await Actor.updateDocuments( [logic_update] );
+		} else {
+		  await Actor.update( logic_update );
+        };
       }
     }
 
@@ -265,25 +287,25 @@ export class SaVHelpers {
     let compendium_items = [];
 
     game_items = game.items.filter(e => e.type === item_type).map(e => {return e.data});
-	  //console.log(game_items);
+      //console.log(game_items);
     let pack = game.packs.find(e => e.metadata.name === item_type);
     //console.log(pack);
-	  let compendium_content = {};
+      let compendium_content = {};
     if( game.majorVersion > 7 ) {
       compendium_content = await pack.getDocuments();
     } else {
       compendium_content = await pack.getContent();
     };
-	  //console.log(compendium_content);
+      //console.log(compendium_content);
     compendium_items = compendium_content.map(k => {return k.data});
-	  //console.log(compendium_items);
+      //console.log(compendium_items);
 
-	  compendium_items = compendium_items.filter(a => game_items.filter(b => a.name === b.name && a.name === b.name).length === 0);
+      compendium_items = compendium_items.filter(a => game_items.filter(b => a.name === b.name && a.name === b.name).length === 0);
 
-	  //console.log(compendium_items);
+      //console.log(compendium_items);
 
     list_of_items = game_items.concat(compendium_items);
-	  //console.log(list_of_items);
+      //console.log(list_of_items);
     return list_of_items;
 
   }
@@ -310,29 +332,29 @@ export class SaVHelpers {
         // Calculate Dice to throw.
         let attribute_labels = {};
 
-		// There has to be a better way to to do this
-		// @todo - pull skill list dynamically
-		const skills = ["insight","doctor","hack","rig","study","prowess","helm","scramble","scrap","skulk","resolve","attune","command","consort","sway"];
-		const systems = ["crew","upkeep","engines","comms","weapons","hull","shields","encryptor"];
+        // There has to be a better way to to do this
+        // @todo - pull skill list dynamically
+        const skills = ["insight","doctor","hack","rig","study","prowess","helm","scramble","scrap","skulk","resolve","attune","command","consort","sway"];
+        const systems = ["crew","upkeep","engines","comms","weapons","hull","shields","encryptor"];
 
-		if (skills.indexOf(attribute_name) !== -1 ) {
+        if (skills.indexOf(attribute_name) !== -1 ) {
 
-			var attributes = game.system.model.Actor.character.attributes;
-		//	console.log("character");
+            var attributes = game.system.model.Actor.character.attributes;
+        //  console.log("character");
 
-		} else if (systems.indexOf(attribute_name) !== -1 ) {
+        } else if (systems.indexOf(attribute_name) !== -1 ) {
 
-			var attributes = game.system.model.Actor.ship.systems;
-		//	console.log("ship");
+            var attributes = game.system.model.Actor.ship.systems;
+        //  console.log("ship");
 
-		} else {
+        } else {
 
-			return attribute_name;
+            return attribute_name;
 
-		}
+        }
 
-		// console.log(attribute_name);
-		// console.log(attributes);
+        // console.log(attribute_name);
+        // console.log(attributes);
 
         for (var a in attributes) {
           attribute_labels[a] = attributes[a].label;
