@@ -38,4 +38,7 @@ v1.2.6  Fix manifest branch target, doh
 
 v1.2.7  Fix the ship sheet issues with retaining some settings modified by adding the class due to DB write overloading (FINALLY!)
 
+v1.2.8  Updates to support 0.8.1 (hooks, die rolls); rework CSS to not overwrite default for rolls from chat
+
+
 
