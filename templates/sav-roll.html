@@ -73,7 +73,7 @@
 	{{/if}}
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "great")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollGreatEffect"}}</div>
   <div class="description">
@@ -82,7 +82,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "standard")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollStandardEffect"}}</div>
   <div class="description">
@@ -91,7 +91,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "limited")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollLimitedEffect"}}</div>
   <div class="description">
@@ -100,7 +100,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "poor")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollPoorEffect"}}</div>
   <div class="description">
@@ -109,7 +109,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "resist")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollResist"}}</div>
   <div class="description">
@@ -118,7 +118,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "critical-resist")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollCritResist"}}</div>
   <div class="description">
@@ -127,7 +127,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "vice")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollVice"}}</div>
   <div class="description">
@@ -136,7 +136,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "damaged")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollUpkeepDamage"}}</div>
   <div class="description">
@@ -145,7 +145,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "malfunction")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollUpkeepMalf"}}</div>
   <div class="description">
@@ -154,7 +154,7 @@
     </p>
   </div>
   {{/if}}
-  
+
   {{#if (eq roll_status "nodamage")}}
   <div class="die {{roll_status}}">{{localize "BITD.RollUpkeepNoDamage"}}</div>
   <div class="description">
@@ -163,13 +163,13 @@
     </p>
   </div>
   {{/if}}
-  
+
   <ol class="dice-rolls">
     {{#each this.rolls}}
     {{#if this.result}}
-    <li class="roll die d6"{{#if (eq this.result 6)}} style="color: var(--holoblue);"{{/if}}{{#if (lteq this.result 3)}} style="color: red;"{{/if}}{{#if (eq this.result 4)}} style="color: white;"{{/if}}{{#if (eq this.result 5)}} style="color: white;"{{/if}}>{{{this.result}}}</li>
+    <li class="roll die savd6"{{#if (eq this.result 6)}} style="color: var(--holoblue);"{{/if}}{{#if (lteq this.result 3)}} style="color: red;"{{/if}}{{#if (eq this.result 4)}} style="color: var(--almost_white);"{{/if}}{{#if (eq this.result 5)}} style="color: var(--almost_white);"{{/if}}>{{{this.result}}}</li>
     {{else}}
-    <li class="roll die d6"{{#if (eq this.roll 6)}} style="color: var(--holoblue);"{{/if}}{{#if (lteq this.roll 3)}} style="color: red;"{{/if}}{{#if (eq this.result 4)}} style="color: white;"{{/if}}{{#if (eq this.result 5)}} style="color: white;"{{/if}}>{{{this.roll}}}</li>
+    <li class="roll die savd6"{{#if (eq this.roll 6)}} style="color: var(--holoblue);"{{/if}}{{#if (lteq this.roll 3)}} style="color: red;"{{/if}}{{#if (eq this.result 4)}} style="color: var(--almost_white);"{{/if}}{{#if (eq this.result 5)}} style="color: var(--almost_white);"{{/if}}>{{{this.roll}}}</li>
     {{/if}}
     {{/each}}
   </ol>
