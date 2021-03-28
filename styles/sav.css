@@ -1,4 +1,4 @@
-/* 
+/*
 *  Elements that can be changed will hint this by dimming and fading a little on hover
 */
 /*
@@ -40,7 +40,7 @@
 }
 @font-face {
   font-family: 'Exo2';
-  src: url("assets/fonts/Exo2-VariableFont_wght.ttf"); 
+  src: url("assets/fonts/Exo2-VariableFont_wght.ttf");
 }
 * {
 	font-family: 'Exo2', 'Signika', sans-serif;
@@ -62,8 +62,9 @@
 	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
     url('assets/brushed_metal.jpg') repeat;
 }
-.dice-tooltip .dice-rolls .roll.d6 {
+.dice-tooltip .dice-rolls .roll.savd6 {
 	background: url('assets/icons/d6-black.svg');
+	color: var(--almost_white);
 	background-size: 24px 24px;
 }
 * .dialog-buttons {
