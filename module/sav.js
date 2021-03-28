@@ -39,6 +39,7 @@ Hooks.once("init", async function() {
 
   const versionParts = game.data.version.split('.');
   game.majorVersion = parseInt(versionParts[1]);
+  game.minorVersion = parseInt(versionParts[2]);
 
   if( game.majorVersion > 7 ) {
     CONFIG.Item.documentClass = SaVItem;
@@ -283,23 +284,28 @@ Hooks.once("ready", async function() {
  */
 
 
-Hooks.on("preCreateItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion > 7 ) && ( parent_entity.documentName == "Actor" ) ) {
-    await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
+Hooks.on("preCreateItem", async (item, data, options, userId) => {
+  //console.log("preCreateItem");
+  //console.log(item);
+  //console.log(item.parent);
+  //console.log(data);
+  let actor = item.parent;
+  if ( ( game.majorVersion > 7 ) && ( actor.documentName == "Actor" ) ) {
+    await SaVHelpers.removeDuplicatedItemType(data, actor);
     //console.log(child_data);
-    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
-      await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
+    if ( ( ( data.type == "class" ) || ( data.type == "crew_type" ) ) && !( data.data.def_abilities == "" ) ) {
+      await SaVHelpers.addDefaultAbilities( data, actor );
     };
 
-    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
-      const icon = child_data.img;
+    if ( ( ( data.type == "class" ) || ( data.type == "crew_type" ) ) && ( ( actor.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( actor.img == "icons/svg/mystery-man.svg" ) ) ) {
+      const icon = data.img;
 	    const icon_update = {
 	      img: icon,
 	      token: {
           img: icon
         }
 	    };
-	    await parent_entity.update( icon_update );
+	    await actor.update( icon_update );
       /**  code to replace all attached tokens as well
 	    if ( parent_entity.getActiveTokens() ) {
         const tokens = parent_entity.getActiveTokens();
@@ -336,9 +342,15 @@ Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId
   return true;
 });
 
-Hooks.on("createItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    await SaVHelpers.callItemLogic(child_data, parent_entity);
+Hooks.on("createItem", async (item, options, userId) => {
+  //console.log("createItem");
+  //console.log(item);
+  //console.log(item.parent);
+  //console.log(data);
+  let actor = item.parent;
+  let data = item.data;
+  if ( ( game.majorVersion > 7 ) && (actor.documentName == "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    await SaVHelpers.callItemLogic(data, actor);
   };
   return true;
 });
@@ -350,9 +362,11 @@ Hooks.on("createOwnedItem", async (parent_entity, child_data, options, userId) =
   return true;
 });
 
-Hooks.on("deleteItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion > 7 ) && (parent_entity.documentName == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    await SaVHelpers.undoItemLogic(child_data, parent_entity);
+Hooks.on("deleteItem", async (item, options, userId) => {
+  let actor = item.parent;
+  let data = item.data;
+  if ( ( game.majorVersion > 7 ) && (actor.documentName == "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+    await SaVHelpers.undoItemLogic(data, actor);
   };
   return true;
 });

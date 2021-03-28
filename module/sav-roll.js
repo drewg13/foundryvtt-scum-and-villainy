@@ -15,8 +15,11 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
 
   let r = new Roll( `${dice_amount}d6`, {} );
 
-  // show 3d Dice so Nice if enabled
-  r.roll();
+  if (game.majorVersion > 7) {
+    r.evaluate({async: true});
+  } else {
+    r.roll();
+  };
   showChatRollMessage(r, zeromode, attribute_name, position, effect);
 }
 

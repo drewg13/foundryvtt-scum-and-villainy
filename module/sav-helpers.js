@@ -33,11 +33,8 @@ export class SaVHelpers {
   static async addDefaultAbilities(item_data, actor) {
 
     let def_abilities = {};
-    if( game.majorVersion > 7 ) {
-      def_abilities = item_data.data.data.def_abilities;
-    } else {
-      def_abilities = item_data.data.def_abilities;
-    };
+    def_abilities = item_data.data.def_abilities;
+    
     let abil_list = def_abilities.split(', ');
     var item_type = "";
     let items_to_add = [];
@@ -109,11 +106,8 @@ export class SaVHelpers {
     //console.log(item_data);
     //console.log(entity);
     let items = {};
-    if( game.majorVersion > 7 ) {
-      items = item_data.data.data;
-    } else {
-      items = item_data.data;
-    };
+    items = item_data.data;
+
 
     if ('logic' in items && items.logic !== '') {
       let logic = JSON.parse(items.logic);
@@ -160,8 +154,8 @@ export class SaVHelpers {
         });
         if( game.majorVersion > 7 ) {
           await Actor.updateDocuments( [logic_update] );
-		} else {
-		  await Actor.update( logic_update );
+		    } else {
+		      await Actor.update( logic_update );
         };
       }
 
@@ -179,11 +173,8 @@ export class SaVHelpers {
    */
   static async undoItemLogic(item_data, entity) {
     let items = {};
-    if( game.majorVersion > 7 ) {
-      items = item_data.data.data;
-    } else {
-      items = item_data.data;
-    };
+    items = item_data.data;
+
 
     if ( ('logic' in items) && (items.logic !== '') ) {
       let logic = JSON.parse(items.logic)
