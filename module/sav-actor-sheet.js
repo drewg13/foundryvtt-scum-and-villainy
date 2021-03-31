@@ -11,24 +11,24 @@ export class SaVActorSheet extends SaVSheet {
 	static get defaultOptions() {
     //update to foundry.utils.mergeObject
     if( game.majorVersion > 7 ) {
-		  return mergeObject(super.defaultOptions, {
-  	    classes: ["scum-and-villainy", "sheet", "actor"],
-  	    template: "systems/scum-and-villainy/templates/actor-sheet.html",
-        width: 800,
-        height: 970,
-        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+		return mergeObject(super.defaultOptions, {
+  	      classes: ["scum-and-villainy", "sheet", "actor"],
+  	      template: "systems/scum-and-villainy/templates/actor-sheet.html",
+          width: 800,
+          height: 970,
+          tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
 	      scrollY: [".description"]
-      });
+        });
 	  } else {
-			return mergeObject(super.defaultOptions, {
-  	    classes: ["scum-and-villainy", "sheet", "actor"],
-  	    template: "systems/scum-and-villainy/templates/actor-sheet-7.html",
-        width: 800,
-        height: 970,
-        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+		return mergeObject(super.defaultOptions, {
+  	      classes: ["scum-and-villainy", "sheet", "actor"],
+  	      template: "systems/scum-and-villainy/templates/actor-sheet-7.html",
+          width: 800,
+          height: 970,
+          tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
 	      scrollY: [".description"]
-      });
-		};
+        });
+      };
   }
 
   /* -------------------------------------------- */
@@ -36,19 +36,19 @@ export class SaVActorSheet extends SaVSheet {
   /** @override */
   getData() {
     const data = super.getData();
-	  data.isGM = game.user.isGM;
+    data.isGM = game.user.isGM;
     data.editable = data.options.editable;
 
     let actorData = {};
-		let actor_flags = [];
+	let actor_flags = [];
 
-		if( game.majorVersion > 7 ) {
+	if( game.majorVersion > 7 ) {
       actorData = data.data.data;
-			actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
-	  } else {
+      actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
+    } else {
       actorData = data.data;
-			actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
-		};
+      actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
+    };
 
     // Calculate Load
     let loadout = 0;
@@ -138,11 +138,11 @@ export class SaVActorSheet extends SaVSheet {
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       let item = {};
-			if( game.majorVersion > 7 ) {
-			  item = this.document.items.get(element.data("itemId"));
-		  } else {
-				item = this.actor.getOwnedItem(element.data("itemId"));
-			};
+      if( game.majorVersion > 7 ) {
+        item = this.document.items.get(element.data("itemId"));
+      } else {
+        item = this.actor.getOwnedItem(element.data("itemId"));
+      };
       item.sheet.render(true);
     });
 
@@ -153,27 +153,44 @@ export class SaVActorSheet extends SaVSheet {
       //console.log(element.data("itemId"));
       actor.sheet.render(true);
     });
-
+    
+	// Render XP Triggers sheet
+    html.find('.xp-triggers').click(ev => {
+      let itemId = "";
+	  if( game.majorVersion > 7 ) {
+        itemId = this.document.items.filter( i => i.type === "class" )[0]?.id;
+      } else {
+	    itemId = this.actor.items.filter( i => i.type === "class" )[0]?.id;
+      };
+	  let item = {};
+      if( game.majorVersion > 7 ) {
+        item = this.document.items.get(itemId);
+      } else {
+        item = this.actor.getOwnedItem(itemId);
+      };
+      item?.sheet.render(true, {"renderContext": "xp"});
+    });
+	
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
 			//console.log(this.document);
       if( game.majorVersion > 7 ) {
-			  this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
-		  } else {
-			  this.actor.deleteOwnedItem(element.data("itemId"));
-		  };
+        this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+      } else {
+        this.actor.deleteOwnedItem(element.data("itemId"));
+      };
       element.slideUp(200, () => this.render(false));
     });
 
 	  // Clear Flag
-	  html.find('.flag-delete').click(ev => {
+	html.find('.flag-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       if( game.majorVersion > 7 ) {
-			  this.document.setFlag("scum-and-villainy", element.data("itemType"), "");
-		  } else {
-				this.actor.setFlag("scum-and-villainy", element.data("itemType"), "");
-			};
+        this.document.setFlag("scum-and-villainy", element.data("itemType"), "");
+	  } else {
+        this.actor.setFlag("scum-and-villainy", element.data("itemType"), "");
+      };
       element.slideUp(200, () => this.render(false));
     });
 

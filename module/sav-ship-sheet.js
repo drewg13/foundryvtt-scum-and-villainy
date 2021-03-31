@@ -68,8 +68,24 @@ export class SaVShipSheet extends SaVSheet {
 			};
       element.slideUp(200, () => this.render(false));
     });
-    }
-
+    
+    // Render XP Triggers sheet
+    html.find('.xp-triggers').click(ev => {
+      let itemId = "";
+	  if( game.majorVersion > 7 ) {
+        itemId = this.document.items.filter( i => i.type === "crew_type" )[0]?.id;
+      } else {
+	    itemId = this.actor.items.filter( i => i.type === "crew_type" )[0]?.id;
+      };
+	  let item = {};
+      if( game.majorVersion > 7 ) {
+        item = this.document.items.get(itemId);
+      } else {
+        item = this.actor.getOwnedItem(itemId);
+      };
+      item?.sheet.render(true, {"renderContext": "xp"});
+    });
+	}
   /* -------------------------------------------- */
   /*  Form Submission                             */
   /* -------------------------------------------- */
