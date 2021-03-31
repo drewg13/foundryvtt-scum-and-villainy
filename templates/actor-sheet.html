@@ -63,7 +63,8 @@
         <div class="item-block flex-horizontal">
           <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="vice">{{localize "BITD.Vice"}}</a>
 		  </div>
-          {{#each actor.items as |item id|}}
+          <div class="flex-vertical">
+		  {{#each actor.items as |item id|}}
               {{#if (eq item.type "vice")}}
               <div class="item flex-horizontal" data-item-id="{{item.id}}">
                 <div class="item-body flex-horizontal">
@@ -74,6 +75,7 @@
               </div>
               {{/if}}
           {{/each}}
+		  </div>
         </div>
 
 		<div class="item-block flex-horizontal">
@@ -286,7 +288,8 @@
           <p><label for="character-{{actor.id}}-experience-0">{{localize "BITD.Abilities"}}</label></p>
           <p><a class="item-add-popup" data-item-type="ability" data-limiter=data.character_class><i class="fas fa-plus-square"></i></a></p>
           <div id="character-experience" class="teeth-experience">
-            <label for="character-{{actor.id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i></label>
+            <p><span class="xp-triggers nullifier">{{localize "BITD.PExperience"}}</span></p>
+			<label for="character-{{actor.id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
             {{#multiboxes data.data.experience}}
             <input type="radio" id="character-{{actor.id}}-experience-0" name="data.experience" value="0" dtype="Radio">
             <input type="radio" id="character-{{actor.id}}-experience-1" name="data.experience" value="1" dtype="Radio">
