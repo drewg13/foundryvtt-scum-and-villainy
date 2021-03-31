@@ -40,5 +40,6 @@ v1.2.7  Fix the ship sheet issues with retaining some settings modified by addin
 
 v1.2.8  Updates to support 0.8.1 (hooks, die rolls); rework CSS to not overwrite default for rolls from chat
 
+v1.2.9  Allow characters to have multiple vices; change the linking for the Playbook/Crew XP links to open the class/ship type item sheet to easily view the XP triggers
 
 
