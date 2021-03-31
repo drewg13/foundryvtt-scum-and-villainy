@@ -9,7 +9,7 @@ export class SaVItemSheet extends ItemSheet {
 
 	  return mergeObject(super.defaultOptions, {
 			classes: ["scum-and-villainy", "sheet", "item"],
-			width: 'auto',
+			width: 900,
 			height: 'auto',
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}]
 		});
