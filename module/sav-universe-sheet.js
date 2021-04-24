@@ -8,27 +8,31 @@ export class SaVUniverseSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
-    if( game.majorVersion > 7 ) {
-			//update to foundry.utils.mergeObject
-		  return mergeObject(super.defaultOptions, {
-  	    classes: ["scum-and-villainy", "sheet", "actor"],
-  	    template: "systems/scum-and-villainy/templates/universe-sheet.html",
-        width: 800,
-        height: 'auto',
-        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
-      });
-		} else {
-			return mergeObject(super.defaultOptions, {
-  	    classes: ["scum-and-villainy", "sheet", "actor"],
-  	    template: "systems/scum-and-villainy/templates/universe-sheet-7.html",
-        width: 800,
-        height: 'auto',
-        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
-      });
-		};
+    //update to foundry.utils.mergeObject
+    return mergeObject(super.defaultOptions, {
+  	  classes: ["scum-and-villainy", "sheet", "actor"],
+  	  template: "systems/scum-and-villainy/templates/universe-sheet.html",
+      width: 800,
+      height: 'auto',
+      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
+    });
   }
 
+	/** @override */
+	getData() {
+    const data = super.getData();
+	  data.isGM = game.user.isGM;
+		data.editable = data.options.editable;
 
+		let actorData = {};
+	  if( game.majorVersion > 7 ) {
+			const actorData = data.data;
+		  data.actor = actorData;
+		  data.data = actorData.data;
+    };
+
+	  return data;
+  }
 
   /** @override */
 	activateListeners(html) {

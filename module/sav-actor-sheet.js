@@ -10,25 +10,14 @@ export class SaVActorSheet extends SaVSheet {
   /** @override */
 	static get defaultOptions() {
     //update to foundry.utils.mergeObject
-    if( game.majorVersion > 7 ) {
 		return mergeObject(super.defaultOptions, {
-  	      classes: ["scum-and-villainy", "sheet", "actor"],
-  	      template: "systems/scum-and-villainy/templates/actor-sheet.html",
-          width: 800,
-          height: 970,
-          tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-	      scrollY: [".description"]
-        });
-	  } else {
-		return mergeObject(super.defaultOptions, {
-  	      classes: ["scum-and-villainy", "sheet", "actor"],
-  	      template: "systems/scum-and-villainy/templates/actor-sheet-7.html",
-          width: 800,
-          height: 970,
-          tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-	      scrollY: [".description"]
-        });
-      };
+  	  classes: ["scum-and-villainy", "sheet", "actor"],
+  	  template: "systems/scum-and-villainy/templates/actor-sheet.html",
+      width: 800,
+      height: 970,
+      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+	    scrollY: [".description"]
+    });
   }
 
   /* -------------------------------------------- */
@@ -40,27 +29,28 @@ export class SaVActorSheet extends SaVSheet {
     data.editable = data.options.editable;
 
     let actorData = {};
-	let actor_flags = [];
+	  let actor_flags = [];
 
-	if( game.majorVersion > 7 ) {
-      actorData = data.data.data;
-      actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
+	  if( game.majorVersion > 7 ) {
+			const actorData = data.data;
+		  data.actor = actorData;
+		  data.data = actorData.data;
+			actor_flags = this.document.getFlag("scum-and-villainy", "ship") || [];
     } else {
-      actorData = data.data;
       actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
     };
 
     // Calculate Load
     let loadout = 0;
     data.items.forEach(i => {loadout += (i.type === "item") ? parseInt(i.data.load) : 0});
-    actorData.loadout.current = loadout;
+    data.data.loadout.current = loadout;
 
 
     // Encumbrance Levels
-    let load_level=["empty","light","light","light","normal","normal","heavy","heavy",
-			"heavy","over max","over max"];
-    let mule_level=["empty","light","light","light","light","normal","normal",
-			"heavy","heavy","heavy","over max"];
+    let load_level=["BITD.Empty","BITD.Light","BITD.Light","BITD.Light","BITD.Normal","BITD.Normal","BITD.Heavy","BITD.Heavy",
+			"BITD.Heavy","BITD.OverMax","BITD.OverMax"];
+    let mule_level=["BITD.Empty","BITD.Light","BITD.Light","BITD.Light","BITD.Light","BITD.Normal","BITD.Normal","BITD.Heavy","BITD.Heavy",
+			"BITD.Heavy","BITD.OverMax"];
 
 
     //Sanity Check
@@ -77,49 +67,49 @@ export class SaVActorSheet extends SaVSheet {
 
 	actor_flags.forEach(i => {
       if (i.data.installs.loaded_inst == "1") {
-        actorData.loadout.heavy++;
-		    actorData.loadout.normal++;
-		    actorData.loadout.light++;
+        data.data.loadout.heavy++;
+		    data.data.loadout.normal++;
+		    data.data.loadout.light++;
       } else {
-		    actorData.loadout.heavy = actorData.loadout.heavy_default;
-		    actorData.loadout.normal = actorData.loadout.normal_default;
-		    actorData.loadout.light = actorData.loadout.light_default;
+		    data.data.loadout.heavy = data.data.loadout.heavy_default;
+		    data.data.loadout.normal = data.data.loadout.normal_default;
+		    data.data.loadout.light = data.data.loadout.light_default;
 	    };
 
 	  if (i.data.installs.stress_max_up == "1") {
-      actorData.stress.max++;
+      data.data.stress.max++;
     } else {
-		  actorData.stress.max = actorData.stress.max_default;
+		  data.data.stress.max = data.data.stress.max_default;
 	  };
 
 	  if (i.data.installs.trauma_max_up == "1") {
-      actorData.trauma.max++;
+      data.data.trauma.max++;
     } else {
-		  actorData.trauma.max = actorData.trauma.max_default;
+		  data.data.trauma.max = data.data.trauma.max_default;
 	  };
 
 	  if (i.data.installs.stun_inst == "1") {
-      actorData.stun_weapons = 1;
+      data.data.stun_weapons = 1;
 	  } else {
-		  actorData.stun_weapons = 0;
+		  data.data.stun_weapons = 0;
 	  };
 
 	  if (i.data.installs.forged_inst == "1") {
-      actorData.forged = 1;
+      data.data.forged = 1;
 	  } else {
-		  actorData.forged = 0;
+		  data.data.forged = 0;
 	  };
   });
 
 	//set encumbrance level
-  if (actorData.loadout.heavy == 9) {
-    actorData.loadout.load_level=mule_level[actorData.loadout.current];
+  if (data.data.loadout.heavy == 9) {
+    data.data.loadout.load_level=mule_level[data.data.loadout.current];
   } else {
-    actorData.loadout.load_level=load_level[actorData.loadout.current];
+    data.data.loadout.load_level=load_level[data.data.loadout.current];
   };
 
-	if (actorData.loadout.planned < loadout) {
-		actorData.loadout.load_level = "over max";
+	if (data.data.loadout.planned < loadout) {
+		data.data.loadout.load_level = "over max";
 	};
 
   return data;
@@ -153,7 +143,7 @@ export class SaVActorSheet extends SaVSheet {
       //console.log(element.data("itemId"));
       actor.sheet.render(true);
     });
-    
+
 	// Render XP Triggers sheet
     html.find('.xp-triggers').click(ev => {
       let itemId = "";
@@ -170,7 +160,7 @@ export class SaVActorSheet extends SaVSheet {
       };
       item?.sheet.render(true, {"renderContext": "xp"});
     });
-	
+
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const element = $(ev.currentTarget).parents(".item");

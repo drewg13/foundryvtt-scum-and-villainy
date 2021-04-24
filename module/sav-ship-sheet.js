@@ -9,26 +9,14 @@ export class SaVShipSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
-    if( game.majorVersion > 7 ) {
-      //update to foundry.utils.mergeObject
-			return mergeObject(super.defaultOptions, {
-  	    classes: ["scum-and-villainy", "sheet", "actor"],
-  	    template: "systems/scum-and-villainy/templates/ship-sheet.html",
-        width: 700,
-        height: 970,
-        tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-	      scrollY: [".description"]
-      });
-		} else {
-			return mergeObject(super.defaultOptions, {
-	  	  classes: ["scum-and-villainy", "sheet", "actor"],
-	  	  template: "systems/scum-and-villainy/templates/ship-sheet-7.html",
-	      width: 700,
-	      height: 970,
-	      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
-		    scrollY: [".description"]
-	    });
-		};
+	  return mergeObject(super.defaultOptions, {
+	    classes: ["scum-and-villainy", "sheet", "actor"],
+	  	template: "systems/scum-and-villainy/templates/ship-sheet.html",
+	    width: 700,
+	    height: 970,
+	    tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
+		  scrollY: [".description"]
+	  });
   }
 
  /** @override */
@@ -36,6 +24,14 @@ export class SaVShipSheet extends SaVSheet {
     const data = super.getData();
 	  data.isGM = game.user.isGM;
 		data.editable = data.options.editable;
+
+		let actorData = {};
+	  if( game.majorVersion > 7 ) {
+			const actorData = data.data;
+		  data.actor = actorData;
+		  data.data = actorData.data;
+    };
+
 	  return data;
   }
 
@@ -68,7 +64,7 @@ export class SaVShipSheet extends SaVSheet {
 			};
       element.slideUp(200, () => this.render(false));
     });
-    
+
     // Render XP Triggers sheet
     html.find('.xp-triggers').click(ev => {
       let itemId = "";
