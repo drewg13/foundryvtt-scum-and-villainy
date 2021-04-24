@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+      <img src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+      </div>
+  </header>
+  
+  <section class="flex-vertical">
+    <label class="label-stripe">{{localize "BITD.Description"}}</label>
+    <textarea name="data.description">{{data.description}}</textarea>
+    <label class="label-stripe">{{localize "BITD.ExpClues"}}</label>
+    <div><i>- {{localize "BITD.ClassExpClue1"}}</i></div><br>
+    <div>{{localize "BITD.ClassExpClueDescription"}}</div>
+    <div><i>- {{localize "BITD.ClassExpClue2"}}</i></div>
+    <div><i>- {{localize "BITD.ClassExpClue3"}}</i></div>
+    <div><i>{{data.experience_clues}}</i></div><br>
+	<label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
+    <textarea name="data.def_abilities">{{data.def_abilities}}</textarea>
+	
+    {{#if isGM}}
+    <label class="label-stripe">{{localize "BITD.Logic"}}</label>
+    {{editor content=data.logic target="data.logic" button=true owner=owner editable=editable}}
+	{{/if}}
+  </section>
+
+</form>
