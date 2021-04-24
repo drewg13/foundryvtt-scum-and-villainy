@@ -1,0 +1,501 @@
+<form class="{{cssClass}} ship-sheet" autocomplete="off">
+
+  <section id="name-alias" class="flex-horizontal">
+
+    <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+
+    <div class="grow-two">
+      <div id="name">
+        <label for="ship-{{actor._id}}-name">{{localize "BITD.Name"}}</label>
+        <input type="text" id="ship-{{actor._id}}-name" name="name" value="{{actor.name}}">
+      </div>
+
+      <div id="ship-traits" class="flex-column">
+
+        <div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew_type">{{localize "BITD.CrewType"}}</a></div>
+            {{#each actor.items as |item id|}}
+                {{#if (eq item.type "crew_type")}}
+                <div class="item flex-horizontal" data-item-id="{{item._id}}">
+                  <div class="item-body flex-horizontal">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <a class="item-name">{{item.name}}</a>
+                  </div>
+                  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+                </div>
+                {{/if}}
+            {{/each}}
+        </div>
+
+		<div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="ship_size">{{localize "BITD.ShipSize"}}</a></div>
+          {{#each actor.items as |item id|}}
+            {{#if (eq item.type "ship_size")}}
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">
+              <div class="item-body flex-horizontal">
+                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                <a class="item-name">{{item.name}}</a>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+            {{/if}}
+          {{/each}}
+        </div>
+
+		<div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew_reputation">{{localize "BITD.CrewReputation"}}</a></div>
+          {{#each actor.items as |item id|}}
+              {{#if (eq item.type "crew_reputation")}}
+              <div class="item flex-horizontal" data-item-id="{{item._id}}">
+                <div class="item-body flex-horizontal">
+                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                  <a class="item-name">{{item.name}}</a>
+                </div>
+                <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+              </div>
+              {{/if}}
+          {{/each}}
+        </div>
+
+      </div>
+    </div>
+
+    <div class="grow-two">
+      <div id="designation">
+        <label for="ship-{{actor._id}}-designation">{{localize "BITD.Designation"}}</label>
+        <input type="text" id="ship-{{actor._id}}-designation" name="data.designation" value="{{data.designation}}">
+      </div>
+	  
+      <div id="look">
+        <label for="ship-{{actor._id}}-look">{{localize "BITD.Look"}}</label>
+        <input type="text" id="ship-{{actor._id}}-look" name="data.look" value="{{data.look}}">
+      </div>
+	  
+      <div id="coins" class="flex-horizontal">
+
+		<div id="coins-hands">
+			<div class="stripe">
+				<label for="coins-{{actor._id}}-hands-0">{{localize "BITD.Coin"}}
+					<i class="fab fa-creative-commons-zero nullifier"></i>
+				</label>
+			</div>
+			<div class="coins coins-hands">
+			{{#multiboxes data.coins}}
+			<input type="radio" id="coins-{{actor._id}}-hands-0" name="data.coins" value="0">
+			<input type="radio" id="coins-{{actor._id}}-hands-1" name="data.coins" value="1">
+			<label for="coins-{{actor._id}}-hands-1"></label>
+			<input type="radio" id="coins-{{actor._id}}-hands-2" name="data.coins" value="2">
+			<label for="coins-{{actor._id}}-hands-2"></label>
+			<input type="radio" id="coins-{{actor._id}}-hands-3" name="data.coins" value="3">
+			<label for="coins-{{actor._id}}-hands-3"></label>
+			<input type="radio" id="coins-{{actor._id}}-hands-4" name="data.coins" value="4">
+			<label for="coins-{{actor._id}}-hands-4"></label>
+			{{/multiboxes}}
+			</div>
+		</div>
+		
+		{{#if (eq data.installs.vault_inst 1)}}
+		<div id="vault">
+			<div class="stripe">
+			<label for="coins-{{actor._id}}-vault-0">{{localize "BITD.Vault"}}
+				<i class="fab fa-creative-commons-zero nullifier"></i></label>
+			</div>
+			<div class="coins coins-hands">
+			{{#multiboxes data.vault}}
+			<input type="radio" id="coins-{{actor._id}}-vault-0" name="data.vault" value="0" checked="checked">
+			<input type="radio" id="coins-{{actor._id}}-vault-1" name="data.vault" value="1">
+			<label for="coins-{{actor._id}}-vault-1"></label>
+			<input type="radio" id="coins-{{actor._id}}-vault-2" name="data.vault" value="2">
+			<label for="coins-{{actor._id}}-vault-2"></label>
+			<input type="radio" id="coins-{{actor._id}}-vault-3" name="data.vault" value="3">
+			<label for="coins-{{actor._id}}-vault-3"></label>
+			<input type="radio" id="coins-{{actor._id}}-vault-4" name="data.vault" value="4">
+			<label for="coins-{{actor._id}}-vault-4"></label>
+			{{/multiboxes}}
+			</div>
+		</div>
+		{{/if}}
+		
+
+		<div id="coins-debt">
+    
+			<div class="stripe">
+			<label for="coins-{{actor._id}}-debt-0">{{localize "BITD.Debt"}} <i
+              class="fab fa-creative-commons-zero nullifier"></i></label>
+			</div>
+			<div class="coins debt">
+			{{#multiboxes data.debt}}
+			<input type="radio" id="coins-{{actor._id}}-debt-0" name="data.debt" value="0" checked="checked">
+			<input type="radio" id="coins-{{actor._id}}-debt-1" name="data.debt" value="1">
+			<label for="coins-{{actor._id}}-debt-1"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-2" name="data.debt" value="2">
+			<label for="coins-{{actor._id}}-debt-2"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-3" name="data.debt" value="3">
+			<label for="coins-{{actor._id}}-debt-3"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-4" name="data.debt" value="4">
+			<label for="coins-{{actor._id}}-debt-4"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-5" name="data.debt" value="5">
+			<label for="coins-{{actor._id}}-debt-5"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-6" name="data.debt" value="6">
+			<label for="coins-{{actor._id}}-debt-6"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-7" name="data.debt" value="7">
+			<label for="coins-{{actor._id}}-debt-7"></label>
+			<input type="radio" id="coins-{{actor._id}}-debt-8" name="data.debt" value="8">
+			<label for="coins-{{actor._id}}-debt-8"></label>
+			{{/multiboxes}}
+			</div>
+
+		</div>
+
+
+	  </div>
+	  
+	  <div id="gambits" class="flex-horizontal">
+
+		<div id="gambits">
+			<div class="stripe">
+			<label for="gambits-{{actor._id}}-0">{{localize "BITD.Gambits"}}
+				<i class="fab fa-creative-commons-zero nullifier"></i>  ({{localize "BITD.GambitRefresh1"}} {{data.gambits.refresh}} {{localize "BITD.GambitRefresh2"}})</label>
+			</div>
+			<div class="coins gambits">
+			{{#multiboxes data.gambits.value}}
+			<input type="radio" id="gambits-{{actor._id}}-0" name="data.gambits.value" value="0" checked="checked">
+			<input type="radio" id="gambits-{{actor._id}}-1" name="data.gambits.value" value="1">
+			<label for="gambits-{{actor._id}}-1"></label>
+			<input type="radio" id="gambits-{{actor._id}}-2" name="data.gambits.value" value="2">
+			<label for="gambits-{{actor._id}}-2"></label>
+			<input type="radio" id="gambits-{{actor._id}}-3" name="data.gambits.value" value="3">
+			<label for="gambits-{{actor._id}}-3"></label>
+			<input type="radio" id="gambits-{{actor._id}}-4" name="data.gambits.value" value="4">
+			<label for="gambits-{{actor._id}}-4"></label>
+			<input type="radio" id="gambits-{{actor._id}}-5" name="data.gambits.value" value="5">
+			<label for="gambits-{{actor._id}}-5"></label>
+			<input type="radio" id="gambits-{{actor._id}}-6" name="data.gambits.value" value="6">
+			<label for="gambits-{{actor._id}}-6"></label>
+			<input type="radio" id="gambits-{{actor._id}}-7" name="data.gambits.value" value="7">
+			<label for="gambits-{{actor._id}}-7"></label>
+			<input type="radio" id="gambits-{{actor._id}}-8" name="data.gambits.value" value="8">
+			<label for="gambits-{{actor._id}}-8"></label>
+			{{/multiboxes}}
+			</div>
+		</div>
+    </div>
+
+  </section>
+
+  {{!-- Attributes --}}
+  <section class="flex-horizontal">
+
+    <div class="tab-content flex-vertical grow-two">
+
+      {{!-- Nav menu --}}
+      <nav class="tabs flex-horizontal">
+        <a class="item" data-tab="abilities">{{localize "BITD.SpecialAbilities"}}</a>
+        <a class="item" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
+		<a class="item" data-tab="friends">{{localize "BITD.Contacts"}}</a>
+		<a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
+        <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
+      </nav>
+
+      <div id="abilities" class="tab flex-vertical" data-tab="abilities">
+        <div class="label-stripe">
+          <p>{{localize "BITD.SpecialAbilities"}}</p>
+          <p><a class="item-add-popup" data-item-type="crew_ability" data-limiter=data.ship_class><i class="fas fa-plus-square"></i></a></p>
+          <div id="crew_experience" class="teeth-experience">
+            <p><span class="xp-triggers nullifier">{{localize "BITD.CExperience"}}</span></p>
+			<label class="nullifier" for="ship-{{actor._id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+            {{#multiboxes data.crew_experience}}
+            <input type="radio" id="ship-{{actor._id}}-experience-0" name="data.crew_experience" value="0" dtype="Radio">
+            <input type="radio" id="ship-{{actor._id}}-experience-1" name="data.crew_experience" value="1" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-1"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-2" name="data.crew_experience" value="2" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-2"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-3" name="data.crew_experience" value="3" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-3"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-4" name="data.crew_experience" value="4" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-4"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-5" name="data.crew_experience" value="5" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-5"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-6" name="data.crew_experience" value="6" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-6"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-7" name="data.crew_experience" value="7" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-7"></label>
+            <input type="radio" id="ship-{{actor._id}}-experience-8" name="data.crew_experience" value="8" dtype="Radio">
+            <label for="ship-{{actor._id}}-experience-8"></label>
+            {{/multiboxes}}
+          </div>
+		
+		</div>
+
+        <div id="abilities-list">
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "crew_ability")}}
+		    <div class="item flex-horizontal" data-item-id="{{item._id}}">
+              <div class="item-body flex-horizontal">
+				<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                <a class="item-name">{{item.name}}</a>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_ability">{{localize "BITD.AddAbility"}}</a></div>
+        </div>
+      </div>
+
+      {{!-- Owned Items Tab --}}
+      <div id="upgrades" class="tab flex-vertical" data-tab="upgrades">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Upgrades"}}</p>
+          <p><a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
+        </div>
+        <div>
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "crew_upgrade")}}
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">
+              <div class="item-body flex-horizontal">
+                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                <a class="item-name">{{item.name}}</a>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="crew_upgrade">{{localize "BITD.AddUpgrade"}}</a></div>
+        </div>
+      </div>
+
+	  {{!-- Friends Tab --}}
+      <div id="friends" class="tab flex-vertical" data-tab="friends">
+		
+		<div class="label-stripe">
+		  <p>{{localize "BITD.Contacts"}}</p>
+          <p><a class="item-add-popup" data-item-type="friend"><i class="fas fa-plus-square"></i></a></p>
+        </div>
+        <div id="friend-list">
+          {{#each actor.items as |item id|}}
+          {{#if (eq item.type "friend")}} 
+			<div class="friend-tracker">
+			{{#multiboxes item.data.status.value}}
+				<input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="0" type="radio" id="friend-{{item._id}}-status-0" value="0" dtype="Radio">
+				<label for="friend-{{item._id}}-status-0"></label>
+				<input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="1" type="radio" id="friend-{{item._id}}-status-1" value="1" dtype="Radio">
+				<label for="friend-{{item._id}}-status-1"></label>
+				<input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="2" type="radio" id="friend-{{item._id}}-status-2" value="2" dtype="Radio">
+				<label for="friend-{{item._id}}-status-2"></label>
+			{{/multiboxes}}
+			
+            <div class="item flex-horizontal" data-item-id="{{item._id}}">    
+			  <div class="item-body flex-horizontal">
+				<!--<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>-->
+				<a class="item-name">{{item.name}}</a>
+                <div class="item-description">{{item.data.description}}</div>
+              </div>
+              <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+			</div>
+          {{/if}}
+          {{/each}}
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="friend">{{localize "BITD.AddFriend"}}</a></div>
+        </div>
+      </div>
+
+      <div class="tab flex-vertical" data-tab="character-notes">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Notes"}}</p>
+        </div>
+        {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+		{{#if editable}}
+        <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
+        {{/if}}
+      </div>
+
+      {{!-- Full Item List --}}
+      <div id="all-items" class="tab grow-two flex-vertical" data-tab="all-character-items">
+        <div class="label-stripe">
+          <p><label>{{localize "BITD.AllItems"}}</label></p>
+        </div>
+        {{#each actor.items as |item id|}}
+        <div class="item flex-horizontal" data-item-id="{{item._id}}">
+          <div class="item-body item-sheet-open flex-horizontal">
+            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+            <a class="item-name">{{item.name}}</a>
+          </div>
+          <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+        </div>
+        {{/each}}
+      </div>
+
+    </div>
+    {{!-- Attributes --}}
+	<div id="systems">
+		<br><br>
+		{{#each data.systems as |system system_name|}}
+		{{#unless (eq system.max 0)}}
+		<div id="systems-{{system_name}}" class="system">
+			<div id="systems-{{system_name}}-title" class="systems-value">
+				<div class="stripe flex-horizontal system-label">
+				{{#if (eq system_name "upkeep")}}
+				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a><span style="margin-right: 5px;"> = {{system.value}} {{localize "BITD.Coin"}}</span>
+				{{/if}}
+				{{#if (eq system_name "shields")}}
+				{{localize (concat system.label 'Short')}}
+				{{/if}}
+				{{#if (eq system_name "encryptor")}}
+				{{localize (concat system.label 'Short')}}
+				{{/if}}
+				{{#unless (eq system_name "upkeep")}}
+				{{#unless (eq system_name "shields")}}
+				{{#unless (eq system_name "encryptor")}}
+				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
+				{{/unless}}
+				{{/unless}}
+				{{/unless}}
+				<!-- </div> -->
+			{{#unless (eq system_name "upkeep")}}
+			<div class="stripe-tooth-body-blue">
+				{{#multiboxes system.value}}
+
+				<label for="{{../actor._id}}-{{system_name}}-value-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+				<input type="radio" id="{{../actor._id}}-{{system_name}}-value-0"
+					name="data.systems.{{system_name}}.value" value="0" checked="checked">
+				
+				{{#if (eq system.max 1)}}
+				{{#times_from_1 1}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 2)}}
+				{{#times_from_1 2}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 3)}}
+				{{#times_from_1 3}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 4)}}
+				{{#times_from_1 4}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}"
+						name="data.systems.{{system_name}}.value" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{/multiboxes}}
+			</div>
+			{{/unless}}
+			</div>
+			</div>
+			{{#unless (eq system_name "crew")}}
+			{{#unless (eq system_name "shields")}}
+			{{#unless (eq system_name "encryptor")}}
+			<div id="systems-{{system_name}}-damage" class="systems-value">
+				<div class="stripe-damage flex-horizontal system-label-damage">
+				{{#if (eq system_name "upkeep")}}
+				{{localize "BITD.SystemsSkips"}}
+				{{/if}}
+				{{#unless (eq system_name "upkeep")}}
+				{{localize "BITD.SystemsDamage"}}
+				{{/unless}}
+				
+			<div class="stripe-tooth-body-red">
+				{{#multiboxes system.damage}}
+
+				<label
+						for="{{../actor._id}}-{{system_name}}-damage-0"><i
+						class="fab fa-creative-commons-zero nullifier"></i></label>
+				<input type="radio" id="{{../actor._id}}-{{system_name}}-damage-0"
+					name="data.systems.{{system_name}}.damage" value="0" checked="checked">
+				
+				{{#if (eq system.max 1)}}
+				{{#times_from_1 1}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 2)}}
+				{{#times_from_1 2}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 3)}}
+				{{#times_from_1 3}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{#if (eq system.max 4)}}
+				{{#times_from_1 4}}
+				<input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}"
+						name="data.systems.{{system_name}}.damage" value="{{this}}">
+				<label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+				{{/times_from_1}}
+				{{/if}}
+				
+				{{/multiboxes}}
+			</div>
+			</div>
+			</div>
+			
+			<div id="system-upgrades" class="systems-value">
+				{{#each ../actor.items as |item id|}}
+					
+					{{#if (eq item.type "crew_upgrade")}}
+					
+					{{#if (caseeq item.data.class system_name)}}
+						<div class="label-stripe-gray item flex-horizontal system-label" data-item-id="{{item._id}}">
+							<div class="item-body">
+								<a class="item-name">{{item.name}}</a>
+							
+							</div>
+							<div id="system-subitem" class="stripe-tooth-body-red">
+								<label for="item-{{id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+								{{#multiboxes item.data.is_damaged}}
+									<input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="0"  type="radio" id="item-{{id}}-0" value="0" dtype="Radio">
+									{{#times_from_1 1}}
+										<input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="item-{{id}}-{{this}}" value="{{this}}" dtype="Radio">
+										<label for="item-{{id}}-{{this}}"></label>
+									{{/times_from_1}}
+								{{/multiboxes}}
+							</div>
+							
+						</div>
+					{{/if}}
+					{{/if}}
+				{{/each}}
+			</div>
+			
+			{{/unless}}
+			{{/unless}}
+			{{/unless}}
+		  
+		</div>
+		<br>
+		{{/unless}}
+		{{/each}}
+
+
+	</div>
+  </section>
+
+</form>
