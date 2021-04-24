@@ -3,7 +3,8 @@
   "BITD.Heritage": "Heritage",
   "BITD.Background": "Background",
   "BITD.TitleDeleteItem": "Delete item",
-  "BITD.Vice": "Vice(s)",
+  "BITD.Vice": "Vice",
+  "BITD.Vices": "Vice(s)",
   "BITD.Class": "Class",
   "BITD.Ship": "Ship",
   "BITD.Stress": "Stress",
@@ -25,8 +26,6 @@
   "BITD.Goal": "Goal",
   "BITD.Assets": "Assets",
   "BITD.Quirks": "Quirks",
-  "BITD.Allies": "Allies",
-  "BITD.Enemies": "Enemies",
   "BITD.Situation": "Situation",
   "BITD.Update": "Update",
   "BITD.Status": "Status",
@@ -52,9 +51,11 @@
   "BITD.Healing": "Healing",
   "BITD.Armor": "Armor",
   "BITD.NeedHelp": "Need Help",
+  "BITD.Empty": "Empty",
   "BITD.Light": "Light",
   "BITD.Normal": "Normal",
   "BITD.Heavy": "Heavy",
+  "BITD.OverMax": "Over Max",
   "BITD.Special": "Special",
   "BITD.LessEffect": "Less Effect",
   "BITD.Description": "Description",
@@ -126,7 +127,7 @@
   "BITD.RollFailurePositionDesperate": "It’s the worst outcome. You suffer <strong>severe harm</strong>, a <strong>serious complication occurs</strong>, you <strong>lose this opportunity for action</strong>.",
   "BITD.RollGambit": "If you didn't spend a <strong>gambit</strong> on this roll, gain one <strong>gambit</strong>.",
   "BITD.RollXP": "Mark <strong>XP</strong> for the related attribute.",
-  
+
   "BITD.RollGreatEffect": "Great Effect",
   "BITD.RollGreatEffectDescription": "You get an exceptional result or an extreme effect.<br><br>If this is an engagement roll, you've already overcome the first obstacle and are in a <strong>controlled</strong> position for whatever is next.<br><br>If you're marking faction or healing clocks, mark <strong>5</strong> segments.",
   "BITD.RollStandardEffect": "Standard Effect",
@@ -139,21 +140,21 @@
   "BITD.RollResist": "Resistance",
   "BITD.RollResistDescription": "You <strong>reduce</strong> or completely <strong>avoid</strong> the effects of the consequences (GM choice).<br><br>Take <strong>Stress</strong> equal to 6 minus the highest (or lowest in case of a 0d roll) die result, which should be <strong>",
   "BITD.RollCritResist": "Critical Resistance",
-  "BITD.RollCritResistDescription": "You <strong>reduce</strong> or completely <strong>avoid</strong> the effects of the consequences (GM choice).<br><br><strong>Clear 1 Stress.</strong>",  
-  
+  "BITD.RollCritResistDescription": "You <strong>reduce</strong> or completely <strong>avoid</strong> the effects of the consequences (GM choice).<br><br><strong>Clear 1 Stress.</strong>",
+
   "BITD.RollVice": "Indulge Vice",
   "BITD.RollViceDescription": "Clear <strong>Stress</strong> equal to your highest (or lowest in case of a 0d roll) die result, which should be <strong>",
   "BITD.RollViceDescription2": "</strong>.<br><br>If you clear more <strong>Stress</strong> levels than you had marked, you <strong>overindulge</strong> and <strong>must</strong> choose between:<br><br><strong>Rash Action</strong> (reduce your <strong>Stash</strong> by 4 or take crew <strong>Debt</strong> of 2)<br><br><strong>Big Talk</strong> (brag to the wrong people and gain <strong>+2 Heat</strong> in this system)<br><br><strong>Lost</strong> (this character vanishes for a few weeks and returns fully healed and with wild stories)",
-  
+
   "BITD.RollUpkeepDamage": "Damage",
   "BITD.RollUpkeepDamageDescription": "A system is (or will soon be) badly damaged.<br><br>You can <strong>Repair</strong> it with a downtime activity next time you're in port.",
   "BITD.RollUpkeepMalf": "Malfunction",
   "BITD.RollUpkeepMalfDescription": "A system malfunctions, but it's minor.<br>You can <strong>Rig</strong> a solution in the field.",
   "BITD.RollUpkeepNoDamage": "No Problems",
   "BITD.RollUpkeepNoDamageDescription": "No worries, the wear and tear is minor and won't affect performance on the next job.",
-  
+
   "BITD.RollZeromode": "Zero Dice rolled - rolling two dice and taking the lowest",
-  
+
   "BITD.PositionControlled": "Controlled",
   "BITD.PositionRisky": "Risky",
   "BITD.PositionDesperate": "Desperate",
@@ -204,13 +205,13 @@
   "BITD.PExperience": "Playbook XP ",
   "BITD.CExperience": "Crew XP ",
   "BITD.AExperience": "XP ",
-  
+
   "BITD.LifestyleBroke": "(Broke, Lifestyle = ",
   "BITD.LifestylePoor": "(Poor, Lifestyle = ",
   "BITD.LifestyleMeager": "(Meager, Lifestyle = ",
   "BITD.LifestyleModest": "(Modest, Lifestyle = ",
   "BITD.LifestyleFine": "(Fine, Lifestyle = ",
-  
+
   "BITD.AddAbility": "Add Ability",
   "BITD.AddItem": "Add Item",
   "BITD.AddUpgrade": "Add Upgrade",
@@ -222,9 +223,9 @@
 
   "BITD.Name": "Name",
   "BITD.CampaignName": "Campaign Name",
-  
+
   "BITD.Add": "Add",
   "BITD.Cancel": "Cancel",
-  
+
   "BITD.ClockSettingDefaultTheme": "Default clock theme:"
 }
