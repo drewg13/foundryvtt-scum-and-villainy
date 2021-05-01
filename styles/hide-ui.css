@@ -1,3 +1,6 @@
+.hide-ui #token-hud div[data-action="effects"],
+.hide-ui #token-hud div[data-action="combat"],
+.hide-ui #token-hud div[data-action="target"],
 .hide-ui #token-hud .control-icon.effects,
 .hide-ui #token-hud .control-icon.combat,
 .hide-ui #token-hud .control-icon.target,
