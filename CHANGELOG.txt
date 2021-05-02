@@ -46,3 +46,4 @@ v1.2.10  Fix too-wide item sheets
 
 v1.2.11  Implement sane getData compatibility; localize Load Levels; fix Vice button
 
+v1.2.12  Update for 0.8.2 (fix clock token UI CSS changes)
