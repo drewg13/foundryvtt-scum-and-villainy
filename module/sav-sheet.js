@@ -218,7 +218,7 @@ export class SaVSheet extends ActorSheet {
 		};
 		if ( perms >= CONST.ENTITY_PERMISSIONS.OWNER ) {
     let dialog = new Dialog({
-      title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
+      title: `${game.i18n.localize('BITD.Add')} ${game.i18n.localize('BITD.'+item_type)}`,
       content: html,
       buttons: {
         one: {
