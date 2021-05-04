@@ -296,6 +296,17 @@ export class SaVHelpers {
       //console.log(compendium_items);
 
     list_of_items = game_items.concat(compendium_items);
+    list_of_items.sort(function(a, b) {
+      var nameA = a.name.toUpperCase();
+      var nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
       //console.log(list_of_items);
     return list_of_items;
 
