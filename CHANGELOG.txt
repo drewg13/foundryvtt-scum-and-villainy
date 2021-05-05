@@ -50,5 +50,5 @@ v1.2.12  Update for 0.8.2 (fix clock token UI CSS changes)
 
 v1.2.13  Fix sorting of Add Item dialog boxes and localize the titles
 
-v1.3.0  Improvements to the action roll popup
+v1.3.0  Improvements to the action roll popup (adapted from eHanus's Wicked Ones system)
 
