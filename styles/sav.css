@@ -54,6 +54,12 @@
 * form.actor-sheet {
   padding: 20px;
 }
+* form .form-group.roll > * {
+    flex: 3;
+    flex-grow: 3;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
 .window-app .window-content {
 	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
     url('assets/brushed_metal.jpg') repeat;
