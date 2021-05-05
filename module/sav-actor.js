@@ -140,7 +140,7 @@ prepareDerivedData() {
 	// Calculate Dice Amount for Attributes
     const base_dice = this.getRollData().dice_amount[attribute_name];
 	var dice_amount = this.getRollData().dice_amount[attribute_name];
-    console.log(base_dice);
+    //console.log(base_dice);
     new Dialog({
       title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
       content: `
