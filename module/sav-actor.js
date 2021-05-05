@@ -135,29 +135,27 @@ prepareDerivedData() {
 
   rollActionPopup(attribute_name) {
 
-    // const roll = new Roll("1d20 + @abilities.wis.mod", actor.getRollData());
     let attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
-
+    
+	// Calculate Dice Amount for Attributes
+    const base_dice = this.getRollData().dice_amount[attribute_name];
+	var dice_amount = this.getRollData().dice_amount[attribute_name];
+    console.log(base_dice);
     new Dialog({
       title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
       content: `
-        <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}</h2>
+        <div id="skill-roll">
+		<h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)} (${dice_amount}d)</h2>
         <form>
-          <div class="form-group">
-            <label>${game.i18n.localize('BITD.Modifier')}:</label>
-            <select id="mod" name="mod">
-              ${this.createListOfDiceMods(-3,+3,0)}
-            </select>
-            </div>
-            <div class="form-group">
+          <div class="form-group roll position">
             <label>${game.i18n.localize('BITD.Position')}:</label>
             <select id="pos" name="pos">
               <option value="controlled">${game.i18n.localize('BITD.PositionControlled')}</option>
               <option value="risky" selected>${game.i18n.localize('BITD.PositionRisky')}</option>
               <option value="desperate">${game.i18n.localize('BITD.PositionDesperate')}</option>
             </select>
-            </div>
-            <div class="form-group">
+          </div>
+          <div class="form-group roll effect">
             <label>${game.i18n.localize('BITD.Effect')}:</label>
             <select id="fx" name="fx">
               <option value="limited">${game.i18n.localize('BITD.EffectLimited')}</option>
@@ -165,7 +163,24 @@ prepareDerivedData() {
               <option value="great">${game.i18n.localize('BITD.EffectGreat')}</option>
             </select>
           </div>
+          <div class="form-group roll mod">
+            <label>${game.i18n.localize('BITD.Modifier')}:</label>
+            <select id="mod" name="mod" data-base-dice="${base_dice}">
+              ${this.createListOfDiceMods(-3,+3,0)}
+            </select>
+          </div>
+          <div class="form-group roll base-dice">
+              <label class="base-dice">${game.i18n.localize('BITD.BaseDice')}: </label>
+			  <label>${base_dice}d</label>
+          </div>
+		  <div class="form-group roll total-rolled">
+              <label class="total-rolled">${game.i18n.localize('BITD.TotalDice')}: </label>
+			  <label>${dice_amount}d</label>
+          </div>
         </form>
+		<h2>${game.i18n.localize('BITD.RollOptions')}</h2>
+		<div class="action-info">${game.i18n.localize('BITD.ActionsHelp')}</div>
+        </div>
       `,
       buttons: {
         yes: {
@@ -184,6 +199,9 @@ prepareDerivedData() {
         },
       },
       default: "yes",
+	  render: html => {
+        $("#skill-roll #mod").change(this._onDiceModChange);
+      },
     }).render(true);
 
   }
@@ -323,5 +341,16 @@ rollSimplePopup(attribute_name) {
   }
 
   /* -------------------------------------------- */
+  
+  /**
+   * Change dice total on display
+   * @param {*} event 
+   */
+  async _onDiceModChange(event) {
+    let mod = this.value;
+    let base = this.dataset.baseDice;
+
+    $("#skill-roll .total-rolled label:nth-child(2)").text(parseInt(base) + parseInt(mod) + "d");
+  }
 
 }
