@@ -236,6 +236,10 @@
   "BITD.Position": "Position",
   "BITD.Effect": "Effect",
   "BITD.Modifier": "Modifier",
+  "BITD.BaseDice": "Base Dice",
+  "BITD.TotalDice": "Total Dice",
+  "BITD.RollOptions": "Roll Options",
+  "BITD.ActionsHelp": "<strong>Get An Assist:</strong> Get +1d if another PC assisted you, then that PC takes 1 Stress<br><strong>Spend A Gambit:</strong> Spend one Gambit for +1d<br><strong>Push Yourself:</strong> Take 2 Stress for +1d, but you can't take a Devil's Bargain<br><strong>Devil's Bargain:</strong> Accept a consequence to get +1d, but you can't Push Yourself<br><strong>Group Action:</strong> All involved PCs make an action roll and count the single best result, but the leader takes 1 Stress for each Failure<br><strong>Setup Action:</strong> Take an action roll and, if it succeeds and makes sense in the fiction, give improved Position or Effect to the next PC's action roll",
 
   "BITD.Name": "Name",
   "BITD.CampaignName": "Campaign Name",
