@@ -206,10 +206,8 @@ export default {
   let t = canvas.tokens.get(token.id);
   let a = game.actors.get(token.actorId);
   //console.log(a.data.flags['scum-and-villainy']);
-  if( !a.data.flags['scum-and-villainy'] ) {
-    return false;
-  };
-  if( !a.data.flags['scum-and-villainy'].clocks ) {
+  
+  if( !a?.data?.flags['scum-and-villainy']?.clocks ) {
     return false;
   };
 
