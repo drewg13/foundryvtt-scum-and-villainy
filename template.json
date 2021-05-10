@@ -342,7 +342,6 @@
 	"type": "",
 	"tier": 0,
 	"goal": "",
-	"goal_clock_max": 0,
 	"turf": "",
 	"assets": "",
 	"quirks": "",
@@ -350,7 +349,11 @@
 	"allies": "",
 	"enemies": "",
 	"situation": "",
-	"goal_clock": 0,
+	"goal_clock": {
+      "value": 0,
+      "max": 0,
+      "max_default": 0
+    },
 	"status": {
       "value": [4],
       "max": 7,

@@ -316,4 +316,39 @@ export class SaVHelpers {
 
     return attribute_labels[attribute_name];
   }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Creates options for faction clocks.
+   *
+   * @param {int[]} sizes
+   *  array of possible clock sizes
+   * @param {int} default_size
+   *  default clock size
+   * @param {int} current_size
+   *  current clock size
+   * @returns {string}
+   *  html-formatted option string
+   */
+  static createListOfClockSizes( sizes, default_size, current_size ) {
+
+    let text = ``;
+
+    sizes.forEach( size => {
+      text += `<option value="${size}"`;
+      if ( !( current_size ) && ( size === default_size ) ) {
+        text += ` selected`;
+      } else if ( size === current_size ) {
+        text += ` selected`;
+      }
+
+      text += `>${size}</option>`;
+    });
+
+    return text;
+
+  }
+
+
 }

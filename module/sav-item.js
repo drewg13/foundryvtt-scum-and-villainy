@@ -13,6 +13,7 @@ export class SaVItem extends Item {
 
 	  if (item_data.type === "faction") {
       this._prepareStatusDefault( data );
+      data.size_list = SaVHelpers.createListOfClockSizes( SaVClock.sizes, data.goal_clock_max, parseInt( data.goal_clock.max ) );
     }
   };
 
@@ -21,7 +22,7 @@ export class SaVItem extends Item {
 	  let status = data.status.value;
 
 	  if ( this ) {
-		  if ( status == "0" ) { status = 4; }
+		  if ( ( status === "0" ) || ( status === 0 ) ) { status = 4; }
 		  data.status.value = status;
 	  }
   };

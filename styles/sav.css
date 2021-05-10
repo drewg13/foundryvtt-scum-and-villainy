@@ -1391,20 +1391,17 @@
 * .clock-zero-label {
   color: #191813;
 }
-* .clock-block .clocks.clocks-4 {
-  position: relative;
-}
-* .clock-block .clocks.clocks-4 .sav-clock {
+* .sav-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
   background-size: cover;
 }
-* .clock-block .clocks.clocks-4 .sav-clock label {
+* .sav-clock label {
   overflow: hidden;
   position: absolute;
   top: -50%;
@@ -1415,278 +1412,150 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .clock-block .clocks.clocks-4 .sav-clock label:hover {
+* .sav-clock label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .clock-block .clocks.clocks-4 .sav-clock input {
+* .sav-clock input {
   position: absolute;
   display: none;
 }
-* .clock-block .clocks.clocks-4 .sav-clock input[value="0"] {
+* .sav-clock.clock-4 input[value="0"] {
   display: none;
 }
-* .clock-block .clocks.clocks-4 .sav-clock *:nth-child(3) {
+* .sav-clock.clock-4 *:nth-child(3) {
   transform: rotate(-45deg) skewY(180deg);
 }
-* .clock-block .clocks.clocks-4 .sav-clock *:nth-child(5) {
+* .sav-clock.clock-4 *:nth-child(5) {
   transform: rotate(45deg) skewY(180deg);
 }
-* .clock-block .clocks.clocks-4 .sav-clock *:nth-child(7) {
+* .sav-clock.clock-4 *:nth-child(7) {
   transform: rotate(135deg) skewY(180deg);
 }
-* .clock-block .clocks.clocks-4 .sav-clock *:nth-child(9) {
-  transform: rotate(180deg) skewY(180deg);
+* .sav-clock.clock-4 *:nth-child(9) {
+  transform: rotate(225deg) skewY(180deg);
 }
-* .clock-block .clocks.clocks-6 {
-  position: relative;
-}
-* .clock-block .clocks.clocks-6 .sav-clock {
-  position: relative;
-  padding: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  list-style: none;
-  overflow: hidden;
-  background-size: cover;
-}
-* .clock-block .clocks.clocks-6 .sav-clock label {
-  overflow: hidden;
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  transform-origin: 0% 100%;
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-* .clock-block .clocks.clocks-6 .sav-clock label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-* .clock-block .clocks.clocks-6 .sav-clock input {
-  position: absolute;
+* .sav-clock.clock-6 input[value="0"] {
   display: none;
 }
-* .clock-block .clocks.clocks-6 .sav-clock input[value="0"] {
-  display: none;
-}
-* .clock-block .clocks.clocks-6 .sav-clock *:nth-child(3) {
+* .sav-clock.clock-6 *:nth-child(3) {
   transform: rotate(-30deg) skewY(150deg);
 }
-* .clock-block .clocks.clocks-6 .sav-clock *:nth-child(5) {
+* .sav-clock.clock-6 *:nth-child(5) {
   transform: rotate(30deg) skewY(150deg);
 }
-* .clock-block .clocks.clocks-6 .sav-clock *:nth-child(7) {
+* .sav-clock.clock-6 *:nth-child(7) {
   transform: rotate(90deg) skewY(150deg);
 }
-* .clock-block .clocks.clocks-6 .sav-clock *:nth-child(9) {
+* .sav-clock.clock-6 *:nth-child(9) {
   transform: rotate(150deg) skewY(150deg);
 }
-* .clock-block .clocks.clocks-6 .sav-clock *:nth-child(11) {
+* .sav-clock.clock-6 *:nth-child(11) {
   transform: rotate(210deg) skewY(150deg);
 }
-* .clock-block .clocks.clocks-6 .sav-clock *:nth-child(13) {
+* .sav-clock.clock-6 *:nth-child(13) {
   transform: rotate(270deg) skewY(150deg);
 }
-* .clock-block .clocks.clocks-8 {
-  position: relative;
-}
-* .clock-block .clocks.clocks-8 .sav-clock {
-  position: relative;
-  padding: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  list-style: none;
-  overflow: hidden;
-  background-size: cover;
-}
-* .clock-block .clocks.clocks-8 .sav-clock label {
-  overflow: hidden;
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  transform-origin: 0% 100%;
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-* .clock-block .clocks.clocks-8 .sav-clock label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-* .clock-block .clocks.clocks-8 .sav-clock input {
-  position: absolute;
+* .sav-clock.clock-8 input[value="0"] {
   display: none;
 }
-* .clock-block .clocks.clocks-8 .sav-clock input[value="0"] {
-  display: none;
-}
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(3) {
+* .sav-clock.clock-8 *:nth-child(3) {
   transform: rotate(-22.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(5) {
+* .sav-clock.clock-8 *:nth-child(5) {
   transform: rotate(22.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(7) {
+* .sav-clock.clock-8 *:nth-child(7) {
   transform: rotate(67.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(9) {
+* .sav-clock.clock-8 *:nth-child(9) {
   transform: rotate(112.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(11) {
+* .sav-clock.clock-8 *:nth-child(11) {
   transform: rotate(157.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(13) {
+* .sav-clock.clock-8 *:nth-child(13) {
   transform: rotate(202.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(15) {
+* .sav-clock.clock-8 *:nth-child(15) {
   transform: rotate(247.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-8 .sav-clock *:nth-child(17) {
+* .sav-clock.clock-8 *:nth-child(17) {
   transform: rotate(292.5deg) skewY(135deg);
 }
-* .clock-block .clocks.clocks-10 {
-  position: relative;
-}
-* .clock-block .clocks.clocks-10 .sav-clock {
-  position: relative;
-  padding: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  list-style: none;
-  overflow: hidden;
-  background-size: cover;
-}
-* .clock-block .clocks.clocks-10 .sav-clock label {
-  overflow: hidden;
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  transform-origin: 0% 100%;
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-* .clock-block .clocks.clocks-10 .sav-clock label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-* .clock-block .clocks.clocks-10 .sav-clock input {
-  position: absolute;
+* .sav-clock.clock-10 input[value="0"] {
   display: none;
 }
-* .clock-block .clocks.clocks-10 .sav-clock input[value="0"] {
-  display: none;
-}
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(3) {
+* .sav-clock.clock-10 *:nth-child(3) {
   transform: rotate(-18deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(5) {
+* .sav-clock.clock-10 *:nth-child(5) {
   transform: rotate(18deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(7) {
+* .sav-clock.clock-10 *:nth-child(7) {
   transform: rotate(54deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(9) {
+* .sav-clock.clock-10 *:nth-child(9) {
   transform: rotate(90deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(11) {
+* .sav-clock.clock-10 *:nth-child(11) {
   transform: rotate(126deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(13) {
+* .sav-clock.clock-10 *:nth-child(13) {
   transform: rotate(162deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(15) {
+* .sav-clock.clock-10 *:nth-child(15) {
   transform: rotate(198deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(17) {
+* .sav-clock.clock-10 *:nth-child(17) {
   transform: rotate(234deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(19) {
+* .sav-clock.clock-10 *:nth-child(19) {
   transform: rotate(270deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-10 .sav-clock *:nth-child(21) {
+* .sav-clock.clock-10 *:nth-child(21) {
   transform: rotate(306deg) skewY(127.5deg);
 }
-* .clock-block .clocks.clocks-12 {
-  position: relative;
-}
-* .clock-block .clocks.clocks-12 .sav-clock {
-  position: relative;
-  padding: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  list-style: none;
-  overflow: hidden;
-  background-size: cover;
-}
-* .clock-block .clocks.clocks-12 .sav-clock label {
-  overflow: hidden;
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  transform-origin: 0% 100%;
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-* .clock-block .clocks.clocks-12 .sav-clock label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-* .clock-block .clocks.clocks-12 .sav-clock input {
-  position: absolute;
+* .sav-clock.clock-12 input[value="0"] {
   display: none;
 }
-* .clock-block .clocks.clocks-12 .sav-clock input[value="0"] {
-  display: none;
-}
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(3) {
+* .sav-clock.clock-12 *:nth-child(3) {
   transform: rotate(-15deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(5) {
+* .sav-clock.clock-12 *:nth-child(5) {
   transform: rotate(15deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(7) {
+* .sav-clock.clock-12 *:nth-child(7) {
   transform: rotate(45deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(9) {
+* .sav-clock.clock-12 *:nth-child(9) {
   transform: rotate(75deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(11) {
+* .sav-clock.clock-12 *:nth-child(11) {
   transform: rotate(105deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(13) {
+* .sav-clock.clock-12 *:nth-child(13) {
   transform: rotate(135deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(15) {
+* .sav-clock.clock-12 *:nth-child(15) {
   transform: rotate(165deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(17) {
+* .sav-clock.clock-12 *:nth-child(17) {
   transform: rotate(195deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(19) {
+* .sav-clock.clock-12 *:nth-child(19) {
   transform: rotate(225deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(21) {
+* .sav-clock.clock-12 *:nth-child(21) {
   transform: rotate(255deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(23) {
+* .sav-clock.clock-12 *:nth-child(23) {
   transform: rotate(285deg) skewY(123.75deg);
 }
-* .clock-block .clocks.clocks-12 .sav-clock *:nth-child(25) {
+* .sav-clock.clock-12 *:nth-child(25) {
   transform: rotate(315deg) skewY(123.75deg);
 }
-* .clock-block .sav-clock-name-type > * {
+* .sav-clock-name-type > * {
   margin-bottom: 10px;
   max-width: 220px;
 }

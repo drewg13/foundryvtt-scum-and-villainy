@@ -6,7 +6,6 @@
       </div>
   </header>
 
-
   <section class="flex-vertical">
 	<label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea rows="2" name="data.description">{{data.description}}</textarea>
@@ -15,6 +14,19 @@
 	<label class="label-stripe">{{localize "BITD.Tier"}}</label>
     <textarea rows="1" name="data.tier">{{data.tier}}</textarea>
     <label class="label-stripe">{{localize "BITD.Goal"}}</label>
+
+    <div class="flex-vertical" id="faction-goal-clock">
+      <div id="faction-clock">
+        {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value item._id}}}
+      </div>
+      <div id="clock-max">
+          <label>{{localize "BITD.GoalClockMax"}}:</label>
+          <select id="max" name="data.goal_clock.max">
+              {{{data.size_list}}}
+          </select>
+      </div>
+    </div>
+
     <textarea rows="1" name="data.goal">{{data.goal}}</textarea>
     <label class="label-stripe">{{localize "BITD.NotableNPCs"}}</label>
     <textarea rows="10" name="data.notables">{{data.notables}}</textarea>
@@ -30,8 +42,6 @@
     <textarea rows="1" name="data.enemies">{{data.enemies}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Situation"}}</label>
     <textarea rows="10" name="data.situation">{{data.situation}}</textarea>
-
-
 
   </section>
 

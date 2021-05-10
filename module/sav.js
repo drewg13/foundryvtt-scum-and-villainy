@@ -21,8 +21,9 @@ import { SaVClockSheet } from "./sav-clock-sheet.js";
 import ClockTiles from "./sav-clock-tiles.js";
 import ClockSheet from "./sav-clock-sheet.js";
 import { log } from "./sav-clock-util.js";
-
+import { SaVClock } from "./sav-clock.js";
 window.SaVHelpers = SaVHelpers;
+window.SaVClock = SaVClock;
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
