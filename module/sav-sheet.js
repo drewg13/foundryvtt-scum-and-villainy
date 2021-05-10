@@ -57,7 +57,12 @@ export class SaVSheet extends ActorSheet {
 
     if ( this.actor.data.type === "ship" ) {
 		  main_systems.forEach( m => {
-  	    let actor_items = this.actor.data.items.filter(i => i.data.class === m);
+  	    let actor_items;
+  	    if ( game.majorVersion > 7 ) {
+					actor_items = this.actor.data.items.filter( i => i.data.data.class === m );
+				} else {
+					actor_items = this.actor.data.items.filter( i => i.data.class === m );
+				}
 	  	  let total = actor_items.length;
         let lower_m = m.toLowerCase();
 		    if ( total >= this.actor.data.data.systems[lower_m].value ) {
