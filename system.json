@@ -2,7 +2,7 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "minimumCoreVersion": "0.7.2",
   "compatibleCoreVersion": "0.8.2",
   "templateVersion": 1,
@@ -23,7 +23,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.3.0.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.4.0.zip",
   "packs": [
     {
       "name": "class",
@@ -102,21 +102,21 @@
       "path": "./packs/tables.db",
       "entity": "RollTable"
     },
-	{
+    {
       "name": "star_system",
       "label": "Star Systems",
       "system": "scum-and-villainy",
       "path": "./packs/star_systems.db",
       "entity": "Item"
     },
-	{
+    {
       "name": "planet",
       "label": "Planets",
       "system": "scum-and-villainy",
       "path": "./packs/planets.db",
       "entity": "Item"
     },
-	{
+    {
       "name": "faction",
       "label": "Factions",
       "system": "scum-and-villainy",
@@ -130,26 +130,26 @@
       "path": "./packs/size.db",
       "entity": "Item"
     },
-	{
+    {
       "name": "wanted",
       "label": "Wanted Consequences",
       "system": "scum-and-villainy",
       "path": "./packs/wanted-consequences.db",
       "entity": "JournalEntry"
     },
-	{
+    {
       "name": "wanted_tables",
       "label": "Wanted Tables",
       "system": "scum-and-villainy",
       "path": "./packs/wanted-tables.db",
       "entity": "RollTable"
     },
-	{
+    {
 	  "name": "friend",
 	  "label": "Friends",
 	  "system": "scum-and-villainy",
 	  "path": "./packs/friends.db",
 	  "entity": "Item"
-	}
+    }
   ]
 }
