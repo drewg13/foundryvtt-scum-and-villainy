@@ -286,8 +286,8 @@ Hooks.once("ready", async function() {
 
 Hooks.on("preCreateItem", async (item, data, options, userId) => {
 
-  let actor = item.parent;
-  if ( ( game.majorVersion > 7 ) && ( actor.documentName === "Actor" ) ) {
+  let actor = item.parent ? item.parent : null;
+  if ( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) ) {
     await SaVHelpers.removeDuplicatedItemType(data, actor);
 
     if ( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && !( data.data.def_abilities === "" ) ) {
@@ -302,15 +302,16 @@ Hooks.on("preCreateItem", async (item, data, options, userId) => {
           img: icon
         }
       };
-	  await actor.update( icon_update );
+	    await actor.update( icon_update );
       /**  code to replace all attached tokens as well
-	    if ( parent_entity.getActiveTokens() ) {
-        const tokens = parent_entity.getActiveTokens();
-        const token_update = {
-          img: icon
-        };
-	      tokens.forEach( t => t.update( token_update ) );
-      };
+       const tokens = actor.getActiveTokens();
+       let token_update;
+       if ( tokens ) {
+         token_update = {
+           img: icon
+         };
+	       tokens.forEach( t => t.update( token_update ) );
+       };
       */
     }
   }
@@ -330,8 +331,8 @@ Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId
       const icon_update = {
 	    img: icon,
 	    token: {
-          img: icon
-        }
+	      img: icon
+	    }
 	  };
 	  await parent_entity.update( icon_update );
     }
@@ -341,9 +342,9 @@ Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId
 
 Hooks.on("createItem", async (item, options, userId) => {
 
-  let actor = item.parent;
+  let actor = item.parent ? item.parent : null;
   let data = item.data;
-  if ( ( game.majorVersion > 7 ) && (actor.documentName === "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion > 7 ) && (actor?.documentName === "Actor") && (actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     await SaVHelpers.callItemLogic(data, actor);
   }
   return true;
@@ -357,9 +358,9 @@ Hooks.on("createOwnedItem", async (parent_entity, child_data, options, userId) =
 });
 
 Hooks.on("deleteItem", async (item, options, userId) => {
-  let actor = item.parent;
+  let actor = item.parent ? item.parent : null;
   let data = item.data;
-  if ( ( game.majorVersion > 7 ) && (actor.documentName === "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion > 7 ) && (actor?.documentName === "Actor") && (actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     await SaVHelpers.undoItemLogic(data, actor);
   }
   return true;
