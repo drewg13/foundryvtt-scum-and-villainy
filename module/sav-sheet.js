@@ -248,13 +248,19 @@ async _onFlagAddClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
     const actions = ["doctor", "hack", "rig", "study", "helm", "scramble", "scrap", "skulk", "attune", "command", "consort", "sway", "engines", "hull", "comms", "weapons"];
-    const attributes = ["insight", "prowess", "resolve"];
+    const resistance = ["insight", "prowess", "resolve"];
+    let roll_type;
 
-	  if ( actions.includes( attribute_name ) ) {
-      this.actor.rollActionPopup(attribute_name);
-  	} else {
-			this.actor.rollSimplePopup(attribute_name);
-	  }
+    if ( actions.includes( attribute_name ) ) {
+    	this.actor.rollActionPopup( attribute_name );
+    } else {
+    	if ( resistance.includes( attribute_name ) ) {
+    		roll_type = "resistance";
+			} else {
+    		roll_type = attribute_name;
+			}
+    	this.actor.rollSimplePopup( attribute_name, roll_type );
+    }
   }
 
   /* -------------------------------------------- */

@@ -52,26 +52,29 @@ export class SaVActor extends Actor {
     return super.create(data, options);
   }
 
-/* -------------------------------------------- */
+  /* -------------------------------------------- */
 
-/** @override */
-prepareDerivedData() {
-  const actorData = this.data;
-  const data = actorData.data;
+  /** @override */
+  prepareDerivedData() {
+    const actorData = this.data;
+    const data = actorData.data;
 
-  if ( actorData.type === "ship" ) {
-    // calculates upkeep value from (crew quality + engine quality + hull quality + comms quality + weapons quality) / 4, rounded down
-    data.systems.upkeep.value = Math.floor((parseInt(data.systems.crew.value) + parseInt(data.systems.engines.value) + parseInt(data.systems.hull.value) + parseInt(data.systems.comms.value) + parseInt(data.systems.weapons.value)) / 4);
+    if ( actorData.type === "ship" ) {
+      // calculates upkeep value from (crew quality + engine quality + hull quality + comms quality + weapons quality) / 4, rounded down
+      data.systems.upkeep.value = Math.floor((parseInt(data.systems.crew.value) + parseInt(data.systems.engines.value) + parseInt(data.systems.hull.value) + parseInt(data.systems.comms.value) + parseInt(data.systems.weapons.value)) / 4);
+    }
   }
-}
 
 
   /** @override */
   getRollData() {
     const data = super.getRollData();
-
+    const attributes = ["insight", "prowess", "resolve"];
     data.dice_amount = this.getAttributeDiceToThrow();
-
+    if ( this.data.type === "character" ) {
+      const attribute_values = attributes.map( a => data.dice_amount[a] );
+      data.dice_amount.vice = Math.min( ...attribute_values );
+    }
     return data;
   }
 
@@ -86,27 +89,26 @@ prepareDerivedData() {
 
 	  switch (this.data.type) {
 	    case 'character':
-		  for (const a in this.data.data.attributes) {
-		    dice_amount[a] = 0;
+	      for (const a in this.data.data.attributes) {
+          dice_amount[a] = 0;
+		      // Add +1d to resistance rolls only for Forged item on ship
+		      let actor_flags = this.getFlag("scum-and-villainy", "ship") || [];
+		      actor_flags.forEach(i => {
+		        if (i.data.installs.forged_inst === 1) {
+		          dice_amount[a]++;
+		        }
+		      });
 
-		    // Add +1d to resistance rolls only for Forged item on ship
-		    let actor_flags = this.getFlag("scum-and-villainy", "ship") || [];
-		    actor_flags.forEach(i => {
-		      if (i.data.installs.forged_inst === "1") {
-		        dice_amount[a]++;
-		      }
-		    });
+		      for (const s in this.data.data.attributes[a].skills) {
+		        dice_amount[s] = parseInt(this.data.data.attributes[a].skills[s]['value'][0])
 
-		    for (const s in this.data.data.attributes[a].skills) {
-		      dice_amount[s] = parseInt(this.data.data.attributes[a].skills[s]['value'][0])
-
-		      // We add a +1d for every skill higher than 0.
-		      if (dice_amount[s] > 0) {
-		        dice_amount[a]++;
+		        // We add a +1d for every skill higher than 0.
+		        if ( dice_amount[s] > 0 ) {
+		          dice_amount[a]++;
+		        }
 		      }
 		    }
-		  }
-		  break;
+	      break;
 
 	    case 'ship':
 	      for (const a in this.data.data.systems) {
@@ -133,13 +135,13 @@ prepareDerivedData() {
 
     // Calculate Dice Amount for Attributes
     const base_dice = this.getRollData().dice_amount[attribute_name];
-    let dice_amount = base_dice;
+    let total_dice = base_dice;
 
     new Dialog({
       title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
       content: `
         <div id="skill-roll">
-		      <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)} (${dice_amount}d)</h2>
+		      <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)} (${total_dice}d)</h2>
           <form>
             <div class="form-group roll position">
               <label>${game.i18n.localize('BITD.Position')}:</label>
@@ -169,7 +171,7 @@ prepareDerivedData() {
             </div>
 		        <div class="form-group roll total-rolled">
               <label class="total-rolled">${game.i18n.localize('BITD.TotalDice')}: </label>
-			        <label>${dice_amount}d</label>
+			        <label>${total_dice}d</label>
             </div>
           </form>
 		      <h2>${game.i18n.localize('BITD.RollOptions')}</h2>
@@ -198,42 +200,65 @@ prepareDerivedData() {
       }
     }).render(true);
   }
-  /* -------------------------------------------- */
-  rollSimplePopup(attribute_name) {
 
-    const attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
+  /* -------------------------------------------- */
+
+  rollSimplePopup(attribute_name, roll_type) {
+
+    let attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
+
+    // Calculate Dice Amount for Attributes
+    const base_dice = this.getRollData().dice_amount[attribute_name];
+
+    let total_dice = base_dice;
+    const proper_attribute_name = SaVHelpers.getProperCase(roll_type);
 
     new Dialog({
       title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
       content: `
-        <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}</h2>
-        <form>
-          <div class="form-group">
-            <label>${game.i18n.localize('BITD.Modifier')}:</label>
-            <select id="mod" name="mod">
-              ${this.createListOfDiceMods(-3,+3,0)}
-            </select>
-          </div>
-        </form>
+        <div id="skill-roll">
+		      <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)} (${total_dice}d)</h2>
+          <form>
+            <div class="form-group roll base-dice">
+              <label class="base-dice">${game.i18n.localize('BITD.BaseDice')}: </label>
+			        <label>${base_dice}d</label>
+            </div>
+            <div class="form-group roll mod">
+              <label>${game.i18n.localize('BITD.Modifier')}:</label>
+              <select id="mod" name="mod" data-base-dice="${base_dice}">
+                ${this.createListOfDiceMods(-3,+3,0)}
+              </select>
+            </div>
+		        <div class="form-group roll total-rolled">
+              <label class="total-rolled">${game.i18n.localize('BITD.TotalDice')}: </label>
+			        <label>${total_dice}d</label>
+            </div>
+            <h2>${game.i18n.localize('BITD.RollOptions')}</h2>
+		        <div class="action-info">${game.i18n.localize('BITD.' + proper_attribute_name + 'Help')}</div>
+          </form>
+        </div>
       `,
       buttons: {
         yes: {
           icon: "<i class='fas fa-check'></i>",
-          label: game.i18n.localize( 'BITD.Roll' ),
+          label: game.i18n.localize('BITD.Roll'),
           callback: async (html) => {
-            let modifier = parseInt( html.find('[name="mod"]')[0].value );
+            let modifier = parseInt(html.find('[name="mod"]')[0].value);
             let position = "";
             let effect = "";
-            await this.rollAttribute( attribute_name, modifier, position, effect );
+            await this.rollAttribute(attribute_name, modifier, position, effect);
           }
         },
         no: {
           icon: "<i class='fas fa-times'></i>",
-          label: game.i18n.localize( 'Cancel' ),
+          label: game.i18n.localize('Cancel'),
         },
       },
       default: "yes",
-    }).render( true );
+      render: html => {
+        $("#skill-roll #mod").on( "change", this._onDiceModChange);
+      }
+    }).render(true);
   }
 
   /* -------------------------------------------- */
@@ -267,8 +292,8 @@ prepareDerivedData() {
    */
   createListOfActions() {
 
-    let text, attribute, skill;
-    let attributes;
+    let text = '';
+    let attributes, attribute, skill;
     if( game.majorVersion > 7 ) {
       attributes = this.data.data.data.attributes;
     } else {
@@ -308,9 +333,8 @@ prepareDerivedData() {
   createListOfDiceMods( rs, re, s = 0 ) {
 
     let text = ``;
-    let i = 0;
 
-    for ( i  = rs; i <= re; i++ ) {
+    for ( let i = rs; i <= re; i++ ) {
       let plus = "";
       if ( i >= 0 ) { plus = "+" }
       text += `<option value="${i}"`;

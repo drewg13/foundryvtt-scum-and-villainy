@@ -121,7 +121,7 @@
       <input type="radio" id="character-{{actor._id}}-stress-0" name="data.stress.value" value="0" dtype="Radio">
       <div id="stress-vice">
 	  <label class="black-label" for="character-{{actor._id}}-stress-0">{{localize data.stress.name}}</label>
-      <span class="black-label roll-die-attribute rollable-text" data-roll-attribute="Vice">{{localize "BITD.Vice"}}</span>
+      <span class="black-label roll-die-attribute rollable-text" data-roll-attribute="vice">{{localize "BITD.Vice"}}</span>
 	  </div>
       {{#times_from_1 data.stress.max}}
         <input type="radio" id="character-{{../actor._id}}-stress-{{this}}" name="data.stress.value" value="{{this}}"

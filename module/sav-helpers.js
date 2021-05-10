@@ -270,6 +270,7 @@ export class SaVHelpers {
 
     return list_of_items;
   }
+  /* -------------------------------------------- */
 
   static async getAllActorsByType(item_type, game) {
     return game.actors.filter( e => e.data.type === item_type ).map( e => { return e.data } ) || [];
@@ -277,6 +278,11 @@ export class SaVHelpers {
 
   /* -------------------------------------------- */
 
+  static getProperCase( name ) {
+    return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
+  }
+
+  /* -------------------------------------------- */
   /**
    * Returns the label for attribute.
    *
@@ -298,7 +304,7 @@ export class SaVHelpers {
     } else if (systems.indexOf(attribute_name) !== -1 ) {
       attributes = game.system.model.Actor.ship.systems;
     } else {
-      return attribute_name;
+      return SaVHelpers.getProperCase(attribute_name);
     }
 
     for (const a in attributes) {

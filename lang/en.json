@@ -216,6 +216,7 @@
   "BITD.AddItem": "Add Item",
   "BITD.AddUpgrade": "Add Upgrade",
   "BITD.AddFriend": "Add Friend",
+
   "BITD.item": "Item",
   "BITD.class": "Class",
   "BITD.ability": "Ability",
@@ -239,7 +240,11 @@
   "BITD.BaseDice": "Base Dice",
   "BITD.TotalDice": "Total Dice",
   "BITD.RollOptions": "Roll Options",
-  "BITD.ActionsHelp": "<strong>Get An Assist:</strong> Get +1d if another PC assisted you, then that PC takes 1 Stress<br><strong>Spend A Gambit:</strong> Spend one Gambit for +1d<br><strong>Push Yourself:</strong> Take 2 Stress for +1d, but you can't take a Devil's Bargain<br><strong>Devil's Bargain:</strong> Accept a consequence to get +1d, but you can't Push Yourself<br><strong>Group Action:</strong> All involved PCs make an action roll and count the single best result, but the leader takes 1 Stress for each Failure<br><strong>Setup Action:</strong> Take an action roll and, if it succeeds and makes sense in the fiction, give improved Position or Effect to the next PC's action roll",
+  "BITD.ActionsHelp": "Roll 1d per rating (-1d per damage).  Improve your chances using the following:<br><strong>Get An Assist:</strong> Get +1d if another PC assisted you, then that PC takes 1 <strong>stress</strong><br><strong>Spend A Gambit:</strong> Spend one <strong>gambit</strong> for +1d<br><strong>Push Yourself:</strong> Take 2 <strong>stress</strong> for +1d, but you can't take a Devil's Bargain<br><strong>Devil's Bargain:</strong> Accept a consequence to get +1d, but you can't Push Yourself<br><strong>Group Action:</strong> All involved PCs make an action roll and count the single best result, but the leader takes 1 <strong>stress</strong> for each failure<br><strong>Setup Action:</strong> If this action roll succeeds and it makes sense in the fiction, give improved position or effect to the next PC's action roll",
+  "BITD.ViceHelp": "Roll 1d per your lowest attribute rating (Insight, Prowess, Resolve).<br>Clear <strong>stress</strong> equal to the highest die.  If you clear more than you have, you overindulge.",
+  "BITD.ResistanceHelp": "Roll 1d per action rating for the relevant attribute to reduce or completely avoid (GM's choice) the effects of consequences.<br>Take 6 minus the highest die result as <strong>stress</strong><br><strong>Insight:</strong> consequences from deception or understanding<br><strong>Prowess:</strong> consequences from physical strain or injury<br><strong>Resolve:</strong> consequences from mental strain or willpower",
+  "BITD.CrewHelp": "Roll 1d per crew rating to test the effectiveness of tools, weapons, or resources.  Add +1d for <strong>fine</strong> items.",
+  "BITD.UpkeepHelp": "Roll 1d per consecutive upkeep payment skips (including this one), reflecting wear and tear on your ship that may result in future consequences.",
 
   "BITD.Name": "Name",
   "BITD.CampaignName": "Campaign Name",
@@ -247,5 +252,5 @@
   "BITD.Add": "Add",
   "BITD.Cancel": "Cancel",
 
-  "BITD.ClockSettingDefaultTheme": "Default clock theme:"
+  "BITD.ClockSettingDefaultTheme": "Default Clock Theme:"
 }
