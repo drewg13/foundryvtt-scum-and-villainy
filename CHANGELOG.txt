@@ -52,3 +52,4 @@ v1.2.13  Fix sorting of Add Item dialog boxes and localize the titles
 
 v1.3.0  Improvements to the action roll popup (adapted from eHanus's Wicked Ones system)
 
+v1.4.0  Improvements to other roll popups and code cleanup
