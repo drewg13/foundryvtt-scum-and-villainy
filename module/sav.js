@@ -47,7 +47,7 @@ Hooks.once("init", async function() {
   } else {
     CONFIG.Item.entityClass = SaVItem;
     CONFIG.Actor.entityClass = SaVActor;
-  };
+  }
 
   // Register System Settings
   registerSystemSettings();
@@ -60,7 +60,7 @@ Hooks.once("init", async function() {
   Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("scum-and-villainy", SaVItemSheet, {makeDefault: true});
-  preloadHandlebarsTemplates();
+  await preloadHandlebarsTemplates();
 
 
 
@@ -91,7 +91,7 @@ Hooks.once("init", async function() {
 
     let html = options.fn(this);
 
-    var count = 0;
+    let count = 0;
     for (const trauma in selected) {
       if (selected[trauma] === true) {
         count++;
@@ -112,7 +112,7 @@ Hooks.once("init", async function() {
 
   //Case-insensitive comparison
   Handlebars.registerHelper('caseeq', (a, b) => {
-    return (a.toUpperCase() == b.toUpperCase());
+    return (a.toUpperCase() === b.toUpperCase());
   });
 
   //Less than comparison
@@ -148,7 +148,7 @@ Hooks.once("init", async function() {
 
     let text = options.hash['text'].replace(/\n/g, "<br />");
 
-    return new Handlebars.SafeString(text);;
+    return new Handlebars.SafeString(text);
   });
 
   // "N Times" loop for handlebars.
@@ -160,8 +160,8 @@ Hooks.once("init", async function() {
   // {{/times_from_1}}
   Handlebars.registerHelper('times_from_1', function(n, block) {
 
-    var accum = '';
-    for (var i = 1; i <= n; ++i) {
+    let accum = '';
+    for (let i = 1; i <= n; ++i) {
       accum += block.fn(i);
     }
     return accum;
@@ -176,8 +176,8 @@ Hooks.once("init", async function() {
   // {{/times_from_0}}
   Handlebars.registerHelper('times_from_0', function(n, block) {
 
-    var accum = '';
-    for (var i = 0; i <= n; ++i) {
+    let accum = '';
+    for (let i = 0; i <= n; ++i) {
       accum += block.fn(i);
     }
     return accum;
@@ -187,8 +187,8 @@ Hooks.once("init", async function() {
   // https://gist.github.com/adg29/f312d6fab93652944a8a1026142491b1
   // Usage: (concat 'first 'second')
   Handlebars.registerHelper('concat', function() {
-    var outStr = '';
-    for(var arg in arguments){
+    let outStr = '';
+    for(let arg in arguments){
         if(typeof arguments[arg]!='object'){
             outStr += arguments[arg];
         }
@@ -285,27 +285,24 @@ Hooks.once("ready", async function() {
 
 
 Hooks.on("preCreateItem", async (item, data, options, userId) => {
-  //console.log("preCreateItem");
-  //console.log(item);
-  //console.log(item.parent);
-  //console.log(data);
-  let actor = item.parent;
-  if ( ( game.majorVersion > 7 ) && ( actor.documentName == "Actor" ) ) {
-    await SaVHelpers.removeDuplicatedItemType(data, actor);
-    //console.log(child_data);
-    if ( ( ( data.type == "class" ) || ( data.type == "crew_type" ) ) && !( data.data.def_abilities == "" ) ) {
-      await SaVHelpers.addDefaultAbilities( data, actor );
-    };
 
-    if ( ( ( data.type == "class" ) || ( data.type == "crew_type" ) ) && ( ( actor.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( actor.img == "icons/svg/mystery-man.svg" ) ) ) {
+  let actor = item.parent;
+  if ( ( game.majorVersion > 7 ) && ( actor.documentName === "Actor" ) ) {
+    await SaVHelpers.removeDuplicatedItemType(data, actor);
+
+    if ( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && !( data.data.def_abilities === "" ) ) {
+      await SaVHelpers.addDefaultAbilities( data, actor );
+    }
+
+    if ( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( ( actor.img.slice( 0, 46 ) === "systems/scum-and-villainy/styles/assets/icons/" ) || ( actor.img === "icons/svg/mystery-man.svg" ) ) ) {
       const icon = data.img;
-	    const icon_update = {
-	      img: icon,
-	      token: {
+      const icon_update = {
+	    img: icon,
+        token: {
           img: icon
         }
-	    };
-	    await actor.update( icon_update );
+      };
+	  await actor.update( icon_update );
       /**  code to replace all attached tokens as well
 	    if ( parent_entity.getActiveTokens() ) {
         const tokens = parent_entity.getActiveTokens();
@@ -315,75 +312,72 @@ Hooks.on("preCreateItem", async (item, data, options, userId) => {
 	      tokens.forEach( t => t.update( token_update ) );
       };
       */
-    };
-  };
+    }
+  }
   return true;
 });
 
 Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId) => {
-  if( game.majorVersion = 7 ) {
+  if( game.majorVersion === 7 ) {
     await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity);
 
-    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && !( child_data.data.def_abilities == "" ) ) {
+    if ( ( ( child_data.type === "class" ) || ( child_data.type === "crew_type" ) ) && !( child_data.data.def_abilities === "" ) ) {
       await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
-    };
+    }
 
-    if ( ( ( child_data.type == "class" ) || ( child_data.type == "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) == "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img == "icons/svg/mystery-man.svg" ) ) ) {
+    if ( ( ( child_data.type === "class" ) || ( child_data.type === "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) === "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img === "icons/svg/mystery-man.svg" ) ) ) {
       const icon = child_data.img;
-	    const icon_update = {
-	      img: icon,
-	      token: {
+      const icon_update = {
+	    img: icon,
+	    token: {
           img: icon
         }
-	    };
-	    await parent_entity.update( icon_update );
-    };
-  };
+	  };
+	  await parent_entity.update( icon_update );
+    }
+  }
   return true;
 });
 
 Hooks.on("createItem", async (item, options, userId) => {
-  //console.log("createItem");
-  //console.log(item);
-  //console.log(item.parent);
-  //console.log(data);
+
   let actor = item.parent;
   let data = item.data;
-  if ( ( game.majorVersion > 7 ) && (actor.documentName == "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion > 7 ) && (actor.documentName === "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     await SaVHelpers.callItemLogic(data, actor);
-  };
+  }
   return true;
 });
 
 Hooks.on("createOwnedItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion === 7 ) && (parent_entity.entity === "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     await SaVHelpers.callItemLogic(child_data, parent_entity);
-  };
+  }
   return true;
 });
 
 Hooks.on("deleteItem", async (item, options, userId) => {
   let actor = item.parent;
   let data = item.data;
-  if ( ( game.majorVersion > 7 ) && (actor.documentName == "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion > 7 ) && (actor.documentName === "Actor") && (actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     await SaVHelpers.undoItemLogic(data, actor);
-  };
+  }
   return true;
 });
 
 Hooks.on("deleteOwnedItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion = 7 ) && (parent_entity.entity == "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
+  if ( ( game.majorVersion === 7 ) && (parent_entity.entity === "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
     await SaVHelpers.undoItemLogic(child_data, parent_entity);
-  };
+  }
   return true;
 });
 
 // getSceneControlButtons
 Hooks.on("renderSceneControls", async (app, html) => {
   let dice_roller = $('<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>');
-  dice_roller.click(function() {
+  dice_roller.on( "click", function() {
     simpleRollPopup();
-  });
+  })
   html.append(dice_roller);
 });
 
@@ -401,11 +395,10 @@ Hooks.on("renderTileHUD", async (hud, html, tile) => {
 });
 
 Hooks.on("renderTokenHUD", async (hud, html, token) => {
+  let rootElement = document.getElementsByClassName('vtt game')[0];
   if( await ClockSheet.renderTokenHUD(hud, html, token) ) {
-	  var rootElement = document.getElementsByClassName('vtt game')[0];
-      rootElement.classList.add('hide-ui');
+    rootElement.classList.add('hide-ui');
   } else {
-	  var rootElement = document.getElementsByClassName('vtt game')[0];
-      rootElement.classList.remove('hide-ui');
+    rootElement.classList.remove('hide-ui');
   }
 });

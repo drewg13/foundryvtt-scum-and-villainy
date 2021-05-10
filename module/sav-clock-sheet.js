@@ -1,6 +1,6 @@
 import { SaVClock } from "./sav-clock.js";
 import { getSystemMapping } from "./systems/index.js";
-import { log, warn } from "./sav-clock-util.js";
+import { log, error } from "./sav-clock-util.js";
 
 const DISPLAY_NAME = {
   ALWAYS_FOR_EVERYONE: 50
@@ -48,7 +48,7 @@ export class SaVClockSheet extends ActorSheet {
 
   getData () {
 
-    let clock = {};
+    let clock;
     if( game.majorVersion > 7 ) {
       clock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
     } else {
@@ -82,35 +82,35 @@ export class SaVClockSheet extends ActorSheet {
 
     html.find("button[name=minus]").click(async (ev) => {
       ev.preventDefault();
-      let oldClock = {};
+      let oldClock;
       if( game.majorVersion > 7 ) {
         oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
       } else {
         oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-      };
-      this.updateClock(oldClock.decrement());
+      }
+      await this.updateClock(oldClock.decrement());
     });
 
     html.find("button[name=plus]").click(async (ev) => {
       ev.preventDefault();
-      let oldClock = {};
+      let oldClock;
       if( game.majorVersion > 7 ) {
         oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
       } else {
         oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-      };
-      this.updateClock(oldClock.increment());
+      }
+      await this.updateClock(oldClock.increment());
     });
 
     html.find("button[name=reset]").click(async (ev) => {
       ev.preventDefault();
-      let oldClock = {};
+      let oldClock;
       if( game.majorVersion > 7 ) {
         oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
       } else {
         oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-      };
-      this.updateClock(new SaVClock({
+      }
+      await this.updateClock(new SaVClock({
         theme: oldClock.theme,
         progress: 0,
         size: oldClock.size
@@ -123,28 +123,27 @@ export class SaVClockSheet extends ActorSheet {
       name: form.name
     });
 
-    let oldClock = {};
+    let oldClock;
     if( game.majorVersion > 7 ) {
       oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
     } else {
       oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-    };
+    }
     let newClock = new SaVClock({
       progress: oldClock.progress,
       size: form.size,
       theme: form.theme
     });
-    //console.log(form);
     await this.updateClock(newClock);
   }
 
   async updateClock(clock) {
-    let actor = {};
+    let actor;
     if( game.majorVersion > 7 ) {
       actor = this.document;
     } else {
       actor = this.actor;
-    };
+    }
 
     // update associated tokens
     const tokens = actor.getActiveTokens();
@@ -160,7 +159,7 @@ export class SaVClockSheet extends ActorSheet {
           actorLink: true
         };
         update.push(tokenObj);
-      };
+      }
       await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
 
       // update the Actor
@@ -173,7 +172,7 @@ export class SaVClockSheet extends ActorSheet {
         }
       };
       //update to foundry.utils.mergeObject
-      await actor.update(mergeObject(visualObj, persistObj));
+      await actor.update( mergeObject( visualObj, persistObj ) );
 
     } else {
       for (const t of tokens) {
@@ -194,9 +193,9 @@ export class SaVClockSheet extends ActorSheet {
         }
       };
       await actor.update(mergeObject(visualObj, persistObj));
-    };
+    }
   }
-};
+}
 
 export default {
 
@@ -205,11 +204,10 @@ export default {
   log("Render")
   let t = canvas.tokens.get(token.id);
   let a = game.actors.get(token.actorId);
-  //console.log(a.data.flags['scum-and-villainy']);
-  
+
   if( !a?.data?.flags['scum-and-villainy']?.clocks ) {
     return false;
-  };
+  }
 
   const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
   const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
@@ -261,7 +259,7 @@ export default {
       let tokenObj = {};
       let update = [];
       //update to foundry.utils.mergeObject
-      update.push(mergeObject({"_id":a.id}, newObj));
+      update.push( mergeObject( { "_id": a.id }, newObj ) );
       await Actor.updateDocuments(update);
 
       update = [];
@@ -275,11 +273,11 @@ export default {
           actorLink: true
         };
         update.push(tokenObj);
-      };
+      }
 
       await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
     } else {
-      await a.update(mergeObject(visualObj, persistObj));
+      await a.update( mergeObject( visualObj, persistObj ) );
 
   	  const tokens = a.getActiveTokens();
       for (const t of tokens) {
@@ -289,7 +287,7 @@ export default {
 	    	  flags: newClock.flags,
           actorLink: true
         });
-      };
+      }
     }
   });
 
@@ -341,7 +339,7 @@ export default {
       let tokenObj = {};
       let update = [];
       //update to foundry.utils.mergeObject
-      update.push(mergeObject({"_id":a.id}, newObj));
+      update.push( mergeObject( { "_id": a.id }, newObj ) );
       await Actor.updateDocuments(update);
 
       update = [];
@@ -355,7 +353,7 @@ export default {
           actorLink: true
         };
         update.push(tokenObj);
-      };
+      }
 
       await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
     } else {
@@ -369,7 +367,7 @@ export default {
 	    	  flags: newClock.flags,
           actorLink: true
         });
-      };
+      }
     }
   });
 return true;

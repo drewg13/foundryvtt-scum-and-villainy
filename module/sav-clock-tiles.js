@@ -22,7 +22,7 @@ const onClick = async () => {
       locked: false,
       flags: clock.flags
     });
-    canvas.scene.createEmbeddedDocuments("Tile", [tile.data]);
+    await canvas.scene.createEmbeddedDocuments("Tile", [tile.data]);
   } else {
     const tile = new Tile({
       img: clock.image.img,
@@ -36,8 +36,8 @@ const onClick = async () => {
       locked: false,
       flags: clock.flags
     });
-    canvas.scene.createEmbeddedEntity("Tile", tile.data);
-  };
+    await canvas.scene.createEmbeddedEntity("Tile", tile.data);
+  }
 };
 
 export default {
@@ -93,7 +93,7 @@ export default {
           img: newClock.image.img,
           flags: newClock.flags
         });
-      };
+      }
     });
   }
 };

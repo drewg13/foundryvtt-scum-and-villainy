@@ -1,4 +1,4 @@
-/**
+ /**
  * Extend the basic Item
  * @extends {Item}
  */
@@ -10,30 +10,19 @@ export class SaVItem extends Item {
 
     const item_data = this.data;
     const data = item_data.data;
-    //console.log(item_data);
-
 
 	  if (item_data.type === "faction") {
-
-      this._prepareStatusDefault(data);
-
+      this._prepareStatusDefault( data );
     }
-
   };
 
+  _prepareStatusDefault( data ) {
 
-  _prepareStatusDefault(data) {
+	  let status = data.status.value;
 
-	var status = data.status.value;
-
-	if (this) {
-		if ( status == "0" ) { status = 4; };
-
-		data.status.value = status;
-
-
-	};
-
-  }
-
+	  if ( this ) {
+		  if ( status == "0" ) { status = 4; }
+		  data.status.value = status;
+	  }
+  };
 }

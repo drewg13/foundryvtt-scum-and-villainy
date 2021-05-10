@@ -6,7 +6,6 @@ export class SaVItemSheet extends ItemSheet {
 
   /** @override */
 	static get defaultOptions() {
-
 	  return mergeObject(super.defaultOptions, {
 			classes: ["scum-and-villainy", "sheet", "item"],
 			width: 900,
@@ -22,13 +21,12 @@ export class SaVItemSheet extends ItemSheet {
     const data = super.getData();
 	  data.isGM = game.user.isGM;
 		data.editable = data.options.editable;
+    const itemData = data.data;
 
-		let itemData = {};
 		if( game.majorVersion > 7 ) {
-			const itemData = data.data;
 		  data.item = itemData;
 		  data.data = itemData.data;
-    };
+    }
 
 		return data;
   }

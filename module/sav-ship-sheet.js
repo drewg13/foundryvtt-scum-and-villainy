@@ -9,6 +9,7 @@ export class SaVShipSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
+    //update to foundry.utils.mergeObject
 	  return mergeObject(super.defaultOptions, {
 	    classes: ["scum-and-villainy", "sheet", "actor"],
 	  	template: "systems/scum-and-villainy/templates/ship-sheet.html",
@@ -24,13 +25,12 @@ export class SaVShipSheet extends SaVSheet {
     const data = super.getData();
 	  data.isGM = game.user.isGM;
 		data.editable = data.options.editable;
+    const actorData = data.data;
 
-		let actorData = {};
 	  if( game.majorVersion > 7 ) {
-			const actorData = data.data;
 		  data.actor = actorData;
 		  data.data = actorData.data;
-    };
+    }
 
 	  return data;
   }
@@ -45,40 +45,35 @@ export class SaVShipSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      let item = {};
+      let item;
       if( game.majorVersion > 7 ) {
 			  item = this.document.items.get(element.data("itemId"));
 			} else {
 				item = this.actor.getOwnedItem(element.data("itemId"));
-			};
+			}
       item.sheet.render(true);
     });
 
     // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
+    html.find('.item-delete').click( async (ev) => {
       const element = $(ev.currentTarget).parents(".item");
       if( game.majorVersion > 7 ) {
-			  this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+			  await this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
 			} else {
-				this.actor.deleteOwnedItem(element.data("itemId"));
-			};
+				await this.actor.deleteOwnedItem(element.data("itemId"));
+			}
       element.slideUp(200, () => this.render(false));
     });
 
     // Render XP Triggers sheet
     html.find('.xp-triggers').click(ev => {
-      let itemId = "";
-	  if( game.majorVersion > 7 ) {
-        itemId = this.document.items.filter( i => i.type === "crew_type" )[0]?.id;
-      } else {
-	    itemId = this.actor.items.filter( i => i.type === "crew_type" )[0]?.id;
-      };
-	  let item = {};
+      let itemId = this.actor.items.filter( i => i.type === "crew_type" )[0]?.id;
+	    let item;
       if( game.majorVersion > 7 ) {
         item = this.document.items.get(itemId);
       } else {
         item = this.actor.getOwnedItem(itemId);
-      };
+      }
       item?.sheet.render(true, {"renderContext": "xp"});
     });
 	}
@@ -90,13 +85,13 @@ export class SaVShipSheet extends SaVSheet {
   async _updateObject(event, formData) {
 
     // Update the Item
-    super._updateObject(event, formData);
-    let crew_data = "";
+    await super._updateObject( event, formData );
+    let crew_data;
 		if( game.majorVersion > 7 ) {
 			crew_data = "data.data.crew";
 		} else {
 			crew_data = "data.crew";
-		};
+		}
     if (event.target && event.target.name === crew_data) {
       this.render(true);
     }
