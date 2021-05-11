@@ -21,9 +21,8 @@ import { SaVClockSheet } from "./sav-clock-sheet.js";
 import ClockTiles from "./sav-clock-tiles.js";
 import ClockSheet from "./sav-clock-sheet.js";
 import { log } from "./sav-clock-util.js";
-import { SaVClock } from "./sav-clock.js";
+
 window.SaVHelpers = SaVHelpers;
-window.SaVClock = SaVClock;
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -35,7 +34,8 @@ Hooks.once("init", async function() {
     dice: savRoll
   }
   game.system.savclocks = {
-    choices: ["blue", "red", "yellow", "green"]
+    themes: ["blue", "red", "yellow", "green"],
+    sizes: [ 4, 6, 8, 10, 12 ]
   };
 
   const versionParts = game.data.version.split('.');

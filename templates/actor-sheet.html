@@ -140,8 +140,8 @@
           <input type="radio" id="character-{{actor._id}}-trauma-counter-0" name="data.trauma.value" value="0">
 
           {{#times_from_1 data.trauma.max}}
-            <input type="radio" id="character-{{actor._id}}-trauma-counter-{{this}}" name="data.trauma.value" value="{{this}}" disabled>
-            <label for="character-{{actor._id}}-trauma-counter-{{this}}"></label>
+            <input type="radio" id="character-{{../actor._id}}-trauma-counter-{{this}}" name="data.trauma.value" value="{{this}}" disabled>
+            <label for="character-{{../actor._id}}-trauma-counter-{{this}}"></label>
           {{/times_from_1}}
         </div>
       </div>

@@ -13,7 +13,7 @@ export class SaVItem extends Item {
 
 	  if (item_data.type === "faction") {
       this._prepareStatusDefault( data );
-      data.size_list = SaVHelpers.createListOfClockSizes( SaVClock.sizes, data.goal_clock_max, parseInt( data.goal_clock.max ) );
+      data.size_list = SaVHelpers.createListOfClockSizes( game.system.savclocks.sizes, data.goal_clock_max, parseInt( data.goal_clock.max ) );
     }
   };
 

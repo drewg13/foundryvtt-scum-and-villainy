@@ -5,12 +5,12 @@ const nextIndexInArray = (arr, el) => {
 
 export class SaVClock {
   static get sizes () {
-      return [4, 6, 8, 10, 12];
+      return game.system.savclocks.sizes;
   }
 
   static get themes () {
-	  const default_t = game.system.savclocks.choices[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
-	  let curr_t = game.system.savclocks.choices;
+	  const default_t = game.system.savclocks.themes[ game.settings.get( "scum-and-villainy", "defaultClockTheme" ) ];
+	  let curr_t = game.system.savclocks.themes;
 
 	  if ( curr_t.indexOf( default_t ) !== 0 ) {
 		  curr_t = curr_t.filter( x => x !== default_t );
