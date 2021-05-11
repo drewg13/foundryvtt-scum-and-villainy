@@ -55,3 +55,6 @@ v1.3.0  Improvements to the action roll popup (adapted from eHanus's Wicked Ones
 v1.4.0  Improvements to other roll popups and code cleanup
 
 v1.5.0  Add clocks to faction sheets
+
+v1.5.1  Minor bug fixes and improvement to faction sheet clock method
+
