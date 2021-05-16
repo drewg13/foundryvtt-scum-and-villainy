@@ -338,18 +338,18 @@
 			<div id="systems-{{system_name}}-title" class="systems-value">
 				<div class="stripe flex-horizontal system-label">
 				{{#if (eq system_name "upkeep")}}
-				<a class="roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}<span class="tooltiptext delay">{{{localize system.tip}}}</span></a><span style="margin-right: 5px;"> = {{system.value}} {{localize "BITD.Coin"}}</span>
+				<a class="roll-die-attribute rollable-text tooltip" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}<span class="tooltiptext delay">{{{localize system.tip}}}</span></a><span style="margin-right: 5px;"> = {{system.value}} {{localize "BITD.Coin"}}</span>
 				{{/if}}
 				{{#if (eq system_name "shields")}}
-				{{localize (concat system.label 'Short')}}
+				<span class="tooltip">{{localize (concat system.label 'Short')}}<span class="tooltiptext delay">{{{localize system.tip}}}</span></span>
 				{{/if}}
 				{{#if (eq system_name "encryptor")}}
-				{{localize (concat system.label 'Short')}}
+				<span class="tooltip">{{localize (concat system.label 'Short')}}<span class="tooltiptext delay">{{{localize system.tip}}}</span></span>
 				{{/if}}
 				{{#unless (eq system_name "upkeep")}}
 				{{#unless (eq system_name "shields")}}
 				{{#unless (eq system_name "encryptor")}}
-				<a class="system-label roll-die-attribute rollable-text" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}<span class="tooltiptext delay">{{{localize system.tip}}}</span></a>
+				<a class="system-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}<span class="tooltiptext delay">{{{localize system.tip}}}</span></a>
 				{{/unless}}
 				{{/unless}}
 				{{/unless}}
