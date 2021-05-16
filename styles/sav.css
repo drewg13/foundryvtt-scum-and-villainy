@@ -1349,6 +1349,7 @@
 }
 * .tooltip .tooltiptext {
   visibility: hidden;
+  opacity: 0;
   width: 200px;
   background-color: #191813;
   color: #EEEFFF;
@@ -1357,9 +1358,18 @@
   border-radius: 6px;
   position: absolute;
   z-index: 9999;
+  text-transform: none;
+  font-size: small;
+  font-weight: normal;
+  cursor: default;
+  transition: 0.2s;
 }
 * .tooltip:hover .tooltiptext {
   visibility: visible;
+  opacity: 1;
+}
+* .tooltip:hover .tooltiptext.delay {
+  transition-delay: 1.5s;
 }
 * .sav-die-tooltip .die {
   font-weight: bold;
