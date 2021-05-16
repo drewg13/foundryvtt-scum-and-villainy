@@ -58,3 +58,4 @@ v1.5.0  Add clocks to faction sheets
 
 v1.5.1  Minor bug fixes and improvement to faction sheet clock method
 
+v1.6.0  Added roll tooltips (hover over roll links for more information), made attribute/skill rolls dynamic
