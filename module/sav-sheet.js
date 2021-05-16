@@ -252,8 +252,14 @@ async _onFlagAddClick(event) {
   async _onRollAttributeDieClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
-    const actions = ["doctor", "hack", "rig", "study", "helm", "scramble", "scrap", "skulk", "attune", "command", "consort", "sway", "engines", "hull", "comms", "weapons"];
-    const resistance = ["insight", "prowess", "resolve"];
+    const att_obj = game.system.model.Actor.character.attributes;
+    const resistance = Object.keys( att_obj );
+    let actions = [];
+    resistance.forEach( a => {
+      let skill_obj = game.system.model.Actor.character.attributes[a].skills;
+      actions.push( Object.keys( skill_obj ) );
+    })
+    actions = actions.flat();
     let roll_type;
 
     if ( actions.includes( attribute_name ) ) {
