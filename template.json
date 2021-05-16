@@ -65,24 +65,29 @@
       "insight": {
         "exp": [0],
         "label": "BITD.SkillsInsight",
+	"tip": "BITD.SkillsInsightTip",
         "skills": {
           "doctor": {
             "label": "BITD.SkillsDoctor",
+            "tip": "BITD.SkillsDoctorTip",
             "value": [0],
             "value_default": [0]
           },
           "hack": {
             "label": "BITD.SkillsHack",
+	    "tip": "BITD.SkillsHackTip",  
             "value": [0],
             "value_default": [0]
           },
           "rig": {
             "label": "BITD.SkillsRig",
+	    "tip": "BITD.SkillsRigTip",
             "value": [0],
             "value_default": [0]
           },
           "study": {
             "label": "BITD.SkillsStudy",
+	    "tip": "BITD.SkillsStudyTip",
             "value": [0],
             "value_default": [0]
           }
@@ -91,24 +96,29 @@
       "prowess": {
         "exp": [0],
         "label": "BITD.SkillsProwess",
+	"tip": "BITD.SkillsProwessTip",
         "skills": {
           "helm": {
             "label": "BITD.SkillsHelm",
+            "tip": "BITD.SkillsHelmTip",
             "value": [0],
             "value_default": [0]
           },
           "scramble": {
             "label": "BITD.SkillsScramble",
+	    "tip": "BITD.SkillsScrambleTip",
             "value": [0],
             "value_default": [0]
           },
           "scrap": {
             "label": "BITD.SkillsScrap",
+	    "tip": "BITD.SkillsScrapTip",
             "value": [0],
             "value_default": [0]
           },
           "skulk": {
             "label": "BITD.SkillsSkulk",
+	    "tip": "BITD.SkillsSkulkTip",
             "value": [0],
             "value_default": [0]
           }
@@ -117,24 +127,29 @@
       "resolve": {
         "exp": [0],
         "label": "BITD.SkillsResolve",
+	"tip": "BITD.SkillsResolveTip",
         "skills": {
           "attune": {
             "label": "BITD.SkillsAttune",
+	    "tip": "BITD.SkillsAttuneTip",
             "value": [0],
             "value_default": [0]
           },
           "command": {
             "label": "BITD.SkillsCommand",
+	    "tip": "BITD.SkillsCommandTip",
             "value": [0],
             "value_default": [0]
           },
           "consort": {
             "label": "BITD.SkillsConsort",
+	    "tip": "BITD.SkillsConsortTip",
             "value": [0],
             "value_default": [0]
           },
           "sway": {
             "label": "BITD.SkillsSway",
+            "tip": "BITD.SkillsSwayTip",
             "value": [0],
             "value_default": [0]
           }
@@ -184,6 +199,7 @@
   	"systems": {
       "crew": {
   	    "label": "BITD.SystemsCrew",
+	    "tip": "BITD.SkillsCrewTip",
         "value": [0],
         "value_default": [0],
         "damage": [0],
@@ -192,57 +208,64 @@
       },
       "upkeep": {
         "label": "BITD.SystemsUpkeep",
+	"tip": "BITD.SkillsUpkeepTip",
         "value": 0,
         "damage": [0],
         "max": 4
       },
       "engines": {
         "label": "BITD.SystemsEngines",
+	"tip": "BITD.SkillsEnginesTip",
         "value": [0],
-  		  "value_default": [0],
+  	"value_default": [0],
         "damage": [0],
         "max": 4,
-  		  "max_default": 4
+  	"max_default": 4
       },
       "hull": {
         "label": "BITD.SystemsHull",
+	"tip": "BITD.SkillsSystemsTip",
         "value": [0],
-  		  "value_default": [0],
+  	"value_default": [0],
         "damage": [0],
         "max": 4,
-  		  "max_default": 4
+  	"max_default": 4
       },
-  		"shields": {
+      "shields": {
         "label": "BITD.SystemsShields",
-  		  "value": [0],
-  		  "value_default": [0],
+	"tip": "BITD.SkillsShieldsTip",
+  	"value": [0],
+  	"value_default": [0],
         "damage": [0],
-  		  "max": 0,
-  		  "max_default": 0
-  		},
+  	"max": 0,
+  	"max_default": 0
+      },
       "comms": {
         "label": "BITD.SystemsComms",
+	"tip": "BITD.SkillsCommsTip",
         "value": [0],
-  		  "value_default": [0],
+  	"value_default": [0],
         "damage": [0],
         "max": 4,
-  		  "max_default": 4
+  	"max_default": 4
       },
-  		"encryptor": {
+      "encryptor": {
         "label": "BITD.SystemsEncryptor",
-  		  "value": [0],
-  		  "value_default": [0],
+	"tip": "BITD.SkillsEncryptorTip",
+  	"value": [0],
+  	"value_default": [0],
         "damage": [0],
-  		  "max": 0,
-  		  "max_default": 0
-  		},
+  	"max": 0,
+  	"max_default": 0
+      },
       "weapons": {
         "label": "BITD.SystemsWeapons",
+	"tip": "BITD.SkillsWeaponsTip",
         "value": [0],
-  		  "value_default": [0],
+  	"value_default": [0],
         "damage": [0],
         "max": 4,
-  		  "max_default": 4
+  	"max_default": 4
       }
     }
   },
