@@ -844,7 +844,8 @@
 * #systems {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 245px;
+  overflow: visible;
 }
 * #systems .stripe {
   background-color: #191813;
@@ -1363,6 +1364,9 @@
   font-weight: normal;
   cursor: default;
   transition: 0.2s;
+}
+* .tooltip .tooltiptext.left {
+	right: 105%;
 }
 * .tooltip:hover .tooltiptext {
   visibility: visible;
