@@ -62,3 +62,4 @@ v1.6.0  Added roll tooltips (hover over roll links for more information), made a
 
 v1.6.1  Fix tooltip bugs
 
+v1.6.2  Fix tooltip bugs
