@@ -5,7 +5,7 @@
   <div id="attributes-{{attribute_name}}" class="attribute">
     <div id="attributes-{{attribute_name}}-title" class="attributes-exp">
       <div class="stripe">
-        <a class="attribute-label roll-die-attribute rollable-text" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}<span class="tooltiptext delay">{{{localize attribute.tip}}}</span>{{#if (eq ../data.forged 1)}}<span style="color: red;"> (+1)</span>{{/if}}</a>
+        <a class="attribute-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}<span class="tooltiptext delay">{{{localize attribute.tip}}}</span>{{#if (eq ../data.forged 1)}}<span style="color: red;"> (+1)</span>{{/if}}</a>
       </div>
       <div class="stripe-tooth-body-blue">
         {{#multiboxes attribute.exp}}
@@ -39,7 +39,7 @@
         <label for="attributes-{{../../../actor._id}}-{{skill_name}}-{{this}}"></label>
         {{/times_from_0}}
 
-        <div class="attribute-skill-label roll-die-attribute rollable-text" data-roll-attribute="{{skill_name}}">{{localize skill.label}}<span class="tooltiptext delay">{{{localize skill.tip}}}</span></div>
+        <div class="attribute-skill-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{skill_name}}">{{localize skill.label}}<span class="tooltiptext delay">{{{localize skill.tip}}}</span></div>
         {{/multiboxes}}
       </div>
     </div>
