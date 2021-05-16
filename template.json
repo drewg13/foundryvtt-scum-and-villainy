@@ -224,7 +224,7 @@
       },
       "hull": {
         "label": "BITD.SystemsHull",
-	"tip": "BITD.SkillsSystemsTip",
+	"tip": "BITD.SkillsHullTip",
         "value": [0],
   	"value_default": [0],
         "damage": [0],
