@@ -69,7 +69,8 @@ export class SaVActor extends Actor {
   /** @override */
   getRollData() {
     const data = super.getRollData();
-    const attributes = ["insight", "prowess", "resolve"];
+    const att_obj = game.system.model.Actor.character.attributes;
+	const attributes = Object.keys( att_obj );
     data.dice_amount = this.getAttributeDiceToThrow();
     if ( this.data.type === "character" ) {
       const attribute_values = attributes.map( a => data.dice_amount[a] );
@@ -264,17 +265,12 @@ export class SaVActor extends Actor {
   /* -------------------------------------------- */
 
   async rollAttribute( attribute_name = "", additional_dice_amount = 0, position, effect ) {
-
     let dice_amount = 0;
-    const attributes = [ "insight", "prowess", "resolve" ];
+    const att_obj = game.system.model.Actor.character.attributes;
+	const attributes = Object.keys( att_obj );
     if ( attribute_name !== "" ) {
       let roll_data = this.getRollData();
-      if ( attribute_name === "Vice" ) {
-	      const attribute_values = attributes.map( a => roll_data.dice_amount[a] );
-	      dice_amount = Math.min( ...attribute_values  );
-	    } else {
-	      dice_amount += roll_data.dice_amount[attribute_name];
-      }
+	  dice_amount += roll_data.dice_amount[attribute_name];
     }
     else {
       dice_amount = 1;

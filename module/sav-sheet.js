@@ -10,7 +10,7 @@ export class SaVSheet extends ActorSheet {
   /** @override */
 	activateListeners(html) {
     super.activateListeners(html);
-    html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
+      html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
 	  html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
 	  html.find(".update-sheet").click(this._onUpdateClick.bind(this));
 	  html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
@@ -253,13 +253,18 @@ async _onFlagAddClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
     const att_obj = game.system.model.Actor.character.attributes;
+	const sys_obj = game.system.model.Actor.ship.systems;
+	let systems = Object.keys( sys_obj );
     const resistance = Object.keys( att_obj );
-    let actions = [];
+    const remove = ["crew", "upkeep"];
+	let actions = [];
     resistance.forEach( a => {
       let skill_obj = game.system.model.Actor.character.attributes[a].skills;
       actions.push( Object.keys( skill_obj ) );
     })
-    actions = actions.flat();
+	systems = systems.filter( system => !remove.includes( system ) );
+	actions.push( systems );
+	actions = actions.flat();
     let roll_type;
 
     if ( actions.includes( attribute_name ) ) {
