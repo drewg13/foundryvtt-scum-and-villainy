@@ -2,11 +2,19 @@
   "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "version": "1.6.3",
+  "authors": ["megastruktur", "Andrew Garinger [agaringer#6498]"],
+  "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
+  "flags": {},
+  "version": "1.6.4",
   "minimumCoreVersion": "0.7.2",
-  "compatibleCoreVersion": "0.8.3",
-  "templateVersion": 1,
-  "author": "megastruktur, Andrew Garinger [agaringer#6498]",
+  "compatibleCoreVersion": "0.8.5",
+  "system": [],
+  "dependencies": [],
+  "socket": false,
+  "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.6.4.zip",
+  "protected": false,
+  "scripts": [],
   "esmodules": [
     "module/sav.js"
   ],
@@ -21,135 +29,150 @@
       "path": "lang/en.json"
     }
   ],
-  "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
-  "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.6.3.zip",
   "packs": [
     {
       "name": "class",
       "label": "Classes",
       "system": "scum-and-villainy",
       "path": "./packs/classes.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "heritage",
       "label": "Heritages",
       "system": "scum-and-villainy",
       "path": "./packs/heritages.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "vice",
       "label": "Vices",
       "system": "scum-and-villainy",
       "path": "./packs/vices.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "background",
       "label": "Backgrounds",
       "system": "scum-and-villainy",
       "path": "./packs/backgrounds.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "item",
       "label": "Items",
       "system": "scum-and-villainy",
       "path": "./packs/items.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "ability",
       "label": "Abilities",
       "system": "scum-and-villainy",
       "path": "./packs/abilities.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "crew_reputation",
       "label": "Crew Reputation",
       "system": "scum-and-villainy",
       "path": "./packs/crew_reputation.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "crew_type",
       "label": "Ship Types",
       "system": "scum-and-villainy",
       "path": "./packs/crew_types.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "crew_upgrade",
       "label": "Ship Upgrades",
       "system": "scum-and-villainy",
       "path": "./packs/crew_upgrades.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "crew_ability",
       "label": "Ship Abilities",
       "system": "scum-and-villainy",
       "path": "./packs/crew_abilities.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "job_tables",
       "label": "Job Tables",
       "system": "scum-and-villainy",
       "path": "./packs/tables.db",
-      "entity": "RollTable"
+      "entity": "RollTable",
+      "private": false
     },
     {
       "name": "star_system",
       "label": "Star Systems",
       "system": "scum-and-villainy",
       "path": "./packs/star_systems.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "planet",
       "label": "Planets",
       "system": "scum-and-villainy",
       "path": "./packs/planets.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "faction",
       "label": "Factions",
       "system": "scum-and-villainy",
       "path": "./packs/factions.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "ship_size",
       "label": "Ship Sizes",
       "system": "scum-and-villainy",
       "path": "./packs/size.db",
-      "entity": "Item"
+      "entity": "Item",
+      "private": false
     },
     {
       "name": "wanted",
       "label": "Wanted Consequences",
       "system": "scum-and-villainy",
       "path": "./packs/wanted-consequences.db",
-      "entity": "JournalEntry"
+      "entity": "JournalEntry",
+      "private": false
     },
     {
       "name": "wanted_tables",
       "label": "Wanted Tables",
       "system": "scum-and-villainy",
       "path": "./packs/wanted-tables.db",
-      "entity": "RollTable"
+      "entity": "RollTable",
+      "private": false
     },
     {
-	  "name": "friend",
-	  "label": "Friends",
-	  "system": "scum-and-villainy",
-	  "path": "./packs/friends.db",
-	  "entity": "Item"
+      "name": "friend",
+      "label": "Friends",
+      "system": "scum-and-villainy",
+      "path": "./packs/friends.db",
+      "entity": "Item",
+      "private": false
     }
   ]
 }

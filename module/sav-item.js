@@ -1,8 +1,69 @@
+import { SaVHelpers } from "./sav-helpers.js";
+
  /**
  * Extend the basic Item
  * @extends {Item}
  */
 export class SaVItem extends Item {
+
+   /** @override */
+   async _preCreate( data, options, user ) {
+     await super._preCreate( data, options, user );
+
+     let removeItems = [];
+     if( user.id === game.user.id ) {
+       let actor = this.parent ? this.parent : null;
+       if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) ) {
+         removeItems = SaVHelpers.removeDuplicatedItemType( data, actor );
+       }
+       if( removeItems ) {
+         await actor.deleteEmbeddedDocuments( "Item", removeItems );
+       }
+     }
+   }
+
+   /* -------------------------------------------- */
+
+   /** @override */
+   async _onCreate( data, options, userId ) {
+     super._onCreate( data, options, userId );
+
+     if( userId === game.user.id ) {
+       let actor = this.parent ? this.parent : null;
+
+       if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
+         await SaVHelpers.callItemLogic( data, actor );
+
+         if( ( game.majorVersion > 7 ) && ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.data.def_abilities !== "" ) ) {
+           await SaVHelpers.addDefaultAbilities( data, actor );
+         }
+
+         if( ( game.majorVersion > 7 ) && ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( ( actor.img.slice( 0, 46 ) === "systems/scum-and-villainy/styles/assets/icons/" ) || ( actor.img === "icons/svg/mystery-man.svg" ) ) ) {
+           const icon = data.img;
+           const icon_update = {
+             img: icon,
+             token: {
+               img: icon
+             }
+           };
+           await actor.update( icon_update );
+         }
+       }
+     }
+   }
+
+   /* -------------------------------------------- */
+
+   /** @override */
+   async _onDelete( options, userId ) {
+     super._onDelete( options, userId );
+
+     let actor = this.parent ? this.parent : null;
+     let data = this.data;
+     if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
+       await SaVHelpers.undoItemLogic( data, actor );
+     }
+   }
 
   /* override */
   prepareData() {

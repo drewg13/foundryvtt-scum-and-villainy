@@ -188,7 +188,7 @@ async _onFlagAddClick(event) {
 
 	if ( perms >= CONST.ENTITY_PERMISSIONS.OWNER ) {
     let dialog = new Dialog({
-      title: `${game.i18n.localize('BITD.Add')} ${item_type}`,
+      title: `${game.i18n.localize('BITD.Add')} ${game.i18n.localize('BITD.' + SaVHelpers.getProperCase(item_type) )}`,
       content: html,
       buttons: {
         one: {

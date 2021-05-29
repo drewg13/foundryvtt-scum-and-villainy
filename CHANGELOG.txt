@@ -66,3 +66,4 @@ v1.6.2  Fix tooltip bugs
 
 v1.6.3  Fix Vice rolls
 
+v1.6.4  Fix createItem hook issues in 0.8.x, switch XP triggers to tooltip on hover

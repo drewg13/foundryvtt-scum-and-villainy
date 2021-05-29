@@ -1,27 +1,28 @@
 export class SaVHelpers {
 
   /**
-   * Removes a duplicate item type from charlist.
+   * Identifies duplicate items by type and returns a array of item ids to remove
    *
    * @param {Object} item_data
    * @param {Document} actor
+   * @returns {Array}
+   *
    */
   static removeDuplicatedItemType(item_data, actor) {
-
+    let dupe_list = [];
     let distinct_types = ["crew_reputation", "class", "background", "vice", "heritage", "ship_size", "crew_type"];
+    let allowed_types = ["item"];
     let should_be_distinct = distinct_types.includes(item_data.type);
     // If the Item has the exact same name - remove it from list.
     // Remove Duplicate items from the array.
-    actor.items.forEach(i => {
+    actor.items.forEach( i => {
       let has_double = (item_data.type === i.data.type);
-      if (i.data.name === item_data.name || (should_be_distinct && has_double)) {
-        if( game.majorVersion > 7 ) {
-          actor.deleteEmbeddedDocuments("Item", [i.id]);
-        } else {
-          actor.deleteOwnedItem(i.id);
-        }
+      if ( ( ( i.name === item_data.name ) || ( should_be_distinct && has_double ) ) && !( allowed_types.includes( item_data.type ) ) && ( item_data._id !== i.id ) ) {
+        dupe_list.push (i.id);
       }
     });
+
+    return dupe_list;
   }
 
   /**
