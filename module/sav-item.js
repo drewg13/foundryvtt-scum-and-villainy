@@ -16,7 +16,7 @@ export class SaVItem extends Item {
        if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) ) {
          removeItems = SaVHelpers.removeDuplicatedItemType( data, actor );
        }
-       if( removeItems ) {
+       if( removeItems.length !== 0 ) {
          await actor.deleteEmbeddedDocuments( "Item", removeItems );
        }
      }
@@ -34,11 +34,11 @@ export class SaVItem extends Item {
        if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
          await SaVHelpers.callItemLogic( data, actor );
 
-         if( ( game.majorVersion > 7 ) && ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.data.def_abilities !== "" ) ) {
+         if( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.data.def_abilities !== "" ) ) {
            await SaVHelpers.addDefaultAbilities( data, actor );
          }
 
-         if( ( game.majorVersion > 7 ) && ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( ( actor.img.slice( 0, 46 ) === "systems/scum-and-villainy/styles/assets/icons/" ) || ( actor.img === "icons/svg/mystery-man.svg" ) ) ) {
+         if( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( ( actor.img.slice( 0, 46 ) === "systems/scum-and-villainy/styles/assets/icons/" ) || ( actor.img === "icons/svg/mystery-man.svg" ) ) ) {
            const icon = data.img;
            const icon_update = {
              img: icon,
