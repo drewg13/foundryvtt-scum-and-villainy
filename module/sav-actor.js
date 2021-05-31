@@ -49,7 +49,7 @@ export class SaVActor extends Actor {
     data.img = icon;
 
 
-    return super.create(data, options);
+    await super.create(data, options);
   }
 
   /* -------------------------------------------- */

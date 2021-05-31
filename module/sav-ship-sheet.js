@@ -13,7 +13,7 @@ export class SaVShipSheet extends SaVSheet {
 	  return mergeObject(super.defaultOptions, {
 	    classes: ["scum-and-villainy", "sheet", "actor"],
 	  	template: "systems/scum-and-villainy/templates/ship-sheet.html",
-	    width: 700,
+	    width: 720,
 	    height: 970,
 	    tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}],
 		  scrollY: [".description"]

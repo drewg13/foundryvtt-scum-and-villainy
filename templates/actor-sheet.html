@@ -20,7 +20,10 @@
                 <div class="item flex-horizontal" data-item-id="{{item._id}}">
                   <div class="item-body flex-horizontal">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                    <a class="item-name">{{item.name}}</a>
+                    <div class="tooltip">
+                      <a class="item-name">{{item.name}}</a>
+                      <span class="tooltiptext">{{{item.data.description}}}<br />{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />{{item.data.experience_clues}}</span>
+                    </div>
                   </div>
                   <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
                 </div>
@@ -36,7 +39,10 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <a class="item-name">{{item.name}}</a>
+                  <div class="tooltip">
+                    <a class="item-name">{{item.name}}</a>
+                    <span class="tooltiptext">{{{item.data.description}}}</span>
+                  </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               </div>
@@ -52,7 +58,10 @@
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
               <div class="item-body flex-horizontal">
                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                <a class="item-name">{{item.name}}</a>
+                <div class="tooltip">
+                  <a class="item-name">{{item.name}}</a>
+                  <span class="tooltiptext">{{{item.data.description}}}</span>
+                </div>
               </div>
               <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
             </div>
@@ -69,7 +78,10 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <a class="item-name">{{item.name}}</a>
+                  <div class="tooltip">
+                    <a class="item-name">{{item.name}}</a>
+                    <span class="tooltiptext">{{{item.data.description}}}</span>
+                  </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               </div>

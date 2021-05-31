@@ -71,3 +71,5 @@ v1.6.4  Fix createItem hook issues in 0.8.x, switch XP triggers to tooltip on ho
 v1.6.5  Bug fix for item import from compendiums
 
 v1.6.6  Add tooltips to traumas, bug fixes for tooltips
+
+v1.6.7  ALL THE TOOLTIPS, fixes for tooltips in dialogs, fix for class icon changes not persisting
