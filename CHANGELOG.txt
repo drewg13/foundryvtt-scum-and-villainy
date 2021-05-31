@@ -69,3 +69,5 @@ v1.6.3  Fix Vice rolls
 v1.6.4  Fix createItem hook issues in 0.8.x, switch XP triggers to tooltip on hover
 
 v1.6.5  Bug fix for item import from compendiums
+
+v1.6.6  Add tooltips to traumas, bug fixes for tooltips

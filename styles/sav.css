@@ -176,6 +176,7 @@
   padding-right: 10px;
   display: flex;
   font-weight: bold;
+  justify-content: space-between;
 }
 * .label-stripe .hoverlink {
   cursor: pointer;
@@ -1348,8 +1349,11 @@
 * #items-to-add input[type=checkbox]:checked + label {
   font-weight: bolder;
 }
+* .tooltip {
+  position: relative;
+}
 * .tooltip .tooltiptext {
-  visibility: hidden;
+  visibility: collapse;
   opacity: 0;
   width: 200px;
   background-color: #191813;
@@ -1366,14 +1370,17 @@
   transition: 0.2s;
 }
 * .tooltip .tooltiptext.left {
-	right: 105%;
+  right: 105%;
+}
+* .tooltip .tooltiptext.bottom {
+  top: 105%;
+  right: 75%;
 }
 * .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
-}
-* .tooltip:hover .tooltiptext.delay {
-  transition-delay: 1.5s;
+  transition-delay: 1.2s;
+  transition-timing-function: linear;
 }
 * .sav-die-tooltip .die {
   font-weight: bold;

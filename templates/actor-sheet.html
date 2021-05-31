@@ -149,37 +149,37 @@
     </div>
 
     <div id="trauma-list">
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.cold" value="cold" {{checked data.trauma.list.cold}}>
-        <span class="checkmark">{{localize "BITD.TraumaCold"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaCold"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaColdTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.haunted" value="haunted" {{checked data.trauma.list.haunted}}>
-        <span class="checkmark">{{localize "BITD.TraumaHaunted"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaHaunted"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaHauntedTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.obsessed" value="obsessed" {{checked data.trauma.list.obsessed}}>
-        <span class="checkmark">{{localize "BITD.TraumaObsessed"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaObsessed"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaObsessedTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.paranoid" value="paranoid" {{checked data.trauma.list.paranoid}}>
-        <span class="checkmark">{{localize "BITD.TraumaParanoid"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaParanoid"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaParanoidTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.reckless" value="reckless" {{checked data.trauma.list.reckless}}>
-        <span class="checkmark">{{localize "BITD.TraumaReckless"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaReckless"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaRecklessTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.soft" value="soft" {{checked data.trauma.list.soft}}>
-        <span class="checkmark">{{localize "BITD.TraumaSoft"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaSoft"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaSoftTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.unstable" value="unstable" {{checked data.trauma.list.unstable}}>
-        <span class="checkmark">{{localize "BITD.TraumaUnstable"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaUnstable"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaUnstableTip"}}}</span></span>
       </label>
-      <label>
+      <label class="tooltip">
         <input type="checkbox" name="data.trauma.list.vicious" value="vicious" {{checked data.trauma.list.vicious}}>
-        <span class="checkmark">{{localize "BITD.TraumaVicious"}}</span>
+        <span class="checkmark">{{localize "BITD.TraumaVicious"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaViciousTip"}}}</span></span>
       </label>
     </div>
 
@@ -287,7 +287,7 @@
           <p><a class="item-add-popup" data-item-type="ability" data-limiter=data.character_class><i class="fas fa-plus-square"></i></a></p>
           <div id="character-experience" class="teeth-experience tooltip">
             <label for="character-{{actor._id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
-              <span class="tooltiptext delay left">{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />
+              <span class="tooltiptext left">{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />
                 {{#each actor.items as |item id|}}
                   {{#if (eq item.type "class")}}
                     {{item.data.experience_clues}}
