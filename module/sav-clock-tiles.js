@@ -52,10 +52,21 @@ export default {
     });
   },
 
-  renderTileHUD: async (_hud, html, tile) => {
+  renderTileHUD: async (_hud, html, tileData) => {
     log("Render")
-    let t = canvas.tiles.get(tile._id);
-    if (!t.data.flags['scum-and-villainy'].clocks) {
+    let t, b, f;
+    if( game.majorVersion > 7 ) {
+      b = canvas.background.tiles.find( tile => tile.id === tileData._id );
+      f = canvas.foreground.tiles.find( tile => tile.id === tileData._id );
+      if( b?.id === tileData._id ) {
+        t = b;
+      } else if ( f?.id === tileData._id ) {
+        t = f;
+      } else { return false }
+    } else {
+      t = canvas.tiles.get( tileData._id );
+    }
+    if (!t?.data?.flags['scum-and-villainy']?.clocks) {
       return;
     }
 
@@ -63,7 +74,17 @@ export default {
     html.find("div.left").append(buttonHTML).click(async (event) => {
       log("HUD Clicked")
       // re-get in case there has been an update
-      t = canvas.tiles.get(tile._id);
+      if( game.majorVersion > 7 ) {
+        b = canvas.background.tiles.find( tile => tile.id === tileData._id );
+        f = canvas.foreground.tiles.find( tile => tile.id === tileData._id );
+        if( b?.id === tileData._id ) {
+          t = b;
+        } else if ( f?.id === tileData._id ) {
+          t = f;
+        }
+      } else {
+        t = canvas.tiles.get(tileData._id);
+      }
 
       const oldClock = new SaVClock(t.data.flags['scum-and-villainy'].clocks);
       let newClock;
@@ -79,9 +100,12 @@ export default {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();
+      } else if (target.dataset.action) {
+        return;
       } else {
-        return error("ERROR: Unknown TileHUD Button");
+          return error("ERROR: Unknown TileHUD Button");
       }
+
       if( game.majorVersion > 7 ) {
         await TileDocument.updateDocuments([{
           _id: t.id,

@@ -227,7 +227,7 @@ export default {
         newClock = oldClock.cycleSize();
       } else if (target.classList.contains("cycle-theme")) {
         newClock = oldClock.cycleTheme();
-	    } else if (target.classList.contains("config")) {
+	    } else if (target.dataset.action) {
 		    return;
       } else {
         return error("ERROR: Unknown TokenHUD Button");
@@ -307,7 +307,7 @@ export default {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();
-      } else if (target.classList.contains("visibility")) {
+      } else if (target.dataset.action) {
 		    return;
       } else {
         return error("ERROR: Unknown TokenHUD Button");
