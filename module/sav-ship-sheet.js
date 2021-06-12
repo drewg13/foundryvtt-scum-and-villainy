@@ -1,5 +1,6 @@
 
 import { SaVSheet } from "./sav-sheet.js";
+import {onManageActiveEffect, prepareActiveEffectCategories} from "./effects.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -26,6 +27,10 @@ export class SaVShipSheet extends SaVSheet {
 	  data.isGM = game.user.isGM;
 		data.editable = data.options.editable;
     const actorData = data.data;
+    data.items = actorData.items;
+
+    // Prepare active effects
+    data.effects = prepareActiveEffectCategories(this.actor.effects);
 
 	  if( game.majorVersion > 7 ) {
 		  data.actor = actorData;
@@ -76,6 +81,9 @@ export class SaVShipSheet extends SaVSheet {
       }
       item?.sheet.render(true, {"renderContext": "xp"});
     });
+
+    // manage active effects
+    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 	}
   /* -------------------------------------------- */
   /*  Form Submission                             */

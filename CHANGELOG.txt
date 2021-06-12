@@ -77,3 +77,5 @@ v1.6.7  ALL THE TOOLTIPS, fixes for tooltips in dialogs, fix for class icon chan
 v1.6.8  Fixes for clock HUDs
 
 v1.7.0  Switch to using Active Effects, instead of Blades logic system
+
+v1.7.1  Fix ship sheet Active Effects
