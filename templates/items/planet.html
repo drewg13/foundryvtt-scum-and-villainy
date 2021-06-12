@@ -36,6 +36,12 @@
     <textarea rows="5" name="data.rule">{{data.rule}}</textarea>
     <label class="label-stripe">{{localize "BITD.NotableNPCs"}}</label>
     <textarea rows="20" name="data.notables">{{data.notables}}</textarea>
+    {{#if isGM}}
+      <div class="label-stripe">{{localize "BITD.Logic"}}</div>
+      <textarea name="data.logic">{{{data.logic}}}</textarea>
+      <div class="label-stripe">{{localize "BITD.Effects"}}</div>
+      <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>
+    {{/if}}
     
   </section>
 

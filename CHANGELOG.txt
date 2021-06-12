@@ -75,3 +75,5 @@ v1.6.6  Add tooltips to traumas, bug fixes for tooltips
 v1.6.7  ALL THE TOOLTIPS, fixes for tooltips in dialogs, fix for class icon changes not persisting
 
 v1.6.8  Fixes for clock HUDs
+
+v1.7.0  Switch to using Active Effects, instead of Blades logic system

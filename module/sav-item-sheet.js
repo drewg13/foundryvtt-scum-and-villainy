@@ -2,6 +2,9 @@
  * Extend the basic ItemSheet
  * @extends {ItemSheet}
  */
+
+import {onManageActiveEffect, prepareActiveEffectCategories} from "./effects.js";
+
 export class SaVItemSheet extends ItemSheet {
 
   /** @override */
@@ -22,6 +25,9 @@ export class SaVItemSheet extends ItemSheet {
 	  data.isGM = game.user.isGM;
 		data.editable = data.options.editable;
     const itemData = data.data;
+
+    // Prepare Active Effects
+    data.effects = prepareActiveEffectCategories(this.item.effects);
 
 		if( game.majorVersion > 7 ) {
 		  data.item = itemData;
@@ -52,6 +58,11 @@ export class SaVItemSheet extends ItemSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    html.find(".effect-control").click(ev => {
+      if ( this.item.isOwned ) return ui.notifications.warn(game.i18n.localize("BITD.EffectWarning"))
+      onManageActiveEffect(ev, this.item)
+    });
   }
 
   /* -------------------------------------------- */

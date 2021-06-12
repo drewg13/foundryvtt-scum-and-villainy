@@ -160,6 +160,9 @@
         <a class="item" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
 	      <a class="item" data-tab="friends">{{localize "BITD.Contacts"}}</a>
 	      <a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
+        {{#if isGM}}
+          <a class="item" data-tab="effects">{{localize "BITD.Effects"}}</a>
+        {{/if}}
         <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
       </nav>
 
@@ -265,6 +268,14 @@
 		    {{#if editable}}
           <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
         {{/if}}
+      </div>
+
+      {{!-- Active Effects --}}
+      <div id="effects" class="tab effects flex-vertical" data-tab="effects">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Effects"}}</p>
+        </div>
+        {{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}
       </div>
 
       {{!-- Full Item List --}}
