@@ -10,7 +10,7 @@ export class SaVSheet extends ActorSheet {
   /** @override */
 	activateListeners(html) {
     super.activateListeners(html);
-      html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
+    html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
 	  html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
 	  html.find(".update-sheet").click(this._onUpdateClick.bind(this));
 	  html.find(".update-box").click(this._onUpdateBoxClick.bind(this));

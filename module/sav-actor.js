@@ -70,7 +70,7 @@ export class SaVActor extends Actor {
   getRollData() {
     const data = super.getRollData();
     const att_obj = game.system.model.Actor.character.attributes;
-	const attributes = Object.keys( att_obj );
+	  const attributes = Object.keys( att_obj );
     data.dice_amount = this.getAttributeDiceToThrow();
     if ( this.data.type === "character" ) {
       const attribute_values = attributes.map( a => data.dice_amount[a] );

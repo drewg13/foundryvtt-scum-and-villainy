@@ -27,7 +27,6 @@ export class SaVShipSheet extends SaVSheet {
 	  data.isGM = game.user.isGM;
 		data.editable = data.options.editable;
     const actorData = data.data;
-    data.items = actorData.items;
 
     // Prepare active effects
     data.effects = prepareActiveEffectCategories(this.actor.effects);

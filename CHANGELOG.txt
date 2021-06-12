@@ -79,3 +79,5 @@ v1.6.8  Fixes for clock HUDs
 v1.7.0  Switch to using Active Effects, instead of Blades logic system
 
 v1.7.1  Fix ship sheet Active Effects
+
+v1.7.2  Fix sheets in 0.7.x
