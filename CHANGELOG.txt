@@ -81,3 +81,5 @@ v1.7.0  Switch to using Active Effects, instead of Blades logic system
 v1.7.1  Fix ship sheet Active Effects
 
 v1.7.2  Fix sheets in 0.7.x
+
+v1.7.3  Fix Effects tab on items, restrict to 0.7.10, remove default attributes from class Active Effects

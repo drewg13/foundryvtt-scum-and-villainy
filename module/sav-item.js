@@ -65,7 +65,7 @@ export class SaVItem extends Item {
      }
    }
 
-  /* override */
+  /** override */
   prepareData() {
     super.prepareData();
 
