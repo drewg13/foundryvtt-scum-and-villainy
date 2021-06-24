@@ -170,8 +170,8 @@
         <div class="label-stripe">
           <p>{{localize "BITD.SpecialAbilities"}}</p>
           <p><a class="item-add-popup" data-item-type="crew_ability" data-limiter=data.ship_class><i class="fas fa-plus-square"></i></a></p>
-          <div id="character-experience" class="teeth-experience tooltip">
-            <label for="character-{{actor._id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
+          <div id="ship-experience" class="teeth-experience tooltip">
+            <label for="ship-{{actor._id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
               <span class="tooltiptext left">{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />
                 {{#each actor.items as |item id|}}
                   {{#if (eq item.type "crew_type")}}
