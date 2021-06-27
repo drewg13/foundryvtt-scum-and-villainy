@@ -12,30 +12,28 @@
 
       <div id="character-traits" class="flex-column">
 
-		<div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class">{{localize "BITD.Class"}}</a>
-		  </div>
-            {{#each actor.items as |item id|}}
-                {{#if (eq item.type "class")}}
-                <div class="item flex-horizontal" data-item-id="{{item._id}}">
-                  <div class="item-body flex-horizontal">
-                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                    <div class="tooltip">
-                      <a class="item-name">{{item.name}}</a>
-                      <span class="tooltiptext">{{{item.data.description}}}<br />{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />{{item.data.experience_clues}}</span>
-                    </div>
+		    <div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class">{{localize "BITD.Class"}}</a></div>
+          {{#each actor.items as |item id|}}
+            {{#if (eq item.type "class")}}
+              <div class="item flex-horizontal" data-item-id="{{item._id}}">
+                <div class="item-body flex-horizontal">
+                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                  <div class="tooltip">
+                    <a class="item-name">{{item.name}}</a>
+                    <span class="tooltiptext">{{{item.data.description}}}<br />{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />{{item.data.experience_clues}}</span>
                   </div>
-                  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
                 </div>
-                {{/if}}
-            {{/each}}
+                <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+              </div>
+            {{/if}}
+          {{/each}}
         </div>
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="heritage">{{localize "BITD.Heritage"}}</a>
-		  </div>
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="heritage">{{localize "BITD.Heritage"}}</a></div>
           {{#each actor.items as |item id|}}
-              {{#if (eq item.type "heritage")}}
+            {{#if (eq item.type "heritage")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
@@ -46,13 +44,12 @@
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               </div>
-              {{/if}}
+            {{/if}}
           {{/each}}
         </div>
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="background">{{localize "BITD.Background"}}</a>
-		  </div>
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="background">{{localize "BITD.Background"}}</a></div>
           {{#each actor.items as |item id|}}
             {{#if (eq item.type "background")}}
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
@@ -70,10 +67,9 @@
         </div>
 
         <div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="item-add-popup" data-item-type="vice">{{localize "BITD.Vices"}}</a>
-		  </div>
+          <div class="item-class-label"><a class="item-add-popup" data-item-type="vice">{{localize "BITD.Vices"}}</a></div>
           <div class="flex-vertical">
-		  {{#each actor.items as |item id|}}
+		        {{#each actor.items as |item id|}}
               {{#if (eq item.type "vice")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
@@ -86,26 +82,27 @@
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               </div>
               {{/if}}
-          {{/each}}
-		  </div>
+            {{/each}}
+		      </div>
         </div>
 
-		<div class="item-block flex-horizontal">
-          <div class="item-class-label"><a class="flag-add-popup" data-distinct="true" data-item-type="ship">{{localize "BITD.Ship"}}</a>
-		  </div>
-            {{#each actor.flags.scum-and-villainy.ship as |item id|}}
-                {{#unless (eq item.name "")}}
-                <div class="item flex-horizontal" data-item-id="{{item._id}}" data-item-type="{{item.type}}">
-                  <div class="ship-body flex-horizontal">
-                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                    <a class="item-name">{{item.name}}</a>
-                  </div>
-                  <a class="item-control flag-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+		    <div class="item-block flex-horizontal">
+          <div class="item-class-label">
+            <a class="flag-add-popup" data-distinct="true" data-item-type="ship">{{localize "BITD.Ship"}}</a>
+          </div>
+          {{#each actor.flags.scum-and-villainy.ship as |item id|}}
+            {{#unless (eq item.name "")}}
+              <div class="item flex-horizontal" data-item-id="{{item._id}}" data-item-type="{{item.type}}">
+                <div class="ship-body flex-horizontal">
+                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                  <a class="item-name">{{item.name}}</a>
                 </div>
-                {{/unless}}
-            {{/each}}
+                <a class="item-control flag-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+              </div>
+            {{/unless}}
+          {{/each}}
         </div>
-	  </div>
+	    </div>
     </div>
 
     <div class="grow-two">
@@ -114,7 +111,7 @@
         <input type="text" id="character-{{actor._id}}-alias" name="data.alias" value="{{data.alias}}">
       </div>
 
-	  <div id="look">
+	    <div id="look">
         <label for="character-{{actor._id}}-look">{{localize "BITD.Look"}}</label>
         <input type="text" id="character-{{actor._id}}-look" name="data.look" value="{{data.look}}">
       </div>
@@ -129,34 +126,30 @@
   <div id="stress-trauma" class="section big-teeth-section">
     <div id="character-{{actor._id}}-stress" class="big-teeth">
       {{#multiboxes data.stress.value}}
-
-      <input type="radio" id="character-{{actor._id}}-stress-0" name="data.stress.value" value="0" dtype="Radio">
-      <div id="stress-vice">
-	  <label class="black-label" for="character-{{actor._id}}-stress-0">{{localize data.stress.name}}</label>
-      <span class="black-label roll-die-attribute rollable-text" data-roll-attribute="vice">{{localize "BITD.Vice"}}</span>
-	  </div>
-      {{#times_from_1 data.stress.max}}
-        <input type="radio" id="character-{{../actor._id}}-stress-{{this}}" name="data.stress.value" value="{{this}}"
-               dtype="Radio">
-        <label for="character-{{../actor._id}}-stress-{{this}}"></label>
-      {{/times_from_1}}
-
+        <input type="radio" id="character-{{actor._id}}-stress-0" name="data.stress.value" value="0" dtype="Radio">
+        <div id="stress-vice">
+	        <label class="black-label" for="character-{{actor._id}}-stress-0">{{localize data.stress.name}}</label>
+          <span class="black-label roll-die-attribute rollable-text" data-roll-attribute="vice">{{localize "BITD.Vice"}}</span>
+	      </div>
+        {{#times_from_1 data.stress.max}}
+          <input type="radio" id="character-{{../actor._id}}-stress-{{this}}" name="data.stress.value" value="{{this}}" dtype="Radio">
+          <label for="character-{{../actor._id}}-stress-{{this}}"></label>
+        {{/times_from_1}}
       {{/multiboxes}}
-
     </div>
+
     <div id="character-{{actor._id}}-trauma-container" class="small-teeth-container">
       {{#traumacounter data.trauma.list}}
-      <div id="character-{{actor._id}}-trauma" class="small-teeth-wrap">
-        <label class="black-label" for="character-{{actor._id}}-trauma-counter-0">{{localize data.trauma.name}}</label>
-        <div id="trauma-teeth" class="small-teeth">
-          <input type="radio" id="character-{{actor._id}}-trauma-counter-0" name="data.trauma.value" value="0">
-
-          {{#times_from_1 data.trauma.max}}
-            <input type="radio" id="character-{{../actor._id}}-trauma-counter-{{this}}" name="data.trauma.value" value="{{this}}" disabled>
-            <label for="character-{{../actor._id}}-trauma-counter-{{this}}"></label>
-          {{/times_from_1}}
+        <div id="character-{{actor._id}}-trauma" class="small-teeth-wrap">
+          <label class="black-label" for="character-{{actor._id}}-trauma-counter-0">{{localize data.trauma.name}}</label>
+          <div id="trauma-teeth" class="small-teeth">
+            <input type="radio" id="character-{{actor._id}}-trauma-counter-0" name="data.trauma.value" value="0">
+            {{#times_from_1 data.trauma.max}}
+              <input type="radio" id="character-{{../actor._id}}-trauma-counter-{{this}}" name="data.trauma.value" value="{{this}}" disabled>
+              <label for="character-{{../actor._id}}-trauma-counter-{{this}}"></label>
+            {{/times_from_1}}
+          </div>
         </div>
-      </div>
       {{/traumacounter}}
     </div>
 

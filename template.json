@@ -9,10 +9,12 @@
     "stress": {
       "value": [0],
       "max": 9,
+      "max_default": 9,
       "name": "BITD.Stress"
     },
     "trauma": {
       "max": 4,
+      "max_default": 4,
       "value": [0],
       "name": "BITD.Trauma",
       "list": [0]
@@ -26,8 +28,11 @@
   	  "current": 0,
   	  "planned": [0],
   	  "heavy": 8,
+      "heavy_default": 8,
   	  "normal": 5,
+      "normal_default": 5,
   	  "light": 3,
+      "light_default": 3,
   	  "load_level": ""
   	},
 	  "stun_weapons": 0,

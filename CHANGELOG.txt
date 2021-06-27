@@ -89,3 +89,5 @@ v1.7.4  Fix ship Playbook XP zero trigger
 v1.7.5  Fix 0d Fortune rolls
 
 v1.7.6  Add tooltips to Universe sheet
+
+v1.7.7  Fixed broken template variables causing character sheet errors
