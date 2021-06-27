@@ -87,3 +87,5 @@ v1.7.3  Fix Effects tab on items, restrict to 0.7.10, remove default attributes 
 v1.7.4  Fix ship Playbook XP zero trigger
 
 v1.7.5  Fix 0d Fortune rolls
+
+v1.7.6  Add tooltips to Universe sheet
