@@ -38,9 +38,16 @@ Hooks.once("init", async function() {
     sizes: [ 4, 6, 8, 10, 12 ]
   };
 
-  const versionParts = game.data.version.split('.');
-  game.majorVersion = parseInt(versionParts[1]);
-  game.minorVersion = parseInt(versionParts[2]);
+  let versionParts;
+  if( game.version ) {
+    versionParts = game.version.split( '.' );
+    game.majorVersion = parseInt( versionParts[0] );
+    game.minorVersion = parseInt( versionParts[1] );
+  } else {
+    versionParts = game.data.version.split( '.' );
+    game.majorVersion = parseInt( versionParts[1] );
+    game.minorVersion = parseInt( versionParts[2] );
+  }
 
   if( game.majorVersion > 7 ) {
     CONFIG.Item.documentClass = SaVItem;
