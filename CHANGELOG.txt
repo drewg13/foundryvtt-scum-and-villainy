@@ -100,4 +100,4 @@ v1.7.10  Add missing Stardancer special ability
 
 v1.7.11  Add missing localization on Current Load
 
-v1.7.12  Add Brazilian Portuguese localization
+v1.7.12  Add Brazilian Portuguese localization  (thanks to brunocalado!)
