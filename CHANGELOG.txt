@@ -97,3 +97,5 @@ v1.7.8  Fixed some item load values in compendiums
 v1.7.9  Updates for v9 and code cleanup, remove pre-0.7 compatibility code
 
 v1.7.10  Add missing Stardancer special ability
+
+v1.7.11  Add missing localization on Current Load
