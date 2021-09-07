@@ -1,9 +1,7 @@
 <form class="{{cssClass}} ship-sheet" autocomplete="off">
 
   <section id="name-alias" class="flex-horizontal">
-
     <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-
     <div class="grow-two">
       <div id="name">
         <label for="ship-{{actor._id}}-name">{{localize "BITD.Name"}}</label>
@@ -54,10 +52,10 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                <div class="tooltip">
+                  <div class="tooltip">
                     <a class="item-name">{{item.name}}</a>
                     <span class="tooltiptext">{{{item.data.description}}}</span>
-                </div>
+                  </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               </div>
@@ -87,7 +85,7 @@
 			    <div class="coins coins-hands">
 			      {{#multiboxes data.coins}}
 			        <input type="radio" id="coins-{{actor._id}}-hands-0" name="data.coins" value="0" checked="checked">
-			        {{#times_from_1 4}}
+			        {{#times_from_1 data.coinsMax}}
                 <input type="radio" id="coins-{{../actor._id}}-hands-{{this}}" name="data.coins" value="{{this}}">
 			          <label for="coins-{{../actor._id}}-hands-{{this}}"></label>
               {{/times_from_1}}
@@ -138,7 +136,7 @@
 	  		  <div class="coins gambits">
             {{#multiboxes data.gambits.value}}
 	  		      <input type="radio" id="gambits-{{actor._id}}-0" name="data.gambits.value" value="0" checked="checked">
-              {{#times_from_1 8}}
+              {{#times_from_1 data.gambits.max}}
 	  		        <input type="radio" id="gambits-{{../actor._id}}-{{this}}" name="data.gambits.value" value="{{this}}">
 	  		        <label for="gambits-{{../actor._id}}-{{this}}"></label>
               {{/times_from_1}}
@@ -182,7 +180,7 @@
             </label>
             {{#multiboxes data.crew_experience}}
               <input type="radio" id="ship-{{actor._id}}-experience-0" name="data.crew_experience" value="0" dtype="Radio">
-              {{#times_from_1 8}}
+              {{#times_from_1 data.crew_experienceMax}}
                 <input type="radio" id="ship-{{../actor._id}}-experience-{{this}}" name="data.crew_experience" value="{{this}}" dtype="Radio">
                 <label for="ship-{{../actor._id}}-experience-{{this}}"></label>
               {{/times_from_1}}

@@ -20,7 +20,9 @@
       "list": [0]
     },
     "healing-clock": [0],
+    "healing-clockMax": 6,
     "experience": [0],
+    "experienceMax": 8,
     "coins": [0],
     "coins_stashed": [0],
     "special_abilities": [],
@@ -61,82 +63,97 @@
     "attributes": {
       "insight": {
         "exp": [0],
+        "expMax": 6,
         "label": "BITD.SkillsInsight",
 	    "tip": "BITD.SkillsInsightTip",
         "skills": {
           "doctor": {
             "label": "BITD.SkillsDoctor",
             "tip": "BITD.SkillsDoctorTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "hack": {
             "label": "BITD.SkillsHack",
 	        "tip": "BITD.SkillsHackTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "rig": {
             "label": "BITD.SkillsRig",
 	        "tip": "BITD.SkillsRigTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "study": {
             "label": "BITD.SkillsStudy",
 	        "tip": "BITD.SkillsStudyTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           }
         }
       },
       "prowess": {
         "exp": [0],
+        "expMax": 6,
         "label": "BITD.SkillsProwess",
 	    "tip": "BITD.SkillsProwessTip",
         "skills": {
           "helm": {
             "label": "BITD.SkillsHelm",
             "tip": "BITD.SkillsHelmTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "scramble": {
             "label": "BITD.SkillsScramble",
 	        "tip": "BITD.SkillsScrambleTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "scrap": {
             "label": "BITD.SkillsScrap",
 	        "tip": "BITD.SkillsScrapTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "skulk": {
             "label": "BITD.SkillsSkulk",
 	        "tip": "BITD.SkillsSkulkTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           }
         }
       },
       "resolve": {
         "exp": [0],
+        "expMax": 6,
         "label": "BITD.SkillsResolve",
 	    "tip": "BITD.SkillsResolveTip",
         "skills": {
           "attune": {
             "label": "BITD.SkillsAttune",
 	        "tip": "BITD.SkillsAttuneTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "command": {
             "label": "BITD.SkillsCommand",
 	        "tip": "BITD.SkillsCommandTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "consort": {
             "label": "BITD.SkillsConsort",
 	        "tip": "BITD.SkillsConsortTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           },
           "sway": {
             "label": "BITD.SkillsSway",
             "tip": "BITD.SkillsSwayTip",
-            "value": [0]
+            "value": [0],
+            "max": 3
           }
         }
       }
@@ -149,9 +166,11 @@
   	"designation": "",
     "size": "",
     "coins": [0],
+    "coinsMax": 4,
     "vault": [0],
     "debt-clock": [0],
   	"crew_experience": [0],
+    "crew_experienceMax": 8,
   	"ship_class": "",
     "gambits": {
       "refresh": 0,
