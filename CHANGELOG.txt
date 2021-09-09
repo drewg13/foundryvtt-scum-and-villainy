@@ -107,3 +107,5 @@ v1.8.0  Change numerous hardcoded values to template variables for macro modific
 v1.9.0  More localization fixes, fix for wandering plus on Abilities/Friends tabs, added buttons to send item descriptions to chat
 
 v1.9.1  Fix for chat items for 0.7.x
+
+v1.9.2  One more localization fix

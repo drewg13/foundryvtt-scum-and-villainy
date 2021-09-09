@@ -292,7 +292,7 @@ export async function simpleRollPopup() {
         label: game.i18n.localize("BITD.Roll"),
         callback: async (html) => {
           let diceQty = html.find('[name="qty"]')[0].value;
-          await savRoll(parseInt(diceQty), "Fortune!", "", "");
+          await savRoll(parseInt(diceQty), game.i18n.localize("BITD.Fortune"), "", "");
         },
       },
       no: {

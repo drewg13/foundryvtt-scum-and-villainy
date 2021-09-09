@@ -124,6 +124,7 @@
   "BITD.RollCriticalSuccess": "Critical Success!",
   "BITD.RollSuccess": "Success",
   "BITD.RollPartialSuccess": "Partial Success",
+  "BITD.Fortune": "Fortune!",
   "BITD.FortuneRoll": "Fortune Roll!",
   "BITD.RollTokenDescription": "Add +1d for each Trait rating and +1d for each Major Advantage, -1d for each Major Disadvantage.<br>For Engagement rolls, start at 1d for sheer luck!",
   "BITD.RollNumberOfDice": "Number of Dice",
