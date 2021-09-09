@@ -109,3 +109,5 @@ v1.9.0  More localization fixes, fix for wandering plus on Abilities/Friends tab
 v1.9.1  Fix for chat items for 0.7.x
 
 v1.9.2  One more localization fix
+
+v1.9.3  Triple-brace item description fields
