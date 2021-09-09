@@ -89,7 +89,13 @@ export class SaVItem extends Item {
   };
 
   async sendToChat() {
-    const itemData = this.data.toObject();
+    let itemData;
+    if( game.majorVersion > 7 ) {
+      itemData = this.data.toObject();
+    } else {
+      itemData = this.data;
+    }
+
     if (itemData.img.includes("/mystery-man")) {
       itemData.img = null;
     }
