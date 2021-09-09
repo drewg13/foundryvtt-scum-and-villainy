@@ -103,3 +103,5 @@ v1.7.11  Add missing localization on Current Load
 v1.7.12  Add Brazilian Portuguese localization  (thanks to brunocalado!)
 
 v1.8.0  Change numerous hardcoded values to template variables for macro modification
+
+v1.9.0  More localization fixes, fix for wandering plus on Abilities/Friends tabs, added buttons to send item descriptions to chat

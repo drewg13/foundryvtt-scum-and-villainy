@@ -71,6 +71,13 @@
 	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
     url('assets/brushed_metal.jpg') repeat;
 }
+.chat-item img {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+}
 .dice-tooltip .dice-rolls .roll.savd6 {
 	background: url('assets/icons/d6-black.svg');
 	color: var(--almost_white);
@@ -418,9 +425,6 @@
 }
 * #faction-items .item-name {
   width: 120px;
-}
-* #all-items .item .item-body {
-	max-width: 15rem;
 }
 * #friend-list .item .item-body {
 	margin-left: 20px;
@@ -1045,7 +1049,7 @@
 }
 * .item .ship-body,
 * .item .item-body {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 * .item .ship-body *,
 * .item .item-body * {
@@ -1056,7 +1060,7 @@
   text-align: justify;
 }
 * #all-items .item div {
-	flex-grow: 0;
+	flex-grow: 4;
 }
 * .item div {
   flex-grow: 3;

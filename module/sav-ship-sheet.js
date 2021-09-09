@@ -69,6 +69,13 @@ export class SaVShipSheet extends SaVSheet {
       element.slideUp(200, () => this.render(false));
     });
 
+    // Post item to chat
+    html.find(".item-post").click((ev) => {
+      const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
+      item.sendToChat();
+    });
+
     // Render XP Triggers sheet
     html.find('.xp-triggers').click(ev => {
       let itemId = this.actor.items.filter( i => i.type === "crew_type" )[0]?.id;

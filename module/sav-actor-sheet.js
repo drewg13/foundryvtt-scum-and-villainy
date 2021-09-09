@@ -130,6 +130,13 @@ export class SaVActorSheet extends SaVSheet {
       item.sheet.render(true);
     });
 
+    // Post item to chat
+    html.find(".item-post").click((ev) => {
+      const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
+      item.sendToChat();
+    });
+
 	  // Update Ship
     html.find('.ship-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");

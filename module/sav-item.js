@@ -87,4 +87,17 @@ export class SaVItem extends Item {
 		  data.status.value = status;
 	  }
   };
+
+  async sendToChat() {
+    const itemData = this.data.toObject();
+    if (itemData.img.includes("/mystery-man")) {
+      itemData.img = null;
+    }
+    const html = await renderTemplate("systems/scum-and-villainy/templates/items/chat-item.html", itemData);
+    const chatData = {
+      user: game.userId,
+      content: html,
+    };
+    const message = await ChatMessage.create(chatData);
+  }
 }

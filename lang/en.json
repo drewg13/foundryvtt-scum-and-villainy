@@ -3,6 +3,7 @@
   "BITD.Heritage": "Heritage",
   "BITD.Background": "Background",
   "BITD.TitleDeleteItem": "Delete item",
+  "BITD.TitlePostItem": "Post item",
   "BITD.Vice": "Vice",
   "BITD.Vices": "Vice(s)",
   "BITD.Class": "Class",
@@ -117,7 +118,6 @@
   "BITD.CrewExpClue1": "At the end of each session, for each item below, mark 1 xp (or instead mark 2xp if that item occurred multiple times).",
   "BITD.SpecialAbilities": "Special Abilities",
   "BITD.AddUpgrades": "Default upgrades/gear to add to sheet during creation",
-
 
   "BITD.Roll": "Roll",
   "BITD.RollFailure": "Failure",
