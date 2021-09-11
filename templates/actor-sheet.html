@@ -162,38 +162,62 @@
     </div>
 
     <div id="trauma-list">
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.cold" value="cold" {{checked data.trauma.list.cold}}>
-        <span class="checkmark">{{localize "BITD.TraumaCold"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaColdTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.haunted" value="haunted" {{checked data.trauma.list.haunted}}>
-        <span class="checkmark">{{localize "BITD.TraumaHaunted"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaHauntedTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.obsessed" value="obsessed" {{checked data.trauma.list.obsessed}}>
-        <span class="checkmark">{{localize "BITD.TraumaObsessed"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaObsessedTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.paranoid" value="paranoid" {{checked data.trauma.list.paranoid}}>
-        <span class="checkmark">{{localize "BITD.TraumaParanoid"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaParanoidTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.reckless" value="reckless" {{checked data.trauma.list.reckless}}>
-        <span class="checkmark">{{localize "BITD.TraumaReckless"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaRecklessTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.soft" value="soft" {{checked data.trauma.list.soft}}>
-        <span class="checkmark">{{localize "BITD.TraumaSoft"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaSoftTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.unstable" value="unstable" {{checked data.trauma.list.unstable}}>
-        <span class="checkmark">{{localize "BITD.TraumaUnstable"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaUnstableTip"}}}</span></span>
-      </label>
-      <label class="tooltip">
-        <input type="checkbox" name="data.trauma.list.vicious" value="vicious" {{checked data.trauma.list.vicious}}>
-        <span class="checkmark">{{localize "BITD.TraumaVicious"}}<span class="tooltiptext bottom">{{{localize "BITD.TraumaViciousTip"}}}</span></span>
-      </label>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaColdTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.cold" value="cold" {{checked data.trauma.list.cold}}>
+          <span class="checkmark">{{localize "BITD.TraumaCold"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaHauntedTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.haunted" value="haunted" {{checked data.trauma.list.haunted}}>
+          <span class="checkmark">{{localize "BITD.TraumaHaunted"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaObsessedTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.obsessed" value="obsessed" {{checked data.trauma.list.obsessed}}>
+          <span class="checkmark">{{localize "BITD.TraumaObsessed"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaParanoidTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.paranoid" value="paranoid" {{checked data.trauma.list.paranoid}}>
+          <span class="checkmark">{{localize "BITD.TraumaParanoid"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaRecklessTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.reckless" value="reckless" {{checked data.trauma.list.reckless}}>
+          <span class="checkmark">{{localize "BITD.TraumaReckless"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaSoftTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.soft" value="soft" {{checked data.trauma.list.soft}}>
+          <span class="checkmark">{{localize "BITD.TraumaSoft"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaUnstableTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.unstable" value="unstable" {{checked data.trauma.list.unstable}}>
+          <span class="checkmark">{{localize "BITD.TraumaUnstable"}}</span>
+        </label>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext bottom">{{{localize "BITD.TraumaViciousTip"}}}</span>
+        <label>
+          <input type="checkbox" name="data.trauma.list.vicious" value="vicious" {{checked data.trauma.list.vicious}}>
+          <span class="checkmark">{{localize "BITD.TraumaVicious"}}</span>
+        </label>
+      </div>
     </div>
 
   </div>
