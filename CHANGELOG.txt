@@ -113,3 +113,5 @@ v1.9.2  One more localization fix
 v1.9.3  Triple-brace item description fields
 
 v1.9.4  Fix Trauma tooltip z-indexing
+
+1.10.0  Add system settings to modify XP bar sizes for newly created actors, add macro for modifying existing actors (thanks again to brunocalado!)

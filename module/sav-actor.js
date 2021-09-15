@@ -55,6 +55,38 @@ export class SaVActor extends Actor {
   /* -------------------------------------------- */
 
   /** @override */
+  async _preCreate( createData, options, userId ) {
+    await super._preCreate( createData, options, userId );
+    const updateData = {};
+
+    if( createData.type === "character" ) {
+      const playbookXP = game.settings.get( "scum-and-villainy", "defaultPlaybookXPBarSize" );
+      const attributeXP = game.settings.get( "scum-and-villainy", "defaultAttributeXPBarSize" );
+
+      if( playbookXP ) {
+        updateData['data.experienceMax'] = playbookXP;
+      }
+      if( attributeXP ) {
+        const attributes = Object.keys( game.system.model.Actor.character.attributes );
+        attributes.forEach( a => updateData['data.attributes.'+ a + '.expMax'] = attributeXP );
+      }
+    }
+
+    if( createData.type === "ship" ) {
+      const crewXP = game.settings.get( "scum-and-villainy", "defaultCrewXPBarSize" );
+
+      if( crewXP ) {
+        updateData['data.crew_experienceMax'] = crewXP;
+      }
+
+    }
+
+    await this.data.update( updateData );
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
   prepareDerivedData() {
     const actorData = this.data;
     const data = actorData.data;
