@@ -2,7 +2,7 @@
   "ACTOR.TypeCharacter": "Character",
   "ACTOR.TypeShip": "Ship",
   "ACTOR.TypeUniverse": "Universe",
-  "ACTOR.Type🕛clock": "🕛 Clock",
+  "ACTOR.Type🕛 Clock": "🕛 Clock",
   "ITEM.TypeItem": "Item",
   "ITEM.TypeClass": "Class",
   "ITEM.TypeAbility": "Ability",
