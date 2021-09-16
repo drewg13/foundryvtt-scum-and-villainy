@@ -186,12 +186,14 @@
   justify-content: space-between;
 }
 * .label-stripe .hoverlink {
+  padding-top: 5px;
   cursor: pointer;
   transition: filter 0.1s;
 }
 * .label-stripe .hoverlink:hover {
   filter: brightness(0.8);
   opacity: 0.9;
+  color:red;
 }
 * .label-stripe-red {
   text-transform: uppercase;
@@ -597,6 +599,17 @@
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
+}
+* .teeth-experience-red span {
+  margin-right: 5px;
+  padding-top: 5px;
+}
+* .teeth-experience-red span.hover {
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* .teeth-experience-red span.hover:hover {
+  color:red;
 }
 * .teeth-experience-red label:last-of-type,
 * .teeth-experience label:last-of-type {

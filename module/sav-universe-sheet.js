@@ -62,5 +62,41 @@ export class SaVUniverseSheet extends SaVSheet {
 			}
       element.slideUp(200, () => this.render(false));
     });
+
+    // Roll on Wanted Table
+    html.find('.wanted').click( async (ev) => {
+      const element = $(ev.currentTarget);
+      const value = element.data("value");
+      let roll_compendiums;
+      let wanted_compendiums;
+      if( game.majorVersion > 7 ) {
+        roll_compendiums = game.packs.filter( p => p.documentName === 'RollTable');
+        wanted_compendiums = await roll_compendiums.filter( p => p.metadata.label === 'Wanted Tables' )[0].getDocuments();
+      } else {
+        roll_compendiums = game.packs.filter( p => p.entity === 'RollTable');
+        wanted_compendiums = await roll_compendiums.filter( p => p.metadata.label === 'Wanted Tables' )[0].getContent();
+      }
+
+      if( value < 4 ){
+        let tableName = 'Wanted ' + value.toString();
+        let table = wanted_compendiums.filter( p => p.data['name'] === tableName )[0];
+
+        if (!table) {
+          ui.notifications.warn(`Table ${tableName} not found.`, {});
+          return;
+        }
+        await table.draw();
+      } else {
+        let tableName = 'Wanted 3';
+        let table = wanted_compendiums.filter( p => p.data['name'] === tableName )[0];
+
+        if (!table) {
+          ui.notifications.warn(`Table ${tableName} not found.`, {});
+          return;
+        }
+        let r = new Roll("6")
+        await table.draw({roll: r});
+      }
+    });
 	}
 }

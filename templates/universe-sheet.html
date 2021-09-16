@@ -30,13 +30,13 @@
 		    {{#if (eq system.type "star_system")}}
 		      <div id="systems-tab" class="tab flex-vertical" data-tab="{{system.name}}">
 
-  		      <div id="system-label" class="label-stripe item tooltip" data-item-id="{{system._id}}">
-               <div class="item-body hoverlink">
-                {{system.name}}
+  		      <div id="system-label" class="label-stripe item" data-item-id="{{system._id}}">
+               <div class="item-body hoverlink tooltip">
+                <span>{{system.name}}</span>
                 <span class="tooltiptext">{{{localize system.data.description}}}</span>
               </div>
 		          <div id="system-heat" class="teeth-experience-red" style="position: float !important;">
-                <label for="system-{{id}}-heat-0">{{localize "BITD.Heat"}}</label>
+                <span>{{localize "BITD.Heat"}}</span>
                 <label for="system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 		  	        {{#multiboxes system.data.heat.value}}
                   <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="0" type="radio" id="system-{{id}}-heat-0" value="0" dtype="Radio">
@@ -47,7 +47,7 @@
                 {{/multiboxes}}
               </div>
 		          <div id="system-wanted" class="teeth-experience-red">
-			          <label for="system-{{id}}-wanted-0">{{localize "BITD.Wanted"}}</label>
+			          <span class="hover wanted" data-value="{{system.data.wanted.value}}">{{localize "BITD.Wanted"}}</span>
                 <label for="system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 			          {{#multiboxes system.data.wanted.value}}
                   <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="0" type="radio" id="system-{{id}}-wanted-0" value="0" dtype="Radio">

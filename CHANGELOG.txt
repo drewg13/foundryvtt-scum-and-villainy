@@ -119,3 +119,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.10.1  Additional localization fixes
 
 1.10.2  Localization fixes from brunocalado and mclemente, fix for faction goal clocks on newly created factions
+
+1.11.0  Add rolling Engagement feature from Wanted link on Universe sheet (suggested by brunocalado)

@@ -16,6 +16,8 @@ You DO NOT need to import any items out of the compendiums in order to use them.
 - Forien's Easy Polls (for helping players make a final decision)
 - The Furnace (for advanced macros)
 - Tabletop RPG Music (some good sci-fi ambience)
+- For full-system Brazilian Portuguese language translation from brunocalado
+  https://github.com/brunocalado/scum-and-villainy-pt-br
 
 
 ## Usage
