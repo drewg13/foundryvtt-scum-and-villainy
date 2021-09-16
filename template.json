@@ -371,7 +371,7 @@
   "faction": {
     "templates": ["default"],
 	"type": "",
-	"tier": 0,
+	"tier": "1",
 	"goal": "",
 	"turf": "",
 	"assets": "",
@@ -381,8 +381,8 @@
 	"enemies": "",
 	"situation": "",
 	"goal_clock": {
-      "value": 0,
-      "max": 0
+      "value": "0",
+      "max": "4"
     },
 	"status": {
       "value": [4],

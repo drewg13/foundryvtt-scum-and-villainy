@@ -117,3 +117,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.10.0  Add system settings to modify XP bar sizes for newly created actors, add macro for modifying existing actors (thanks again to brunocalado!)
 
 1.10.1  Additional localization fixes
+
+1.10.2  Localization fixes from brunocalado and mclemente, fix for faction goal clocks on newly created factions
