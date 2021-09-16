@@ -20,6 +20,13 @@ export class SaVItem extends Item {
          await actor.deleteEmbeddedDocuments( "Item", removeItems );
        }
      }
+		 
+		if ( this.type === "star_system" ) {
+      this.data.update({img: "systems/scum-and-villainy/styles/assets/icons/orbital.png"});
+    }
+		if ( this.type === "planet" ) {
+      this.data.update({img: "systems/scum-and-villainy/styles/assets/icons/moon-orbit.png"});
+    }
    }
 
    /* -------------------------------------------- */
