@@ -67,19 +67,16 @@ export class SaVUniverseSheet extends SaVSheet {
     html.find('.wanted').click( async (ev) => {
       const element = $(ev.currentTarget);
       const value = element.data("value");
-      let roll_compendiums;
       let wanted_compendiums;
       if( game.majorVersion > 7 ) {
-        roll_compendiums = game.packs.filter( p => p.documentName === 'RollTable');
-        wanted_compendiums = await roll_compendiums.filter( p => p.metadata.label === 'Wanted Tables' )[0].getDocuments();
+        wanted_compendiums = await game.packs.filter( p => ( p.metadata.label === 'Wanted Tables' ) && ( p.documentName === 'RollTable' ) )[0].getDocuments();
       } else {
-        roll_compendiums = game.packs.filter( p => p.entity === 'RollTable');
-        wanted_compendiums = await roll_compendiums.filter( p => p.metadata.label === 'Wanted Tables' )[0].getContent();
+        wanted_compendiums = await game.packs.filter( p => ( p.metadata.label === 'Wanted Tables' ) && ( p.entity === 'RollTable' ) )[0].getContent();
       }
 
       if( value < 4 ){
         let tableName = 'Wanted ' + value.toString();
-        let table = wanted_compendiums.filter( p => p.data['name'] === tableName )[0];
+        let table = wanted_compendiums.filter( p => p.data.name === tableName )[0];
 
         if (!table) {
           ui.notifications.warn(`Table ${tableName} not found.`, {});
@@ -88,7 +85,7 @@ export class SaVUniverseSheet extends SaVSheet {
         await table.draw();
       } else {
         let tableName = 'Wanted 3';
-        let table = wanted_compendiums.filter( p => p.data['name'] === tableName )[0];
+        let table = wanted_compendiums.filter( p => p.data.name === tableName )[0];
 
         if (!table) {
           ui.notifications.warn(`Table ${tableName} not found.`, {});

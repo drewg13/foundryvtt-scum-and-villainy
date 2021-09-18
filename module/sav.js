@@ -329,11 +329,16 @@ Hooks.on("deleteOwnedItem", async (parent_entity, child_data, options, userId) =
 
 // getSceneControlButtons
 Hooks.on("renderSceneControls", async (app, html) => {
-  let dice_roller = $('<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>');
+  let dice_roller = $( '<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>' );
   dice_roller.on( "click", function() {
     simpleRollPopup();
   })
-  html.append(dice_roller);
+  if( game.majorVersion === 9 ) {
+    console.log( html );
+    html.children().append( dice_roller );
+  } else {
+    html.append( dice_roller );
+  }
 });
 
 //For Clocks UI
