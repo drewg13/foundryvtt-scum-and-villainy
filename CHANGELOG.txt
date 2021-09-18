@@ -123,3 +123,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.11.0  Add rolling Entanglement feature from Wanted link on Universe sheet (suggested by brunocalado)
 
 1.11.1  Fix for V9p2
+
+1.11.2  Fix for multiple Fortune roll controls in sidebar

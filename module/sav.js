@@ -334,8 +334,7 @@ Hooks.on("renderSceneControls", async (app, html) => {
     simpleRollPopup();
   })
   if( game.majorVersion === 9 ) {
-    console.log( html );
-    html.children().append( dice_roller );
+    html.children().first().append( dice_roller );
   } else {
     html.append( dice_roller );
   }
@@ -348,6 +347,7 @@ Hooks.once("init", () => {
 
 Hooks.on("getSceneControlButtons", async (controls) => {
   await ClockTiles.getSceneControlButtons(controls);
+  console.log(controls);
 });
 
 Hooks.on("renderTileHUD", async (hud, html, tile) => {
