@@ -347,7 +347,6 @@ Hooks.once("init", () => {
 
 Hooks.on("getSceneControlButtons", async (controls) => {
   await ClockTiles.getSceneControlButtons(controls);
-  console.log(controls);
 });
 
 Hooks.on("renderTileHUD", async (hud, html, tile) => {
