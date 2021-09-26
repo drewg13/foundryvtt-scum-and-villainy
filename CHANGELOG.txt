@@ -127,3 +127,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.11.2  Fix for multiple Fortune roll controls in sidebar
 
 1.12.0  Added a Macro for instant Jobs -> Journal Entries from brunocalado and fixed main Job Roll Table
+
+1.12.1  Fix ship type terminology
