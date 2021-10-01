@@ -127,7 +127,7 @@ export class SaVSheet extends ActorSheet {
 	    }
     });
 
-    html += `</div>`;
+    html += `</div><br><br><br>`;
 
     let options = {
       // width: "500"

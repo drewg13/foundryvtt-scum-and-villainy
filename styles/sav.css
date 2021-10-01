@@ -131,6 +131,9 @@
   display: flex;
   flex-direction: column;
 }
+* .inline {
+  display: inline-block;
+}
 * .black-label {
   background-color: #191813;
   color: #EEEFFF;
@@ -438,7 +441,8 @@
 * #faction-items .item-body,
 * #loadout .item-body,
 * #upgrades .item-body,
-* #abilities .item-body {
+* #abilities .item-body,
+* #system-label .item-body {
   width: auto;
 }
 * #planet-list .item-description {
@@ -1063,6 +1067,7 @@
 * .item .ship-body,
 * .item .item-body {
   margin-bottom: 5px;
+  margin-right: 5px;
 }
 * .item .ship-body *,
 * .item .item-body * {
@@ -1415,6 +1420,10 @@
 }
 * .tooltip .tooltiptext.bottom {
   top: 105%;
+  right: 75%;
+}
+* .tooltip .tooltiptext.top {
+  bottom: 105%;
   right: 75%;
 }
 * .tooltip:hover .tooltiptext {

@@ -113,6 +113,7 @@
   "BITD.Flaws": "Flaws",
   "BITD.Scale": "Scale",
   "BITD.Quality": "Quality",
+  "BITD.ClassExpClue": "Class XP Trigger",
   "BITD.ClassExpClue1": "Every time you roll a desperate action, mark xp in that action's attribute.",
   "BITD.ClassExpClue2": "You expressed your beliefs, drives, heritage, or background.",
   "BITD.ClassExpClue3": "You struggled with issues from your vice or traumas during the session.",

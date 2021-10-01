@@ -63,6 +63,13 @@ export class SaVUniverseSheet extends SaVSheet {
       element.slideUp(200, () => this.render(false));
     });
 
+    // Post item to chat
+    html.find(".item-post").click((ev) => {
+      const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
+      item.sendToChat();
+    });
+
     // Roll on Wanted Table
     html.find('.wanted').click( async (ev) => {
       const element = $(ev.currentTarget);
