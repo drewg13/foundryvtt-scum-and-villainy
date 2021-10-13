@@ -13,6 +13,7 @@ import { SaVActor } from "./sav-actor.js";
 import { SaVItem } from "./sav-item.js";
 import { SaVItemSheet } from "./sav-item-sheet.js";
 import { SaVActorSheet } from "./sav-actor-sheet.js";
+import { SaVNPCSheet } from "./sav-npc-sheet.js";
 import { SaVShipSheet } from "./sav-ship-sheet.js";
 import { SaVUniverseSheet } from "./sav-universe-sheet.js";
 import * as migrations from "./migration.js";
@@ -63,6 +64,7 @@ Hooks.once("init", async function() {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("scum-and-villainy", SaVActorSheet, { types: ["character"], makeDefault: true });
+  Actors.registerSheet("scum-and-villainy", SaVNPCSheet, { types: ["npc"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVShipSheet, { types: ["ship"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true});
@@ -237,7 +239,9 @@ Hooks.once("init", async function() {
    * Create appropriate clock
    */
 
-  Handlebars.registerHelper('sav-clock', function(parameter_name, type, current_value, uniq_id) {
+  Handlebars.registerHelper('sav-clock', function(parameter_name, type, current_value, uniq_id, theme ) {
+
+    theme = typeof theme !== 'object' ? theme: game.system.savclocks.themes[game.settings.get("scum-and-villainy", "defaultClockTheme")];
 
     let html = '';
 
@@ -251,7 +255,7 @@ Hooks.once("init", async function() {
 
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-    html += `<div id="sav-clock-${uniq_id}" class="sav-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('/systems/scum-and-villainy/themes/blue/${type}clock_${current_value}.webp');">`;
+    html += `<div id="sav-clock-${uniq_id}" class="sav-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('/systems/scum-and-villainy/themes/${theme}/${type}clock_${current_value}.webp');">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked="checked"' : '';
     html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" name="${parameter_name}" ${zero_checked}>`;

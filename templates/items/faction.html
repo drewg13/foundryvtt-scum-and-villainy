@@ -13,11 +13,19 @@
     <textarea rows="1" name="data.type">{{data.type}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Tier"}}</label>
     <textarea rows="1" name="data.tier">{{data.tier}}</textarea>
-    <label class="label-stripe">{{localize "BITD.Goal"}}</label>
+  <label class="label-stripe">{{localize "BITD.Goal"}}</label>
 
     <div class="flex-vertical" id="faction-goal-clock">
       <div id="faction-clock">
-        {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value item._id}}}
+        {{#if (gt data.status.value 4)}}
+          {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "blue"}}}
+        {{else}}
+          {{#if (lt data.status.value 4)}}
+            {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "red"}}}
+          {{else}}
+            {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "yellow"}}}
+          {{/if}}
+        {{/if}}
       </div>
       <div id="clock-max">
           <label>{{localize "BITD.GoalClockMax"}}:</label>

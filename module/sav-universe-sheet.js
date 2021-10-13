@@ -1,5 +1,6 @@
 
 import { SaVSheet } from "./sav-sheet.js";
+import { SaVClock } from "./sav-clock.js";
 
 /**
  * @extends {SaVSheet}
@@ -69,6 +70,25 @@ export class SaVUniverseSheet extends SaVSheet {
       const item = this.actor.items.get(element.data("itemId"));
       item.sendToChat();
     });
+
+    /** html.find("button[name=minus]").click(async (ev) => {
+      ev.preventDefault();
+      const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
+      let oldClock = new SaVClock(this.system.loadClockFromItem({ item: item }));
+
+      await this.updateClock(oldClock.decrement());
+    });
+
+    html.find("button[name=plus]").click(async (ev) => {
+      ev.preventDefault();
+      const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
+      console.log(item);
+      let oldClock = new SaVClock(this.system.loadClockFromItem({ item: item }));
+      console.log(oldClock);
+      await this.updateClock(oldClock.increment());
+    }); */
 
     // Roll on Wanted Table
     html.find('.wanted').click( async (ev) => {

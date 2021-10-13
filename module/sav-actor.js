@@ -31,7 +31,8 @@ export class SaVActor extends Actor {
         data.token.displayName = 50;
   	    break;
   	  }
-  	  case "character": {
+  	  case "character":
+      case "npc": {
   	    icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
   	    data.token.actorLink = true;
         data.token.name = data.name;

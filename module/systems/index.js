@@ -16,6 +16,15 @@ const defaultLoadClockFromActor = ({ actor }) => {
   };
 };
 
+const defaultLoadClockFromItem = ({ item }) => {
+  console.log(item);
+  return {
+    progress: item.data.data.goal_clock.value,
+    size: item.data.data.goal_clock.max,
+    theme: game.system.savclocks.themes[game.settings.get("scum-and-villainy", "defaultClockTheme")]
+  };
+};
+
 const defaultPersistClockToActor = async ({ clock }) => {
   return {
     flags: {
@@ -33,7 +42,8 @@ const defaultPersistClockToActor = async ({ clock }) => {
 export const getSystemMapping = (id) => {
   const defaultSystemConfig = {
     loadClockFromActor: defaultLoadClockFromActor,
-    persistClockToActor: defaultPersistClockToActor
+    persistClockToActor: defaultPersistClockToActor,
+    loadClockFromItem: defaultLoadClockFromItem
   };
 
   if (!SUPPORTED_SYSTEMS[id]) {

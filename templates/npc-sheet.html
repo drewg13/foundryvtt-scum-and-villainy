@@ -1,0 +1,42 @@
+<form class="{{cssClass}} actor-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+    </div>
+  </header>
+
+  <section class="flex-vertical">
+
+    <label class="label-stripe">{{localize "BITD.Description"}}</label>
+    <textarea rows="5" name="data.description">{{{data.description}}}</textarea>
+    <label class="label-stripe">{{localize "BITD.Faction"}}</label>
+    <textarea rows="1" name="data.faction">{{data.faction}}</textarea>
+    <label class="label-stripe">{{localize "BITD.Tier"}}</label>
+    <textarea rows="1" name="data.tier">{{data.tier}}</textarea>
+    <label class="label-stripe">{{localize "BITD.Goal"}}</label>
+    <div class="flex-vertical" id="faction-goal-clock">
+      <div id="faction-clock">
+        {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "blue"}}}
+      </div>
+      <div id="clock-max">
+        <label>{{localize "BITD.GoalClockMax"}}:</label>
+        <select id="max" name="data.goal_clock.max">
+          {{{size_list}}}
+        </select>
+      </div>
+    </div>
+    <textarea rows="1" name="data.goal">{{data.goal}}</textarea>
+    <div class="flex-vertical">
+      <div class="label-stripe">
+        <p>{{localize "BITD.Notes"}}</p>
+      </div>
+      {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
+      {{#if editable}}
+        <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
+      {{/if}}
+    </div>
+
+  </section>
+
+</form>

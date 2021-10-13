@@ -1,5 +1,6 @@
 {
   "ACTOR.TypeCharacter": "Character",
+  "ACTOR.TypeNpc": "NPC",
   "ACTOR.TypeShip": "Ship",
   "ACTOR.TypeUniverse": "Universe",
   "ACTOR.Type🕛 Clock": "🕛 Clock",
@@ -39,7 +40,7 @@
   "BITD.Factions": "Active Factions",
   "BITD.Notables": "Notable Locations",
   "BITD.NotableNPCs": "Notable People",
-  "BITD.GoalClockMax": "Faction Clock Size",
+  "BITD.GoalClockMax": "Clock Size",
   "BITD.Scene": "Scene",
   "BITD.Rule": "Rule",
   "BITD.Stats": "Stats",

@@ -1,5 +1,6 @@
 {
   "ACTOR.TypeCharacter": "Personagem",
+  "ACTOR.TypeNpc": "NPC",
   "ACTOR.TypeShip": "Nave",
   "ACTOR.TypeUniverse": "Universo",
   "ACTOR.Type🕛 Clock": "🕛 Relógio",
@@ -38,7 +39,7 @@
   "BITD.Factions": "Facções Ativas",
   "BITD.Notables": "Pontos de Interesse",
   "BITD.NotableNPCs": "Pessoas de Destaque",
-  "BITD.GoalClockMax": "Tamanho do Relógio de Facção",
+  "BITD.GoalClockMax": "Tamanho do Relógio",
   "BITD.Scene": "Cena",
   "BITD.Rule": "Regra",
   "BITD.Wealth": "Riqueza",

@@ -1,6 +1,6 @@
 {
 "Actor": {
-  "types": ["character", "ship", "\uD83D\uDD5B clock", "universe"],
+  "types": ["character", "npc", "ship", "\uD83D\uDD5B clock", "universe"],
   "character": {
     "alias": "",
 	"look": "",
@@ -157,6 +157,16 @@
           }
         }
       }
+    }
+  },
+  "npc": {
+    "faction": "",
+    "tier": "",
+    "description": "",
+    "notes": "",
+    "goal_clock": {
+      "value": "0",
+      "max": "4"
     }
   },
   "ship": {

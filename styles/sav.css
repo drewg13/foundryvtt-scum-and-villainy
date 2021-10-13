@@ -134,6 +134,9 @@
 * .inline {
   display: inline-block;
 }
+* .center {
+  align-items: center;
+}
 * .black-label {
   background-color: #191813;
   color: #EEEFFF;
@@ -673,6 +676,30 @@
 * #harm-armor #character-health-clock {
   margin-left: 25px;
   position: relative;
+}
+* #faction-list .clocks {
+  max-width: 180px;
+}
+* #faction-list .sav-clock {
+  width: 60px;
+  height: 60px;
+}
+* #faction-list .sav-clock label{
+  cursor: default;
+}
+* #faction-list .clock-zero-label {
+  display:none;
+}
+* div#faction-status {
+  min-width: 340px;
+}
+* div.faction-goal {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 * #harm-armor #character-health-clock .sav-clock {
   position: relative;
