@@ -124,12 +124,14 @@
 				          <div class="item-name">{{faction.name}}<span class="tooltiptext">{{{localize faction.data.description}}}</span><br>{{localize "BITD.Tier"}}: {{faction.data.tier}}</div>
                 </a>
                 <div class="flex-horizontal">
-                  <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-                  <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
+                  <p>
+                    <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+                    <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
+                  </p>
                 </div>
                 <div class="flex-horizontal clocks">
                   <div class="flex-vertical center" id="faction-goal-clock-{{id}}">
-                    <div class="flex-horizontal" id="faction-clock-{{id}}">
+                    <div class="flex-horizontal tooltip" id="faction-clock-{{id}}">
                       {{#if (gt faction.data.status.value 4)}}
                         {{{sav-clock "data.goal_clock.value" faction.data.goal_clock.max faction.data.goal_clock.value id "blue"}}}
                       {{else}}
@@ -138,6 +140,12 @@
                         {{else}}
                           {{{sav-clock "data.goal_clock.value" faction.data.goal_clock.max faction.data.goal_clock.value id "yellow"}}}
                         {{/if}}
+                      {{/if}}
+                      {{#if ../isGM}}
+                        <div class="tooltiptext faction-goal">
+                          <p>{{localize "BITD.Goal"}}:<br>
+                            {{faction.data.goal}}</p>
+                        </div>
                       {{/if}}
                       {{!--
                       {{#if ../isGM}}
@@ -153,16 +161,10 @@
                       --}}
                     </div>
                   </div>
-                  {{#if ../isGM}}
-                    <div class="faction-goal">
-                      <p>{{localize "BITD.Goal"}}:<br>
-                      {{faction.data.goal}}</p>
-                    </div>
-                  {{/if}}
                 </div>
                 <div id="faction-status">
                   <div id="faction-status-label" style="float:left; width: 10em; text-align: right; padding-right: 10px; color: var(--almost_white);">{{localize "BITD.Status"}}<br><span style="color: var(--{{#if (eq faction.data.status.value 7)}}holoblue{{/if}}{{#if (eq faction.data.status.value 6)}}holobluemed{{/if}}{{#if (eq faction.data.status.value 5)}}holobluelt{{/if}}{{#if (eq faction.data.status.value 4)}}almost_white{{/if}}{{#if (eq faction.data.status.value 3)}}redlt{{/if}}{{#if (eq faction.data.status.value 2)}}redmed{{/if}}{{#if (eq faction.data.status.value 1)}}red{{/if}}{{#if (eq faction.data.status.value 0)}}almost_white{{/if}});">{{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}</span></div>
-                  <div id="faction-status-meter" class="teeth-experience-faction" style="float:left; width: 14em;">
+                  <div id="faction-status-meter" class="teeth-experience-faction" style="float:left; width: 16em;">
                     {{#multiboxes faction.data.status.value}}
                       <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="faction-{{id}}-status-0" value="0" dtype="Radio">
                       {{#times_from_1 7}}

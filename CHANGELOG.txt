@@ -133,3 +133,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.12.2  Fixes for Universe sheet, deleting systems, modifying class XP triggers
 
 1.13.0  Add faction clocks/goals to Universe sheet, add NPC actors
+
+1.13.1  Clean up Universe sheet
