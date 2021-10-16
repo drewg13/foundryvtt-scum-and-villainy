@@ -135,3 +135,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.13.0  Add faction clocks/goals to Universe sheet, add NPC actors
 
 1.13.1  Clean up Universe sheet
+
+1.13.2  Updates for V9d1, simplified NPC sheet, remove item logic fields and functions

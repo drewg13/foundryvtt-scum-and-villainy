@@ -39,7 +39,6 @@ export class SaVItem extends Item {
        let actor = this.parent ? this.parent : null;
 
        if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
-         await SaVHelpers.callItemLogic( data, actor );
 
          if( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.data.def_abilities !== "" ) ) {
            await SaVHelpers.addDefaultAbilities( data, actor );
@@ -61,16 +60,6 @@ export class SaVItem extends Item {
 
    /* -------------------------------------------- */
 
-   /** @override */
-   async _onDelete( options, userId ) {
-     super._onDelete( options, userId );
-
-     let actor = this.parent ? this.parent : null;
-     let data = this.data;
-     if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
-       await SaVHelpers.undoItemLogic( data, actor );
-     }
-   }
 
   /** override */
   prepareData() {

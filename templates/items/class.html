@@ -21,8 +21,6 @@
     <textarea name="data.def_abilities">{{data.def_abilities}}</textarea>
 
     {{#if isGM}}
-      <div class="label-stripe">{{localize "BITD.Logic"}}</div>
-      <textarea name="data.logic">{{{data.logic}}}</textarea>
       <div class="label-stripe">{{localize "BITD.Effects"}}</div>
       <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>
     {{/if}}

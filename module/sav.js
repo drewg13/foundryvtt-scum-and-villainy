@@ -317,20 +317,6 @@ Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId
   return true;
 });
 
-Hooks.on("createOwnedItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion === 7 ) && (parent_entity.entity === "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    await SaVHelpers.callItemLogic(child_data, parent_entity);
-  }
-  return true;
-});
-
-Hooks.on("deleteOwnedItem", async (parent_entity, child_data, options, userId) => {
-  if ( ( game.majorVersion === 7 ) && (parent_entity.entity === "Actor") && (parent_entity.permission >= CONST.ENTITY_PERMISSIONS.OWNER) ) {
-    await SaVHelpers.undoItemLogic(child_data, parent_entity);
-  }
-  return true;
-});
-
 // getSceneControlButtons
 Hooks.on("renderSceneControls", async (app, html) => {
   let dice_roller = $( '<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>' );

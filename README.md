@@ -76,20 +76,6 @@ Clock Tiles
 
 Clock Tiles are useful for quick, disposable clocks you'd like to drop onto the scene but don't plan to keep around for long. Click the new Clock button in the Tiles toolbar and a new clock will be dropped into the actual middle of your scene (you may need to scroll to see it). When you select and right-click the clock you'll see a new set of controls on the left that let you switch the clock's theme, cycle through clock sizes, and increment/decrement progress on the clock.
 
-## Logic field
-
-Logic field is a json with params which allows to implement some logic when the Item of corresponding type is added or removed.
-### Example (from the Vault 1 crew upgrade)
-`{"attribute":"data.vault.max","operator":"addition","value":4,"requirement":""}`
-- `attribute` - the attribute to affect
-- `operator` - what is done to attribute
-- `value` - the value for operator
-- `requirement` - is not used
-
-### Operators list
-- `addition` - is added when item is attached and substracted when removed
-- `attribute_change` - changes the "attribute" to value and when removed - uses the "attribute_default" to restore
-
 ## Troubleshooting
 - If you can't find an item added to your sheet, refer to "All Items" tab on each sheet.
 

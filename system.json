@@ -5,14 +5,14 @@
   "authors": ["megastruktur", "Andrew Garinger [agaringer#6498]"],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "flags": {},
-  "version": "1.13.1",
+  "version": "1.13.2",
   "minimumCoreVersion": "0.7.9",
-  "compatibleCoreVersion": "9.224",
+  "compatibleCoreVersion": "9.226",
   "system": [],
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.13.1.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.13.2.zip",
   "protected": false,
   "scripts": [],
   "esmodules": [
@@ -41,6 +41,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/classes.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -49,6 +50,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/heritages.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -57,6 +59,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/vices.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -65,6 +68,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/backgrounds.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -73,6 +77,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/items.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -81,6 +86,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/abilities.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -89,6 +95,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/crew_reputation.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -97,6 +104,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/crew_types.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -105,6 +113,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/crew_upgrades.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -113,6 +122,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/crew_abilities.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -121,6 +131,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/tables.db",
       "entity": "RollTable",
+      "type": "RollTable",
       "private": false
     },
     {
@@ -129,6 +140,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/star_systems.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -137,6 +149,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/planets.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -145,6 +158,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/factions.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -153,6 +167,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/size.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     },
     {
@@ -161,6 +176,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/wanted-consequences.db",
       "entity": "JournalEntry",
+      "type": "JournalEntry",
       "private": false
     },
     {
@@ -169,6 +185,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/wanted-tables.db",
       "entity": "RollTable",
+      "type": "RollTable",
       "private": false
     },
     {
@@ -177,6 +194,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/macros.db",
       "entity": "Macro",
+      "type": "Macro",
       "private": false
     },
     {
@@ -185,6 +203,7 @@
       "system": "scum-and-villainy",
       "path": "./packs/friends.db",
       "entity": "Item",
+      "type": "Item",
       "private": false
     }
   ]
