@@ -34,7 +34,7 @@ export class SaVHelpers {
   static async addDefaultAbilities(item_data, actor) {
 
     let def_abilities = item_data.data.def_abilities || {};
-    
+
     let abil_list = def_abilities.split(', ');
     let item_type = "";
     let items_to_add = [];
@@ -226,5 +226,30 @@ export class SaVHelpers {
 
   }
 
+  /* -------------------------------------------- */
+
+  /**
+   * Creates a chat notification on a resource change
+   *
+   * @param {string} actor
+   *  actor on which change occurred
+   * @param {string} resource
+   *  localized resource name
+   * @param {int} oldValue
+   *  original resource value
+   * @param {int} newValue
+   *  new resource value
+   */
+  static chatNotify( actor, resource, oldValue, newValue ) {
+    let change;
+    if ( newValue > oldValue ) {
+      change = '+' + String (newValue - oldValue);
+    } else {
+      change = String (newValue - oldValue);
+    }
+    let color = newValue >= oldValue ? 'green' : 'red'
+    let message = `<div class="resource-chat-notification">${actor}<table><tr><td>${resource}</td><td class="value">${oldValue}</td><td class="arrow"><i class="fas fa-arrow-right"></i></td><td class="value"><span class="${color}">${newValue}</span></td><td><span class="small">(${change})</span></td></tr></table></div>`;
+    ChatMessage.create({content: message});
+  }
 
 }

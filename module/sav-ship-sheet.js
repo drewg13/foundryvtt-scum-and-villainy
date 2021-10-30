@@ -88,6 +88,32 @@ export class SaVShipSheet extends SaVSheet {
       item?.sheet.render(true, {"renderContext": "xp"});
     });
 
+    html.find('.coins').click(ev => {
+      let actor = this.actor.name;
+      let newValue = ev.target.value;
+      let oldValue, resource;
+      switch( ev.target.name ) {
+        case "data.coins": {
+          resource = game.i18n.localize("BITD.Coin");
+          oldValue = this.actor.data.data.coins;
+          break;
+        }
+        case "data.debt": {
+          resource = game.i18n.localize("BITD.Debt");
+          oldValue = this.actor.data.data.debt;
+          break;
+        }
+        case "data.gambits.value": {
+          resource = game.i18n.localize("BITD.Gambits");
+          oldValue = this.actor.data.data.gambits.value;
+          break;
+        }
+      }
+      if ( resource !== undefined ) {
+        SaVHelpers.chatNotify(actor, resource, oldValue, newValue);
+      }
+    })
+
     // manage active effects
     html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 	}

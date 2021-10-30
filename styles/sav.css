@@ -83,6 +83,24 @@
 	color: var(--almost_white);
 	background-size: 24px 24px;
 }
+.resource-chat-notification table tr td.value {
+  font-weight: bold;
+  width: 25px;
+  text-align: center;
+}
+.resource-chat-notification table tr td.arrow {
+  width: 20px;
+  text-align: center;
+}
+.resource-chat-notification table tr td .small {
+  font-size: 10px;
+}
+.resource-chat-notification table tr td .green {
+  color: green;
+}
+.resource-chat-notification table tr td .red {
+  color: red;
+}
 * .dialog-buttons {
 	margin-top: 5px;
 }
