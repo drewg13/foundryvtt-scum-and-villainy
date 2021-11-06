@@ -139,3 +139,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.13.2  Updates for V9d1, simplified NPC sheet, remove item logic fields and functions
 
 1.14.0  Adds chat notifications for changes to Ship resources
+
+1.14.1  Add setting for resource chat notifications

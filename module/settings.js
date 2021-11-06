@@ -10,7 +10,7 @@ export const registerSystemSettings = function() {
     type: Number,
     default: 0
   });
-  
+
   game.settings.register("scum-and-villainy", "defaultClockTheme", {
     name: "BITD.ClockSettingDefaultTheme",
     hint: "BITD.ClockSettingDefaultThemeHint",
@@ -62,5 +62,14 @@ export const registerSystemSettings = function() {
       step: 1
     },
     default: 8
+  });
+
+  game.settings.register("scum-and-villainy", "logResourceToChat", {
+    name: "BITD.LogResourceToChat",
+    hint: "BITD.LogResourceToChatHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true
   });
 };

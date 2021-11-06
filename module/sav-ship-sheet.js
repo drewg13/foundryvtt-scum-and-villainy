@@ -109,7 +109,7 @@ export class SaVShipSheet extends SaVSheet {
           break;
         }
       }
-      if ( resource !== undefined ) {
+      if ( resource !== undefined && game.settings.get("scum-and-villainy", "logResourceToChat") ) {
         SaVHelpers.chatNotify(actor, resource, oldValue, newValue);
       }
     })
