@@ -14,10 +14,14 @@ You DO NOT need to import any items out of the compendiums in order to use them.
 - Ernie's Modern UI
 - DSN (with chrome dice!)
 - Forien's Easy Polls (for helping players make a final decision)
-- The Furnace (for advanced macros)
+- ~~The Furnace (for advanced macros)~~  Advanced Macros
+- Pointers and Pings
 - Tabletop RPG Music (some good sci-fi ambience)
 - For full-system Brazilian Portuguese language translation from brunocalado
   https://github.com/brunocalado/scum-and-villainy-pt-br
+- For full-system Spanish language translation from jesberpen
+  https://github.com/jesberpen/scum-and-villainy-es-es
+  
 
 
 ## Usage
