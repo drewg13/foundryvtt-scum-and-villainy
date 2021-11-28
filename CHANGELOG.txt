@@ -141,3 +141,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.0  Adds chat notifications for changes to Ship resources
 
 1.14.1  Add setting for resource chat notifications
+
+1.14.2  Fix for loss of unique id on coin/stash fields

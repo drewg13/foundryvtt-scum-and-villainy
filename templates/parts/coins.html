@@ -10,8 +10,8 @@
       {{#multiboxes data.coins}}
         <input type="radio" id="coins-{{actor._id}}-hands-0" name="data.coins" value="0" checked="checked">
         {{#times_from_1 4}}
-          <input type="radio" id="coins-{{actor._id}}-hands-{{this}}" name="data.coins" value="{{this}}">
-          <label for="coins-{{actor._id}}-hands-{{this}}"></label>
+          <input type="radio" id="coins-{{../actor._id}}-hands-{{this}}" name="data.coins" value="{{this}}">
+          <label for="coins-{{../actor._id}}-hands-{{this}}"></label>
         {{/times_from_1}}
       {{/multiboxes}}
     </div>
@@ -26,8 +26,8 @@
       {{#multiboxes data.coins_stashed}}
         <input type="radio" id="coins-{{actor._id}}-stashed-0" name="data.coins_stashed" value="0" checked="checked">
         {{#times_from_1 40}}
-          <input type="radio" id="coins-{{actor._id}}-stashed-{{this}}" name="data.coins_stashed" value="{{this}}">
-          <label for="coins-{{actor._id}}-stashed-{{this}}"></label>
+          <input type="radio" id="coins-{{../actor._id}}-stashed-{{this}}" name="data.coins_stashed" value="{{this}}">
+          <label for="coins-{{../actor._id}}-stashed-{{this}}"></label>
         {{/times_from_1}}
       {{/multiboxes}}
     </div>
