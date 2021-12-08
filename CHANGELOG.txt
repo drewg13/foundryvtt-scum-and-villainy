@@ -143,3 +143,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.1  Add setting for resource chat notifications
 
 1.14.2  Fix for loss of unique id on coin/stash fields
+
+1.14.3  Fix for Save to Journal Entry in Jobs macro when chat log is popped out
