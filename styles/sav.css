@@ -136,6 +136,9 @@
 * nav {
   margin-bottom: 10px;
 }
+* nav.tabs > * {
+  flex: 1;
+}
 * .editor,
 * .editor-content {
   min-height: 280px;
@@ -143,6 +146,7 @@
 * .flex-horizontal {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 * .flex-vertical {
