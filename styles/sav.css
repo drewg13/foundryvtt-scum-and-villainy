@@ -51,6 +51,9 @@
 * ul {
   list-style: none;
 }
+* .sheet .editor-content ul {
+  list-style: unset;
+}
 * form.actor-sheet {
   padding: 20px;
 }
@@ -146,7 +149,6 @@
 * .flex-horizontal {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 * .flex-vertical {
@@ -1443,6 +1445,7 @@
 * #items-to-add input[type=radio]:checked + label,
 * #items-to-add input[type=checkbox]:checked + label {
   font-weight: bolder;
+  text-transform: uppercase;
 }
 * .tooltip {
   position: relative;

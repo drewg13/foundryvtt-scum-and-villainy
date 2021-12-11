@@ -276,6 +276,9 @@
   "BITD.AddUpgrade": "Add Upgrade",
   "BITD.AddFriend": "Add Friend",
 
+  "BITD.AbilityLegend1": "* = Starting Ability, not eligible for Veteran upgrade",
+  "BITD.AbilityLegend2": "^ = recommended first choice",
+
   "BITD.item": "Item",
   "BITD.class": "Class",
   "BITD.ability": "Ability",

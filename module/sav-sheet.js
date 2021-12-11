@@ -41,16 +41,15 @@ export class SaVSheet extends ActorSheet {
 
 	  let items = await SaVHelpers.getAllItemsByType(item_type, game);
     let html = `<div id="items-to-add">`;
-	  let actor_flags = this.actor.getFlag( "scum-and-villainy", "ship" ) || [];
+		let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
+		let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
 
 	  let stun_weapons = 0;
-	  actor_flags.forEach(i => {
-      if (i.data.installs.stun_inst === 1) {
-        stun_weapons = 1;
-      } else {
-		    stun_weapons = 0;
-	    }
-	  });
+    if (actor_flags?.data.installs.stun_inst === 1) {
+      stun_weapons = 1;
+    } else {
+		  stun_weapons = 0;
+	  }
 
 		let main_systems = ["Engines", "Hull", "Comms", "Weapons"];
 		let overloaded = {};
@@ -127,7 +126,11 @@ export class SaVSheet extends ActorSheet {
 	    }
     });
 
-    html += `</div><br><br><br>`;
+		if (item_type === "ability") {
+			html += `</div><br>${game.i18n.localize("BITD.AbilityLegend1")}<br>${game.i18n.localize("BITD.AbilityLegend2")}<br>`;
+		} else {
+			html += `</div><br><br><br>`;
+		}
 
     let options = {
       // width: "500"

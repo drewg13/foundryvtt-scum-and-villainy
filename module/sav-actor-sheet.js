@@ -38,8 +38,8 @@ export class SaVActorSheet extends SaVSheet {
       data.data = actorData.data;
     }
 
-    let actor_flags = this.actor.getFlag("scum-and-villainy", "ship") || [];
-
+    let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
+    let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
     // Calculate Load
     let loadout = 0;
     data.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.data.load ) : 0 } );
@@ -59,41 +59,39 @@ export class SaVActorSheet extends SaVSheet {
 
 	//look for abilities in assigned ship flags and set actor results
 
-	actor_flags.forEach( i => {
-	  if ( i.data.installs.loaded_inst === 1 ) {
-	    data.data.loadout.heavy++;
-		  data.data.loadout.normal++;
-		  data.data.loadout.light++;
-    } else {
-		  data.data.loadout.heavy = data.data.loadout.heavy_default;
-		  data.data.loadout.normal = data.data.loadout.normal_default;
-		  data.data.loadout.light = data.data.loadout.light_default;
-	  }
+	if ( actor_flags?.data.installs.loaded_inst === 1 ) {
+	  data.data.loadout.heavy++;
+	  data.data.loadout.normal++;
+	  data.data.loadout.light++;
+  } else {
+	  data.data.loadout.heavy = data.data.loadout.heavy_default;
+	  data.data.loadout.normal = data.data.loadout.normal_default;
+	  data.data.loadout.light = data.data.loadout.light_default;
+	}
 
-	  if ( i.data.installs.stress_max_up === 1 ) {
-      data.data.stress.max++;
-    } else {
-		  data.data.stress.max = data.data.stress.max_default;
-	  }
+	if ( actor_flags?.data.installs.stress_max_up === 1 ) {
+    data.data.stress.max++;
+  } else {
+	  data.data.stress.max = data.data.stress.max_default;
+	}
 
-	  if ( i.data.installs.trauma_max_up === 1 ) {
-      data.data.trauma.max++;
-    } else {
-		  data.data.trauma.max = data.data.trauma.max_default;
-	  }
+	if ( actor_flags?.data.installs.trauma_max_up === 1 ) {
+    data.data.trauma.max++;
+  } else {
+	  data.data.trauma.max = data.data.trauma.max_default;
+	}
 
-	  if ( i.data.installs.stun_inst === 1 ) {
-      data.data.stun_weapons = 1;
-	  } else {
-		  data.data.stun_weapons = 0;
-	  }
+	if ( actor_flags?.data.installs.stun_inst === 1 ) {
+    data.data.stun_weapons = 1;
+	} else {
+	  data.data.stun_weapons = 0;
+	}
 
-	  if ( i.data.installs.forged_inst === 1 ) {
-      data.data.forged = 1;
-	  } else {
-		  data.data.forged = 0;
-	  }
-  });
+	if ( actor_flags?.data.installs.forged_inst === 1 ) {
+    data.data.forged = 1;
+	} else {
+	  data.data.forged = 0;
+	}
 
 	//set encumbrance level
   if ( data.data.loadout.heavy > data.data.loadout.heavy_default ) {

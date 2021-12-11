@@ -126,12 +126,11 @@ export class SaVActor extends Actor {
 	      for (const a in this.data.data.attributes) {
           dice_amount[a] = 0;
 		      // Add +1d to resistance rolls only for Forged item on ship
-		      let actor_flags = this.getFlag("scum-and-villainy", "ship") || [];
-		      actor_flags.forEach(i => {
-		        if (i.data.installs.forged_inst === 1) {
-		          dice_amount[a]++;
-		        }
-		      });
+		      let ship_actors = this.getFlag("scum-and-villainy", "ship") || [];
+          let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
+		      if (actor_flags?.data.installs.forged_inst === 1) {
+		        dice_amount[a]++;
+		      }
 
 		      for (const s in this.data.data.attributes[a].skills) {
 		        dice_amount[s] = parseInt(this.data.data.attributes[a].skills[s]['value'][0])
@@ -379,10 +378,10 @@ export class SaVActor extends Actor {
   }
 
   /* -------------------------------------------- */
-  
+
   /**
    * Change dice total on display
-   * @param {*} event 
+   * @param {*} event
    */
   async _onDiceModChange( event ) {
     let mod = this.value;
