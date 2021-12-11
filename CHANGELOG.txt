@@ -150,3 +150,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 
 1.14.5  Fixes to ship items that affect character sheet UI ((St) Thrillseekers, etc.), add UPPERCASE to highlight choices in Add popups, fix missing bullets from ul, added class starting ability and recommended indicators and legend
 
+1.14.6  Improved UI for Forged indicator on character sheet
+

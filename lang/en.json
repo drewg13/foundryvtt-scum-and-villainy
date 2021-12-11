@@ -191,6 +191,8 @@
 
   "BITD.RollZeromode": "Zero Dice rolled - rolling two dice and taking the lowest",
 
+  "BITD.Forged": "From Forged In Fire ship special ability",
+
   "BITD.PositionControlled": "Controlled",
   "BITD.PositionRisky": "Risky",
   "BITD.PositionDesperate": "Desperate",

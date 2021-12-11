@@ -3,7 +3,12 @@
     <div id="attributes-{{attribute_name}}" class="attribute">
       <div id="attributes-{{attribute_name}}-title" class="attributes-exp">
         <div class="stripe">
-          <a class="attribute-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}<span class="tooltiptext left">{{{localize attribute.tip}}}</span>{{#if (eq ../data.forged 1)}}<span style="color: red;"> (+1)</span>{{/if}}</a>
+          <a class="attribute-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}
+            <span class="tooltiptext left">{{{localize attribute.tip}}}</span>
+          </a>
+          {{#if (eq ../data.forged 1)}}
+            <span class="tooltip" style="font-size: 12px;"> (+1)<span class="tooltiptext left">{{{localize "BITD.Forged"}}}</span></span>
+          {{/if}}
         </div>
         <div class="stripe-tooth-body-blue">
           {{#multiboxes attribute.exp}}
@@ -16,7 +21,7 @@
           {{/multiboxes}}
         </div>
       </div>
-    
+
       {{!-- Skills --}}
 
       {{#each attribute.skills as |skill skill_name|}}
