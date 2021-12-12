@@ -95,6 +95,7 @@
   "BITD.Description": "Description",
   "BITD.CurrLoad": "Current Load",
   "BITD.Loadout": "Loadout",
+  "BITD.Load": "Load",
   "BITD.Upgrades": "Upgrades and Gear",
   "BITD.CrewType": "Ship Type",
   "BITD.UpgradeType": "Upgrade Type",
@@ -278,8 +279,13 @@
   "BITD.AddUpgrade": "Add Upgrade",
   "BITD.AddFriend": "Add Friend",
 
-  "BITD.AbilityLegend1": "* = Starting Ability, not eligible for Veteran upgrade",
-  "BITD.AbilityLegend2": "^ = recommended first choice",
+  "BITD.StartingAbility": "Starting Ability?",
+  "BITD.RecommendedAbility": "Recommended First Ability?",
+  "BITD.StartAbility": "S",
+  "BITD.RecommAbility": "R",
+  "BITD.Info": "Info",
+  "BITD.AbilityLegend1": "S = Starting abilities, not eligible as Veteran upgrades",
+  "BITD.AbilityLegend2": "R = Recommended first abilities",
 
   "BITD.item": "Item",
   "BITD.class": "Class",

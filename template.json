@@ -273,7 +273,9 @@
     "ability": {
       "description": "",
       "class": "",
-      "price": 1
+      "price": 1,
+      "starting": false,
+      "recommended": false
     },
     "logic": {
       "logic": ""

@@ -1,7 +1,7 @@
 <form class="{{cssClass}} actor-sheet" autocomplete="off">
 
   <section class="flex-horizontal">
-	
+
     <div id="name">
       <label for="campaign-{{actor._id}}-name">{{localize "BITD.CampaignName"}}</label>
       <input type="text" id="campaign-{{actor._id}}-name" name="name" value="{{actor.name}}">
@@ -23,8 +23,8 @@
 			    {{/if}}
 		    {{/each}}
       </nav>
-	  
-	  
+
+
 	    {{!-- Planet List --}}
 		  {{#each actor.items as |system id|}}
 		    {{#if (eq system.type "star_system")}}
@@ -106,15 +106,17 @@
 	  	{{/each}}
 	  </div>
   </section>
-  
+
   <section id="factions" class="flex-horizontal">
 	  <div id="factions-section" class="flex-vertical grow-two">
 	    <div class="tab flex-vertical">
 		    <div class="label-stripe">
-          <p>{{localize "BITD.Factions"}}</p>
-          <p><a class="item-add-popup" data-item-type="faction"><i class="fas fa-plus-square"></i></a></p>
+          <p>
+            {{localize "BITD.Factions"}}
+            <a class="item-add-popup" data-item-type="faction"><i class="fas fa-plus-square"></i></a>
+          </p>
         </div>
-		
+
         <div id="faction-list">
           {{#each actor.items as |faction id|}}
             {{#if (eq faction.type "faction")}}

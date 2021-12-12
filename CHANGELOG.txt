@@ -152,3 +152,4 @@ v1.9.4  Fix Trauma tooltip z-indexing
 
 1.14.6  Improved UI for Forged indicator on character sheet
 
+1.14.7  Rework starting ability/recommended indicators

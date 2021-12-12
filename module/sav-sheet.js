@@ -41,6 +41,22 @@ export class SaVSheet extends ActorSheet {
 
 	  let items = await SaVHelpers.getAllItemsByType(item_type, game);
     let html = `<div id="items-to-add">`;
+		html += `<label class="label-stripe-gray flex-horizontal">`;
+    if (item_type === "ability") {
+			html += `<div class="flex one">${game.i18n.localize("BITD.StartAbility")}</div>`;
+			html += `<div class="flex one">${game.i18n.localize("BITD.RecommAbility")}</div>`;
+		}
+		html += `<div class="flex ten">${game.i18n.localize("BITD." + item_type )}</div>`;
+		if (item_type === "item") {
+			html += `<div class="flex one">${game.i18n.localize("BITD.Load")}</div>`;
+		} else if ( (item_type === "friend") || (item_type === "faction") ){
+
+		} else {
+			html += `<div class="flex one">${game.i18n.localize("BITD.Price")}</div>`;
+		}
+		html += `<div class="flex one">${game.i18n.localize("BITD.Info")}</div>`;
+		html += `</label>`;
+
 		let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
 		let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
 
@@ -76,60 +92,90 @@ export class SaVSheet extends ActorSheet {
       let addition_price_load = ``;
 
       if (typeof e.data.load !== "undefined") {
-        addition_price_load += `(${e.data.load})`
+        addition_price_load += `${e.data.load}`
       } else if (typeof e.data.price !== "undefined") {
-        addition_price_load += `(${e.data.price})`
+        addition_price_load += `${e.data.price}`
       }
 
 	    const nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades"];
 
       if (e.type === "crew_upgrade") {
 		    if ( ( ( main_systems.includes( e.data.class ) ) && ( overloaded[ ( e.data.class.charAt(0).toUpperCase() + e.data.class.slice(1) ) ] === 0 ) ) || ( nonclass_upgrades.includes(e.data.class) ) || ( e.data.class === this.actor.data.data.ship_class ) ) {
-			    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
-			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-			    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
-			    html += `</label>`;
+					html += `<div class="flex-horizontal">`;
+					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+					html += `${game.i18n.localize(e.name)}</label></div>`;
+					html += `<div class="flex one">${addition_price_load}</div>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `</div></div>`;
 		    }
 	    } else if (e.type === "crew_ability") {
 		    if (e.data.class === this.actor.data.data.ship_class) {
-			    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex-horizontal">`;
+					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-			    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
-			    html += `</label>`;
+			    html += `${game.i18n.localize(e.name)}</label></div>`;
+					html += `<div class="flex one">${addition_price_load}</div>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `</div></div>`;
 		    }
 	    } else if (e.type === "ability") {
 		    if (e.data.class === this.actor.data.data.character_class) {
-			    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex-horizontal">`;
+					html += `<div class="flex one abilities"><input id="starting-${e._id}" type="radio" disabled`;
+					if (e.data.starting) { html += ` checked`; }
+					html += `><label for="starting-${e._id}"></label></div>`;
+					html += `<div class="flex one abilities"><input id="recommended-${e._id}" type="radio" disabled`;
+					if (e.data.recommended) { html += ` checked`; }
+					html += `><label for="recommended-${e._id}"></label></div>`;
+					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-			    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
-			    html += `</label>`;
+			    html += `${game.i18n.localize(e.name)}</label></div>`;
+					html += `<div class="flex one">${addition_price_load}</div>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `</div></div>`;
 		    }
 	    } else if (e.type === "item") {
 		    if ((e.data.class === "Standard") || ((stun_weapons === 1) && (e.data.class === "Non-Lethal")) || (e.data.class === this.actor.data.data.character_class)) {
-			    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
-			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-			    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
-			    html += `</label>`;
+					html += `<div class="flex-horizontal">`;
+					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+					html += `${game.i18n.localize(e.name)}</label></div>`;
+					html += `<div class="flex one">${addition_price_load}</div>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `</div></div>`;
 		    }
 	    } else if (e.type === "friend") {
 		    if ( (e.data.class === this.actor.data.data.character_class) || (e.data.class === this.actor.data.data.ship_class) ) {
-			    html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
-			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-			    html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
-			    html += `</label>`;
+					html += `<div class="flex-horizontal">`;
+					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+					html += `${game.i18n.localize(e.name)}</label></div>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `</div></div>`;
 		    }
-	    } else {
-			  html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
-			  html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-			  html += `${game.i18n.localize(e.name)} ${addition_price_load} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
-			  html += `</label>`;
-	    }
+	    } else if (e.type ==="faction") {
+				html += `<div class="flex-horizontal">`;
+				html += `<div class="flex ten"><input id="select-item-${ e._id }" type="${ input_type }" name="select_items" value="${ e._id }">`;
+				html += `<label class="flex-horizontal" for="select-item-${ e._id }">`;
+				html += `${ game.i18n.localize( e.name ) }</label></div>`;
+				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${ game.i18n.localize( e.data.description ) }</span></i>`;
+				html += `</div></div>`;
+			} else {
+				html += `<div class="flex-horizontal">`;
+				html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+				html += `${game.i18n.localize(e.name)}</label></div>`;
+				html += `<div class="flex one">${addition_price_load}</div>`;
+				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+				html += `</div></div>`;
+			}
     });
 
 		if (item_type === "ability") {
 			html += `</div><br>${game.i18n.localize("BITD.AbilityLegend1")}<br>${game.i18n.localize("BITD.AbilityLegend2")}<br>`;
 		} else {
-			html += `</div><br><br><br>`;
+		  html += `</div><br><br><br>`;
 		}
 
     let options = {

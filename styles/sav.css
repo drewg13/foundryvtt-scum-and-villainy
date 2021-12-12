@@ -151,6 +151,18 @@
   flex-direction: row;
   justify-content: space-between;
 }
+* .flex.one {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-right: 10px;
+}
+* .flex.ten {
+  display: flex;
+  flex-direction: row;
+  flex: 10;
+  margin-right: 10px;
+}
 * .flex-vertical {
   display: flex;
   flex-direction: column;
@@ -1195,6 +1207,17 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+* .abilities label {
+  height: 15px;
+  width: 15px;
+  background-color: #eeefff;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: default;
+  margin-left: 5px;
+  margin-top: 2px;
+}
 * .coins label[for$="-0"] {
   margin-right: 0px;
 }
@@ -1203,6 +1226,9 @@
   opacity: 0.9;
 }
 * .coins input {
+  display: none;
+}
+* .abilities input {
   display: none;
 }
 * .coins input:checked ~ label {
@@ -1219,6 +1245,9 @@
   background-color: #03A33E;
 }
 * .coins.loadout input:checked + label {
+  background-color: #191813;
+}
+* .abilities input:checked + label {
   background-color: #191813;
 }
 * #loadout-max .coins label {
@@ -1445,6 +1474,9 @@
 * #items-to-add input[type=checkbox]:checked + label {
   font-weight: bolder;
   text-transform: uppercase;
+}
+* #items-to-add div.flex {
+  height: 20px;
 }
 * .tooltip {
   position: relative;
