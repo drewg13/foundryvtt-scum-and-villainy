@@ -44,6 +44,8 @@ export class SaVSheet extends ActorSheet {
 		html += `<label class="label-stripe-gray flex-horizontal">`;
     if (item_type === "ability") {
 			html += `<div class="flex one">${game.i18n.localize("BITD.StartAbility")}</div>`;
+		}
+		if ( (item_type === "ability") || (item_type === "crew_ability") ) {
 			html += `<div class="flex one">${game.i18n.localize("BITD.RecommAbility")}</div>`;
 		}
 		html += `<div class="flex ten">${game.i18n.localize("BITD." + item_type )}</div>`;
@@ -100,7 +102,7 @@ export class SaVSheet extends ActorSheet {
       if (e.type === "crew_upgrade") {
 		    if ( ( ( main_systems.includes( e.data.class ) ) && ( overloaded[ ( e.data.class.charAt(0).toUpperCase() + e.data.class.slice(1) ) ] === 0 ) ) || ( nonclass_upgrades.includes(e.data.class) ) || ( e.data.class === this.actor.data.data.ship_class ) ) {
 					html += `<div class="flex-horizontal">`;
-					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one">${addition_price_load}</div>`;
@@ -110,7 +112,10 @@ export class SaVSheet extends ActorSheet {
 	    } else if (e.type === "crew_ability") {
 		    if (e.data.class === this.actor.data.data.ship_class) {
 					html += `<div class="flex-horizontal">`;
-					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex one abilities"><input id="recommended-${e._id}" type="radio" disabled`;
+					if (e.data.recommended) { html += ` checked`; }
+					html += `><label for="recommended-${e._id}"></label></div>`;
+					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
@@ -125,7 +130,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex one abilities"><input id="recommended-${e._id}" type="radio" disabled`;
 					if (e.data.recommended) { html += ` checked`; }
 					html += `><label for="recommended-${e._id}"></label></div>`;
-					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
@@ -134,7 +139,7 @@ export class SaVSheet extends ActorSheet {
 	    } else if (e.type === "item") {
 		    if ((e.data.class === "Standard") || ((stun_weapons === 1) && (e.data.class === "Non-Lethal")) || (e.data.class === this.actor.data.data.character_class)) {
 					html += `<div class="flex-horizontal">`;
-					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one">${addition_price_load}</div>`;
@@ -144,7 +149,7 @@ export class SaVSheet extends ActorSheet {
 	    } else if (e.type === "friend") {
 		    if ( (e.data.class === this.actor.data.data.character_class) || (e.data.class === this.actor.data.data.ship_class) ) {
 					html += `<div class="flex-horizontal">`;
-					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
@@ -152,14 +157,14 @@ export class SaVSheet extends ActorSheet {
 		    }
 	    } else if (e.type ==="faction") {
 				html += `<div class="flex-horizontal">`;
-				html += `<div class="flex ten"><input id="select-item-${ e._id }" type="${ input_type }" name="select_items" value="${ e._id }">`;
+				html += `<div class="flex ten new-item"><input id="select-item-${ e._id }" type="${ input_type }" name="select_items" value="${ e._id }">`;
 				html += `<label class="flex-horizontal" for="select-item-${ e._id }">`;
 				html += `${ game.i18n.localize( e.name ) }</label></div>`;
 				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${ game.i18n.localize( e.data.description ) }</span></i>`;
 				html += `</div></div>`;
 			} else {
 				html += `<div class="flex-horizontal">`;
-				html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+				html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 				html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 				html += `${game.i18n.localize(e.name)}</label></div>`;
 				html += `<div class="flex one">${addition_price_load}</div>`;
@@ -169,13 +174,17 @@ export class SaVSheet extends ActorSheet {
     });
 
 		if (item_type === "ability") {
-			html += `</div><br>${game.i18n.localize("BITD.AbilityLegend1")}<br>${game.i18n.localize("BITD.AbilityLegend2")}<br>`;
+			html += `</div><br>${ game.i18n.localize( "BITD.AbilityLegend1" ) }<br>${ game.i18n.localize( "BITD.AbilityLegend2" ) }<br>`;
+		} else if (item_type === "crew_ability") {
+			html += `</div><br><br>${ game.i18n.localize( "BITD.AbilityLegend2" ) }<br>`;
+		} else if (item_type === "crew_upgrade") {
+			html += `</div>${ game.i18n.localize( "BITD.CrewAbilityLegend" ) }`;
 		} else {
 		  html += `</div><br><br><br>`;
 		}
 
     let options = {
-      // width: "500"
+      width: "500"
     }
     let perms = this.actor.permission;
 
@@ -260,7 +269,7 @@ async _onFlagAddClick(event) {
 	  let items = await SaVHelpers.getAllItemsByType(item_type, game);
     let items_to_add = [];
 
-    el.find("input:checked").each(function() {
+    el.find("div.new-item input:checked").each(function() {
 		  items_to_add.push(items.find(e => e._id === $(this).val()));
     });
 

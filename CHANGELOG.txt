@@ -155,3 +155,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.7  Rework starting ability/recommended indicators
 
 1.14.8  Add'l minor UI fixes
+
+1.14.9  More indicator UI fixes

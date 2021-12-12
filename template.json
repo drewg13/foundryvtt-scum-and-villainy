@@ -349,7 +349,8 @@
 	"is_damaged": 0
   },
   "crew_ability": {
-    "templates": ["ability", "logic", "activatedEffect"]
+    "templates": ["ability", "logic", "activatedEffect"],
+    "recommended": false
   },
   "star_system": {
     "templates": ["default"],
