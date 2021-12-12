@@ -284,6 +284,7 @@
   "BITD.StartAbility": "S",
   "BITD.RecommAbility": "R",
   "BITD.Info": "Info",
+  "BITD.Cost": "Upgrades",
   "BITD.AbilityLegend1": "S = Starting abilities, not eligible as Veteran upgrades",
   "BITD.AbilityLegend2": "R = Recommended first abilities",
 

@@ -49,10 +49,8 @@ export class SaVSheet extends ActorSheet {
 		html += `<div class="flex ten">${game.i18n.localize("BITD." + item_type )}</div>`;
 		if (item_type === "item") {
 			html += `<div class="flex one">${game.i18n.localize("BITD.Load")}</div>`;
-		} else if ( (item_type === "friend") || (item_type === "faction") ){
-
-		} else {
-			html += `<div class="flex one">${game.i18n.localize("BITD.Price")}</div>`;
+		} else if ( item_type === "crew_upgrade" ){
+			html += `<div class="flex one">${game.i18n.localize("BITD.Cost")}</div>`;
 		}
 		html += `<div class="flex one">${game.i18n.localize("BITD.Info")}</div>`;
 		html += `</label>`;
@@ -115,7 +113,6 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one">${addition_price_load}</div>`;
 					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
@@ -131,7 +128,6 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex ten"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one">${addition_price_load}</div>`;
 					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
@@ -302,18 +298,18 @@ async _onFlagAddClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
     const att_obj = game.system.model.Actor.character.attributes;
-	const sys_obj = game.system.model.Actor.ship.systems;
-	let systems = Object.keys( sys_obj );
+	  const sys_obj = game.system.model.Actor.ship.systems;
+	  let systems = Object.keys( sys_obj );
     const resistance = Object.keys( att_obj );
     const remove = ["crew", "upkeep"];
-	let actions = [];
+	  let actions = [];
     resistance.forEach( a => {
       let skill_obj = game.system.model.Actor.character.attributes[a].skills;
       actions.push( Object.keys( skill_obj ) );
     })
-	systems = systems.filter( system => !remove.includes( system ) );
-	actions.push( systems );
-	actions = actions.flat();
+	  systems = systems.filter( system => !remove.includes( system ) );
+	  actions.push( systems );
+	  actions = actions.flat();
     let roll_type;
 
     if ( actions.includes( attribute_name ) ) {
