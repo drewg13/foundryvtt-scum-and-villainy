@@ -180,7 +180,7 @@ export class SaVHelpers {
     } else if (systems.indexOf(attribute_name) !== -1 ) {
       attributes = game.system.model.Actor.ship.systems;
     } else {
-      return SaVHelpers.getProperCase(attribute_name);
+      return game.i18n.localize( "BITD." + SaVHelpers.getProperCase(attribute_name) );
     }
 
     for (const a in attributes) {
