@@ -165,3 +165,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.12  Extended resource chat notifications to Ship System item damage
 
 1.14.13  Fix first update to new ship actor
+
+1.14.14  Minor layout tweaks

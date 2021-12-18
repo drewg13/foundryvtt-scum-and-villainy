@@ -275,12 +275,14 @@
       </div>
 
       {{!-- Active Effects --}}
-      <div id="effects" class="tab effects flex-vertical" data-tab="effects">
-        <div class="label-stripe">
-          <p>{{localize "BITD.Effects"}}</p>
+      {{#if isGM}}
+        <div id="effects" class="tab effects flex-vertical" data-tab="effects">
+          <div class="label-stripe">
+            <p>{{localize "BITD.Effects"}}</p>
+          </div>
+          {{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}
         </div>
-        {{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}
-      </div>
+      {{/if}}
 
       {{!-- Full Item List --}}
       <div id="all-items" class="tab grow-two flex-vertical" data-tab="all-character-items">

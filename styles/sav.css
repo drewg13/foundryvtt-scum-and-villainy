@@ -710,7 +710,7 @@
   width: 100%;
 }
 * #harm-armor #character-health-clock {
-  margin-left: 25px;
+  margin-left: 15px;
   position: relative;
 }
 * #faction-list .clocks {
@@ -787,10 +787,20 @@
 * #harm-armor #character-health-clock .sav-clock *:nth-child(13) {
   transform: rotate(270deg) skewY(150deg);
 }
-* #harm-armor #character-armor-uses div {
+* #harm-armor #character-harm td {
+  padding-left: 4px;
+}
+* #harm-armor #character-armor-uses div > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+* #harm-armor #character-armor-uses div {
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 * #attributes {
   display: flex;

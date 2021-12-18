@@ -244,16 +244,18 @@
             </td>
             <td rowspan="3" id="character-armor-uses">
               <div>
-                <label for="armor-uses-armor">{{localize "BITD.Armor"}}</label>
-                <input id="armor-uses-armor" type="checkbox" name="data.armor-uses.armor" {{checked data.armor-uses.armor}}>
-              </div>
-              <div>
-                <label for="armor-uses-heavy">{{localize "BITD.Heavy"}}</label>
-                <input id="armor-uses-heavy" type="checkbox" name="data.armor-uses.heavy" {{checked data.armor-uses.heavy}}>
-              </div>
-              <div>
-                <label for="armor-uses-special">{{localize "BITD.Special"}}</label>
-                <input id="armor-uses-special" type="checkbox" name="data.armor-uses.special" {{checked data.armor-uses.special}}>
+                <div>
+                  <label for="armor-uses-armor">{{localize "BITD.Armor"}}</label>
+                  <input id="armor-uses-armor" type="checkbox" name="data.armor-uses.armor" {{checked data.armor-uses.armor}}>
+                </div>
+                <div>
+                  <label for="armor-uses-heavy">{{localize "BITD.Heavy"}}</label>
+                  <input id="armor-uses-heavy" type="checkbox" name="data.armor-uses.heavy" {{checked data.armor-uses.heavy}}>
+                </div>
+                <div>
+                  <label for="armor-uses-special">{{localize "BITD.Special"}}</label>
+                  <input id="armor-uses-special" type="checkbox" name="data.armor-uses.special" {{checked data.armor-uses.special}}>
+                </div>
               </div>
             </td>
           </tr>
@@ -415,12 +417,14 @@
       </div>
 
       {{!-- Active Effects --}}
-      <div id="effects" class="tab effects flex-vertical" data-tab="effects">
-        <div class="label-stripe">
-          <p>{{localize "BITD.Effects"}}</p>
+      {{#if isGM}}
+        <div id="effects" class="tab effects flex-vertical" data-tab="effects">
+          <div class="label-stripe">
+            <p>{{localize "BITD.Effects"}}</p>
+          </div>
+          {{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}
         </div>
-        {{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}
-      </div>
+      {{/if}}
 
       {{!-- Full Item List --}}
       <div id="all-items" class="tab grow-two flex-vertical" data-tab="all-character-items">
