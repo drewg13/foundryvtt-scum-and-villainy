@@ -159,3 +159,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.9  More indicator UI fixes
 
 1.14.10  Add'l localization fix, updated Change Bar macro to modify Stress
+
+1.14.11  Minor chat notify fix, prevent errors when a Ship assigned to a Character is deleted, refactor resource chat notifications to cover more Ship stats, fix Shields/Encryptor not saving to DB, track damage to Shields/Encryptor directly

@@ -317,6 +317,80 @@ Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId
   return true;
 });
 
+// Send Ship resource changes to chat
+Hooks.on("preUpdateActor", (actor, data, options, userId) => {
+  if ( ( actor.data.type === "ship" ) && ( Object.keys(data)[0] === "data" ) ) {
+    let item = Object.keys(data.data)[0];
+    let item0, item1;
+    if( item === "systems" ){
+      item = Object.keys(data.data.systems)[0];
+      if( Object.keys( data.data.systems[item] )[0] === "damage" ){
+        item = item + ".damage";
+      }
+    }
+    let actorName = actor.name;
+    let resource, newValue, oldValue;
+    switch ( item ) {
+      case "coins":
+        resource = game.i18n.localize("BITD.Coin");
+        newValue = parseInt( data.data[item] );
+        oldValue = parseInt( actor.data.data[item] );
+        break;
+      case "debt":
+        resource = game.i18n.localize("BITD.Debt");
+        newValue = parseInt( data.data[item] );
+        oldValue = parseInt( actor.data.data[item] );
+        break;
+      case "gambits":
+        resource = game.i18n.localize("BITD.Gambits");
+        newValue = parseInt( data.data[item].value );
+        oldValue = parseInt( actor.data.data[item].value );
+        break;
+      case "crew_experience":
+        resource = game.i18n.localize("BITD.PExperience");
+        newValue = parseInt( data.data[item] );
+        oldValue = parseInt( actor.data.data[item] );
+        break;
+      case "upkeep.damage":
+        item0 = item.split('.')[0];
+        item1 = item.split('.')[1];
+        resource = game.i18n.localize("BITD.SystemsSkips");
+        newValue = parseInt( data.data.systems[item0][item1] );
+        oldValue = parseInt( actor.data.data.systems[item0][item1] );
+        break;
+      case "crew":
+      case "engines":
+      case "hull":
+      case "comms":
+      case "weapons":
+      case "shields":
+      case "encryptor":
+        resource = game.i18n.localize("BITD.Systems" + SaVHelpers.getProperCase( item ) + "Short" );
+        newValue = parseInt( data.data.systems[item].value );
+        oldValue = parseInt( actor.data.data.systems[item].value );
+        break;
+      case "engines.damage":
+      case "hull.damage":
+      case "comms.damage":
+      case "weapons.damage":
+      case "shields.damage":
+      case "encryptor.damage":
+        item0 = item.split('.')[0];
+        item1 = item.split('.')[1];
+        resource = game.i18n.localize("BITD.Systems" + SaVHelpers.getProperCase( item0 ) + "Short" ) + " " + game.i18n.localize("BITD.SystemsDamage");
+        newValue = parseInt( data.data.systems[item0][item1] );
+        oldValue = parseInt( actor.data.data.systems[item0][item1] );
+        break;
+      default:
+        console.log(item, newValue, oldValue);
+        break;
+    }
+    if ( item !== undefined && game.settings.get("scum-and-villainy", "logResourceToChat") ) {
+      SaVHelpers.chatNotify( actorName, resource, oldValue, newValue );
+    }
+  }
+});
+
 // getSceneControlButtons
 Hooks.on("renderSceneControls", async (app, html) => {
   let dice_roller = $( '<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>' );

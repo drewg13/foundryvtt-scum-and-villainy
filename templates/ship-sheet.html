@@ -74,12 +74,12 @@
         <label for="ship-{{actor._id}}-designation">{{localize "BITD.Designation"}}</label>
         <input type="text" id="ship-{{actor._id}}-designation" name="data.designation" value="{{data.designation}}">
       </div>
-	  
+
       <div id="look">
         <label for="ship-{{actor._id}}-look">{{localize "BITD.Look"}}</label>
         <input type="text" id="ship-{{actor._id}}-look" name="data.look" value="{{data.look}}">
       </div>
-	  
+
       <div id="coins" class="flex-horizontal">
         <div id="coins-hands">
 			    <div class="stripe">
@@ -95,7 +95,7 @@
 			      {{/multiboxes}}
 			    </div>
 		    </div>
-		
+
 		    {{#if (eq data.installs.vault_inst 1)}}
 		      <div id="vault">
 			      <div class="stripe">
@@ -128,7 +128,7 @@
 			    </div>
         </div>
       </div>
-	  
+
 	    <div id="gambits-container" class="flex-horizontal">
         <div id="gambits">
 	  		  <div class="stripe">
@@ -314,12 +314,12 @@
                   <span style="margin-right: 5px;"> = {{system.value}} {{localize "BITD.Coin"}}</span>
 	  			      {{/if}}
 	  			      {{#if (eq system_name "shields")}}
-	  			        <span class="tooltip">{{localize (concat system.label 'Short')}}
+	  			        <span class="system-label tooltip">{{localize (concat system.label 'Short')}}
                     <span class="tooltiptext left">{{{localize system.tip}}}</span>
                   </span>
 		  		      {{/if}}
 		  		      {{#if (eq system_name "encryptor")}}
-		  		        <span class="tooltip">{{localize (concat system.label 'Short')}}
+		  		        <span class="system-label tooltip">{{localize (concat system.label 'Short')}}
                     <span class="tooltiptext left">{{{localize system.tip}}}</span>
                   </span>
 			  	      {{/if}}
@@ -336,7 +336,7 @@
 	  		          <div class="stripe-tooth-body-blue">
 	  			          {{#multiboxes system.value}}
 	  			            <label for="{{../actor._id}}-{{system_name}}-value-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-	  			            <input type="radio" id="{{../actor._id}}-{{system_name}}-value-0" name="data.systems.{{system_name}}.value" value="0" checked="checked">
+	  			            <input type="radio" id="{{../actor._id}}-{{system_name}}-value-0" name="data.systems.{{system_name}}.value" value="0">
                       {{#times_from_1 system.max}}
 	  			                <input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}" name="data.systems.{{system_name}}.value" value="{{this}}">
 	  			                <label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
@@ -347,53 +347,52 @@
 	  		      </div>
 	  		    </div>
 	  		    {{#unless (eq system_name "crew")}}
-	  		      {{#unless (eq system_name "shields")}}
-	  		        {{#unless (eq system_name "encryptor")}}
-	  		          <div id="systems-{{system_name}}-damage" class="systems-value">
-	  			          <div class="stripe-damage flex-horizontal system-label-damage">
-	  			            {{#if (eq system_name "upkeep")}}
-	  			              {{localize "BITD.SystemsSkips"}}
-	  			            {{/if}}
-	  			            {{#unless (eq system_name "upkeep")}}
-	  			              {{localize "BITD.SystemsDamage"}}
-	  			            {{/unless}}
-                      <div class="stripe-tooth-body-red">
-	  			              {{#multiboxes system.damage}}
-                          <label for="{{../actor._id}}-{{system_name}}-damage-0"><i	class="fab fa-creative-commons-zero nullifier"></i></label>
-	  			                <input type="radio" id="{{../actor._id}}-{{system_name}}-damage-0" name="data.systems.{{system_name}}.damage" value="0" checked="checked">
-                          {{#times_from_1 system.max}}
-	  		                    <input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}" name="data.systems.{{system_name}}.damage" value="{{this}}">
-	  		                    <label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
-	  			                {{/times_from_1}}
-                        {{/multiboxes}}
-		  	              </div>
-		  	            </div>
+	  		      <div id="systems-{{system_name}}-damage" class="systems-value">
+	  			      <div class="stripe-damage flex-horizontal system-label-damage">
+	  			        {{#if (eq system_name "upkeep")}}
+	  			          {{localize "BITD.SystemsSkips"}}
+	  			        {{/if}}
+	  			        {{#unless (eq system_name "upkeep")}}
+	  			          {{localize "BITD.SystemsDamage"}}
+	  			        {{/unless}}
+                  <div class="stripe-tooth-body-red">
+	  			          {{#multiboxes system.damage}}
+                      <label for="{{../actor._id}}-{{system_name}}-damage-0"><i	class="fab fa-creative-commons-zero nullifier"></i></label>
+	  			            <input type="radio" id="{{../actor._id}}-{{system_name}}-damage-0" name="data.systems.{{system_name}}.damage" value="0">
+                      {{#times_from_1 system.max}}
+	  		                <input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}" name="data.systems.{{system_name}}.damage" value="{{this}}">
+	  		                <label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+	  			            {{/times_from_1}}
+                    {{/multiboxes}}
 		  	          </div>
-                  <div id="system-upgrades" class="systems-value">
-		  		          {{#each ../actor.items as |item id|}}
-                      {{#if (eq item.type "crew_upgrade")}}
-                        {{#if (caseeq item.data.class system_name)}}
-                          <div class="label-stripe-gray item flex-horizontal system-label" data-item-id="{{item._id}}">
-			  				            <div class="item-body">
-			  					            <a class="item-name">{{item.name}}</a>
-                            </div>
-                            <div id="system-subitem" class="stripe-tooth-body-red">
-                              <label for="item-{{id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-                              {{#multiboxes item.data.is_damaged}}
-                                <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="0"  type="radio" id="item-{{id}}-0" value="0" dtype="Radio">
-					  				            {{#times_from_1 1}}
-					  					            <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="item-{{id}}-{{this}}" value="{{this}}" dtype="Radio">
-					  					            <label for="item-{{id}}-{{this}}"></label>
-					  				            {{/times_from_1}}
-					  			            {{/multiboxes}}
-					  		            </div>
+		  	        </div>
+		  	      </div>
+              <div id="system-upgrades" class="systems-value">
+		  		      {{#each ../actor.items as |item id|}}
+                  {{#if (eq item.type "crew_upgrade")}}
+                    {{#if (caseeq item.data.class system_name)}}
+                      {{!-- Special handling to prevent Quantum Encryptor from showing up as Comms item, translation friendly --}}
+                      {{#unless (eq item.effects.[0].changes.[0].key "data.systems.encryptor.max")}}
+                        <div class="label-stripe-gray item flex-horizontal system-label" data-item-id="{{item._id}}">
+			  		            <div class="item-body">
+			  		             <a class="item-name">{{item.name}}</a>
                           </div>
-                        {{/if}}
-                      {{/if}}
-                    {{/each}}
-                  </div>
-                {{/unless}}
-              {{/unless}}
+                          <div id="system-subitem" class="stripe-tooth-body-red">
+                            <label for="item-{{id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+                            {{#multiboxes item.data.is_damaged}}
+                              <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="0"  type="radio" id="item-{{id}}-0" value="0" dtype="Radio">
+					                    {{#times_from_1 1}}
+					      	              <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="item-{{id}}-{{this}}" value="{{this}}" dtype="Radio">
+					  			              <label for="item-{{id}}-{{this}}"></label>
+					  		              {{/times_from_1}}
+					  		            {{/multiboxes}}
+					  		          </div>
+                        </div>
+                      {{/unless}}
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+              </div>
             {{/unless}}
           </div>
 		      <br>

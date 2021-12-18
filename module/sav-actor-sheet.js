@@ -40,6 +40,10 @@ export class SaVActorSheet extends SaVSheet {
 
     let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
     let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
+
+    // If assigned ship no longer exists, remove from flags
+    if( actor_flags === undefined ) { this.actor.setFlag("scum-and-villainy", "ship", ""); }
+
     // Calculate Load
     let loadout = 0;
     data.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.data.load ) : 0 } );
@@ -125,21 +129,21 @@ export class SaVActorSheet extends SaVSheet {
       } else {
         item = this.actor.getOwnedItem(element.data("itemId"));
       }
-      item.sheet.render(true);
+      item?.sheet.render(true);
     });
 
     // Post item to chat
-    html.find(".item-post").click((ev) => {
+    html.find(".item-post").click( async (ev) => {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
-      item.sendToChat();
+      await item?.sendToChat();
     });
 
 	  // Update Ship
     html.find('.ship-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       const actor = game.actors.get(element.data("itemId"));
-      actor.sheet.render(true);
+      actor?.sheet.render(true);
     });
 
 	  // Render XP Triggers sheet

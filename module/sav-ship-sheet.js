@@ -55,7 +55,7 @@ export class SaVShipSheet extends SaVSheet {
 			} else {
 				item = this.actor.getOwnedItem(element.data("itemId"));
 			}
-      item.sheet.render(true);
+      item?.sheet.render(true);
     });
 
     // Delete Inventory Item
@@ -70,10 +70,10 @@ export class SaVShipSheet extends SaVSheet {
     });
 
     // Post item to chat
-    html.find(".item-post").click((ev) => {
+    html.find(".item-post").click( async (ev) => {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
-      item.sendToChat();
+      await item?.sendToChat();
     });
 
     // Render XP Triggers sheet
@@ -87,32 +87,6 @@ export class SaVShipSheet extends SaVSheet {
       }
       item?.sheet.render(true, {"renderContext": "xp"});
     });
-
-    html.find('.coins').click(ev => {
-      let actor = this.actor.name;
-      let newValue = ev.target.value;
-      let oldValue, resource;
-      switch( ev.target.name ) {
-        case "data.coins": {
-          resource = game.i18n.localize("BITD.Coin");
-          oldValue = this.actor.data.data.coins;
-          break;
-        }
-        case "data.debt": {
-          resource = game.i18n.localize("BITD.Debt");
-          oldValue = this.actor.data.data.debt;
-          break;
-        }
-        case "data.gambits.value": {
-          resource = game.i18n.localize("BITD.Gambits");
-          oldValue = this.actor.data.data.gambits.value;
-          break;
-        }
-      }
-      if ( resource !== undefined && game.settings.get("scum-and-villainy", "logResourceToChat") ) {
-        SaVHelpers.chatNotify(actor, resource, oldValue, newValue);
-      }
-    })
 
     // manage active effects
     html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
