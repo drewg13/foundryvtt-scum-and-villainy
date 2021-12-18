@@ -1171,13 +1171,15 @@
 }
 * #name,
 * #look,
-* #alias {
+* #alias,
+* #designation {
   margin-bottom: 10px;
   display: flex;
 }
 * #name label,
 * #look label,
-* #alias label {
+* #alias label,
+* #designation label {
   padding-right: 4px;
   padding-top: 3px;
 }

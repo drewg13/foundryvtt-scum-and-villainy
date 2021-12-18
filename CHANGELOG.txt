@@ -169,3 +169,6 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.14  Minor layout tweaks
 
 1.14.15  Further layout tweaks
+
+1.14.16  Layout fixes
+
