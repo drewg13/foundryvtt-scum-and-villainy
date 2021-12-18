@@ -242,14 +242,28 @@ export class SaVHelpers {
    */
   static chatNotify( actor, resource, oldValue, newValue ) {
     let change;
-    if ( newValue > oldValue ) {
-      change = '+' + String (newValue - oldValue);
+    if( newValue > oldValue ) {
+      change = '+' + String( newValue - oldValue );
     } else {
-      change = String (newValue - oldValue);
+      change = String( newValue - oldValue );
     }
     let color = newValue >= oldValue ? 'green' : 'red'
-    let message = `<div class="resource-chat-notification">${actor}<table><tr><td>${resource}</td><td class="value">${oldValue}</td><td class="arrow"><i class="fas fa-arrow-right"></i></td><td class="value"><span class="${color}">${newValue}</span></td><td><span class="small">(${change})</span></td></tr></table></div>`;
+    let message = `<div class="resource-chat-notification">${ actor }<table><tr><td>${ resource }</td><td class="value">${ oldValue }</td><td class="arrow"><i class="fas fa-arrow-right"></i></td><td class="value"><span class="${ color }">${ newValue }</span></td><td><span class="small">(${ change })</span></td></tr></table></div>`;
     ChatMessage.create({content: message});
   }
 
+  /* -------------------------------------------- */
+
+  /**
+   * Creates a chat notification on a resource change
+   *
+   * @param {string} actor
+   *  actor on which change occurred
+   * @param {string} resource
+   *  localized resource name
+   */
+  static chatNotifyString( actor, resource ) {
+    let message = `<div class="resource-chat-notification">${ actor }<table><tr><td>${ resource }</td></tr></table></div>`;
+    ChatMessage.create({content: message});
+  }
 }

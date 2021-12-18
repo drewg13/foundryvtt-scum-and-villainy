@@ -264,6 +264,9 @@
   "BITD.SystemsDamage": "Damage",
   "BITD.SystemsSkips": "Skips",
 
+  "BITD.ItemDamaged": "was Damaged",
+  "BITD.ItemRepaired": "was Repaired",
+
   "BITD.PExperience": "Playbook XP ",
   "BITD.CExperience": "Crew XP ",
   "BITD.AExperience": "XP ",
@@ -340,5 +343,5 @@
   "BITD.CrewXPBarSize": "XP Bar Size for Ship:",
   "BITD.CrewXPBarSizeHint": "Number of boxes for ship playbook XP bar",
   "BITD.LogResourceToChat": "Log Resources to Chat:",
-  "BITD.LogResourceToChatHint": "Log all changes to Ship Resources (Cred, Debt, Gambits) with a chat notification"
+  "BITD.LogResourceToChatHint": "Log all changes to Ship Actors with a chat notification"
 }

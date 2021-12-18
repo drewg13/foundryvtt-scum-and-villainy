@@ -391,6 +391,22 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
   }
 });
 
+Hooks.on("preUpdateItem", (item, data, options, userId) => {
+  if ( Object.keys( data.data )[0] === "is_damaged" ) {
+    let actorName = item.actor.name;
+    let itemName = item.name;
+    let resource;
+    if( data.data.is_damaged === 1 ) {
+      resource = itemName + " " + game.i18n.localize( "BITD.ItemDamaged" );
+    } else {
+      resource = itemName + " " + game.i18n.localize( "BITD.ItemRepaired" );
+    }
+    if ( game.settings.get("scum-and-villainy", "logResourceToChat") ) {
+      SaVHelpers.chatNotifyString( actorName, resource );
+    }
+  }
+});
+
 // getSceneControlButtons
 Hooks.on("renderSceneControls", async (app, html) => {
   let dice_roller = $( '<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>' );
