@@ -163,3 +163,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.11  Minor chat notify fix, prevent errors when a Ship assigned to a Character is deleted, refactor resource chat notifications to cover more Ship stats, fix Shields/Encryptor not saving to DB, track damage to Shields/Encryptor directly
 
 1.14.12  Extended resource chat notifications to Ship System item damage
+
+1.14.13  Fix first update to new ship actor

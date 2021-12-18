@@ -175,17 +175,18 @@
     "description": "",
   	"designation": "",
     "size": "",
-    "coins": [0],
+    "coins": "0",
+    "debt": "0",
     "coinsMax": 4,
     "vault": [0],
     "debt-clock": [0],
-  	"crew_experience": [0],
+  	"crew_experience": "0",
     "crew_experienceMax": 8,
   	"ship_class": "",
     "gambits": {
       "refresh": 0,
       "max": 8,
-      "value": [0]
+      "value": "0"
     },
     "installs": {
   		"vault_inst": 0,
@@ -200,57 +201,57 @@
       "crew": {
   	    "label": "BITD.SystemsCrew",
 	    "tip": "BITD.SkillsCrewTip",
-        "value": [0],
-        "damage": [0],
+        "value": "0",
+        "damage": "0",
         "max": 3
       },
       "upkeep": {
         "label": "BITD.SystemsUpkeep",
 	    "tip": "BITD.SkillsUpkeepTip",
         "value": 0,
-        "damage": [0],
+        "damage": "0",
         "max": 4
       },
       "engines": {
         "label": "BITD.SystemsEngines",
 	    "tip": "BITD.SkillsEnginesTip",
-        "value": [0],
-        "damage": [0],
+        "value": "0",
+        "damage": "0",
         "max": 4
       },
       "hull": {
         "label": "BITD.SystemsHull",
 	    "tip": "BITD.SkillsHullTip",
-        "value": [0],
-        "damage": [0],
+        "value": "0",
+        "damage": "0",
         "max": 4
       },
       "shields": {
         "label": "BITD.SystemsShields",
 	    "tip": "BITD.SkillsShieldsTip",
-  	    "value": [0],
-        "damage": [0],
+  	    "value": "1",
+        "damage": "0",
         "max": 0
       },
       "comms": {
         "label": "BITD.SystemsComms",
 	    "tip": "BITD.SkillsCommsTip",
-        "value": [0],
-        "damage": [0],
+        "value": "0",
+        "damage": "0",
         "max": 4
       },
       "encryptor": {
         "label": "BITD.SystemsEncryptor",
 	    "tip": "BITD.SkillsEncryptorTip",
-  	    "value": [0],
-        "damage": [0],
+  	    "value": "1",
+        "damage": "0",
   	    "max": 0
       },
       "weapons": {
         "label": "BITD.SystemsWeapons",
 	    "tip": "BITD.SkillsWeaponsTip",
-        "value": [0],
-        "damage": [0],
+        "value": "0",
+        "damage": "0",
         "max": 4
       }
     }
