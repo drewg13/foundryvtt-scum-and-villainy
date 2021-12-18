@@ -1170,9 +1170,16 @@
   margin-bottom: 10px;
 }
 * #name,
-* #lair,
+* #look,
 * #alias {
   margin-bottom: 10px;
+  display: flex;
+}
+* #name label,
+* #look label,
+* #alias label {
+  padding-right: 4px;
+  padding-top: 3px;
 }
 * .character-healing-clock,
 * .coins {
@@ -1262,6 +1269,14 @@
 }
 * #loadout-max .coins label {
   margin-left: 15px;
+}
+* #loadout-max div > span {
+  margin-left: 25px;
+}
+* #coins div.stripe,
+* #loadout-max div.stripe {
+  padding-bottom: 4px;
+  padding-top: 5px;
 }
 * .coins input ~ label {
   margin-right: 3px;

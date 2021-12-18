@@ -39,6 +39,7 @@
     <label class="nullifier" for="loadout-{{actor._id}}-max-0">{{localize "BITD.Loadout"}}
       <i class="fab fa-creative-commons-zero nullifier"></i>
     </label>
+    <span class="stripe" style="text-transform:capitalize;{{#if (eq data.loadout.load_level "BITD.OverMax")}}color:red;{{/if}}">{{localize "BITD.CurrLoad"}}: {{localize data.loadout.load_level}}</span>
   </div>
   <div class="coins loadout">
     {{#multiboxes data.loadout.planned}}
@@ -54,5 +55,4 @@
 	    {{data.loadout.heavy}} {{localize "BITD.Heavy"}}
     {{/multiboxes}}
   </div>
-	<div class="stripe" style="text-transform:capitalize;{{#if (eq data.loadout.load_level "BITD.OverMax")}}color:red;{{/if}}">{{localize "BITD.CurrLoad"}}: {{localize data.loadout.load_level}}</div>
 </div>
