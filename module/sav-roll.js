@@ -35,7 +35,12 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
 
   let speaker = ChatMessage.getSpeaker();
   let rolls = (r.terms)[0].results;
-  let attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
+  let attribute_label;
+  if( attribute_name === "Fortune!"){
+    attribute_label = attribute_name;
+  } else {
+    attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
+  }
 
   // Retrieve Roll status.
   let roll_status;

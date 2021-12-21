@@ -1,3 +1,5 @@
+import { warn } from "./sav-clock-util.js";
+
 export class SaVHelpers {
 
   /**
@@ -266,4 +268,79 @@ export class SaVHelpers {
     let message = `<div class="resource-chat-notification">${ actor }<table><tr><td>${ resource }</td></tr></table></div>`;
     ChatMessage.create({content: message});
   }
+
+  /* -------------------------------------------- */
+
+  /**
+  * Creates a Tile on a canvas
+  *
+  * @param {Object} canvas
+  *  canvas Object where the Tile should be created
+  * @param {Object} data
+  *  data describing Tile to be created
+  */
+  static async createTile( canvas, data ) {
+    if ( data.type === "Item" ) {
+      let sourceData;
+      if( data.pack ){
+        let packData;
+        if( game.majorVersion > 7 ) {
+          packData = await game.packs.get( data.pack ).getDocuments();
+        } else {
+          packData = await game.packs.get( data.pack ).getContent();
+        }
+        sourceData = packData.find( p => p.id === data.id ).data;
+      } else {
+        sourceData = game.items.get( data.id ).data;
+      }
+      if( ( sourceData.type === "planet" ) || ( sourceData.type === "star_system" ) ) {
+        let tileImg = sourceData.img.replace( /webp/g, "webm" );
+
+        try {
+          const t = await loadTexture( tileImg );
+          let tileData = {
+            img: tileImg,
+            width: t.width,
+            height: t.height,
+            x: data.x,
+            y: data.y
+          };
+
+          if( game.majorVersion === 7 ) {
+            await canvas.scene.createEmbeddedEntity( "Tile", [ tileData ] );
+          } else {
+            await canvas.scene.createEmbeddedDocuments( "Tile", [ tileData ] );
+          }
+
+        } catch( error ) {
+          ui.notifications.warn( "Error creating Tile, there needs to exist a WEBM file with the same filename and location as the Item img WEBP" )
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Gets files from a specified directory matching the target
+   *
+   * @param {string} target
+   *  target variable to pass to FilePicker.browse()
+   * @param {string[]} extensions
+   *  data describing Tile to be created
+   * @param {Boolean} wildcard
+   *
+   * @param {string} source
+   *  source variable to pass to FilePicker.browse()
+   */
+  static async getFiles(target, extensions, wildcard = false, source = "user")
+  {
+    extensions = extensions instanceof Array ? extensions : [extensions];
+    let options = { extensions: extensions, wildcard: wildcard };
+    let filePicker = await FilePicker.browse(source, target, options);
+    if(filePicker.files)
+      return [...filePicker.files];
+    return [];
+  }
+
 }

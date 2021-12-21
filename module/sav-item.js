@@ -20,12 +20,16 @@ export class SaVItem extends Item {
          await actor.deleteEmbeddedDocuments( "Item", removeItems );
        }
      }
-		 
+
 		if ( this.type === "star_system" ) {
-      this.data.update({img: "systems/scum-and-villainy/styles/assets/icons/orbital.png"});
+      let stars = await SaVHelpers.getFiles("systems/scum-and-villainy/styles/assets/stars/star*", ".webp", true);
+      let random = Math.floor( Math.random() * stars.length ) + 1;
+      this.data.update( { img: stars[random] } );
     }
 		if ( this.type === "planet" ) {
-      this.data.update({img: "systems/scum-and-villainy/styles/assets/icons/moon-orbit.png"});
+      let planets = await SaVHelpers.getFiles("systems/scum-and-villainy/styles/assets/planets/planet*", ".webp", true);
+      let random = Math.floor( Math.random() * planets.length ) + 1;
+      this.data.update( { img: planets[random] } );
     }
    }
 

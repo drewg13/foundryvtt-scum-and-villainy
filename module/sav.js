@@ -392,17 +392,19 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
 });
 
 Hooks.on("preUpdateItem", (item, data, options, userId) => {
-  if ( Object.keys( data.data )[0] === "is_damaged" ) {
-    let actorName = item.actor.name;
-    let itemName = item.name;
-    let resource;
-    if( data.data.is_damaged === 1 ) {
-      resource = itemName + " " + game.i18n.localize( "BITD.ItemDamaged" );
-    } else {
-      resource = itemName + " " + game.i18n.localize( "BITD.ItemRepaired" );
-    }
-    if ( game.settings.get("scum-and-villainy", "logResourceToChat") ) {
-      SaVHelpers.chatNotifyString( actorName, resource );
+  if( data.data !== undefined ){
+    if( Object.keys( data.data )[0] === "is_damaged" ) {
+      let actorName = item.actor.name;
+      let itemName = item.name;
+      let resource;
+      if( data.data.is_damaged === 1 ) {
+        resource = itemName + " " + game.i18n.localize( "BITD.ItemDamaged" );
+      } else {
+        resource = itemName + " " + game.i18n.localize( "BITD.ItemRepaired" );
+      }
+      if( game.settings.get( "scum-and-villainy", "logResourceToChat" ) ) {
+        SaVHelpers.chatNotifyString( actorName, resource );
+      }
     }
   }
 });
@@ -439,5 +441,11 @@ Hooks.on("renderTokenHUD", async (hud, html, token) => {
     rootElement.classList.add('hide-ui');
   } else {
     rootElement.classList.remove('hide-ui');
+  }
+});
+
+Hooks.on("dropCanvasData", async (canvas, data) => {
+  if( data.type === "Item" ){
+    await SaVHelpers.createTile( canvas, data );
   }
 });
