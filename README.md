@@ -6,8 +6,19 @@ An attempt to adapt the Blades in the Dark system created by megastruktur to Scu
 
 I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)
 
+Loss-of-data is a known issue if one player is editing a TinyMCE field while other updates are occurring on that sheet.  Make sure that only one person at a time is editing a given sheet to avoid.
+
 You DO NOT need to import any items out of the compendiums in order to use them.  Currently, if you do import them, the system should ignore the compendium version on the assumption that you imported the item in order to edit it.
 
+## The NEW Planet/Star System (suggested by brunocalado)
+
+Icons were created using the Pixel Planet Generator by Deep-Fold and are free to use under the MIT license.  (https://deep-fold.itch.io/pixel-planet-generator).  Some of the included icons were created by brunocalado.  Create your desired planet/sun, export as a GIF, and then convert to WEBP/WEBM.
+
+Note that, due to limitations in the FoundryVTT architecture (or perhaps the underlying browser architecture), each animated icon requires both a WEBP **and** a WEBM version with identical root filenames in the same directory.  WEBP icons must be used as the icons for the Items and WEBM icons are required for the Tiles on the game canvas.
+
+The system will automatically assign a random icon from the icons supplied with the system to any newly created planet or star system.  You can change it by clicking the icon on the Item Sheet, navigating to systems/scum-and-villainy/styles/assets/planets or systems/scum-and-villainy/styles/assets/stars, and picking from the available WEBP files shown.  Also included are some default assignments for the compendium planets and stars, as well as asteroids and black holes.  (Only files that begin with "planet" or "sun" will be used for random assignment)  You can also upload your own custom icons to your user data directory and choose those.  Be sure to have the corresponding WEBM file in the same directory, if you intend to make use of the Tile feature.
+
+To place an animated icon of your planet or sun onto the canvas, just drag and drop either directly from the Item tab or a Compendium.  The system will pull the WEBM file that shares the same root filename as the assigned WEBP icon and create a Tile at the drop location.  From there, use the Tile Controls (three boxes in the left toolbar) to move and edit the newly created Tile.  You can also create Tiles by drag and dropping the WEBM files from the Tile Browser window by navigating to systems/scum-and-villainy/styles/assets/planets or systems/scum-and-villainy/styles/assets/stars.  The Tile Browser window will only show the animated WEBP files, but the WEBP files will not animate on the canvas, so be sure to drag and drop the WEBM file directly before the desired WEBP file in the Browser.
 
 ## Recommended Modules
 
@@ -27,7 +38,7 @@ You DO NOT need to import any items out of the compendiums in order to use them.
 ## Usage
 `"Actor" - Universe (system/planet/faction trackers), ships, characters, clocks`
 
-`"Item" - all classes, ship types, upgrades, items, abilities, etc.`
+`"Item" - all classes, ship types, upgrades, items, abilities, planets, systems, etc.`
 
 - 1st thing, create a Universe sheet to track systems, planets, and factions.  Click Update Systems and Update Planets to auto-populate the sheet with all available systems and planets.
 - If, at a later date, you add a custom system/planet to your game, click the relevant update link again to bring it onto the sheet.
