@@ -36,8 +36,8 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let speaker = ChatMessage.getSpeaker();
   let rolls = (r.terms)[0].results;
   let attribute_label;
-  if( attribute_name === "Fortune!"){
-    attribute_label = attribute_name;
+  if( attribute_name === "fortune"){
+    attribute_label = game.i18n.localize("BITD.Fortune");
   } else {
     attribute_label = SaVHelpers.getAttributeLabel(attribute_name);
   }
@@ -51,7 +51,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let vice_result = 0;
 
 
-  if ( attribute_name === "Fortune!" ) {
+  if ( attribute_name === "fortune" ) {
 	  roll_status = getSaVFortuneRollStatus(rolls, zeromode);
   } else if ( resistance_rolls.includes( attribute_name ) ) {
 	  [ roll_status, stress_result ] = getSaVResistRollStatus(rolls, zeromode);
@@ -297,7 +297,7 @@ export async function simpleRollPopup() {
         label: game.i18n.localize("BITD.Roll"),
         callback: async (html) => {
           let diceQty = html.find('[name="qty"]')[0].value;
-          await savRoll(parseInt(diceQty), game.i18n.localize("BITD.Fortune"), "", "");
+          await savRoll(parseInt(diceQty), "fortune", "", "");
         },
       },
       no: {

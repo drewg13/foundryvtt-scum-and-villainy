@@ -173,3 +173,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.14.16  Layout fixes
 
 1.15.0  Added feature to create animated Tile when Planet or Star System dropped on canvas, added animated icons to Planets and Star Systems (idea and some icons contributed by brunocalado)
+
+1.15.1  Fix localization of Fortune rolls
