@@ -1152,7 +1152,7 @@
 * #all-items .item div {
 	flex-grow: 4;
 }
-* .item div {
+* .item-block .item div {
   flex-grow: 3;
 }
 * .item .item-control {

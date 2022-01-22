@@ -5,7 +5,7 @@
           <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Planet'}}"/></h1>
       </div>
   </header>
-  
+
   <section class="flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea rows="10" name="data.description">{{{data.description}}}</textarea>
@@ -31,12 +31,13 @@
 	</tr>
 	</table>
 	<label class="label-stripe">{{localize "BITD.Scene"}}</label>
-    <textarea rows="10" name="data.scene">{{data.scene}}</textarea>
+  <textarea rows="10" name="data.scene">{{data.scene}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Rule"}}</label>
-    <textarea rows="5" name="data.rule">{{data.rule}}</textarea>
-    <label class="label-stripe">{{localize "BITD.NotableNPCs"}}</label>
-    <textarea rows="20" name="data.notables">{{data.notables}}</textarea>
-    
+  <textarea rows="5" name="data.rule">{{data.rule}}</textarea>
+  <div class="flex-vertical">
+    <div class="label-stripe">{{localize "BITD.NotableNPCs"}}</div>
+    {{editor content=data.notables target="data.notables" button=true owner=owner editable=editable}}
+  </div>
   </section>
 
 </form>
