@@ -5,11 +5,11 @@
           <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
       </div>
   </header>
-  
+
   {{!-- Sheet Body --}}
   <section class="sheet-body flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    <textarea rows="20" name="data.description">{{{data.description}}}</textarea>
+    {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
     {{#if isGM}}
       <div class="label-stripe">{{localize "BITD.Effects"}}</div>
       <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>

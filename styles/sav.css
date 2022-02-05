@@ -104,6 +104,18 @@
 .resource-chat-notification table tr td .red {
   color: red;
 }
+* .stats table {
+  width: 50%;
+}
+* .stats table tr td textarea {
+  resize: none;
+  text-align: right;
+  min-height: 10px;
+  width: 25px;
+  float: right;
+  height: 30px;
+  margin-right: 2px;
+}
 * .dialog-buttons {
 	margin-top: 5px;
 }
@@ -132,6 +144,12 @@
 * section .grow-two {
   flex-grow: 2;
 }
+* section .grow-three {
+  flex-grow: 3;
+}
+* section .grow-four {
+  flex-grow: 4;
+}
 * section.experience {
   margin-bottom: 0px;
   justify-content: center;
@@ -144,7 +162,7 @@
 }
 * .editor,
 * .editor-content {
-  min-height: 280px;
+  min-height: 120px;
 }
 * .flex-horizontal {
   display: flex;
@@ -728,6 +746,9 @@
 }
 * div#faction-status {
   min-width: 340px;
+}
+* #clock-max select {
+  margin-bottom: 10px;
 }
 * div.faction-goal {
   font-size: 10px;

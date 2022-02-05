@@ -9,27 +9,38 @@
   <section class="flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea rows="10" name="data.description">{{{data.description}}}</textarea>
-	<label class="label-stripe">{{localize "BITD.System"}}</label>
-    <textarea rows="1" name="data.system">{{data.system}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Stats"}}</label>
-    <table style="width:50%">
-	<tr>
-		<td>{{localize 'BITD.Wealth'}}:</td>
-		<td><textarea cols="1" rows="1" maxlength="1" style="resize: none; text-align:right;" name="data.wealth">{{data.wealth}}</textarea></td><td style="text-align:left">/ 3</td>
-	</tr>
-	<tr>
-		<td>{{localize 'BITD.CrimeSyndicate'}}:</td>
-		<td><textarea cols="1" rows="1" maxlength="1" style="resize: none; text-align:right;" name="data.crime">{{data.crime}}</textarea></td><td style="text-align:left">/ 3</td>
-	</tr>
-	<tr>
-		<td>{{localize 'BITD.TechLevel'}}:</td>
-		<td><textarea cols="1" rows="1" maxlength="1" style="resize: none; text-align:right;" name="data.tech">{{data.tech}}</textarea></td><td style="text-align:left">/ 3</td>
-	</tr>
-	<tr>
-		<td>{{localize 'BITD.Weirdness'}}:</td>
-		<td><textarea cols="1" rows="1" maxlength="1" style="resize: none; text-align:right;" name="data.weird">{{data.weird}}</textarea></td><td style="text-align:left">/ 3</td>
-	</tr>
-	</table>
+    <div class="flex-horizontal">
+      <div class="flex-vertical grow-one">
+        <label class="label-stripe">{{localize "BITD.System"}}</label>
+        <textarea name="data.system">{{data.system}}</textarea>
+      </div>
+      <div class="flex-vertical grow-three">
+        <label class="label-stripe">{{localize "BITD.Stats"}}</label>
+        <div class="flex-horizontal stats">
+          <table>
+            <tr>
+              <td>{{localize 'BITD.Wealth'}}:</td>
+              <td><textarea name="data.wealth">{{data.wealth}}</textarea></td><td style="text-align:left">/ 3</td>
+            </tr>
+            <tr>
+              <td>{{localize 'BITD.CrimeSyndicate'}}:</td>
+              <td><textarea name="data.crime">{{data.crime}}</textarea></td><td style="text-align:left">/ 3</td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>{{localize 'BITD.TechLevel'}}:</td>
+              <td><textarea name="data.tech">{{data.tech}}</textarea></td><td style="text-align:left">/ 3</td>
+            </tr>
+            <tr>
+              <td>{{localize 'BITD.Weirdness'}}:</td>
+              <td><textarea name="data.weird">{{data.weird}}</textarea></td><td style="text-align:left">/ 3</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
 	<label class="label-stripe">{{localize "BITD.Scene"}}</label>
   <textarea rows="10" name="data.scene">{{data.scene}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Rule"}}</label>

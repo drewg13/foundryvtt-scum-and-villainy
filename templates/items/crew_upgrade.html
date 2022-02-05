@@ -5,16 +5,21 @@
           <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
       </div>
   </header>
-  
+
   {{!-- Sheet Body --}}
   <section class="sheet-body flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    <textarea name="data.description">{{{data.description}}}</textarea>
-    <label class="label-stripe">{{localize "BITD.UpgradeType"}}</label>
-    <input type="text" name="data.class" value="{{data.class}}"><br>
-    <label class="label-stripe">{{localize "BITD.Price"}}</label>
-    <input type="text" name="data.price" value="{{data.price}}"><br>
-
+    {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
+    <div class="flex-horizontal">
+      <div class="flex-vertical grow-two">
+        <label class="label-stripe">{{localize "BITD.Price"}}</label>
+        <textarea name="data.price">{{data.price}}</textarea>
+      </div>
+      <div class="flex-vertical grow-two">
+        <label class="label-stripe">{{localize "BITD.UpgradeType"}}</label>
+        <textarea name="data.class">{{data.class}}</textarea>
+      </div>
+    </div>
     {{#if isGM}}
       <div class="label-stripe">{{localize "BITD.Effects"}}</div>
       <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>

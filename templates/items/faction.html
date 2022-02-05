@@ -7,50 +7,82 @@
   </header>
 
   <section class="flex-vertical">
-	<label class="label-stripe">{{localize "BITD.Description"}}</label>
+	  <label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea rows="2" name="data.description">{{{data.description}}}</textarea>
-	<label class="label-stripe">{{localize "BITD.FactionType"}}</label>
-    <textarea rows="1" name="data.type">{{data.type}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Tier"}}</label>
-    <textarea rows="1" name="data.tier">{{data.tier}}</textarea>
-  <label class="label-stripe">{{localize "BITD.Goal"}}</label>
 
-    <div class="flex-vertical" id="faction-goal-clock">
-      <div id="faction-clock">
-        {{#if (gt data.status.value 4)}}
-          {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "blue"}}}
-        {{else}}
-          {{#if (lt data.status.value 4)}}
-            {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "red"}}}
-          {{else}}
-            {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "yellow"}}}
-          {{/if}}
-        {{/if}}
+	  <div class="flex-horizontal">
+      <div class="flex-vertical grow-four">
+        <label class="label-stripe">{{localize "BITD.FactionType"}}</label>
+        <textarea rows="1" name="data.type">{{data.type}}</textarea>
       </div>
-      <div id="clock-max">
-          <label>{{localize "BITD.GoalClockMax"}}:</label>
-          <select id="max" name="data.goal_clock.max">
-              {{{data.size_list}}}
-          </select>
+      <div class="flex-vertical grow-one">
+        <label class="label-stripe">{{localize "BITD.Tier"}}</label>
+        <textarea rows="1" name="data.tier">{{data.tier}}</textarea>
       </div>
     </div>
 
-    <textarea rows="1" name="data.goal">{{data.goal}}</textarea>
-    <label class="label-stripe">{{localize "BITD.NotableNPCs"}}</label>
-    <textarea rows="10" name="data.notables">{{data.notables}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Turf"}}</label>
-    <textarea rows="2" name="data.turf">{{data.turf}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Assets"}}</label>
-    <textarea rows="1" name="data.assets">{{data.assets}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Quirks"}}</label>
+    <div class="flex-vertical">
+      <label class="label-stripe">{{localize "BITD.Goal"}}</label>
+      <div class="flex-horizontal">
+        <div class="flex-vertical grow-one">
+          <div class="flex-vertical" id="faction-goal-clock">
+            <div id="faction-clock">
+              {{#if (gt data.status.value 4)}}
+                {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "blue"}}}
+              {{else}}
+                {{#if (lt data.status.value 4)}}
+                  {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "red"}}}
+                {{else}}
+                  {{{sav-clock "data.goal_clock.value" data.goal_clock.max data.goal_clock.value id "yellow"}}}
+                {{/if}}
+              {{/if}}
+            </div>
+          </div>
+          <div id="clock-max">
+            <label>{{localize "BITD.GoalClockMax"}}:</label>
+            <select id="max" name="data.goal_clock.max">
+              {{{data.size_list}}}
+            </select>
+          </div>
+        </div>
+        <div class="flex-vertical grow-four">
+          <textarea rows="3" name="data.goal">{{data.goal}}</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-vertical">
+      <div class="label-stripe">{{localize "BITD.NotableNPCs"}}</div>
+      {{editor content=data.notables target="data.notables" button=true owner=owner editable=editable}}
+    </div>
+
+    <div class="flex-horizontal">
+      <div class="flex-vertical grow-two">
+        <label class="label-stripe">{{localize "BITD.Turf"}}</label>
+        <textarea rows="4" name="data.turf">{{data.turf}}</textarea>
+      </div>
+      <div class="flex-vertical grow-two">
+        <label class="label-stripe">{{localize "BITD.Assets"}}</label>
+        <textarea rows="4" name="data.assets">{{data.assets}}</textarea>
+      </div>
+    </div>
+
+	  <label class="label-stripe">{{localize "BITD.Quirks"}}</label>
     <textarea rows="1" name="data.quirks">{{data.quirks}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Allies"}}</label>
-    <textarea rows="1" name="data.allies">{{data.allies}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Enemies"}}</label>
-    <textarea rows="1" name="data.enemies">{{data.enemies}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Situation"}}</label>
+
+    <div class="flex-horizontal">
+      <div class="flex-vertical grow-two">
+        <label class="label-stripe">{{localize "BITD.Allies"}}</label>
+        <textarea rows="1" name="data.allies">{{data.allies}}</textarea>
+      </div>
+      <div class="flex-vertical grow-two">
+        <label class="label-stripe">{{localize "BITD.Enemies"}}</label>
+        <textarea rows="1" name="data.enemies">{{data.enemies}}</textarea>
+      </div>
+    </div>
+
+	  <label class="label-stripe">{{localize "BITD.Situation"}}</label>
     <textarea rows="10" name="data.situation">{{data.situation}}</textarea>
 
   </section>
-
 </form>

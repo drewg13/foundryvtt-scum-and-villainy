@@ -5,10 +5,10 @@
           <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
       </div>
   </header>
-  
+
   <section class="flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    <textarea name="data.description">{{{data.description}}}</textarea>
+    {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
     <label class="label-stripe">{{localize "BITD.ExpClues"}}</label>
     <div><i>- {{localize "BITD.ClassExpClue1"}}</i></div><br>
     <div>{{localize "BITD.ClassExpClueDescription"}}</div>
@@ -16,11 +16,10 @@
     <div><i>- {{localize "BITD.ClassExpClue3"}}</i></div>
     <br>
     <label class="label-stripe">{{localize "BITD.ClassExpClue"}}</label>
-    <textarea name="data.experience_clues">{{data.experience_clues}}</textarea>
-    <label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
-    <textarea name="data.def_abilities">{{data.def_abilities}}</textarea>
-
+    {{{editor content=data.experience_clues target="data.experience_clues" button=true owner=owner editable=editable}}}
     {{#if isGM}}
+      <label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
+      <textarea name="data.def_abilities">{{data.def_abilities}}</textarea>
       <div class="label-stripe">{{localize "BITD.Effects"}}</div>
       <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>
     {{/if}}

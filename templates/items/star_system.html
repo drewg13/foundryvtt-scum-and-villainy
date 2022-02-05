@@ -5,13 +5,16 @@
           <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.System'}}"/></h1>
       </div>
   </header>
-  
+
   <section class="flex-vertical">
-    <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    <textarea rows="15" name="data.description">{{{data.description}}}</textarea>
-    <label class="label-stripe">{{localize "BITD.Notables"}}</label>
-    <textarea rows="25" name="data.notables">{{data.notables}}</textarea>
-    
+    <div class="flex-vertical">
+      <div class="label-stripe">{{localize "BITD.Description"}}</div>
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    </div>
+    <div class="flex-vertical">
+      <div class="label-stripe">{{localize "BITD.Notables"}}</div>
+      {{editor content=data.notables target="data.notables" button=true owner=owner editable=editable}}
+    </div>
   </section>
 
 </form>
