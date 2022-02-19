@@ -162,6 +162,15 @@ export class SaVSheet extends ActorSheet {
 				html += `${ game.i18n.localize( e.name ) }</label></div>`;
 				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${ game.i18n.localize( e.data.description ) }</span></i>`;
 				html += `</div></div>`;
+			} else if (e.type === "planet") {
+				if ( e.data.system === limiter ) {
+					html += `<div class="flex-horizontal">`;
+					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
+					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+					html += `${game.i18n.localize(e.name)}</label></div>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `</div></div>`;
+				}
 			} else {
 				html += `<div class="flex-horizontal">`;
 				html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;

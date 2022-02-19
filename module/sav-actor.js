@@ -9,7 +9,7 @@ export class SaVActor extends Actor {
 
   /** @override */
   static async create(data, options={}) {
-    console.log(data.img);
+
     data.token = data.token || {};
 
     // For Crew and Character set the Token to sync with charsheet.

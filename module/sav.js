@@ -72,7 +72,14 @@ Hooks.once("init", async function() {
   Items.registerSheet("scum-and-villainy", SaVItemSheet, {makeDefault: true});
   await preloadHandlebarsTemplates();
 
-
+  Handlebars.registerHelper({
+    and() {
+      return Array.prototype.every.call(arguments, Boolean);
+    },
+    or() {
+      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+    }
+  });
 
   // Multiboxes.
   Handlebars.registerHelper('multiboxes', function(selected, options) {

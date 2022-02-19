@@ -5,14 +5,14 @@
   "authors": ["megastruktur", "Andrew Garinger [agaringer#6498]"],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "flags": {},
-  "version": "1.15.4",
+  "version": "1.16.0",
   "minimumCoreVersion": "0.7.9",
   "compatibleCoreVersion": "9",
   "system": [],
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.15.4.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.16.0.zip",
   "protected": false,
   "initiative": "1d20",
   "scripts": [],
@@ -28,11 +28,6 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
-    },
-    {
-      "lang": "pt-BR",
-      "name": "Português (Brasil)",
-      "path": "lang/pt-br.json"
     }
   ],
   "packs": [

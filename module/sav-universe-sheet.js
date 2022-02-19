@@ -31,7 +31,10 @@ export class SaVUniverseSheet extends SaVSheet {
 		  data.data = actorData.data;
     }
 
-	  return data;
+    let total = 0;
+    data.items.forEach( i => { if( i.type === "star_system" ){ total += 1 } } );
+    data.totalSystems = total;
+    return data;
   }
 
   /** @override */
@@ -46,7 +49,7 @@ export class SaVUniverseSheet extends SaVSheet {
       const element = $(ev.currentTarget).parents(".item");
       let item;
 			if( game.majorVersion > 7 ) {
-			  item = this.document.items.get(element.data("itemId"));
+			  item = this.actor.items.get(element.data("itemId"));
 			} else {
 				item = this.actor.getOwnedItem(element.data("itemId"));
 			}
@@ -56,8 +59,9 @@ export class SaVUniverseSheet extends SaVSheet {
     // Delete Inventory Item
     html.find('.item-delete').click( async (ev) => {
       const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
 			if( game.majorVersion > 7 ) {
-        await this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
+        await this.actor.deleteEmbeddedDocuments("Item", [item.id]);
 			} else {
 				await this.actor.deleteOwnedItem(element.data("itemId"));
 			}
@@ -69,6 +73,18 @@ export class SaVUniverseSheet extends SaVSheet {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
       item.sendToChat();
+    });
+
+    // Modify player visibility
+    html.find(".item-visible").click( async (ev) => {
+      const element = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(element.data("itemId"));
+      const itemVisible = !item.data.data.visible;
+      if( game.majorVersion > 7 ) {
+        await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, data:{visible: itemVisible}}]);
+      } else {
+        await this.actor.updateOwnedItem({ _id: item.id, data:{ visible: itemVisible } });
+      }
     });
 
     /** html.find("button[name=minus]").click(async (ev) => {
