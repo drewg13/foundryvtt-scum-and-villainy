@@ -179,3 +179,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.15.2  Add default initiative for Combat Tracker, change Planet Notable NPCs to TinyMCE, fix minor bugs
 
 1.15.3  Reconfigure all Item sheets
+
+1.15.4  Retain assigned Actor icons on duplication, fixes to accommodate multiple Universe Actors

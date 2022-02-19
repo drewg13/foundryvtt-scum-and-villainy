@@ -41,23 +41,23 @@
               </div>
 		          <div id="system-heat" class="teeth-experience-red" style="position: float !important;">
                 <span>{{localize "BITD.Heat"}}</span>
-                <label for="system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+                <label for="{{../actor._id}}-system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 		  	        {{#multiboxes system.data.heat.value}}
-                  <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="0" type="radio" id="system-{{id}}-heat-0" value="0" dtype="Radio">
+                  <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="0" type="radio" id="{{../actor._id}}-system-{{id}}-heat-0" value="0" dtype="Radio">
                   {{#times_from_1 system.data.heat.max}}
-	  		            <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="system-{{id}}-heat-{{this}}" value="{{this}}" dtype="Radio">
-                    <label for="system-{{id}}-heat-{{this}}"></label>
+	  		            <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-system-{{id}}-heat-{{this}}" value="{{this}}" dtype="Radio">
+                    <label for="{{../../actor._id}}-system-{{id}}-heat-{{this}}"></label>
                   {{/times_from_1}}
                 {{/multiboxes}}
               </div>
 		          <div id="system-wanted" class="teeth-experience-red">
 			          <span class="hover wanted" data-value="{{system.data.wanted.value}}">{{localize "BITD.Wanted"}}</span>
-                <label for="system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+                <label for="{{../actor._id}}-system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 			          {{#multiboxes system.data.wanted.value}}
-                  <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="0" type="radio" id="system-{{id}}-wanted-0" value="0" dtype="Radio">
+                  <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="0" type="radio" id="{{../actor._id}}-system-{{id}}-wanted-0" value="0" dtype="Radio">
                   {{#times_from_1 system.data.wanted.max}}
-			              <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="system-{{id}}-wanted-{{this}}" value="{{this}}" dtype="Radio">
-                    <label for="system-{{id}}-wanted-{{this}}"></label>
+			              <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-system-{{id}}-wanted-{{this}}" value="{{this}}" dtype="Radio">
+                    <label for="{{../../actor._id}}-system-{{id}}-wanted-{{this}}"></label>
 	  		          {{/times_from_1}}
                 {{/multiboxes}}
 		          </div>
@@ -165,26 +165,30 @@
                   </div>
                 </div>
                 <div id="faction-status">
-                  <div id="faction-status-label" style="float:left; width: 10em; text-align: right; padding-right: 10px; color: var(--almost_white);">{{localize "BITD.Status"}}<br><span style="color: var(--{{#if (eq faction.data.status.value 7)}}holoblue{{/if}}{{#if (eq faction.data.status.value 6)}}holobluemed{{/if}}{{#if (eq faction.data.status.value 5)}}holobluelt{{/if}}{{#if (eq faction.data.status.value 4)}}almost_white{{/if}}{{#if (eq faction.data.status.value 3)}}redlt{{/if}}{{#if (eq faction.data.status.value 2)}}redmed{{/if}}{{#if (eq faction.data.status.value 1)}}red{{/if}}{{#if (eq faction.data.status.value 0)}}almost_white{{/if}});">{{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}</span></div>
+                  <div id="faction-status-label" style="float:left; width: 10em; text-align: right; padding-right: 10px; color: var(--almost_white);">
+                    {{localize "BITD.Status"}}<br>
+                    <span style="color: var(--{{#if (eq faction.data.status.value 7)}}holoblue{{/if}}{{#if (eq faction.data.status.value 6)}}holobluemed{{/if}}{{#if (eq faction.data.status.value 5)}}holobluelt{{/if}}{{#if (eq faction.data.status.value 4)}}almost_white{{/if}}{{#if (eq faction.data.status.value 3)}}redlt{{/if}}{{#if (eq faction.data.status.value 2)}}redmed{{/if}}{{#if (eq faction.data.status.value 1)}}red{{/if}}{{#if (eq faction.data.status.value 0)}}almost_white{{/if}});">
+                      {{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}
+                    </span>
+                  </div>
                   <div id="faction-status-meter" class="teeth-experience-faction" style="float:left; width: 16em;">
                     {{#multiboxes faction.data.status.value}}
-                      <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="faction-{{id}}-status-0" value="0" dtype="Radio">
+                      <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../actor._id}}-faction-{{id}}-status-0" value="0" dtype="Radio">
                       {{#times_from_1 7}}
-                        <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="faction-{{id}}-status-{{this}}" value="{{this}}" dtype="Radio">
-                        <label for="faction-{{id}}-status-{{this}}"></label>
+                        <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-faction-{{id}}-status-{{this}}" value="{{this}}" dtype="Radio">
+                        <label for="{{../../actor._id}}-faction-{{id}}-status-{{this}}"></label>
                       {{/times_from_1}}
                     {{/multiboxes}}
                   </div>
                 </div>
 
                 <div id="faction-jobs" class="teeth-experience">
-                  <label for="faction-{{id}}-jobs-0">{{localize "BITD.Jobs"}}</label>
-                  <label for="faction-{{id}}-jobs-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+                  <label for="{{../actor._id}}-faction-{{id}}-jobs-0">{{localize "BITD.Jobs"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
                   {{#multiboxes faction.data.jobs.value}}
-                    <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="0" type="radio" id="faction-{{id}}-jobs-0" value="0" dtype="Radio">
+                    <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../actor._id}}-faction-{{id}}-jobs-0" value="0" dtype="Radio">
                     {{#times_from_1 faction.data.jobs.max}}
-                      <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="faction-{{id}}-jobs-{{this}}" value="{{this}}" dtype="Radio">
-                      <label for="faction-{{id}}-jobs-{{this}}"></label>
+                      <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-faction-{{id}}-jobs-{{this}}" value="{{this}}" dtype="Radio">
+                      <label for="{{../../actor._id}}-faction-{{id}}-jobs-{{this}}"></label>
                     {{/times_from_1}}
                   {{/multiboxes}}
                 </div>

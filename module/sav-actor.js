@@ -9,13 +9,12 @@ export class SaVActor extends Actor {
 
   /** @override */
   static async create(data, options={}) {
-
+    console.log(data.img);
     data.token = data.token || {};
 
     // For Crew and Character set the Token to sync with charsheet.
 
-    let icon = "";
-
+    let icon;
     switch ( data.type ) {
       case "universe": {
   	    icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
@@ -47,8 +46,9 @@ export class SaVActor extends Actor {
   	    break;
   	  }
     }
-    data.img = icon;
-
+    if( data.img === undefined ) {
+      data.img = icon;
+    }
 
     await super.create(data, options);
   }
