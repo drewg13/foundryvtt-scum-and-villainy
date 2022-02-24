@@ -335,7 +335,7 @@
               <div class="item-body flex-horizontal">
                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
 				        <a class="item-name">{{item.name}}</a>
-                <div class="item-description">{{item.data.description}}</div>
+                <div class="item-description">{{{item.data.description}}}</div>
               </div>
               <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
@@ -361,7 +361,7 @@
               <div class="item-body flex-horizontal">
                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                 <a class="item-name">{{item.name}}</a>
-                <div class="item-description">{{item.data.description}}</div>
+                <div class="item-description">{{{item.data.description}}}</div>
               </div>
               <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
@@ -394,7 +394,7 @@
       			  <div class="item-body flex-horizontal">
 			         	<!--<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>-->
 				        <a class="item-name">{{item.name}}</a>
-                <div class="item-description">{{item.data.description}}</div>
+                <div class="item-description">{{{item.data.description}}}</div>
               </div>
               <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
@@ -410,7 +410,7 @@
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
-        {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
 		    {{#if editable}}
         <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
         {{/if}}
