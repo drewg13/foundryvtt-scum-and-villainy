@@ -185,3 +185,6 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.16.0  Added ability for GM to hide Systems/Planets/Factions from players on Universe sheet, reworked Universe sheet for greater flexibility in adding/removing Systems/Planets/Factions
 
 1.16.1  Allow HTML and special characters in sheet description fields
+
+1.17.0  Added Lifestyle Fortune roll shortcut
+

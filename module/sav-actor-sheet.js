@@ -1,6 +1,7 @@
 
 import { SaVSheet } from "./sav-sheet.js";
 import {onManageActiveEffect, prepareActiveEffectCategories} from "./effects.js";
+import { lifestyleRollPopup } from "./sav-roll.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -144,6 +145,13 @@ export class SaVActorSheet extends SaVSheet {
       const element = $(ev.currentTarget).parents(".item");
       const actor = game.actors.get(element.data("itemId"));
       actor?.sheet.render(true);
+    });
+
+    // Lifestyle Roll
+    html.find('.lifestyle').click( async (ev) => {
+      const element = $(ev.currentTarget);
+      const coins = element.data("rollValue");
+      await lifestyleRollPopup( coins );
     });
 
 	  // Render XP Triggers sheet

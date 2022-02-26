@@ -308,3 +308,40 @@ export async function simpleRollPopup() {
     default: "yes"
   }).render(true);
 }
+
+/**
+ * Call a Lifestyle Roll popup.
+ */
+export async function lifestyleRollPopup( coins ) {
+  const selected = Math.floor( coins / 10 );
+  const rollArray = Array(11).fill().map((item, i) => {if( i === selected ){ return `<option value="${i}" selected>${i}d</option>` } else { return `<option value="${i}">${i}d</option>` }}).join('');
+  new Dialog({
+    title: `${game.i18n.localize("BITD.FortuneRoll")}`,
+    content: `
+      <h2>${game.i18n.localize("BITD.FortuneRoll")}</h2>
+      <form>
+        <div class="form-group">
+          <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>
+          <select id="qty" name="qty">
+            ${rollArray}
+          </select>
+        </div>
+      </form>
+    `,
+    buttons: {
+      yes: {
+        icon: "<i class='fas fa-check'></i>",
+        label: game.i18n.localize("BITD.Roll"),
+        callback: async (html) => {
+          let diceQty = html.find('[name="qty"]')[0].value;
+          await savRoll(parseInt(diceQty), "fortune", "", "");
+        },
+      },
+      no: {
+        icon: "<i class='fas fa-times'></i>",
+        label: game.i18n.localize("BITD.Cancel"),
+      },
+    },
+    default: "yes"
+  }).render(true);
+}
