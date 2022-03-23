@@ -188,3 +188,4 @@ v1.9.4  Fix Trauma tooltip z-indexing
 
 1.17.0  Added Lifestyle Fortune roll shortcut
 
+1.17.1  Fixed unnecessary chat log on edits to Ship Notes field

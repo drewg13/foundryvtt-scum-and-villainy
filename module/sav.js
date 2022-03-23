@@ -335,6 +335,7 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
         item = item + ".damage";
       }
     }
+    if( item === "description" ){ return }
     let actorName = actor.name;
     let resource, newValue, oldValue;
     switch ( item ) {
