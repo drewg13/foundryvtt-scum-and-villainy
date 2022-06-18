@@ -1,18 +1,28 @@
 {
-  "name": "scum-and-villainy",
+  "id": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
-  "authors": ["megastruktur", "Andrew Garinger [agaringer#6498]"],
+  "authors": [
+    {
+      "name": "Andrew Garinger",
+      "discord": "agaringer#6498"
+    },
+    {
+      "name": "megastruktur"
+    }
+  ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "flags": {},
-  "version": "1.18.0",
-  "minimumCoreVersion": "0.7.9",
-  "compatibleCoreVersion": "9",
+  "version": "2.0.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10
+  },
   "system": [],
-  "dependencies": [],
+  "relationships": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v1.18.0.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v2.0.0.zip",
   "protected": false,
   "initiative": "1d20",
   "scripts": [],
@@ -36,7 +46,6 @@
       "label": "Classes",
       "system": "scum-and-villainy",
       "path": "./packs/classes.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -45,7 +54,6 @@
       "label": "Heritages",
       "system": "scum-and-villainy",
       "path": "./packs/heritages.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -54,7 +62,6 @@
       "label": "Vices",
       "system": "scum-and-villainy",
       "path": "./packs/vices.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -63,7 +70,6 @@
       "label": "Backgrounds",
       "system": "scum-and-villainy",
       "path": "./packs/backgrounds.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -72,7 +78,6 @@
       "label": "Items",
       "system": "scum-and-villainy",
       "path": "./packs/items.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -81,7 +86,6 @@
       "label": "Abilities",
       "system": "scum-and-villainy",
       "path": "./packs/abilities.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -90,7 +94,6 @@
       "label": "Crew Reputation",
       "system": "scum-and-villainy",
       "path": "./packs/crew_reputation.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -99,7 +102,6 @@
       "label": "Ship Types",
       "system": "scum-and-villainy",
       "path": "./packs/crew_types.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -108,7 +110,6 @@
       "label": "Ship Upgrades",
       "system": "scum-and-villainy",
       "path": "./packs/crew_upgrades.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -117,7 +118,6 @@
       "label": "Ship Abilities",
       "system": "scum-and-villainy",
       "path": "./packs/crew_abilities.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -126,7 +126,6 @@
       "label": "Job Tables",
       "system": "scum-and-villainy",
       "path": "./packs/tables.db",
-      "entity": "RollTable",
       "type": "RollTable",
       "private": false
     },
@@ -135,7 +134,6 @@
       "label": "Star Systems",
       "system": "scum-and-villainy",
       "path": "./packs/star_systems.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -144,7 +142,6 @@
       "label": "Planets",
       "system": "scum-and-villainy",
       "path": "./packs/planets.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -153,7 +150,6 @@
       "label": "Factions",
       "system": "scum-and-villainy",
       "path": "./packs/factions.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -162,7 +158,6 @@
       "label": "Ship Sizes",
       "system": "scum-and-villainy",
       "path": "./packs/size.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     },
@@ -171,7 +166,6 @@
       "label": "Wanted Consequences",
       "system": "scum-and-villainy",
       "path": "./packs/wanted-consequences.db",
-      "entity": "JournalEntry",
       "type": "JournalEntry",
       "private": false
     },
@@ -180,7 +174,6 @@
       "label": "Wanted Tables",
       "system": "scum-and-villainy",
       "path": "./packs/wanted-tables.db",
-      "entity": "RollTable",
       "type": "RollTable",
       "private": false
     },
@@ -189,7 +182,6 @@
       "label": "System Macros",
       "system": "scum-and-villainy",
       "path": "./packs/macros.db",
-      "entity": "Macro",
       "type": "Macro",
       "private": false
     },
@@ -198,7 +190,6 @@
       "label": "Friends",
       "system": "scum-and-villainy",
       "path": "./packs/friends.db",
-      "entity": "Item",
       "type": "Item",
       "private": false
     }

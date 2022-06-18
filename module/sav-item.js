@@ -13,7 +13,7 @@ export class SaVItem extends Item {
      let removeItems = [];
      if( user.id === game.user.id ) {
        let actor = this.parent ? this.parent : null;
-       if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) ) {
+       if(  actor?.documentName === "Actor" ) {
          removeItems = SaVHelpers.removeDuplicatedItemType( data, actor );
        }
        if( removeItems.length !== 0 ) {
@@ -24,12 +24,12 @@ export class SaVItem extends Item {
 		if ( this.type === "star_system" ) {
       let stars = await SaVHelpers.getFiles("systems/scum-and-villainy/styles/assets/stars/star*", ".webp", true);
       let random = Math.floor( Math.random() * stars.length ) + 1;
-      this.data.update( { img: stars[random] } );
+      this.updateSource( { img: stars[random] } );
     }
 		if ( this.type === "planet" ) {
       let planets = await SaVHelpers.getFiles("systems/scum-and-villainy/styles/assets/planets/planet*", ".webp", true);
       let random = Math.floor( Math.random() * planets.length ) + 1;
-      this.data.update( { img: planets[random] } );
+      this.updateSource( { img: planets[random] } );
     }
    }
 
@@ -42,7 +42,7 @@ export class SaVItem extends Item {
      if( userId === game.user.id ) {
        let actor = this.parent ? this.parent : null;
 
-       if( ( game.majorVersion > 7 ) && ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
+       if( ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
 
          if( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.data.def_abilities !== "" ) ) {
            await SaVHelpers.addDefaultAbilities( data, actor );
@@ -69,12 +69,9 @@ export class SaVItem extends Item {
   prepareData() {
     super.prepareData();
 
-    const item_data = this.data;
-    const data = item_data.data;
-
-	  if (item_data.type === "faction") {
-      this._prepareStatusDefault( data );
-      data.size_list = SaVHelpers.createListOfClockSizes( game.system.savclocks.sizes, data.goal_clock_max, parseInt( data.goal_clock.max ) );
+	  if (this.type === "faction") {
+      this._prepareStatusDefault( this.system );
+      this.system.size_list = SaVHelpers.createListOfClockSizes( game.system.savclocks.sizes, this.system.goal_clock_max, parseInt( this.system.goal_clock.max ) );
     }
   };
 
@@ -84,17 +81,12 @@ export class SaVItem extends Item {
 
 	  if ( this ) {
 		  if ( ( status === "0" ) || ( status === 0 ) ) { status = 4; }
-		  data.status.value = status;
+		  this.system.status.value = status;
 	  }
   };
 
   async sendToChat() {
-    let itemData;
-    if( game.majorVersion > 7 ) {
-      itemData = this.data.toObject();
-    } else {
-      itemData = this.data;
-    }
+    let itemData = this.toObject();
 
     if (itemData.img.includes("/mystery-man")) {
       itemData.img = null;
@@ -104,6 +96,6 @@ export class SaVItem extends Item {
       user: game.userId,
       content: html,
     };
-    const message = await ChatMessage.create(chatData);
+    await ChatMessage.create( chatData );
   }
 }

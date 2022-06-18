@@ -72,11 +72,7 @@ export class SaVHelpers {
       items_to_add.push( items.find( e => ( e.name === i ) ));
     });
 
-    if( game.majorVersion > 7 ) {
-      actor.createEmbeddedDocuments("Item", items_to_add);
-    } else {
-      actor.createEmbeddedEntity("OwnedItem", items_to_add);
-    }
+    actor.createEmbeddedDocuments("Item", items_to_add);
   }
 
 
@@ -105,11 +101,8 @@ export class SaVHelpers {
       name: randomID(),
       type: item_type
     };
-    if( game.majorVersion > 7 ) {
-      return actor.createEmbeddedDocuments("Item", [data]);
-    } else {
-      return actor.createEmbeddedEntity("OwnedItem", data);
-    }
+
+    return actor.createEmbeddedDocuments("Item", [data]);
   }
 
   /**
@@ -122,13 +115,7 @@ export class SaVHelpers {
 
     let game_items = game.items.filter(e => e.type === item_type).map(e => {return e.data}) || [];
     let pack = game.packs.find(e => e.metadata.name === item_type);
-    let compendium_content;
-
-    if( game.majorVersion > 7 ) {
-      compendium_content = await pack.getDocuments();
-    } else {
-      compendium_content = await pack.getContent();
-    }
+    let compendium_content = await pack.getDocuments();
 
     let compendium_items = compendium_content.map(k => {return k.data}) || [];
     compendium_items = compendium_items.filter(a => game_items.filter(b => a.name === b.name && a.name === b.name).length === 0);
@@ -283,12 +270,7 @@ export class SaVHelpers {
     if ( data.type === "Item" ) {
       let sourceData;
       if( data.pack ){
-        let packData;
-        if( game.majorVersion > 7 ) {
-          packData = await game.packs.get( data.pack ).getDocuments();
-        } else {
-          packData = await game.packs.get( data.pack ).getContent();
-        }
+        let packData = await game.packs.get( data.pack ).getDocuments();
         sourceData = packData.find( p => p.id === data.id ).data;
       } else {
         sourceData = game.items.get( data.id ).data;
@@ -306,11 +288,7 @@ export class SaVHelpers {
             y: data.y
           };
 
-          if( game.majorVersion === 7 ) {
-            await canvas.scene.createEmbeddedEntity( "Tile", [ tileData ] );
-          } else {
-            await canvas.scene.createEmbeddedDocuments( "Tile", [ tileData ] );
-          }
+          await canvas.scene.createEmbeddedDocuments( "Tile", [ tileData ] );
 
         } catch( error ) {
           ui.notifications.warn( "Error creating Tile, there needs to exist a WEBM file with the same filename and location as the Item img WEBP" )

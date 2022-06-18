@@ -14,11 +14,8 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
 
   let r = new Roll( `${dice_amount}d6`, {} );
 
-  if (game.majorVersion > 7) {
-    await r.evaluate({async: true});
-  } else {
-    r.roll();
-  }
+  await r.evaluate({async: true});
+
   await showChatRollMessage( r, zeromode, attribute_name, position, effect );
 }
 
@@ -105,11 +102,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
     roll: r
   }
 
-  if( game.majorVersion > 7 ) {
-    await CONFIG.ChatMessage.documentClass.create(messageData, {});
-  } else {
-    await CONFIG.ChatMessage.entityClass.create(messageData, {});
-  }
+  await CONFIG.ChatMessage.documentClass.create(messageData, {});
 }
 
 /**

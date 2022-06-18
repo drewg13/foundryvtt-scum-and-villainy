@@ -10,8 +10,7 @@ export class SaVNPCSheet extends SaVSheet {
 
   /** @override */
   static get defaultOptions() {
-    //update to foundry.utils.mergeObject
-		return mergeObject(super.defaultOptions, {
+		return foundry.utils.mergeObject(super.defaultOptions, {
   	  classes: [ "scum-and-villainy", "sheet", "actor" ],
   	  template: "systems/scum-and-villainy/templates/npc-sheet.html",
       width: 800,
@@ -23,19 +22,18 @@ export class SaVNPCSheet extends SaVSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData() {
-    const data = super.getData();
-    data.isGM = game.user.isGM;
-    data.editable = data.options.editable;
-    const actorData = data.data;
+  async getData(options) {
+    const superData = super.getData( options );
+    const sheetData = superData.data;
+    //sheetData.document = superData.actor;
+    sheetData.owner = superData.owner;
+    sheetData.editable = superData.editable;
+    sheetData.isGM = game.user.isGM;
 
-    if( game.majorVersion > 7 ) {
-      data.actor = actorData;
-      data.data = actorData.data;
-    }
-    data.size_list = SaVHelpers.createListOfClockSizes( game.system.savclocks.sizes, parseInt( data.data.goal_clock.max ), parseInt( data.data.goal_clock.max ) );
+    sheetData.size_list = SaVHelpers.createListOfClockSizes( game.system.savclocks.sizes, parseInt( sheetData.system.goal_clock.max ), parseInt( sheetData.system.goal_clock.max ) );
+    sheetData.system.notes = await TextEditor.enrichHTML(sheetData.system.notes, {secrets: sheetData.owner, async: true});
 
-    return data;
+    return sheetData;
   }
 
   /* -------------------------------------------- */

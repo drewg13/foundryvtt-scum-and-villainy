@@ -1,14 +1,14 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-      <img src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      <img src="{{img}}" data-edit="img" title="{{name}}"/>
       <div class="header-fields">
-          <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
       </div>
   </header>
 
   <section class="flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
+    {{{editor content=system.description target="system.description" button=true owner=owner editable=editable}}}
     <label class="label-stripe">{{localize "BITD.ExpClues"}}</label>
     <div>{{localize "BITD.CrewExpClueDescription"}}</div>
 	  <div><i>- {{localize "BITD.CrewExpClue2"}}</i></div>
@@ -16,10 +16,10 @@
     <div><i>- {{localize "BITD.CrewExpClue4"}}</i></div>
     <br>
     <label class="label-stripe">{{localize "BITD.ClassExpClue"}}</label>
-    {{{editor content=data.experience_clues target="data.experience_clues" button=true owner=owner editable=editable}}}
+    {{{editor content=system.experience_clues target="system.experience_clues" button=true owner=owner editable=editable}}}
     {{#if isGM}}
       <label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
-      <textarea name="data.def_abilities">{{data.def_abilities}}</textarea>
+      <textarea name="system.def_abilities">{{system.def_abilities}}</textarea>
       <div class="label-stripe">{{localize "BITD.Effects"}}</div>
       <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>
     {{/if}}

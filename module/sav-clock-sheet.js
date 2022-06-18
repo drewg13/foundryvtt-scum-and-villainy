@@ -17,12 +17,11 @@ const DEFAULT_TOKEN = {
 
 export class SaVClockSheet extends ActorSheet {
   static get defaultOptions() {
-    const supportedSystem = getSystemMapping(game.data.system.id);
-    //update to foundry.utils.mergeObject
-    return mergeObject(
+    const supportedSystem = getSystemMapping(game.system.id);
+    return foundry.utils.mergeObject(
       super.defaultOptions,
       {
-        classes: ["clocks", "sheet", `clocks-system-${game.data.system.id}`, "actor", "npc"],
+        classes: ["clocks", "sheet", `clocks-system-${game.system.id}`, "actor", "npc"],
         template: "systems/scum-and-villainy/templates/sav-clock-sheet.html",
         width: 360,
         height: 550,
@@ -39,23 +38,18 @@ export class SaVClockSheet extends ActorSheet {
 */
   constructor (...args) {
     super(...args);
-    this._system = getSystemMapping(game.data.system.id);
+    this._system = getSystemMapping(game.system.id);
   }
 
   get system () {
     return this._system;
   }
 
-  getData () {
+  getData (options) {
 
-    let clock;
-    if( game.majorVersion > 7 ) {
-      clock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
-    } else {
-      clock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-    }
-    //update to foundry.utils.mergeObject
-    const data = mergeObject(super.getData(), {
+    let clock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
+
+    const data = foundry.utils.mergeObject(super.getData(options), {
       clock: {
         progress: clock.progress,
         size: clock.size,
@@ -82,34 +76,19 @@ export class SaVClockSheet extends ActorSheet {
 
     html.find("button[name=minus]").click(async (ev) => {
       ev.preventDefault();
-      let oldClock;
-      if( game.majorVersion > 7 ) {
-        oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
-      } else {
-        oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-      }
+      let oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
       await this.updateClock(oldClock.decrement());
     });
 
     html.find("button[name=plus]").click(async (ev) => {
       ev.preventDefault();
-      let oldClock;
-      if( game.majorVersion > 7 ) {
-        oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
-      } else {
-        oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-      }
+      let oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
       await this.updateClock(oldClock.increment());
     });
 
     html.find("button[name=reset]").click(async (ev) => {
       ev.preventDefault();
-      let oldClock;
-      if( game.majorVersion > 7 ) {
-        oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
-      } else {
-        oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-      }
+      let oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
       await this.updateClock(new SaVClock({
         theme: oldClock.theme,
         progress: 0,
@@ -123,12 +102,7 @@ export class SaVClockSheet extends ActorSheet {
       name: form.name
     });
 
-    let oldClock;
-    if( game.majorVersion > 7 ) {
-      oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.document }));
-    } else {
-      oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-    }
+    let oldClock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
     let newClock = new SaVClock({
       progress: oldClock.progress,
       size: form.size,
@@ -138,62 +112,34 @@ export class SaVClockSheet extends ActorSheet {
   }
 
   async updateClock(clock) {
-    let actor;
-    if( game.majorVersion > 7 ) {
-      actor = this.document;
-    } else {
-      actor = this.actor;
-    }
+    let actor = this.actor;
 
     // update associated tokens
     const tokens = actor.getActiveTokens();
 
-    if( game.majorVersion > 7 ) {
-      let update = [];
-      let tokenObj = {};
-      for (const t of tokens) {
-        tokenObj = {
-          _id: t.id,
-          name: actor.name,
-          img: clock.image.img,
-          actorLink: true
-        };
-        update.push(tokenObj);
-      }
-      await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
-
-      // update the Actor
-      const persistObj = await this.system.persistClockToActor({ actor, clock });
-	    const visualObj = {
-        img: clock.image.img,
-        token: {
-          img: clock.image.img,
-          ...DEFAULT_TOKEN
-        }
-      };
-      //update to foundry.utils.mergeObject
-      await actor.update( mergeObject( visualObj, persistObj ) );
-
-    } else {
-      for (const t of tokens) {
-      await t.update({
+    let update = [];
+    let tokenObj = {};
+    for (const t of tokens) {
+      tokenObj = {
+        _id: t.id,
         name: actor.name,
         img: clock.image.img,
         actorLink: true
-      });
-      }
-
-      // update the Actor
-      const persistObj = await this.system.persistClockToActor({ actor, clock });
-	    const visualObj = {
-        img: clock.image.img,
-        token: {
-          img: clock.image.img,
-          ...DEFAULT_TOKEN
-        }
       };
-      await actor.update(mergeObject(visualObj, persistObj));
+      update.push(tokenObj);
     }
+    await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
+
+    // update the Actor
+    const persistObj = await this.system.persistClockToActor({ actor, clock });
+	  const visualObj = {
+      img: clock.image.img,
+      token: {
+        img: clock.image.img,
+        ...DEFAULT_TOKEN
+      }
+    };
+    await actor.update( foundry.utils.mergeObject( visualObj, persistObj ) );
   }
 }
 
@@ -205,7 +151,7 @@ export default {
   let t = canvas.tokens.get(token.id);
   let a = game.actors.get(token.actorId);
 
-  if( !a?.data?.flags['scum-and-villainy']?.clocks ) {
+  if( !a?.flags['scum-and-villainy']?.clocks ) {
     return false;
   }
 
@@ -217,7 +163,7 @@ export default {
     // re-get in case there has been an update
     t = canvas.tokens.get(token.id);
 
-    const oldClock = new SaVClock(a.data.flags['scum-and-villainy'].clocks);
+    const oldClock = new SaVClock(a.flags['scum-and-villainy']?.clocks);
     let newClock;
 
     const target = event.target.classList.contains("control-icon")
@@ -253,51 +199,33 @@ export default {
         }
       };
 
-    if( game.majorVersion > 7 ) {
-      //update to foundry.utils.mergeObject
-      let newObj = mergeObject(visualObj, persistObj);
-      let tokenObj = {};
-      let update = [];
-      //update to foundry.utils.mergeObject
-      update.push( mergeObject( { "_id": a.id }, newObj ) );
-      await Actor.updateDocuments(update);
-
-      update = [];
-	    const tokens = a.getActiveTokens();
-      for (const t of tokens) {
-        tokenObj = {
-          _id: t.id,
-          name: a.name,
-          img: newClock.image.img,
-	  	    flags: newClock.flags,
-          actorLink: true
-        };
-        update.push(tokenObj);
-      }
-
-      await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
-    } else {
-      await a.update( mergeObject( visualObj, persistObj ) );
-
-  	  const tokens = a.getActiveTokens();
-      for (const t of tokens) {
-        await t.update({
-          name: a.name,
-          img: newClock.image.img,
-	    	  flags: newClock.flags,
-          actorLink: true
-        });
-      }
+    let newObj = foundry.utils.mergeObject(visualObj, persistObj);
+    let tokenObj = {};
+    let update = [];
+    update.push( foundry.utils.mergeObject( { "_id": a.id }, newObj ) );
+    await Actor.updateDocuments(update);
+    update = [];
+    const tokens = a.getActiveTokens();
+    for (const t of tokens) {
+      tokenObj = {
+        _id: t.id,
+        name: a.name,
+        img: newClock.image.img,
+  	    flags: newClock.flags,
+        actorLink: true
+      };
+      update.push(tokenObj);
     }
-  });
 
+    await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
+  });
 
   html.find("div.right").append(button2HTML).click(async (event) => {
     log("HUD Clicked")
     // re-get in case there has been an update
     t = canvas.tokens.get(token.id);
 
-    const oldClock = new SaVClock(a.data.flags['scum-and-villainy'].clocks);
+    const oldClock = new SaVClock(a.flags['scum-and-villainy']?.clocks);
     let newClock;
 
     const target = event.target.classList.contains("control-icon")
@@ -333,42 +261,27 @@ export default {
         }
     };
 
-    if( game.majorVersion > 7 ) {
-      //update to foundry.utils.mergeObject
-      let newObj = mergeObject(visualObj, persistObj);
-      let tokenObj = {};
-      let update = [];
-      //update to foundry.utils.mergeObject
-      update.push( mergeObject( { "_id": a.id }, newObj ) );
-      await Actor.updateDocuments(update);
+    let newObj = foundry.utils.mergeObject(visualObj, persistObj);
+    let tokenObj = {};
+    let update = [];
+    update.push( foundry.utils.mergeObject( { "_id": a.id }, newObj ) );
+    await Actor.updateDocuments(update);
 
-      update = [];
-	    const tokens = a.getActiveTokens();
-      for (const t of tokens) {
-        tokenObj = {
-          _id: t.id,
-          name: a.name,
-          img: newClock.image.img,
-	  	    flags: newClock.flags,
-          actorLink: true
-        };
-        update.push(tokenObj);
-      }
-
-      await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
-    } else {
-      await a.update(mergeObject(visualObj, persistObj));
-
-  	  const tokens = a.getActiveTokens();
-      for (const t of tokens) {
-        await t.update({
-          name: a.name,
-          img: newClock.image.img,
-	    	  flags: newClock.flags,
-          actorLink: true
-        });
-      }
+    update = [];
+	  const tokens = a.getActiveTokens();
+    for (const t of tokens) {
+      tokenObj = {
+        _id: t.id,
+        name: a.name,
+        img: newClock.image.img,
+	      flags: newClock.flags,
+        actorLink: true
+      };
+      update.push(tokenObj);
     }
+
+    await TokenDocument.updateDocuments(update, {parent: game.scenes.current});
   });
-return true;
-}}
+  return true;
+  }
+}

@@ -1,24 +1,24 @@
 <form class="{{cssClass}} ship-sheet" autocomplete="off">
 
   <section id="name-alias" class="flex-horizontal">
-    <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <img src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100"/>
     <div class="grow-two">
       <div id="name">
-        <label for="ship-{{actor._id}}-name">{{localize "BITD.Name"}}</label>
-        <input type="text" id="ship-{{actor._id}}-name" name="name" value="{{actor.name}}">
+        <label for="ship-{{_id}}-name">{{localize "BITD.Name"}}</label>
+        <input type="text" id="ship-{{_id}}-name" name="name" value="{{name}}">
       </div>
 
       <div id="ship-traits" class="flex-column">
         <div class="item-block flex-horizontal">
           <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew_type">{{localize "BITD.CrewType"}}</a></div>
-          {{#each actor.items as |item id|}}
+          {{#each items as |item id|}}
             {{#if (eq item.type "crew_type")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                   <div class="tooltip">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.data.description}}}<br />{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />{{item.data.experience_clues}}</span>
+                    <span class="tooltiptext">{{{item.system.description}}}<br />{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />{{item.system.experience_clues}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -30,14 +30,14 @@
 
 		    <div class="item-block flex-horizontal">
           <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="ship_size">{{localize "BITD.ShipSize"}}</a></div>
-          {{#each actor.items as |item id|}}
+          {{#each items as |item id|}}
             {{#if (eq item.type "ship_size")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                   <div class="tooltip">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.data.description}}}</span>
+                    <span class="tooltiptext">{{{item.system.description}}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -49,14 +49,14 @@
 
 		    <div class="item-block flex-horizontal">
           <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew_reputation">{{localize "BITD.CrewReputation"}}</a></div>
-          {{#each actor.items as |item id|}}
+          {{#each items as |item id|}}
             {{#if (eq item.type "crew_reputation")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                   <div class="tooltip">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.data.description}}}</span>
+                    <span class="tooltiptext">{{{item.system.description}}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -71,42 +71,42 @@
 
     <div class="grow-two">
       <div id="designation">
-        <label for="ship-{{actor._id}}-designation">{{localize "BITD.Designation"}}</label>
-        <input type="text" id="ship-{{actor._id}}-designation" name="data.designation" value="{{data.designation}}">
+        <label for="ship-{{id}}-designation">{{localize "BITD.Designation"}}</label>
+        <input type="text" id="ship-{{_id}}-designation" name="system.designation" value="{{system.designation}}">
       </div>
 
       <div id="look">
-        <label for="ship-{{actor._id}}-look">{{localize "BITD.Colors"}}</label>
-        <input type="text" id="ship-{{actor._id}}-look" name="data.look" value="{{data.look}}">
+        <label for="ship-{{_id}}-look">{{localize "BITD.Colors"}}</label>
+        <input type="text" id="ship-{{_id}}-look" name="system.look" value="{{system.look}}">
       </div>
 
       <div id="coins" class="flex-horizontal">
         <div id="coins-hands">
 			    <div class="stripe">
-				    <label for="coins-{{actor._id}}-hands-0">{{localize "BITD.Coin"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
+				    <label for="coins-{{_id}}-hands-0">{{localize "BITD.Coin"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
 			    </div>
 			    <div class="coins coins-hands">
-			      {{#multiboxes data.coins}}
-			        <input type="radio" id="coins-{{actor._id}}-hands-0" name="data.coins" value="0" checked="checked">
-			        {{#times_from_1 data.coinsMax}}
-                <input type="radio" id="coins-{{../actor._id}}-hands-{{this}}" name="data.coins" value="{{this}}">
-			          <label for="coins-{{../actor._id}}-hands-{{this}}"></label>
+			      {{#multiboxes system.coins}}
+			        <input type="radio" id="coins-{{_id}}-hands-0" name="system.coins" value="0" checked="checked">
+			        {{#times_from_1 system.coinsMax}}
+                <input type="radio" id="coins-{{../_id}}-hands-{{this}}" name="system.coins" value="{{this}}">
+			          <label for="coins-{{../_id}}-hands-{{this}}"></label>
               {{/times_from_1}}
 			      {{/multiboxes}}
 			    </div>
 		    </div>
 
-		    {{#if (eq data.installs.vault_inst 1)}}
+		    {{#if (eq system.installs.vault_inst 1)}}
 		      <div id="vault">
 			      <div class="stripe">
-			        <label for="coins-{{actor._id}}-vault-0">{{localize "BITD.Vault"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
+			        <label for="coins-{{_id}}-vault-0">{{localize "BITD.Vault"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
 			      </div>
 			      <div class="coins coins-hands">
-			        {{#multiboxes data.vault}}
-			          <input type="radio" id="coins-{{actor._id}}-vault-0" name="data.vault" value="0" checked="checked">
+			        {{#multiboxes system.vault}}
+			          <input type="radio" id="coins-{{_id}}-vault-0" name="system.vault" value="0" checked="checked">
 			          {{#times_from_1 4}}
-                  <input type="radio" id="coins-{{../actor._id}}-vault-{{this}}" name="data.vault" value="{{this}}">
-			            <label for="coins-{{../actor._id}}-vault-{{this}}"></label>
+                  <input type="radio" id="coins-{{../_id}}-vault-{{this}}" name="system.vault" value="{{this}}">
+			            <label for="coins-{{../_id}}-vault-{{this}}"></label>
                 {{/times_from_1}}
 			        {{/multiboxes}}
 			      </div>
@@ -115,14 +115,14 @@
 
 		    <div id="coins-debt">
           <div class="stripe">
-			      <label for="coins-{{actor._id}}-debt-0">{{localize "BITD.Debt"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
+			      <label for="coins-{{_id}}-debt-0">{{localize "BITD.Debt"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
 			    </div>
 			    <div class="coins debt">
-			      {{#multiboxes data.debt}}
-              <input type="radio" id="coins-{{actor._id}}-debt-0" name="data.debt" value="0" checked="checked">
+			      {{#multiboxes system.debt}}
+              <input type="radio" id="coins-{{_id}}-debt-0" name="system.debt" value="0" checked="checked">
               {{#times_from_1 8}}
-                <input type="radio" id="coins-{{../actor._id}}-debt-{{this}}" name="data.debt" value="{{this}}">
-			          <label for="coins-{{../actor._id}}-debt-{{this}}"></label>
+                <input type="radio" id="coins-{{../_id}}-debt-{{this}}" name="system.debt" value="{{this}}">
+			          <label for="coins-{{../_id}}-debt-{{this}}"></label>
               {{/times_from_1}}
 			      {{/multiboxes}}
 			    </div>
@@ -132,16 +132,16 @@
 	    <div id="gambits-container" class="flex-horizontal">
         <div id="gambits">
 	  		  <div class="stripe">
-	  		    <label for="gambits-{{actor._id}}-0">{{localize "BITD.Gambits"}}
-	  		      <i class="fab fa-creative-commons-zero nullifier"></i>  ({{localize "BITD.GambitRefresh1"}} {{data.gambits.refresh}} {{localize "BITD.GambitRefresh2"}})
+	  		    <label for="gambits-{{_id}}-0">{{localize "BITD.Gambits"}}
+	  		      <i class="fab fa-creative-commons-zero nullifier"></i>  ({{localize "BITD.GambitRefresh1"}} {{system.gambits.refresh}} {{localize "BITD.GambitRefresh2"}})
             </label>
           </div>
 	  		  <div class="coins gambits">
-            {{#multiboxes data.gambits.value}}
-	  		      <input type="radio" id="gambits-{{actor._id}}-0" name="data.gambits.value" value="0" checked="checked">
-              {{#times_from_1 data.gambits.max}}
-	  		        <input type="radio" id="gambits-{{../actor._id}}-{{this}}" name="data.gambits.value" value="{{this}}">
-	  		        <label for="gambits-{{../actor._id}}-{{this}}"></label>
+            {{#multiboxes system.gambits.value}}
+	  		      <input type="radio" id="gambits-{{_id}}-0" name="system.gambits.value" value="0" checked="checked">
+              {{#times_from_1 system.gambits.max}}
+	  		        <input type="radio" id="gambits-{{../_id}}-{{this}}" name="system.gambits.value" value="{{this}}">
+	  		        <label for="gambits-{{../_id}}-{{this}}"></label>
               {{/times_from_1}}
             {{/multiboxes}}
   			  </div>
@@ -170,35 +170,35 @@
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
           <p>{{localize "BITD.SpecialAbilities"}}
-          <a class="item-add-popup" data-item-type="crew_ability" data-limiter=data.ship_class><i class="fas fa-plus-square"></i></a></p>
+          <a class="item-add-popup" data-item-type="crew_ability" data-limiter=system.ship_class><i class="fas fa-plus-square"></i></a></p>
           <div id="ship-experience" class="teeth-experience tooltip">
-            <label for="ship-{{actor._id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
+            <label for="ship-{{_id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
               <span class="tooltiptext left">{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />
-                {{#each actor.items as |item id|}}
+                {{#each items as |item id|}}
                   {{#if (eq item.type "crew_type")}}
-                    {{item.data.experience_clues}}
+                    {{item.system.experience_clues}}
                   {{/if}}
                 {{/each}}
               </span>
             </label>
-            {{#multiboxes data.crew_experience}}
-              <input type="radio" id="ship-{{actor._id}}-experience-0" name="data.crew_experience" value="0" dtype="Radio">
-              {{#times_from_1 data.crew_experienceMax}}
-                <input type="radio" id="ship-{{../actor._id}}-experience-{{this}}" name="data.crew_experience" value="{{this}}" dtype="Radio">
-                <label for="ship-{{../actor._id}}-experience-{{this}}"></label>
+            {{#multiboxes system.crew_experience}}
+              <input type="radio" id="ship-{{_id}}-experience-0" name="system.crew_experience" value="0" dtype="Radio">
+              {{#times_from_1 system.crew_experienceMax}}
+                <input type="radio" id="ship-{{../_id}}-experience-{{this}}" name="system.crew_experience" value="{{this}}" dtype="Radio">
+                <label for="ship-{{../_id}}-experience-{{this}}"></label>
               {{/times_from_1}}
             {{/multiboxes}}
           </div>
 		    </div>
 
         <div id="abilities-list">
-          {{#each actor.items as |item id|}}
+          {{#each items as |item id|}}
             {{#if (eq item.type "crew_ability")}}
 		          <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
 				          <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                   <a class="item-name">{{item.name}}</a>
-                  <div class="item-description">{{{item.data.description}}}</div>
+                  <div class="item-description">{{{item.system.description}}}</div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
                 <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
@@ -216,13 +216,13 @@
           <a class="item-add-popup" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
         </div>
         <div>
-          {{#each actor.items as |item id|}}
+          {{#each items as |item id|}}
             {{#if (eq item.type "crew_upgrade")}}
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                   <a class="item-name">{{item.name}}</a>
-                  <div class="item-description">{{{item.data.description}}}</div>
+                  <div class="item-description">{{{item.system.description}}}</div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
                 <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
@@ -240,10 +240,10 @@
           <a class="item-add-popup" data-item-type="friend"><i class="fas fa-plus-square"></i></a></p>
         </div>
         <div id="friend-list">
-          {{#each actor.items as |item id|}}
+          {{#each items as |item id|}}
             {{#if (eq item.type "friend")}}
 			        <div class="friend-tracker">
-			          {{#multiboxes item.data.status.value}}
+			          {{#multiboxes item.system.status.value}}
 				          {{#times_from_0 2}}
                     <input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="friend-{{item._id}}-status-{{this}}" value="{{this}}" dtype="Radio">
 				            <label for="friend-{{item._id}}-status-{{this}}"></label>
@@ -252,7 +252,7 @@
                 <div class="item flex-horizontal" data-item-id="{{item._id}}">
 			            <div class="item-body flex-horizontal">
 				            <a class="item-name">{{item.name}}</a>
-                    <div class="item-description">{{{item.data.description}}}</div>
+                    <div class="item-description">{{{item.system.description}}}</div>
                   </div>
                   <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
                   <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
@@ -268,7 +268,7 @@
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
-        {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
+        {{{editor content=system.description target="system.description" button=true owner=owner editable=editable}}}
 		    {{#if editable}}
           <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
         {{/if}}
@@ -289,7 +289,7 @@
         <div class="label-stripe">
           <p><label>{{localize "BITD.AllItems"}}</label></p>
         </div>
-        {{#each actor.items as |item id|}}
+        {{#each items as |item id|}}
           <div class="item flex-horizontal" data-item-id="{{item._id}}">
             <div class="item-body item-sheet-open flex-horizontal">
               <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
@@ -304,7 +304,7 @@
 
     {{!-- Attributes --}}
 	  <div id="systems">
-		  {{#each data.systems as |system system_name|}}
+		  {{#each system.systems as |system system_name|}}
 		    {{#unless (eq system.max 0)}}
 		      <div id="systems-{{system_name}}" class="system">
 			      <div id="systems-{{system_name}}-title" class="systems-value">
@@ -337,11 +337,11 @@
 			          {{#unless (eq system_name "upkeep")}}
 	  		          <div class="stripe-tooth-body-blue">
 	  			          {{#multiboxes system.value}}
-	  			            <label for="{{../actor._id}}-{{system_name}}-value-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-	  			            <input type="radio" id="{{../actor._id}}-{{system_name}}-value-0" name="data.systems.{{system_name}}.value" value="0">
+	  			            <label for="{{../_id}}-{{system_name}}-value-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+	  			            <input type="radio" id="{{../_id}}-{{system_name}}-value-0" name="system.systems.{{system_name}}.value" value="0">
                       {{#times_from_1 system.max}}
-	  			                <input type="radio" id="{{../../actor._id}}-{{system_name}}-value-{{this}}" name="data.systems.{{system_name}}.value" value="{{this}}">
-	  			                <label for="{{../../actor._id}}-{{system_name}}-value-{{this}}"></label>
+	  			                <input type="radio" id="{{../../_id}}-{{system_name}}-value-{{this}}" name="system.systems.{{system_name}}.value" value="{{this}}">
+	  			                <label for="{{../../_id}}-{{system_name}}-value-{{this}}"></label>
 	  			            {{/times_from_1}}
                     {{/multiboxes}}
 	  		          </div>
@@ -359,29 +359,29 @@
 	  			        {{/unless}}
                   <div class="stripe-tooth-body-red">
 	  			          {{#multiboxes system.damage}}
-                      <label for="{{../actor._id}}-{{system_name}}-damage-0"><i	class="fab fa-creative-commons-zero nullifier"></i></label>
-	  			            <input type="radio" id="{{../actor._id}}-{{system_name}}-damage-0" name="data.systems.{{system_name}}.damage" value="0">
+                      <label for="{{../_id}}-{{system_name}}-damage-0"><i	class="fab fa-creative-commons-zero nullifier"></i></label>
+	  			            <input type="radio" id="{{../_id}}-{{system_name}}-damage-0" name="system.systems.{{system_name}}.damage" value="0">
                       {{#times_from_1 system.max}}
-	  		                <input type="radio" id="{{../../actor._id}}-{{system_name}}-damage-{{this}}" name="data.systems.{{system_name}}.damage" value="{{this}}">
-	  		                <label for="{{../../actor._id}}-{{system_name}}-damage-{{this}}"></label>
+	  		                <input type="radio" id="{{../../_id}}-{{system_name}}-damage-{{this}}" name="system.systems.{{system_name}}.damage" value="{{this}}">
+	  		                <label for="{{../../_id}}-{{system_name}}-damage-{{this}}"></label>
 	  			            {{/times_from_1}}
                     {{/multiboxes}}
 		  	          </div>
 		  	        </div>
 		  	      </div>
               <div id="system-upgrades" class="systems-value">
-		  		      {{#each ../actor.items as |item id|}}
+		  		      {{#each ../items as |item id|}}
                   {{#if (eq item.type "crew_upgrade")}}
-                    {{#if (caseeq item.data.class system_name)}}
+                    {{#if (caseeq item.system.class system_name)}}
                       {{!-- Special handling to prevent Quantum Encryptor from showing up as Comms item, translation friendly --}}
-                      {{#unless (eq item.effects.[0].changes.[0].key "data.systems.encryptor.max")}}
+                      {{#unless (eq item.effects.[0].changes.[0].key "system.systems.encryptor.max")}}
                         <div class="label-stripe-gray item flex-horizontal system-label" data-item-id="{{item._id}}">
 			  		            <div class="item-body">
 			  		             <a class="item-name">{{item.name}}</a>
                           </div>
                           <div id="system-subitem" class="stripe-tooth-body-red">
                             <label for="item-{{id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-                            {{#multiboxes item.data.is_damaged}}
+                            {{#multiboxes item.system.is_damaged}}
                               <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="0"  type="radio" id="item-{{id}}-0" value="0" dtype="Radio">
 					                    {{#times_from_1 1}}
 					      	              <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="item-{{id}}-{{this}}" value="{{this}}" dtype="Radio">

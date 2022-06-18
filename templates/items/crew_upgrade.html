@@ -1,23 +1,23 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-      <img src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      <img src="{{img}}" data-edit="img" title="{{name}}"/>
       <div class="header-fields">
-          <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
       </div>
   </header>
 
   {{!-- Sheet Body --}}
   <section class="sheet-body flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
+    {{{editor content=system.description target="system.description" button=true owner=owner editable=editable}}}
     <div class="flex-horizontal">
       <div class="flex-vertical grow-two">
         <label class="label-stripe">{{localize "BITD.Price"}}</label>
-        <textarea name="data.price">{{data.price}}</textarea>
+        <textarea name="system.price">{{system.price}}</textarea>
       </div>
       <div class="flex-vertical grow-two">
         <label class="label-stripe">{{localize "BITD.UpgradeType"}}</label>
-        <textarea name="data.class">{{data.class}}</textarea>
+        <textarea name="system.class">{{system.class}}</textarea>
       </div>
     </div>
     {{#if isGM}}

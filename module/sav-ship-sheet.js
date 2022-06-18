@@ -10,8 +10,7 @@ export class SaVShipSheet extends SaVSheet {
 
   /** @override */
 	static get defaultOptions() {
-    //update to foundry.utils.mergeObject
-	  return mergeObject(super.defaultOptions, {
+	  return foundry.utils.mergeObject(super.defaultOptions, {
 	    classes: ["scum-and-villainy", "sheet", "actor"],
 	  	template: "systems/scum-and-villainy/templates/ship-sheet.html",
 	    width: 720,
@@ -21,22 +20,21 @@ export class SaVShipSheet extends SaVSheet {
 	  });
   }
 
- /** @override */
-  getData() {
-    const data = super.getData();
-	  data.isGM = game.user.isGM;
-		data.editable = data.options.editable;
-    const actorData = data.data;
+  /** @override */
+  async getData( options ) {
+    const superData = super.getData( options );
+    const sheetData = superData.data;
+    //sheetData.document = superData.actor;
+    sheetData.owner = superData.owner;
+    sheetData.editable = superData.editable;
+    sheetData.isGM = game.user.isGM;
 
     // Prepare active effects
-    data.effects = prepareActiveEffectCategories(this.actor.effects);
+    sheetData.effects = prepareActiveEffectCategories(this.document.effects);
 
-	  if( game.majorVersion > 7 ) {
-		  data.actor = actorData;
-		  data.data = actorData.data;
-    }
+    sheetData.system.description = await TextEditor.enrichHTML(sheetData.system.description, {secrets: sheetData.owner, async: true});
 
-	  return data;
+    return sheetData;
   }
 
   /** @override */
@@ -49,23 +47,14 @@ export class SaVShipSheet extends SaVSheet {
     // Update Inventory Item
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-      let item;
-      if( game.majorVersion > 7 ) {
-			  item = this.document.items.get(element.data("itemId"));
-			} else {
-				item = this.actor.getOwnedItem(element.data("itemId"));
-			}
+      let item = this.actor.items.get(element.data("itemId"));
       item?.sheet.render(true);
     });
 
     // Delete Inventory Item
     html.find('.item-delete').click( async (ev) => {
       const element = $(ev.currentTarget).parents(".item");
-      if( game.majorVersion > 7 ) {
-			  await this.document.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
-			} else {
-				await this.actor.deleteOwnedItem(element.data("itemId"));
-			}
+      await this.actor.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
       element.slideUp(200, () => this.render(false));
     });
 
@@ -79,12 +68,7 @@ export class SaVShipSheet extends SaVSheet {
     // Render XP Triggers sheet
     html.find('.xp-triggers').click(ev => {
       let itemId = this.actor.items.filter( i => i.type === "crew_type" )[0]?.id;
-	    let item;
-      if( game.majorVersion > 7 ) {
-        item = this.document.items.get(itemId);
-      } else {
-        item = this.actor.getOwnedItem(itemId);
-      }
+	    let item = this.actor.items.get(itemId);
       item?.sheet.render(true, {"renderContext": "xp"});
     });
 
@@ -100,12 +84,8 @@ export class SaVShipSheet extends SaVSheet {
 
     // Update the Item
     await super._updateObject( event, formData );
-    let crew_data;
-		if( game.majorVersion > 7 ) {
-			crew_data = "data.data.crew";
-		} else {
-			crew_data = "data.crew";
-		}
+    let crew_data = "system.crew";
+
     if (event.target && event.target.name === crew_data) {
       this.render(true);
     }

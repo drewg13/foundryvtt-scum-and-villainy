@@ -1,18 +1,18 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-      <img src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      <img src="{{img}}" data-edit="img" title="{{name}}"/>
       <div class="header-fields">
-          <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Planet'}}"/></h1>
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Planet'}}"/></h1>
       </div>
   </header>
 
   <section class="flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    <textarea rows="10" name="data.description">{{{data.description}}}</textarea>
+    <textarea rows="10" name="system.description">{{{system.description}}}</textarea>
     <div class="flex-horizontal">
       <div class="flex-vertical grow-one">
         <label class="label-stripe">{{localize "BITD.System"}}</label>
-        <textarea name="data.system">{{data.system}}</textarea>
+        <textarea name="system.system">{{system.system}}</textarea>
       </div>
       <div class="flex-vertical grow-three">
         <label class="label-stripe">{{localize "BITD.Stats"}}</label>
@@ -20,21 +20,21 @@
           <table>
             <tr>
               <td>{{localize 'BITD.Wealth'}}:</td>
-              <td><textarea name="data.wealth">{{data.wealth}}</textarea></td><td style="text-align:left">/ 3</td>
+              <td><textarea name="system.wealth">{{system.wealth}}</textarea></td><td style="text-align:left">/ 3</td>
             </tr>
             <tr>
               <td>{{localize 'BITD.CrimeSyndicate'}}:</td>
-              <td><textarea name="data.crime">{{data.crime}}</textarea></td><td style="text-align:left">/ 3</td>
+              <td><textarea name="system.crime">{{system.crime}}</textarea></td><td style="text-align:left">/ 3</td>
             </tr>
           </table>
           <table>
             <tr>
               <td>{{localize 'BITD.TechLevel'}}:</td>
-              <td><textarea name="data.tech">{{data.tech}}</textarea></td><td style="text-align:left">/ 3</td>
+              <td><textarea name="system.tech">{{system.tech}}</textarea></td><td style="text-align:left">/ 3</td>
             </tr>
             <tr>
               <td>{{localize 'BITD.Weirdness'}}:</td>
-              <td><textarea name="data.weird">{{data.weird}}</textarea></td><td style="text-align:left">/ 3</td>
+              <td><textarea name="system.weird">{{system.weird}}</textarea></td><td style="text-align:left">/ 3</td>
             </tr>
           </table>
         </div>
@@ -42,12 +42,12 @@
     </div>
 
 	<label class="label-stripe">{{localize "BITD.Scene"}}</label>
-  <textarea rows="10" name="data.scene">{{data.scene}}</textarea>
+  <textarea rows="10" name="system.scene">{{system.scene}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Rule"}}</label>
-  <textarea rows="5" name="data.rule">{{data.rule}}</textarea>
+  <textarea rows="5" name="system.rule">{{system.rule}}</textarea>
   <div class="flex-vertical">
     <div class="label-stripe">{{localize "BITD.NotableNPCs"}}</div>
-    {{{editor content=data.notables target="data.notables" button=true owner=owner editable=editable}}}
+    {{{editor content=system.notables target="system.notables" button=true owner=owner editable=editable}}}
   </div>
   </section>
 
