@@ -9,47 +9,44 @@ export class SaVActor extends Actor {
 
   /** @override */
   static async create(data, options={}) {
+    if( !data.icon || !data.token ) {
+      data.prototypeToken = data.prototypeToken || {};
 
-    data.token = data.token || {};
+      // For Crew and Character set the Token to sync with charsheet.
 
-    // For Crew and Character set the Token to sync with charsheet.
+      let icon, token, size;
+      switch( data.type ) {
+        case "universe": {
+          icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
+          break;
+        }
+        case "ship": {
+          icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
+          break;
+        }
+        case "character":
+        case "npc": {
+          icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
+          break;
+        }
+        case "\uD83D\uDD5B clock": {
+          icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
+          break;
+        }
+      }
 
-    let icon;
-    switch ( data.type ) {
-      case "universe": {
-  	    icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
-  	    data.token.actorLink = true;
-        data.token.name = data.name;
-        data.token.displayName = 50;
-  	    break;
-  	  }
-  	  case "ship": {
-  	    icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
-  	    data.token.actorLink = true;
-        data.token.name = data.name;
-        data.token.displayName = 50;
-  	    break;
-  	  }
-  	  case "character":
-      case "npc": {
-  	    icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
-  	    data.token.actorLink = true;
-        data.token.name = data.name;
-        data.token.displayName = 50;
-  	    break;
-  	  }
-  	  case "\uD83D\uDD5B clock": {
-  	    icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
-  	    data.token.actorLink = true;
-        data.token.name = data.name;
-        data.token.displayName = 50;
-  	    break;
-  	  }
+      if( data.img === undefined ) {
+        data.img = icon;
+      }
+
+      data.prototypeToken.actorLink = true;
+      data.prototypeToken.name = data.name;
+      data.prototypeToken.displayName = 50;
+      data.prototypeToken.height = size ? size : 1;
+      data.prototypeToken.width = size ? size : 1;
+      data.prototypeToken.texture = data.prototypeToken.texture || {};
+      data.prototypeToken.texture.src = token ? token : icon;
     }
-    if( data.img === undefined ) {
-      data.img = icon;
-    }
-
     await super.create(data, options);
   }
 
@@ -71,6 +68,11 @@ export class SaVActor extends Actor {
         const attributes = Object.keys( game.system.model.Actor.character.attributes );
         attributes.forEach( a => updateData['system.attributes.'+ a + '.expMax'] = attributeXP );
       }
+
+      for (const key of game.system.traumas) {
+        updateData['system.trauma.list.'+ key] = false;
+      }
+
     }
 
     if( createData.type === "ship" ) {
@@ -82,7 +84,7 @@ export class SaVActor extends Actor {
 
     }
 
-    await this.data.update( updateData );
+    await this.updateSource( updateData );
   }
 
   /* -------------------------------------------- */

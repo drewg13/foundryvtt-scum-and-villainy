@@ -18,7 +18,7 @@ export class SaVHelpers {
     // If the Item has the exact same name - remove it from list.
     // Remove Duplicate items from the array.
     actor.items.forEach( i => {
-      let has_double = (item_data.type === i.data.type);
+      let has_double = (item_data.type === i.type);
       if ( ( ( i.name === item_data.name ) || ( should_be_distinct && has_double ) ) && !( allowed_types.includes( item_data.type ) ) && ( item_data._id !== i.id ) ) {
         dupe_list.push (i.id);
       }
@@ -35,31 +35,31 @@ export class SaVHelpers {
    */
   static async addDefaultAbilities(item_data, actor) {
 
-    let def_abilities = item_data.data.def_abilities || {};
+    let def_abilities = item_data.system.def_abilities || {};
 
     let abil_list = def_abilities.split(', ');
     let item_type = "";
     let items_to_add = [];
 
-    if ( actor.data.type === "character" ) {
+    if ( actor.type === "character" ) {
       item_type = "ability";
-    } else if ( actor.data.type === "ship" ) {
+    } else if ( actor.type === "ship" ) {
       item_type = "crew_upgrade";
     }
 
-    let abilities = actor.items.filter(a => a.type === item_type).map(e => {return e.data.name});
+    let abilities = actor.items.filter(a => a.type === item_type).map(e => {return e.name});
 
-    if ( actor.data.type === "ship" ) {
-      let size = actor.items.filter(a => a.type === "ship_size").map(e => {return e.data.name}) || [""];
+    if ( actor.type === "ship" ) {
+      let size = actor.items.filter(a => a.type === "ship_size").map(e => {return e.name}) || [""];
       if ( size.length > 0 ) { abilities.push( size ); }
     }
 
-    let friends = actor.items.filter(a => a.type === "friend").map(e => {return e.data.name}) || [""];
+    let friends = actor.items.filter(a => a.type === "friend").map(e => {return e.name}) || [""];
     if ( friends.length > 0 ) { abilities.push( friends ); }
 
     let items = await SaVHelpers.getAllItemsByType(item_type, game);
 
-    if ( actor.data.type === "ship" ) {
+    if ( actor.type === "ship" ) {
       let all_sizes = await SaVHelpers.getAllItemsByType("ship_size", game);
       all_sizes.forEach( s => { items.push( s ); });
     }
@@ -113,11 +113,11 @@ export class SaVHelpers {
    */
   static async getAllItemsByType(item_type, game) {
 
-    let game_items = game.items.filter(e => e.type === item_type).map(e => {return e.data}) || [];
+    let game_items = game.items.filter(e => e.type === item_type).map(e => {return e}) || [];
     let pack = game.packs.find(e => e.metadata.name === item_type);
     let compendium_content = await pack.getDocuments();
 
-    let compendium_items = compendium_content.map(k => {return k.data}) || [];
+    let compendium_items = compendium_content.map(k => {return k}) || [];
     compendium_items = compendium_items.filter(a => game_items.filter(b => a.name === b.name && a.name === b.name).length === 0);
 
     let list_of_items = game_items.concat(compendium_items) || [];
@@ -138,7 +138,7 @@ export class SaVHelpers {
   /* -------------------------------------------- */
 
   static async getAllActorsByType(item_type, game) {
-    return game.actors.filter( e => e.data.type === item_type ).map( e => { return e.data } ) || [];
+    return game.actors.filter( e => e.type === item_type ).map( e => { return e } ) || [];
   }
 
   /* -------------------------------------------- */
@@ -268,13 +268,7 @@ export class SaVHelpers {
   */
   static async createTile( canvas, data ) {
     if ( data.type === "Item" ) {
-      let sourceData;
-      if( data.pack ){
-        let packData = await game.packs.get( data.pack ).getDocuments();
-        sourceData = packData.find( p => p.id === data.id ).data;
-      } else {
-        sourceData = game.items.get( data.id ).data;
-      }
+      const sourceData = await fromUuid( data.uuid );
       if( ( sourceData.type === "planet" ) || ( sourceData.type === "star_system" ) ) {
         let tileImg = sourceData.img.replace( /webp/g, "webm" );
 

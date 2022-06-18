@@ -42,9 +42,9 @@ export class SaVItem extends Item {
      if( userId === game.user.id ) {
        let actor = this.parent ? this.parent : null;
 
-       if( ( actor?.documentName === "Actor" ) && ( actor?.permission >= CONST.ENTITY_PERMISSIONS.OWNER ) ) {
+       if( ( actor?.documentName === "Actor" ) && ( actor?.isOwner ) ) {
 
-         if( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.data.def_abilities !== "" ) ) {
+         if( ( ( data.type === "class" ) || ( data.type === "crew_type" ) ) && ( data.system.def_abilities !== "" ) ) {
            await SaVHelpers.addDefaultAbilities( data, actor );
          }
 

@@ -68,7 +68,7 @@ export class SaVUniverseSheet extends SaVSheet {
     html.find(".item-visible").click( async (ev) => {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
-      const itemVisible = !item.data.data.visible;
+      const itemVisible = !item.system.visible;
       await this.actor.updateEmbeddedDocuments("Item", [{ _id: item.id, system:{visible: itemVisible}}]);
     });
 

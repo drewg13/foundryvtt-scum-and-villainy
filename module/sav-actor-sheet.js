@@ -43,7 +43,7 @@ export class SaVActorSheet extends SaVSheet {
 
     // Calculate Load
     let loadout = 0;
-    sheetData.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.load ) : 0 } );
+    sheetData.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.system.load ) : 0 } );
     sheetData.system.loadout.current = loadout;
 
     // Encumbrance Levels
@@ -101,7 +101,7 @@ export class SaVActorSheet extends SaVSheet {
       sheetData.system.loadout.load_level = load_level[ sheetData.system.loadout.current ];
     }
 
-	  if ( sheetData.system.loadout.planned < loadout ) {
+	  if ( parseInt(sheetData.system.loadout.planned) < loadout ) {
       sheetData.system.loadout.load_level = "BITD.OverMax";
 	  }
 

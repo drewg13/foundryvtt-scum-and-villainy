@@ -2,16 +2,16 @@
 
   <div id="coins-hands">
     <div class="stripe">
-      <label class="nullifier" for="coins-{{actor._id}}-hands-0">{{localize "BITD.Coin"}}
+      <label class="nullifier" for="coins-{{_id}}-hands-0">{{localize "BITD.Coin"}}
         <i class="fab fa-creative-commons-zero nullifier"></i>
       </label>
     </div>
     <div class="coins coins-hands">
       {{#multiboxes system.coins}}
-        <input type="radio" id="coins-{{actor._id}}-hands-0" name="system.coins" value="0" checked="checked">
+        <input type="radio" id="coins-{{_id}}-hands-0" name="system.coins" value="0" checked="checked">
         {{#times_from_1 4}}
-          <input type="radio" id="coins-{{../actor._id}}-hands-{{this}}" name="system.coins" value="{{this}}">
-          <label for="coins-{{../actor._id}}-hands-{{this}}"></label>
+          <input type="radio" id="coins-{{../_id}}-hands-{{this}}" name="system.coins" value="{{this}}">
+          <label for="coins-{{../_id}}-hands-{{this}}"></label>
         {{/times_from_1}}
       {{/multiboxes}}
     </div>
@@ -20,14 +20,14 @@
   <div id="coins-stashed">
 
     <div class="stripe">
-      <label class="nullifier" for="coins-{{actor._id}}-stashed-0">{{localize "BITD.Stash"}} <i class="fab fa-creative-commons-zero nullifier"></i></label> <span class="lifestyle rollable-text" data-roll-value="{{system.coins_stashed}}">{{#if (lt system.coins_stashed 10)}}{{localize "BITD.LifestyleBroke"}}0) {{else if (lt system.coins_stashed 20)}}{{localize "BITD.LifestylePoor"}}1) {{else if (lt system.coins_stashed 30)}}{{localize "BITD.LifestyleMeager"}}2) {{else if (lt system.coins_stashed 40)}}{{localize "BITD.LifestyleModest"}}3) {{else}}{{localize "BITD.LifestyleFine"}}4) {{/if}}</span>
+      <label class="nullifier" for="coins-{{_id}}-stashed-0">{{localize "BITD.Stash"}} <i class="fab fa-creative-commons-zero nullifier"></i></label> <span class="lifestyle rollable-text" data-roll-value="{{system.coins_stashed}}">{{#if (lt system.coins_stashed 10)}}{{localize "BITD.LifestyleBroke"}}0) {{else if (lt system.coins_stashed 20)}}{{localize "BITD.LifestylePoor"}}1) {{else if (lt system.coins_stashed 30)}}{{localize "BITD.LifestyleMeager"}}2) {{else if (lt system.coins_stashed 40)}}{{localize "BITD.LifestyleModest"}}3) {{else}}{{localize "BITD.LifestyleFine"}}4) {{/if}}</span>
     </div>
     <div class="coins coins-stashed">
       {{#multiboxes system.coins_stashed}}
-        <input type="radio" id="coins-{{actor._id}}-stashed-0" name="system.coins_stashed" value="0" checked="checked">
+        <input type="radio" id="coins-{{_id}}-stashed-0" name="system.coins_stashed" value="0" checked="checked">
         {{#times_from_1 40}}
-          <input type="radio" id="coins-{{../actor._id}}-stashed-{{this}}" name="system.coins_stashed" value="{{this}}">
-          <label for="coins-{{../actor._id}}-stashed-{{this}}"></label>
+          <input type="radio" id="coins-{{../_id}}-stashed-{{this}}" name="system.coins_stashed" value="{{this}}">
+          <label for="coins-{{../_id}}-stashed-{{this}}"></label>
         {{/times_from_1}}
       {{/multiboxes}}
     </div>
@@ -36,22 +36,22 @@
 
 <div id="loadout-max">
   <div class="stripe">
-    <label class="nullifier" for="loadout-{{actor._id}}-max-0">{{localize "BITD.Loadout"}}
+    <label class="nullifier" for="loadout-{{_id}}-max-0">{{localize "BITD.Loadout"}}
       <i class="fab fa-creative-commons-zero nullifier"></i>
     </label>
     <span class="stripe" style="text-transform:capitalize;{{#if (eq system.loadout.load_level "BITD.OverMax")}}color:red;{{/if}}">{{localize "BITD.CurrLoad"}}: {{localize system.loadout.load_level}}</span>
   </div>
   <div class="coins loadout">
     {{#multiboxes system.loadout.planned}}
-      <input type="radio" id="loadout-{{actor._id}}-max-0" name="system.loadout.planned" value="0" checked="checked">
-      <input type="radio" id="loadout-{{actor._id}}-max-{{system.loadout.light}}" name="system.loadout.planned" value="{{system.loadout.light}}">
-      <label for="loadout-{{actor._id}}-max-{{system.loadout.light}}"></label>
+      <input type="radio" id="loadout-{{_id}}-max-0" name="system.loadout.planned" value="0" checked="checked">
+      <input type="radio" id="loadout-{{_id}}-max-{{system.loadout.light}}" name="system.loadout.planned" value="{{system.loadout.light}}" data-dtype="Number">
+      <label for="loadout-{{_id}}-max-{{system.loadout.light}}"></label>
       {{system.loadout.light}} {{localize "BITD.Light"}}
-	    <input type="radio" id="loadout-{{actor._id}}-max-{{system.loadout.normal}}" name="system.loadout.planned" value="{{system.loadout.normal}}">
-      <label for="loadout-{{actor._id}}-max-{{system.loadout.normal}}"></label>
+	    <input type="radio" id="loadout-{{_id}}-max-{{system.loadout.normal}}" name="system.loadout.planned" value="{{system.loadout.normal}}" data-dtype="Number">
+      <label for="loadout-{{_id}}-max-{{system.loadout.normal}}"></label>
 	    {{system.loadout.normal}} {{localize "BITD.Normal"}}
-	    <input type="radio" id="loadout-{{actor._id}}-max-{{system.loadout.heavy}}" name="system.loadout.planned" value="{{system.loadout.heavy}}">
-      <label for="loadout-{{actor._id}}-max-{{system.loadout.heavy}}"></label>
+	    <input type="radio" id="loadout-{{_id}}-max-{{system.loadout.heavy}}" name="system.loadout.planned" value="{{system.loadout.heavy}}" data-dtype="Number">
+      <label for="loadout-{{_id}}-max-{{system.loadout.heavy}}"></label>
 	    {{system.loadout.heavy}} {{localize "BITD.Heavy"}}
     {{/multiboxes}}
   </div>
