@@ -89,7 +89,7 @@ Hooks.once("init", async function() {
   });
 
   // Trauma Counter
-  Handlebars.registerHelper('traumacounter', function(selected, options) {
+  Handlebars.registerHelper('traumacounter', function(selected, max, options) {
 
     let html = options.fn(this);
 
@@ -100,7 +100,7 @@ Hooks.once("init", async function() {
       }
     }
 
-    if (count > 5) count = 5;
+    if (count > max) count = max;
 
     const rgx = new RegExp(' value=\"' + count + '\"');
     return html.replace(rgx, "$& checked=\"checked\"");

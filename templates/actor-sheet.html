@@ -145,11 +145,11 @@
     </div>
 
     <div id="character-{{_id}}-trauma-container" class="small-teeth-container">
-      {{#traumacounter system.trauma.list}}
+      {{#traumacounter system.trauma.list system.trauma.max}}
         <div id="character-{{_id}}-trauma" class="small-teeth-wrap">
           <label class="black-label" for="character-{{_id}}-trauma-counter-0">{{localize system.trauma.name}}</label>
           <div id="trauma-teeth" class="small-teeth">
-            <input type="radio" id="character-{{_id}}-trauma-counter-0" name="system.trauma.value" value="0">
+            <input type="radio" id="character-{{_id}}-trauma-counter-0" name="system.trauma.value" value="0" data-dtype="Number">
             {{#times_from_1 system.trauma.max}}
               <input type="radio" id="character-{{../_id}}-trauma-counter-{{this}}" name="system.trauma.value" value="{{this}}" disabled>
               <label for="character-{{../_id}}-trauma-counter-{{this}}"></label>
