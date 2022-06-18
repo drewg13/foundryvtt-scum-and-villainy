@@ -50,13 +50,8 @@ Hooks.once("init", async function() {
     game.minorVersion = parseInt( versionParts[2] );
   }
 
-  if( game.majorVersion > 7 ) {
-    CONFIG.Item.documentClass = SaVItem;
-    CONFIG.Actor.documentClass = SaVActor;
-  } else {
-    CONFIG.Item.entityClass = SaVItem;
-    CONFIG.Actor.entityClass = SaVActor;
-  }
+  CONFIG.Item.documentClass = SaVItem;
+  CONFIG.Actor.documentClass = SaVActor;
 
   // Register System Settings
   registerSystemSettings();
@@ -302,28 +297,6 @@ Hooks.once("ready", async function() {
  * Hooks
  */
 
-Hooks.on("preCreateOwnedItem", async (parent_entity, child_data, options, userId) => {
-  if( game.majorVersion === 7 ) {
-    await parent_entity.deleteOwnedItem( await SaVHelpers.removeDuplicatedItemType(child_data, parent_entity) );
-
-    if ( ( ( child_data.type === "class" ) || ( child_data.type === "crew_type" ) ) && !( child_data.data.def_abilities === "" ) ) {
-      await SaVHelpers.addDefaultAbilities( child_data, parent_entity );
-    }
-
-    if ( ( ( child_data.type === "class" ) || ( child_data.type === "crew_type" ) ) && ( ( parent_entity.img.slice( 0, 46 ) === "systems/scum-and-villainy/styles/assets/icons/" ) || ( parent_entity.img === "icons/svg/mystery-man.svg" ) ) ) {
-      const icon = child_data.img;
-      const icon_update = {
-	    img: icon,
-	    token: {
-	      img: icon
-	    }
-	  };
-	  await parent_entity.update( icon_update );
-    }
-  }
-  return true;
-});
-
 // Send Ship resource changes to chat
 Hooks.on("preUpdateActor", (actor, data, options, userId) => {
   if ( ( actor.data.type === "ship" ) && ( Object.keys(data)[0] === "data" ) ) {
@@ -423,11 +396,7 @@ Hooks.on("renderSceneControls", async (app, html) => {
   dice_roller.on( "click", function() {
     simpleRollPopup();
   })
-  if( game.majorVersion === 9 ) {
-    html.children().first().append( dice_roller );
-  } else {
-    html.append( dice_roller );
-  }
+  html.children().first().append( dice_roller );
 });
 
 //For Clocks UI

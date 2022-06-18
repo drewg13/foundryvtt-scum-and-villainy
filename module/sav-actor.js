@@ -65,11 +65,11 @@ export class SaVActor extends Actor {
       const attributeXP = game.settings.get( "scum-and-villainy", "defaultAttributeXPBarSize" );
 
       if( playbookXP ) {
-        updateData['data.experienceMax'] = playbookXP;
+        updateData['system.experienceMax'] = playbookXP;
       }
       if( attributeXP ) {
         const attributes = Object.keys( game.system.model.Actor.character.attributes );
-        attributes.forEach( a => updateData['data.attributes.'+ a + '.expMax'] = attributeXP );
+        attributes.forEach( a => updateData['system.attributes.'+ a + '.expMax'] = attributeXP );
       }
     }
 
@@ -77,7 +77,7 @@ export class SaVActor extends Actor {
       const crewXP = game.settings.get( "scum-and-villainy", "defaultCrewXPBarSize" );
 
       if( crewXP ) {
-        updateData['data.crew_experienceMax'] = crewXP;
+        updateData['system.crew_experienceMax'] = crewXP;
       }
 
     }
@@ -89,12 +89,10 @@ export class SaVActor extends Actor {
 
   /** @override */
   prepareDerivedData() {
-    const actorData = this.data;
-    const data = actorData.data;
 
-    if ( actorData.type === "ship" ) {
+    if ( this.type === "ship" ) {
       // calculates upkeep value from (crew quality + engine quality + hull quality + comms quality + weapons quality) / 4, rounded down
-      data.systems.upkeep.value = Math.floor((parseInt(data.systems.crew.value) + parseInt(data.systems.engines.value) + parseInt(data.systems.hull.value) + parseInt(data.systems.comms.value) + parseInt(data.systems.weapons.value)) / 4);
+      this.system.systems.upkeep.value = Math.floor((parseInt(this.system.systems.crew.value) + parseInt(this.system.systems.engines.value) + parseInt(this.system.systems.hull.value) + parseInt(this.system.systems.comms.value) + parseInt(this.system.systems.weapons.value)) / 4);
     }
   }
 
@@ -105,7 +103,7 @@ export class SaVActor extends Actor {
     const att_obj = game.system.model.Actor.character.attributes;
 	  const attributes = Object.keys( att_obj );
     data.dice_amount = this.getAttributeDiceToThrow();
-    if ( this.data.type === "character" ) {
+    if ( this.type === "character" ) {
       const attribute_values = attributes.map( a => data.dice_amount[a] );
       data.dice_amount.vice = Math.min( ...attribute_values );
     }
@@ -121,19 +119,19 @@ export class SaVActor extends Actor {
     // Calculate Dice to throw.
     let dice_amount = {};
 
-	  switch (this.data.type) {
+	  switch (this.type) {
 	    case 'character':
-	      for (const a in this.data.data.attributes) {
+	      for (const a in this.system.attributes) {
           dice_amount[a] = 0;
 		      // Add +1d to resistance rolls only for Forged item on ship
 		      let ship_actors = this.getFlag("scum-and-villainy", "ship") || [];
-          let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
-		      if (actor_flags?.data.installs.forged_inst === 1) {
+          let actor = game.actors.get( ship_actors[0]?._id );
+		      if (actor?.system.installs.forged_inst === 1) {
 		        dice_amount[a]++;
 		      }
 
-		      for (const s in this.data.data.attributes[a].skills) {
-		        dice_amount[s] = parseInt(this.data.data.attributes[a].skills[s]['value'][0])
+		      for (const s in this.system.attributes[a].skills) {
+		        dice_amount[s] = parseInt(this.system.attributes[a].skills[s]['value'][0])
 
 		        // We add a +1d for every skill higher than 0.
 		        if ( dice_amount[s] > 0 ) {
@@ -144,13 +142,13 @@ export class SaVActor extends Actor {
 	      break;
 
 	    case 'ship':
-	      for (const a in this.data.data.systems) {
+	      for (const a in this.system.systems) {
 	        dice_amount[a] = 0;
 		      if ( a === "upkeep" ) {
-		        dice_amount[a] = parseInt(this.data.data.systems[a]['damage'][0])
+		        dice_amount[a] = parseInt(this.system.systems[a]['damage'][0])
 		      }
 		      else {
-		        dice_amount[a] = parseInt(this.data.data.systems[a]['value'][0]) - parseInt(this.data.data.systems[a]['damage'][0]);
+		        dice_amount[a] = parseInt(this.system.systems[a]['value'][0]) - parseInt(this.system.systems[a]['damage'][0]);
 		        if (dice_amount[a] < 0) { dice_amount[a] = 0 }
 		      }
 	      }
@@ -298,11 +296,10 @@ export class SaVActor extends Actor {
 
   async rollAttribute( attribute_name = "", additional_dice_amount = 0, position, effect ) {
     let dice_amount = 0;
-    const att_obj = game.system.model.Actor.character.attributes;
-	const attributes = Object.keys( att_obj );
+
     if ( attribute_name !== "" ) {
       let roll_data = this.getRollData();
-	  dice_amount += roll_data.dice_amount[attribute_name];
+	    dice_amount += roll_data.dice_amount[attribute_name];
     }
     else {
       dice_amount = 1;
@@ -321,21 +318,17 @@ export class SaVActor extends Actor {
   createListOfActions() {
 
     let text = '';
-    let attributes, attribute, skill;
-    if( game.majorVersion > 7 ) {
-      attributes = this.data.data.data.attributes;
-    } else {
-      attributes = this.data.data.attributes;
-    }
+    const att_obj = game.system.model.Actor.character.attributes;
+    const attributes = Object.keys( att_obj );
 
-    for ( attribute in attributes ) {
+    for ( let attribute in attributes ) {
 
       let skills = attributes[attribute].skills;
 
       text += `<optgroup label="${attribute} Actions">`;
       text += `<option value="${attribute}">${attribute} (Resist)</option>`;
 
-      for ( skill in skills ) {
+      for ( let skill in skills ) {
         text += `<option value="${skill}">${skill}</option>`;
       }
 

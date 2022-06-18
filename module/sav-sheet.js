@@ -58,10 +58,10 @@ export class SaVSheet extends ActorSheet {
 		html += `</label>`;
 
 		let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
-		let actor_flags = game.actors.get( ship_actors[0]?._id )?.data;
+		let actor = game.actors.get( ship_actors[0]?._id );
 
 	  let stun_weapons = 0;
-    if (actor_flags?.data.installs.stun_inst === 1) {
+    if (actor?.system.installs.stun_inst === 1) {
       stun_weapons = 1;
     } else {
 		  stun_weapons = 0;
@@ -70,17 +70,12 @@ export class SaVSheet extends ActorSheet {
 		let main_systems = ["Engines", "Hull", "Comms", "Weapons"];
 		let overloaded = {};
 
-    if ( this.actor.data.type === "ship" ) {
+    if ( this.type === "ship" ) {
 		  main_systems.forEach( m => {
-  	    let actor_items;
-  	    if ( game.majorVersion > 7 ) {
-					actor_items = this.actor.data.items.filter( i => i.data.data.class === m );
-				} else {
-					actor_items = this.actor.data.items.filter( i => i.data.class === m );
-				}
+  	    let actor_items = this.actor.items.filter( i => i.data.data.class === m );
 	  	  let total = actor_items.length;
         let lower_m = m.toLowerCase();
-		    if ( total >= this.actor.data.data.systems[lower_m].value ) {
+		    if ( total >= this.actor.system.systems[lower_m].value ) {
 			 	  overloaded[m] = 1;
 			  } else {
 			    overloaded[m] = 0;
@@ -91,68 +86,68 @@ export class SaVSheet extends ActorSheet {
     items.forEach(e => {
       let addition_price_load = ``;
 
-      if (typeof e.data.load !== "undefined") {
-        addition_price_load += `${e.data.load}`
-      } else if (typeof e.data.price !== "undefined") {
-        addition_price_load += `${e.data.price}`
+      if (typeof e.load !== "undefined") {
+        addition_price_load += `${e.load}`
+      } else if (typeof e.price !== "undefined") {
+        addition_price_load += `${e.price}`
       }
 
 	    const nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades"];
 
       if (e.type === "crew_upgrade") {
-		    if ( ( ( main_systems.includes( e.data.class ) ) && ( overloaded[ ( e.data.class.charAt(0).toUpperCase() + e.data.class.slice(1) ) ] === 0 ) ) || ( nonclass_upgrades.includes(e.data.class) ) || ( e.data.class === this.actor.data.data.ship_class ) ) {
+		    if ( ( ( main_systems.includes( e.system.class ) ) && ( overloaded[ ( e.system.class.charAt(0).toUpperCase() + e.system.class.slice(1) ) ] === 0 ) ) || ( nonclass_upgrades.includes(e.system.class) ) || ( e.system.class === this.actor.system.ship_class ) ) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one">${addition_price_load}</div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "crew_ability") {
-		    if (e.data.class === this.actor.data.data.ship_class) {
+		    if (e.system.class === this.actor.system.ship_class) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex one abilities"><input id="recommended-${e._id}" type="radio" disabled`;
-					if (e.data.recommended) { html += ` checked`; }
+					if (e.system.recommended) { html += ` checked`; }
 					html += `><label for="recommended-${e._id}"></label></div>`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "ability") {
-		    if (e.data.class === this.actor.data.data.character_class) {
+		    if (e.system.class === this.actor.system.character_class) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex one abilities"><input id="starting-${e._id}" type="radio" disabled`;
-					if (e.data.starting) { html += ` checked`; }
+					if (e.system.starting) { html += ` checked`; }
 					html += `><label for="starting-${e._id}"></label></div>`;
 					html += `<div class="flex one abilities"><input id="recommended-${e._id}" type="radio" disabled`;
-					if (e.data.recommended) { html += ` checked`; }
+					if (e.system.recommended) { html += ` checked`; }
 					html += `><label for="recommended-${e._id}"></label></div>`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "item") {
-		    if ((e.data.class === "Standard") || ((stun_weapons === 1) && (e.data.class === "Non-Lethal")) || (e.data.class === this.actor.data.data.character_class)) {
+		    if ((e.system.class === "Standard") || ((stun_weapons === 1) && (e.system.class === "Non-Lethal")) || (e.system.class === this.actor.system.character_class)) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one">${addition_price_load}</div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "friend") {
-		    if ( (e.data.class === this.actor.data.data.character_class) || (e.data.class === this.actor.data.data.ship_class) ) {
+		    if ( (e.system.class === this.actor.system.character_class) || (e.system.class === this.actor.system.ship_class) ) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type ==="faction") {
@@ -160,15 +155,15 @@ export class SaVSheet extends ActorSheet {
 				html += `<div class="flex ten new-item"><input id="select-item-${ e._id }" type="${ input_type }" name="select_items" value="${ e._id }">`;
 				html += `<label class="flex-horizontal" for="select-item-${ e._id }">`;
 				html += `${ game.i18n.localize( e.name ) }</label></div>`;
-				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${ game.i18n.localize( e.data.description ) }</span></i>`;
+				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${ game.i18n.localize( e.system.description ) }</span></i>`;
 				html += `</div></div>`;
 			} else if (e.type === "planet") {
-				if ( e.data.system === limiter ) {
+				if ( e.system.system === limiter ) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 					html += `</div></div>`;
 				}
 			} else {
@@ -177,7 +172,7 @@ export class SaVSheet extends ActorSheet {
 				html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 				html += `${game.i18n.localize(e.name)}</label></div>`;
 				html += `<div class="flex one">${addition_price_load}</div>`;
-				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.description)}</span></i>`;
+				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
 				html += `</div></div>`;
 			}
     });
@@ -195,9 +190,8 @@ export class SaVSheet extends ActorSheet {
     let options = {
       width: "500"
     }
-    let perms = this.actor.permission;
 
-		if ( perms >= CONST.ENTITY_PERMISSIONS.OWNER ) {
+		if ( this.actor.isOwner ) {
       let dialog = new Dialog({
         title: `${game.i18n.localize('BITD.Add')} ${game.i18n.localize('BITD.'+item_type)}`,
         content: html,
@@ -237,7 +231,7 @@ async _onFlagAddClick(event) {
 	  if (e.type === item_type) {
   	  html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
       html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
-      html += `${game.i18n.localize(e.name)} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.data.designation)}</span></i>`;
+      html += `${game.i18n.localize(e.name)} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.designation)}</span></i>`;
       html += `</label>`;
 	  }
   });
@@ -247,9 +241,8 @@ async _onFlagAddClick(event) {
   let options = {
     // width: "500"
   }
-	let perms = this.actor.permission;
 
-	if ( perms >= CONST.ENTITY_PERMISSIONS.OWNER ) {
+	if ( this.actor.isOwner ) {
     let dialog = new Dialog({
       title: `${game.i18n.localize('BITD.Add')} ${game.i18n.localize('BITD.' + SaVHelpers.getProperCase(item_type) )}`,
       content: html,
@@ -282,15 +275,9 @@ async _onFlagAddClick(event) {
 		  items_to_add.push(items.find(e => e._id === $(this).val()));
     });
 
-    if( game.majorVersion > 7 ) {
-		  if (this.document.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
-			  await Item.create(items_to_add, {parent: this.document});
-	    }
-		} else {
-			if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
-	      await this.actor.createEmbeddedEntity("OwnedItem", items_to_add);
-	    }
-		}
+	  if ( this.actor.isOwner ) {
+		  await Item.create(items_to_add, {parent: this.document});
+	  }
   }
 
   async addFlagsToSheet(item_type, el) {
@@ -301,7 +288,7 @@ async _onFlagAddClick(event) {
 		  items_to_add.push(items.find(e => e._id === $(this).val()));
     });
 
-    if (this.actor.permission >= CONST.ENTITY_PERMISSIONS.OWNER) {
+    if ( this.actor.isOwner ) {
 	    await this.actor.setFlag("scum-and-villainy", item_type, items_to_add);
 	  }
   }
@@ -352,7 +339,7 @@ async _onFlagAddClick(event) {
 	  const world_items = await SaVHelpers.getAllItemsByType(item_type, game);
 
 	  //find all items of type attached to actor
-	  let curr_items = this.actor.data.items.filter(i => i.type === item_type);
+	  let curr_items = this.actor.items.filter(i => i.type === item_type);
 
 	  //find all items in world, but not attached to actor
 	  const add_items = world_items.filter(({ name: id1 }) => !curr_items.some(({ name: id2 }) => id2 === id1));
@@ -362,17 +349,10 @@ async _onFlagAddClick(event) {
 
 	  const delete_items = rem_items.map( i => i.id );
 
-    if( game.majorVersion > 7 ) {
-		  //delete all items attached to actor, but not in world
-	    await this.document.deleteEmbeddedDocuments("Item", delete_items);
-	    //attach any new items
-	    await this.document.createEmbeddedDocuments("Item", add_items);
-		} else {
-			//delete all items attached to actor, but not in world
-	    await this.actor.deleteEmbeddedEntity("OwnedItem", delete_items);
-	    //attach any new items
-	    await this.actor.createEmbeddedEntity("OwnedItem", add_items);
-		}
+		//delete all items attached to actor, but not in world
+	  await this.document.deleteEmbeddedDocuments("Item", delete_items);
+	  //attach any new items
+	  await this.document.createEmbeddedDocuments("Item", add_items);
   }
 
 /* -------------------------------------------- */
@@ -388,25 +368,21 @@ async _onFlagAddClick(event) {
 	  }
 
 	  if ( update_type === "heat" ) {
-		  update = {_id: item_id, data:{heat:{value: update_value}}};
+		  update = {_id: item_id, system:{heat:{value: update_value}}};
 	  } else if ( update_type === "wanted" ) {
-		  update = {_id: item_id, data:{wanted:{value: update_value}}};
+		  update = {_id: item_id, system:{wanted:{value: update_value}}};
 	  } else if ( update_type === "status" ) {
-	  	update = {_id: item_id, data:{status:{value: update_value}}};
+	  	update = {_id: item_id, system:{status:{value: update_value}}};
 	  } else if (update_type === "jobs" ) {
-	  	update = {_id: item_id, data:{jobs:{value: update_value}}};
+	  	update = {_id: item_id, system:{jobs:{value: update_value}}};
 	  } else if (update_type === "is_damaged" ) {
-	  	update = {_id: item_id, data:{is_damaged: update_value}};
+	  	update = {_id: item_id, system:{is_damaged: update_value}};
 	  } else {
 	  	console.log("update attempted for type undefined in sav-sheet.js onUpdateBoxClick function");
 		  return;
 	  }
 
-    if( game.majorVersion > 7 ) {
-	    await Item.updateDocuments([update], {parent: this.document});
-	  } else {
-  		await this.actor.updateEmbeddedEntity("OwnedItem", update);
-  	}
+    await Item.updateDocuments([update], {parent: this.actor});
   }
 
 /* -------------------------------------------- */

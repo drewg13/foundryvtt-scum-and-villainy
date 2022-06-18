@@ -1,11 +1,11 @@
 <form class="{{cssClass}} clock-form" autocomplete="off">
 {{#if editable}}
   <div class="clock-name editable">
-    <input name="name" value="{{actor.name}}" />
+    <input name="name" value="{{name}}" />
   </div>
 {{else}}
   <div class="clock-name">
-    <input name="name" value="{{actor.name}}" readonly/>
+    <input name="name" value="{{name}}" readonly/>
   </div>
 {{/if}}
 {{#if editable}}

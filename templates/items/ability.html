@@ -1,35 +1,35 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img src="{{img}}" data-edit="img" title="{{name}}"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
         </div>
     </header>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-      {{{editor content=data.description target="data.description" button=true owner=owner editable=editable}}}
+      {{{editor content=system.description target="system.description" button=true owner=owner editable=editable}}}
     </section>
     <div class="flex-vertical">
       <div class="flex-horizontal">
         <div class="flex-vertical grow-two">
           <label class="label-stripe">{{localize "BITD.AbilityPrice"}}</label>
-          <textarea name="data.price">{{data.price}}</textarea>
+          <textarea name="system.price">{{system.price}}</textarea>
         </div>
         <div class="flex-vertical grow-two">
           <label class="label-stripe">{{localize "BITD.AbilityClass"}}</label>
-          <textarea name="data.class">{{data.class}}</textarea>
+          <textarea name="system.class">{{system.class}}</textarea>
         </div>
       </div>
 
       <div class="flex-horizontal">
         <div class="flex-vertical grow-two">
           <label class="label-stripe">{{localize "BITD.StartingAbility"}}</label>
-          <input id="starting" type="checkbox" name="data.starting" {{checked data.starting}}>
+          <input id="starting" type="checkbox" name="system.starting" {{checked system.starting}}>
         </div>
         <div class="flex-vertical grow-two">
           <label class="label-stripe">{{localize "BITD.RecommendedAbility"}}</label>
-          <input id="recommended" type="checkbox" name="data.recommended" {{checked data.recommended}}>
+          <input id="recommended" type="checkbox" name="system.recommended" {{checked system.recommended}}>
         </div>
       </div>
       {{#if isGM}}

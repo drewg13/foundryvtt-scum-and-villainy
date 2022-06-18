@@ -9,7 +9,7 @@ export class SaVItemSheet extends ItemSheet {
 
   /** @override */
 	static get defaultOptions() {
-	  return mergeObject(super.defaultOptions, {
+	  return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ["scum-and-villainy", "sheet", "item"],
 			width: 900,
 			height: 'auto',
@@ -20,30 +20,29 @@ export class SaVItemSheet extends ItemSheet {
   /* -------------------------------------------- */
 
 /** @override */
-  getData() {
-    const data = super.getData();
-	  data.isGM = game.user.isGM;
-		data.editable = data.options.editable;
-    const itemData = data.data;
+  async getData(options) {
+    const superData = super.getData( options );
+    const sheetData = superData.data;
+
+    sheetData.isGM = game.user.isGM;
+    sheetData.owner = superData.owner;
+    sheetData.editable = superData.editable;
 
     // Prepare Active Effects
-    data.effects = prepareActiveEffectCategories(this.item.effects);
+    sheetData.effects = prepareActiveEffectCategories(this.document.effects);
+    sheetData.system.notables = await TextEditor.enrichHTML(sheetData.system.notables, {secrets: sheetData.owner, async: true});
+    sheetData.system.description = await TextEditor.enrichHTML(sheetData.system.description, {secrets: sheetData.owner, async: true});
 
-		if( game.majorVersion > 7 ) {
-		  data.item = itemData;
-		  data.data = itemData.data;
-    }
-
-		return data;
+		return sheetData;
   }
 
   /** @override */
   get template() {
     const path = "systems/scum-and-villainy/templates/items";
     let simple_item_types = ["background", "heritage", "vice", "crew_reputation", "ship_size"];
-    let template_name = `${this.item.data.type}`;
+    let template_name = `${this.item.type}`;
 
-    if (simple_item_types.indexOf(this.item.data.type) >= 0) {
+    if (simple_item_types.indexOf(this.item.type) >= 0) {
       template_name = "simple";
     }
 

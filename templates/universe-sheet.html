@@ -3,8 +3,8 @@
   <section class="flex-horizontal">
 
     <div id="name">
-      <label for="campaign-{{actor._id}}-name">{{localize "BITD.Name"}}</label>
-      <input type="text" id="campaign-{{actor._id}}-name" name="name" value="{{actor.name}}">
+      <label for="campaign-{{_id}}-name">{{localize "BITD.Name"}}</label>
+      <input type="text" id="campaign-{{_id}}-name" name="name" value="{{name}}">
     </div>
 	  {{#if isGM}}
       <p><a class="update-sheet" data-item-type="star_system">{{localize "BITD.Update"}} {{localize "BITD.Systems"}}</a></p>
@@ -19,9 +19,9 @@
       {{!-- Nav menu --}}
       {{#if (gt totalSystems 1) }}
         <nav class="tabs flex-horizontal">
-          {{#each actor.items as |system id|}}
+          {{#each items as |system id|}}
 			      {{#if (eq system.type "star_system")}}
-              {{#if (or ../isGM system.data.visible)}}
+              {{#if (or ../isGM system.system.visible)}}
 			  	      <a class="item" data-tab="{{system.name}}">{{system.name}} {{localize "BITD.System"}}</a>
               {{/if}}
 			      {{/if}}
@@ -30,19 +30,19 @@
       {{/if}}
 
 	    {{!-- Planet List --}}
-		  {{#each actor.items as |system id|}}
+		  {{#each items as |system id|}}
 		    {{#if (eq system.type "star_system")}}
-          {{#if (or ../isGM system.data.visible)}}
+          {{#if (or ../isGM system.system.visible)}}
             <div id="systems-tab" class="{{#if (gt ../totalSystems 1) }}tab {{/if}}flex-vertical"{{#if (gt ../totalSystems 1) }} data-tab="{{system.name}}"{{/if}}>
     		      <div id="system-label" class="label-stripe item" data-item-id="{{system._id}}">
                 <div>
                   <div class="tooltip item-body hoverlink inline">
                     {{system.name}}
-                    <span class="tooltiptext">{{{localize system.data.description}}}</span>
+                    <span class="tooltiptext">{{{localize system.system.description}}}</span>
                   </div>
                   {{#if ../isGM}}
                     <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-                    {{#if system.data.visible}}
+                    {{#if system.system.visible}}
                       <a class="item-control item-visible" title="{{localize 'BITD.TitleVisibleItem'}}"><i class="fas fa-eye"></i></a>
                     {{else}}
                       <a class="item-control item-visible" title="{{localize 'BITD.TitleInvisibleItem'}}"><i class="fas fa-eye-slash"></i></a>
@@ -52,42 +52,42 @@
                 </div>
 		            <div id="system-heat" class="teeth-experience-red" style="position: float !important;">
                   <span>{{localize "BITD.Heat"}}</span>
-                  <label for="{{../actor._id}}-system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-  		  	        {{#multiboxes system.data.heat.value}}
-                    <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="0" type="radio" id="{{../actor._id}}-system-{{id}}-heat-0" value="0" dtype="Radio">
-                    {{#times_from_1 system.data.heat.max}}
-	    		            <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-system-{{id}}-heat-{{this}}" value="{{this}}" dtype="Radio">
-                      <label for="{{../../actor._id}}-system-{{id}}-heat-{{this}}"></label>
+                  <label for="{{../_id}}-system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+  		  	        {{#multiboxes system.system.heat.value}}
+                    <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="0" type="radio" id="{{../_id}}-system-{{id}}-heat-0" value="0" dtype="Radio">
+                    {{#times_from_1 system.system.heat.max}}
+	    		            <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-system-{{id}}-heat-{{this}}" value="{{this}}" dtype="Radio">
+                      <label for="{{../../_id}}-system-{{id}}-heat-{{this}}"></label>
                     {{/times_from_1}}
                   {{/multiboxes}}
                 </div>
 		            <div id="system-wanted" class="teeth-experience-red">
-			            <span class="hover wanted" data-value="{{system.data.wanted.value}}">{{localize "BITD.Wanted"}}</span>
-                  <label for="{{../actor._id}}-system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
-			            {{#multiboxes system.data.wanted.value}}
-                    <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="0" type="radio" id="{{../actor._id}}-system-{{id}}-wanted-0" value="0" dtype="Radio">
-                    {{#times_from_1 system.data.wanted.max}}
-  			              <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-system-{{id}}-wanted-{{this}}" value="{{this}}" dtype="Radio">
-                      <label for="{{../../actor._id}}-system-{{id}}-wanted-{{this}}"></label>
+			            <span class="hover wanted" data-value="{{system.system.wanted.value}}">{{localize "BITD.Wanted"}}</span>
+                  <label for="{{../_id}}-system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+			            {{#multiboxes system.system.wanted.value}}
+                    <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="0" type="radio" id="{{../_id}}-system-{{id}}-wanted-0" value="0" dtype="Radio">
+                    {{#times_from_1 system.system.wanted.max}}
+  			              <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-system-{{id}}-wanted-{{this}}" value="{{this}}" dtype="Radio">
+                      <label for="{{../../_id}}-system-{{id}}-wanted-{{this}}"></label>
 	    		          {{/times_from_1}}
                   {{/multiboxes}}
 		            </div>
 		          </div>
 
   		        <div id="planet-list">
-    			      {{#each ../actor.items as |planet|}}
+    			      {{#each ../items as |planet|}}
     				      {{#if (eq planet.type "planet")}}
-    				        {{#if (eq planet.data.system system.name)}}
-                      {{#if (or ../../isGM planet.data.visible )}}
+    				        {{#if (eq planet.system.system system.name)}}
+                      {{#if (or ../../isGM planet.system.visible )}}
     				            <div class="item flex-horizontal" data-item-id="{{planet._id}}">
     				              <div class="item-body flex-horizontal tooltip">
-    					              <p><a class="item-name"><b>{{planet.name}}</b><span class="tooltiptext">{{{localize planet.data.description}}}</span></a></p>
+    					              <p><a class="item-name"><b>{{planet.name}}</b><span class="tooltiptext">{{{localize planet.system.description}}}</span></a></p>
     				              </div>
                           <div>
     					              <p>
                               {{#if ../../isGM}}
                                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-                                {{#if planet.data.visible}}
+                                {{#if planet.system.visible}}
                                   <a class="item-control item-visible" title="{{localize 'BITD.TitleVisibleItem'}}"><i class="fas fa-eye"></i></a>
                                 {{else}}
                                   <a class="item-control item-visible" title="{{localize 'BITD.TitleInvisibleItem'}}"><i class="fas fa-eye-slash"></i></a>
@@ -99,22 +99,22 @@
   					              <table style="max-width: 10rem;">
         			  			      <tr>
                               <td>{{localize 'BITD.Wealth'}}:</td>
-	  		        			  	    <td>{{planet.data.wealth}} / 3</td>
+	  		        			  	    <td>{{planet.system.wealth}} / 3</td>
                             </tr>
 	   					              <tr>
                               <td>{{localize 'BITD.CrimeSyndicate'}}:</td>
-		  					              <td>{{planet.data.crime}} / 3</td>
+		  					              <td>{{planet.system.crime}} / 3</td>
                             </tr>
 		  				              <tr>
                               <td>{{localize 'BITD.TechLevel'}}:</td>
-		  					              <td>{{planet.data.tech}} / 3</td>
+		  					              <td>{{planet.system.tech}} / 3</td>
                             </tr>
 		  				              <tr>
                               <td>{{localize 'BITD.Weirdness'}}:</td>
-		  					              <td>{{planet.data.weird}} / 3</td>
+		  					              <td>{{planet.system.weird}} / 3</td>
                             </tr>
   		  			            </table>
-  		  			            <div class="item-description">{{planet.data.rule}}</div>
+  		  			            <div class="item-description">{{planet.system.rule}}</div>
                         </div>
                       {{/if}}
 		  		          {{/if}}
@@ -146,19 +146,19 @@
         </div>
 
         <div id="faction-list">
-          {{#each actor.items as |faction id|}}
+          {{#each items as |faction id|}}
             {{#if (eq faction.type "faction")}}
-              {{#if (or ../isGM faction.data.visible )}}
+              {{#if (or ../isGM faction.system.visible )}}
                 <div id="faction-items" class="label-stripe-gray item flex-horizontal" data-item-id="{{faction._id}}">
                   <a class="item-body flex-horizontal tooltip">
                     <img src="{{faction.img}}" title="{{faction.name}}" width="24" height="24"/>
-				            <div class="item-name">{{faction.name}}<span class="tooltiptext">{{{localize faction.data.description}}}</span><br>{{localize "BITD.Tier"}}: {{faction.data.tier}}</div>
+				            <div class="item-name">{{faction.name}}<span class="tooltiptext">{{{localize faction.system.description}}}</span><br>{{localize "BITD.Tier"}}: {{faction.system.tier}}</div>
                   </a>
                   <div class="flex-horizontal">
                     <p>
                       {{#if ../isGM}}
                         <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-                        {{#if faction.data.visible}}
+                        {{#if faction.system.visible}}
                           <a class="item-control item-visible" title="{{localize 'BITD.TitleVisibleItem'}}"><i class="fas fa-eye"></i></a>
                         {{else}}
                           <a class="item-control item-visible" title="{{localize 'BITD.TitleInvisibleItem'}}"><i class="fas fa-eye-slash"></i></a>
@@ -170,28 +170,28 @@
                   <div class="flex-horizontal clocks">
                     <div class="flex-vertical center" id="faction-goal-clock-{{id}}">
                       <div class="flex-horizontal tooltip" id="faction-clock-{{id}}">
-                        {{#if (gt faction.data.status.value 4)}}
-                          {{{sav-clock "data.goal_clock.value" faction.data.goal_clock.max faction.data.goal_clock.value id "blue"}}}
+                        {{#if (gt faction.system.status.value 4)}}
+                          {{{sav-clock "system.goal_clock.value" faction.system.goal_clock.max faction.system.goal_clock.value id "blue"}}}
                         {{else}}
-                          {{#if (lt faction.data.status.value 4)}}
-                            {{{sav-clock "data.goal_clock.value" faction.data.goal_clock.max faction.data.goal_clock.value id "red"}}}
+                          {{#if (lt faction.system.status.value 4)}}
+                            {{{sav-clock "system.goal_clock.value" faction.system.goal_clock.max faction.system.goal_clock.value id "red"}}}
                           {{else}}
-                            {{{sav-clock "data.goal_clock.value" faction.data.goal_clock.max faction.data.goal_clock.value id "yellow"}}}
+                            {{{sav-clock "system.goal_clock.value" faction.system.goal_clock.max faction.system.goal_clock.value id "yellow"}}}
                           {{/if}}
                         {{/if}}
                         {{#if ../isGM}}
                           <div class="tooltiptext faction-goal">
                             <p>{{localize "BITD.Goal"}}:<br>
-                              {{faction.data.goal}}</p>
+                              {{faction.system.goal}}</p>
                           </div>
                         {{/if}}
                         {{!--
                         {{#if ../isGM}}
                           <div class="flex-vertical clock-progress">
-                            <button name="minus" {{#if (lte faction.data.goal_clock.value 0)}}disabled{{/if}}>
+                            <button name="minus" {{#if (lte faction.system.goal_clock.value 0)}}disabled{{/if}}>
                               <i class="fa fa-minus-circle"></i>
                             </button>
-                            <button name="plus" {{#if (gte faction.data.goal_clock.value faction.data.goal_clock.max)}}disabled{{/if}}>
+                            <button name="plus" {{#if (gte faction.system.goal_clock.value faction.system.goal_clock.max)}}disabled{{/if}}>
                               <i class="fa fa-plus-circle"></i>
                             </button>
                           </div>
@@ -203,28 +203,28 @@
                   <div id="faction-status">
                     <div id="faction-status-label" style="float:left; width: 10em; text-align: right; padding-right: 10px; color: var(--almost_white);">
                       {{localize "BITD.Status"}}<br>
-                      <span style="color: var(--{{#if (eq faction.data.status.value 7)}}holoblue{{/if}}{{#if (eq faction.data.status.value 6)}}holobluemed{{/if}}{{#if (eq faction.data.status.value 5)}}holobluelt{{/if}}{{#if (eq faction.data.status.value 4)}}almost_white{{/if}}{{#if (eq faction.data.status.value 3)}}redlt{{/if}}{{#if (eq faction.data.status.value 2)}}redmed{{/if}}{{#if (eq faction.data.status.value 1)}}red{{/if}}{{#if (eq faction.data.status.value 0)}}almost_white{{/if}});">
-                        {{#if (eq faction.data.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.data.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.data.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.data.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.data.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.data.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.data.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.data.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}
+                      <span style="color: var(--{{#if (eq faction.system.status.value 7)}}holoblue{{/if}}{{#if (eq faction.system.status.value 6)}}holobluemed{{/if}}{{#if (eq faction.system.status.value 5)}}holobluelt{{/if}}{{#if (eq faction.system.status.value 4)}}almost_white{{/if}}{{#if (eq faction.system.status.value 3)}}redlt{{/if}}{{#if (eq faction.system.status.value 2)}}redmed{{/if}}{{#if (eq faction.system.status.value 1)}}red{{/if}}{{#if (eq faction.system.status.value 0)}}almost_white{{/if}});">
+                        {{#if (eq faction.system.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq faction.system.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq faction.system.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq faction.system.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq faction.system.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq faction.system.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq faction.system.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq faction.system.status.value 0)}}{{localize "BITD.Neutral"}}{{/if}}
                       </span>
                     </div>
                     <div id="faction-status-meter" class="teeth-experience-faction" style="float:left; width: 16em;">
-                      {{#multiboxes faction.data.status.value}}
-                        <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../actor._id}}-faction-{{id}}-status-0" value="0" dtype="Radio">
+                      {{#multiboxes faction.system.status.value}}
+                        <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../_id}}-faction-{{id}}-status-0" value="0" dtype="Radio">
                         {{#times_from_1 7}}
-                          <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-faction-{{id}}-status-{{this}}" value="{{this}}" dtype="Radio">
-                          <label for="{{../../actor._id}}-faction-{{id}}-status-{{this}}"></label>
+                          <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-faction-{{id}}-status-{{this}}" value="{{this}}" dtype="Radio">
+                          <label for="{{../../_id}}-faction-{{id}}-status-{{this}}"></label>
                         {{/times_from_1}}
                       {{/multiboxes}}
                     </div>
                   </div>
 
                   <div id="faction-jobs" class="teeth-experience">
-                    <label for="{{../actor._id}}-faction-{{id}}-jobs-0">{{localize "BITD.Jobs"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
-                    {{#multiboxes faction.data.jobs.value}}
-                      <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../actor._id}}-faction-{{id}}-jobs-0" value="0" dtype="Radio">
-                      {{#times_from_1 faction.data.jobs.max}}
-                        <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../actor._id}}-faction-{{id}}-jobs-{{this}}" value="{{this}}" dtype="Radio">
-                        <label for="{{../../actor._id}}-faction-{{id}}-jobs-{{this}}"></label>
+                    <label for="{{../_id}}-faction-{{id}}-jobs-0">{{localize "BITD.Jobs"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
+                    {{#multiboxes faction.system.jobs.value}}
+                      <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../_id}}-faction-{{id}}-jobs-0" value="0" dtype="Radio">
+                      {{#times_from_1 faction.system.jobs.max}}
+                        <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-faction-{{id}}-jobs-{{this}}" value="{{this}}" dtype="Radio">
+                        <label for="{{../../_id}}-faction-{{id}}-jobs-{{this}}"></label>
                       {{/times_from_1}}
                     {{/multiboxes}}
                   </div>
