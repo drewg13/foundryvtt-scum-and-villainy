@@ -29,7 +29,7 @@
     <textarea rows="1" name="system.goal">{{system.goal}}</textarea>
     <div class="flex-vertical">
       <div class="label-stripe">{{localize "BITD.Notes"}}</div>
-      {{editor content=system.notes target="system.notes" button=true owner=owner editable=editable}}
+      {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
       {{#if editable}}
         <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
       {{/if}}

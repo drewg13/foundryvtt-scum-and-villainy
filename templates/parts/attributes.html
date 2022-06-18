@@ -6,17 +6,17 @@
           <a class="attribute-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}
             <span class="tooltiptext left">{{{localize attribute.tip}}}</span>
           </a>
-          {{#if (eq ../system.forged 1)}}
+          {{#if (eq @root/system.forged 1)}}
             <span class="tooltip" style="font-size: 12px;"> (+1)<span class="tooltiptext left">{{{localize "BITD.Forged"}}}</span></span>
           {{/if}}
         </div>
         <div class="stripe-tooth-body-blue">
           {{#multiboxes attribute.exp}}
-            <label for="{{../actor._id}}-{{attribute_name}}-exp-0">{{localize "BITD.AExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i></label>
-            <input type="radio" id="{{../actor._id}}-{{attribute_name}}-exp-0" name="system.attributes.{{attribute_name}}.exp" value="0" checked="checked">
+            <label for="{{../_id}}-{{attribute_name}}-exp-0">{{localize "BITD.AExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i></label>
+            <input type="radio" id="{{../_id}}-{{attribute_name}}-exp-0" name="system.attributes.{{attribute_name}}.exp" value="0" checked="checked">
             {{#times_from_1 attribute.expMax}}
-              <input type="radio" id="{{../../actor._id}}-{{attribute_name}}-exp-{{this}}" name="system.attributes.{{attribute_name}}.exp" value="{{this}}">
-              <label for="{{../../actor._id}}-{{attribute_name}}-exp-{{this}}"></label>
+              <input type="radio" id="{{../../_id}}-{{attribute_name}}-exp-{{this}}" name="system.attributes.{{attribute_name}}.exp" value="{{this}}">
+              <label for="{{../../_id}}-{{attribute_name}}-exp-{{this}}"></label>
             {{/times_from_1}}
           {{/multiboxes}}
         </div>
@@ -29,8 +29,8 @@
           <div class="attributes-container">
             {{#multiboxes skill.value}}
               {{#times_from_0 skill.max}}
-                <input type="radio" id="attributes-{{../../../actor._id}}-{{skill_name}}-{{this}}" name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
-                <label for="attributes-{{../../../actor._id}}-{{skill_name}}-{{this}}"></label>
+                <input type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}" name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
+                <label for="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"></label>
               {{/times_from_0}}
               <div class="attribute-skill-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{skill_name}}">{{localize skill.label}}<span class="tooltiptext bottom">{{{localize skill.tip}}}</span></div>
             {{/multiboxes}}

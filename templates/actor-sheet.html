@@ -1,5 +1,4 @@
 <form class="{{cssClass}} actor-sheet" autocomplete="off">
-
   <section id="name-alias" class="flex-horizontal">
 
     <img src="{{img}}" data-edit="img" title="{{name}}" height="100" width="100"/>
@@ -123,7 +122,7 @@
         <input type="text" id="character-{{_id}}-look" name="system.look" value="{{system.look}}">
       </div>
 
-      {{> "systems/scum-and-villainy/templates/parts/coins.html" actor=actor}}
+      {{> "systems/scum-and-villainy/templates/parts/coins.html" actor=this}}
     </div>
 
   </section>
@@ -161,62 +160,15 @@
     </div>
 
     <div id="trauma-list">
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaColdTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.cold" value="cold" {{checked system.trauma.list.cold}}>
-          <span class="checkmark">{{localize "BITD.TraumaCold"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaHauntedTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.haunted" value="haunted" {{checked system.trauma.list.haunted}}>
-          <span class="checkmark">{{localize "BITD.TraumaHaunted"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaObsessedTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.obsessed" value="obsessed" {{checked system.trauma.list.obsessed}}>
-          <span class="checkmark">{{localize "BITD.TraumaObsessed"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaParanoidTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.paranoid" value="paranoid" {{checked system.trauma.list.paranoid}}>
-          <span class="checkmark">{{localize "BITD.TraumaParanoid"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaRecklessTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.reckless" value="reckless" {{checked system.trauma.list.reckless}}>
-          <span class="checkmark">{{localize "BITD.TraumaReckless"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaSoftTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.soft" value="soft" {{checked system.trauma.list.soft}}>
-          <span class="checkmark">{{localize "BITD.TraumaSoft"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaUnstableTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.unstable" value="unstable" {{checked system.trauma.list.unstable}}>
-          <span class="checkmark">{{localize "BITD.TraumaUnstable"}}</span>
-        </label>
-      </div>
-      <div class="tooltip">
-        <span class="tooltiptext bottom">{{{localize "BITD.TraumaViciousTip"}}}</span>
-        <label>
-          <input type="checkbox" name="system.trauma.list.vicious" value="vicious" {{checked system.trauma.list.vicious}}>
-          <span class="checkmark">{{localize "BITD.TraumaVicious"}}</span>
-        </label>
-      </div>
+      {{#each system.trauma.list}}
+        <div class="tooltip">
+          <span class="tooltiptext bottom">{{localize (concat "BITD.Trauma" (pc @key) "Tip")}}</span>
+          <label>
+            <input type="checkbox" name="system.trauma.list.{{@key}}" value="{{this}}" {{checked this}}>
+            <span class="checkmark">{{localize (concat "BITD.Trauma" (pc @key) )}}</span>
+          </label>
+        </div>
+      {{/each}}
     </div>
 
   </div>
@@ -307,11 +259,11 @@
       <div id="abilities" class="tab flex-vertical" data-tab="abilities">
         <div class="label-stripe">
           <p><label for="character-{{_id}}-experience-0">{{localize "BITD.Abilities"}}</label>
-          <a class="item-add-popup" data-item-type="ability" data-limiter="system.character_class"><i class="fas fa-plus-square"></i></a></p>
+          <a class="item-add-popup" data-item-type="ability" data-limiter="{{system.character_class}}"><i class="fas fa-plus-square"></i></a></p>
           <div id="character-experience" class="teeth-experience tooltip">
-            <label for="character-{{}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
+            <label for="character-{{_id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
               <span class="tooltiptext left">{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />
-                {{#each items as |item id|}}
+                {{#each items as |item|}}
                   {{#if (eq item.type "class")}}
                     {{item.system.experience_clues}}
                   {{/if}}
@@ -329,7 +281,7 @@
         </div>
 
         <div id="abilities-list">
-          {{#each items as |item id|}}
+          {{#each items as |item|}}
           {{#if (eq item.type "ability")}}
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
               <div class="item-body flex-horizontal">
@@ -392,7 +344,7 @@
 			      {{/multiboxes}}
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
       			  <div class="item-body flex-horizontal">
-			         	<!--<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>-->
+			         	{{!--<img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>--}}
 				        <a class="item-name">{{item.name}}</a>
                 <div class="item-description">{{{item.system.description}}}</div>
               </div>
@@ -410,7 +362,7 @@
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
-        {{{editor content=system.description target="system.description" button=true owner=owner editable=editable}}}
+        {{{editor system.description target="system.description" button=true owner=owner editable=editable}}}
 		    {{#if editable}}
         <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
         {{/if}}
@@ -445,7 +397,7 @@
 
     </div>
     {{!-- Attributes --}}
-    {{> "systems/scum-and-villainy/templates/parts/attributes.html" actor=actor}}
+    {{> "systems/scum-and-villainy/templates/parts/attributes.html" actor=this}}
   </section>
 
 </form>

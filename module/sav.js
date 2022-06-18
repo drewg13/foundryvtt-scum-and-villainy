@@ -38,17 +38,7 @@ Hooks.once("init", async function() {
     themes: ["blue", "red", "yellow", "green"],
     sizes: [ 4, 6, 8, 10, 12 ]
   };
-
-  let versionParts;
-  if( game.version ) {
-    versionParts = game.version.split( '.' );
-    game.majorVersion = parseInt( versionParts[0] );
-    game.minorVersion = parseInt( versionParts[1] );
-  } else {
-    versionParts = game.data.version.split( '.' );
-    game.majorVersion = parseInt( versionParts[1] );
-    game.minorVersion = parseInt( versionParts[2] );
-  }
+  game.system.traumas = [ "cold", "haunted", "obsessed", "paranoid", "reckless", "soft", "unstable", "vicious" ];
 
   CONFIG.Item.documentClass = SaVItem;
   CONFIG.Actor.documentClass = SaVActor;
@@ -274,6 +264,9 @@ Hooks.once("init", async function() {
     return html;
   });
 
+  Handlebars.registerHelper('pc', function( string ) {
+    return SaVHelpers.getProperCase( string );
+  });
 });
 
 /**
@@ -299,12 +292,12 @@ Hooks.once("ready", async function() {
 
 // Send Ship resource changes to chat
 Hooks.on("preUpdateActor", (actor, data, options, userId) => {
-  if ( ( actor.data.type === "ship" ) && ( Object.keys(data)[0] === "data" ) ) {
-    let item = Object.keys(data.data)[0];
+  if ( ( actor.type === "ship" ) && ( Object.keys(data)[0] === "system" ) ) {
+    let item = Object.keys(data.system)[0];
     let item0, item1;
     if( item === "systems" ){
-      item = Object.keys(data.data.systems)[0];
-      if( Object.keys( data.data.systems[item] )[0] === "damage" ){
+      item = Object.keys(data.system.systems)[0];
+      if( Object.keys( data.system.systems[item] )[0] === "damage" ){
         item = item + ".damage";
       }
     }
@@ -314,30 +307,30 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
     switch ( item ) {
       case "coins":
         resource = game.i18n.localize("BITD.Coin");
-        newValue = parseInt( data.data[item] );
-        oldValue = parseInt( actor.data.data[item] );
+        newValue = parseInt( data.system[item] );
+        oldValue = parseInt( actor.system[item] );
         break;
       case "debt":
         resource = game.i18n.localize("BITD.Debt");
-        newValue = parseInt( data.data[item] );
-        oldValue = parseInt( actor.data.data[item] );
+        newValue = parseInt( data.system[item] );
+        oldValue = parseInt( actor.system[item] );
         break;
       case "gambits":
         resource = game.i18n.localize("BITD.Gambits");
-        newValue = parseInt( data.data[item].value );
-        oldValue = parseInt( actor.data.data[item].value );
+        newValue = parseInt( data.system[item].value );
+        oldValue = parseInt( actor.system[item].value );
         break;
       case "crew_experience":
         resource = game.i18n.localize("BITD.PExperience");
-        newValue = parseInt( data.data[item] );
-        oldValue = parseInt( actor.data.data[item] );
+        newValue = parseInt( data.system[item] );
+        oldValue = parseInt( actor.system[item] );
         break;
       case "upkeep.damage":
         item0 = item.split('.')[0];
         item1 = item.split('.')[1];
         resource = game.i18n.localize("BITD.SystemsSkips");
-        newValue = parseInt( data.data.systems[item0][item1] );
-        oldValue = parseInt( actor.data.data.systems[item0][item1] );
+        newValue = parseInt( data.system.systems[item0][item1] );
+        oldValue = parseInt( actor.system.systems[item0][item1] );
         break;
       case "crew":
       case "engines":
@@ -347,8 +340,8 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
       case "shields":
       case "encryptor":
         resource = game.i18n.localize("BITD.Systems" + SaVHelpers.getProperCase( item ) + "Short" );
-        newValue = parseInt( data.data.systems[item].value );
-        oldValue = parseInt( actor.data.data.systems[item].value );
+        newValue = parseInt( data.system.systems[item].value );
+        oldValue = parseInt( actor.system.systems[item].value );
         break;
       case "engines.damage":
       case "hull.damage":
@@ -359,8 +352,8 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
         item0 = item.split('.')[0];
         item1 = item.split('.')[1];
         resource = game.i18n.localize("BITD.Systems" + SaVHelpers.getProperCase( item0 ) + "Short" ) + " " + game.i18n.localize("BITD.SystemsDamage");
-        newValue = parseInt( data.data.systems[item0][item1] );
-        oldValue = parseInt( actor.data.data.systems[item0][item1] );
+        newValue = parseInt( data.system.systems[item0][item1] );
+        oldValue = parseInt( actor.system.systems[item0][item1] );
         break;
       default:
         console.log(item, newValue, oldValue);
@@ -373,12 +366,12 @@ Hooks.on("preUpdateActor", (actor, data, options, userId) => {
 });
 
 Hooks.on("preUpdateItem", (item, data, options, userId) => {
-  if( data.data !== undefined ){
-    if( Object.keys( data.data )[0] === "is_damaged" ) {
+  if( data.system !== undefined ){
+    if( Object.keys( data.system )[0] === "is_damaged" ) {
       let actorName = item.actor.name;
       let itemName = item.name;
       let resource;
-      if( data.data.is_damaged === 1 ) {
+      if( data.system.is_damaged === 1 ) {
         resource = itemName + " " + game.i18n.localize( "BITD.ItemDamaged" );
       } else {
         resource = itemName + " " + game.i18n.localize( "BITD.ItemRepaired" );
