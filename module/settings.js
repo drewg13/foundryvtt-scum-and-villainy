@@ -72,4 +72,13 @@ export const registerSystemSettings = function() {
     type: Boolean,
     default: true
   });
+
+  game.settings.register("scum-and-villainy", "useDropdownsInRollDialog", {
+    name: "BITD.UseDropdownsInRollDialog",
+    hint: "BITD.UseDropdownsInRollDialogHint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false
+  });
 };

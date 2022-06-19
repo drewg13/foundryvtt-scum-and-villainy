@@ -1590,6 +1590,26 @@
 * .sav-die-tooltip .die.failure {
   color: red;
 }
+* form .rollRadio input {
+  display: none;
+}
+* form .rollRadio label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-right: 10px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+* form div.rollRadio {
+  display: flex;
+}
+* form .rollRadio input:checked + label {
+  color: red;
+  font-weight: bold;
+  text-decoration: underline 2px;
+}
 * .clock-zero-label {
   color: #191813;
 }
