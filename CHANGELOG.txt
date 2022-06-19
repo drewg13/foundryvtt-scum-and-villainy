@@ -191,3 +191,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.17.1  Fixed unnecessary chat log on edits to Ship Notes field
 
 1.17.2  Added different Cerberus Ship Types to reflect the discrepancy between book and playbook sheets
+
+1.18.0  Last V9 release, changed selectors for Position and Effect in Action roll dialog
