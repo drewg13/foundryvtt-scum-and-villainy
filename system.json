@@ -16,7 +16,7 @@
   "version": "2.0.0",
   "compatibility": {
     "minimum": 10,
-    "verified": 10
+    "verified": "10.270"
   },
   "system": [],
   "relationships": [],
