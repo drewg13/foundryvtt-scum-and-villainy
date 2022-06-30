@@ -44,34 +44,18 @@ export default {
 
   renderTileHUD: async (_hud, html, tileData) => {
     log("Render")
-    let t, b, f;
-    if( game.majorVersion > 7 ) {
-      b = canvas.background.tiles.find( tile => tile.id === tileData._id );
-      f = canvas.foreground.tiles.find( tile => tile.id === tileData._id );
-      if( b?.id === tileData._id ) {
-        t = b;
-      } else if ( f?.id === tileData._id ) {
-        t = f;
-      } else { return false }
-    } else {
-      t = canvas.tiles.get( tileData._id );
-    }
-    if (!t?.document?.flags['scum-and-villainy']?.clocks) {
+    let t = canvas.tiles.get( tileData._id ).document;
+
+    if (!t?.flags['scum-and-villainy']?.clocks) {
       return;
     }
-
-    const buttonHTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-buttons.html');
-    html.find("div.left").append(buttonHTML).click(async (event) => {
+    const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
+    const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
+    html.find("div.left").append(button1HTML).click(async (event) => {
       log("HUD Clicked")
       // re-get in case there has been an update
 
-      b = canvas.background.tiles.find( tile => tile.id === tileData._id );
-      f = canvas.foreground.tiles.find( tile => tile.id === tileData._id );
-      if( b?.id === tileData._id ) {
-        t = b;
-      } else if ( f?.id === tileData._id ) {
-        t = f;
-      }
+      t = canvas.tiles.get( tileData._id ).document;
 
       const oldClock = new SaVClock(t.flags['scum-and-villainy']?.clocks);
       let newClock;
@@ -83,7 +67,32 @@ export default {
         newClock = oldClock.cycleSize();
       } else if (target.classList.contains("cycle-theme")) {
         newClock = oldClock.cycleTheme();
-      } else if (target.classList.contains("progress-up")) {
+      } else if (target.dataset.action) {
+        return;
+      } else {
+        return error("ERROR: Unknown TileHUD Button");
+      }
+
+      await TileDocument.updateDocuments([{
+        _id: t.id,
+        img: newClock.image.img,
+        flags: newClock.flags
+      }], {parent: canvas.scene});
+    });
+
+    html.find("div.right").append(button2HTML).click(async (event) => {
+      log("HUD Clicked")
+      // re-get in case there has been an update
+
+      t = canvas.tiles.get( tileData._id ).document;
+
+      const oldClock = new SaVClock(t.flags['scum-and-villainy']?.clocks);
+      let newClock;
+
+      const target = event.target.classList.contains("control-icon")
+        ? event.target
+        : event.target.parentElement;
+      if (target.classList.contains("progress-up")) {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();
