@@ -3,7 +3,7 @@ import { log, error } from "./sav-clock-util.js";
 
 const onClick = async () => {
   log('Tool Clicked');
-  const clock = new CcClock();
+  const clock = new SaVClock();
   const {clientWidth, clientHeight} = document.documentElement;
   const [cx, cy] = [clientWidth / 2, clientHeight / 2];
   const t = canvas.stage.worldTransform;
