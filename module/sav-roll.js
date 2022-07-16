@@ -4,8 +4,9 @@
  * @param {string} attribute_name
  * @param {string} position
  * @param {string} effect
+ * @param {string} purpose
  */
-export async function savRoll(dice_amount, attribute_name = "", position = "risky", effect = "standard") {
+export async function savRoll(dice_amount, attribute_name = "", position = "risky", effect = "standard", purpose = "") {
 
   let zeromode = false;
 
@@ -16,7 +17,7 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
 
   await r.evaluate({async: true});
 
-  await showChatRollMessage( r, zeromode, attribute_name, position, effect );
+  await showChatRollMessage( r, zeromode, attribute_name, position, effect, purpose );
 }
 
 /**
@@ -27,8 +28,9 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
  * @param {String} attribute_name
  * @param {string} position
  * @param {string} effect
+ * @param {string} purpose
  */
-async function showChatRollMessage(r, zeromode, attribute_name = "", position = "", effect = "") {
+async function showChatRollMessage(r, zeromode, attribute_name = "", position = "", effect = "", purpose = "") {
 
   let speaker = ChatMessage.getSpeaker();
   let rolls = (r.terms)[0].results;
@@ -93,7 +95,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
       effect_localize = 'BITD.EffectStandard'
   }
 
-  let result = await renderTemplate("systems/scum-and-villainy/templates/sav-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, stress_result_display: stress_result_display, vice_result: vice_result, zeromode: zeromode});
+  let result = await renderTemplate("systems/scum-and-villainy/templates/sav-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, stress_result_display: stress_result_display, vice_result: vice_result, zeromode: zeromode, purpose: purpose});
 
   let messageData = {
     speaker: speaker,
@@ -277,10 +279,18 @@ export async function simpleRollPopup() {
       <p>${game.i18n.localize("BITD.RollTokenDescription")}</p>
       <form>
         <div class="form-group">
-          <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>
-          <select id="qty" name="qty">
-            ${Array(11).fill().map((item, i) => `<option value="${i}">${i}d</option>`).join('')}
-          </select>
+          <div class="flex-vertical">
+            <div>
+              <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>
+              <select id="qty" name="qty">
+                ${Array(11).fill().map((item, i) => `<option value="${i}">${i}d</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label for="roll-purpose">${game.i18n.localize("BITD.RollPurpose")}:</label>
+              <input id="roll-purpose" type="text" name="purpose">
+            </div>
+          </div>
         </div>
       </form>
     `,
@@ -290,7 +300,8 @@ export async function simpleRollPopup() {
         label: game.i18n.localize("BITD.Roll"),
         callback: async (html) => {
           let diceQty = html.find('[name="qty"]')[0].value;
-          await savRoll(parseInt(diceQty), "fortune", "", "");
+          let purpose = html.find('[name="purpose"]')[0].value;
+          await savRoll( parseInt(diceQty), "fortune", "", "", purpose );
         },
       },
       no: {

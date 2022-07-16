@@ -157,6 +157,7 @@
   "BITD.FortuneRoll": "Fortune Roll!",
   "BITD.RollTokenDescription": "Add +1d for each Trait rating and +1d for each Major Advantage, -1d for each Major Disadvantage.<br>For Engagement rolls, start at 1d for sheer luck!",
   "BITD.RollNumberOfDice": "Number of Dice",
+  "BITD.RollPurpose": "Purpose of Roll",
   "BITD.RollDoWithIncreasedEffect": "You do it with <strong>increased effect</strong>.",
   "BITD.RollDo": "You do it.",
   "BITD.RollPartialSuccessPositionControlled": "You hesitate. Withdraw and try a different approach, or else do it with a minor consequence: a <strong>minor complication</strong> occurs, you have <strong>reduced effect</strong>, you suffer <strong>lesser harm</strong>, you end up in a <strong>risky</strong> position.",

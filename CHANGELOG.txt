@@ -195,3 +195,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 1.18.0  Last V9 release, changed selectors for Position and Effect in Action roll dialog
 
 2.0.0  V10 compatibility, drop support for V9 and earlier
+
+2.1.0  Add option to enter roll purpose for Fortune Rolls to be included in chat result
