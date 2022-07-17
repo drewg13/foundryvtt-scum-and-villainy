@@ -197,3 +197,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.0.0  V10 compatibility, drop support for V9 and earlier
 
 2.1.0  Add option to enter roll purpose for Fortune Rolls to be included in chat result
+
+2.1.1  Fix Price/Load display in Add dialogs, fix Ship upgrade dialog culling, fixed current loadout value being available outside the character sheet

@@ -41,22 +41,10 @@ export class SaVActorSheet extends SaVSheet {
     // If assigned ship no longer exists, remove from flags
     if( actor === undefined ) { this.actor.setFlag("scum-and-villainy", "ship", ""); }
 
-    // Calculate Load
-    let loadout = 0;
-    sheetData.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.system.load ) : 0 } );
-    sheetData.system.loadout.current = loadout;
 
     // Encumbrance Levels
     let load_level = [ "BITD.Empty","BITD.Light","BITD.Light","BITD.Light","BITD.Normal","BITD.Normal","BITD.Heavy","BITD.Heavy", "BITD.Heavy","BITD.OverMax","BITD.OverMax" ];
     let mule_level = [ "BITD.Empty","BITD.Light","BITD.Light","BITD.Light","BITD.Light","BITD.Normal","BITD.Normal","BITD.Heavy","BITD.Heavy", "BITD.Heavy","BITD.OverMax" ];
-
-    //Sanity Check
-    if (loadout < 0) {
-      loadout = 0;
-    }
-    if (loadout > 10) {
-      loadout = 10;
-    }
 
 	  //look for abilities in assigned ship flags and set actor results
 
@@ -101,7 +89,7 @@ export class SaVActorSheet extends SaVSheet {
       sheetData.system.loadout.load_level = load_level[ sheetData.system.loadout.current ];
     }
 
-	  if ( parseInt(sheetData.system.loadout.planned) < loadout ) {
+	  if ( parseInt(sheetData.system.loadout.planned) < sheetData.system.loadout.current ) {
       sheetData.system.loadout.load_level = "BITD.OverMax";
 	  }
 

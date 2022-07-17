@@ -96,6 +96,13 @@ export class SaVActor extends Actor {
       // calculates upkeep value from (crew quality + engine quality + hull quality + comms quality + weapons quality) / 4, rounded down
       this.system.systems.upkeep.value = Math.floor((parseInt(this.system.systems.crew.value) + parseInt(this.system.systems.engines.value) + parseInt(this.system.systems.hull.value) + parseInt(this.system.systems.comms.value) + parseInt(this.system.systems.weapons.value)) / 4);
     }
+
+    if( this.type === "character" ){
+      // Calculate Load
+      let loadout = 0;
+      this.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.system.load ) : 0 } );
+      this.system.loadout.current = loadout;
+    }
   }
 
 

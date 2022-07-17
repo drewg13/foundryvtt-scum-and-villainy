@@ -70,9 +70,9 @@ export class SaVSheet extends ActorSheet {
 		let main_systems = ["Engines", "Hull", "Comms", "Weapons"];
 		let overloaded = {};
 
-    if ( this.type === "ship" ) {
+    if ( this.actor.type === "ship" ) {
 		  main_systems.forEach( m => {
-  	    let actor_items = this.actor.items.filter( i => i.data.data.class === m );
+  	    let actor_items = this.actor.items.filter( i => i.system.class === m );
 	  	  let total = actor_items.length;
         let lower_m = m.toLowerCase();
 		    if ( total >= this.actor.system.systems[lower_m].value ) {
@@ -86,10 +86,10 @@ export class SaVSheet extends ActorSheet {
     items.forEach(e => {
       let addition_price_load = ``;
 
-      if (typeof e.load !== "undefined") {
-        addition_price_load += `${e.load}`
-      } else if (typeof e.price !== "undefined") {
-        addition_price_load += `${e.price}`
+      if (typeof e.system.load !== "undefined") {
+        addition_price_load += `${e.system.load}`
+      } else if (typeof e.system.price !== "undefined") {
+        addition_price_load += `${e.system.price}`
       }
 
 	    const nonclass_upgrades = ["Auxiliary", "Gear", "Training", "Upgrades"];
