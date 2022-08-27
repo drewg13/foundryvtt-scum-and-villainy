@@ -201,3 +201,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.1.1  Fix Price/Load display in Add dialogs, fix Ship upgrade dialog culling, fixed current loadout value being available outside the character sheet
 
 2.1.2  Fix "k is not defined" error for V9 users
+
+2.1.3  Fix Trauma checkbox validations

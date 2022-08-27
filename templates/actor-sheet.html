@@ -164,7 +164,7 @@
         <div class="tooltip">
           <span class="tooltiptext bottom">{{localize (concat "BITD.Trauma" (pc @key) "Tip")}}</span>
           <label>
-            <input type="checkbox" name="system.trauma.list.{{@key}}" value="{{this}}" {{checked this}}>
+            <input type="checkbox" data-dType="Boolean" name="system.trauma.list.{{@key}}" value="{{this}}" {{checked this}}>
             <span class="checkmark">{{localize (concat "BITD.Trauma" (pc @key) )}}</span>
           </label>
         </div>
@@ -198,15 +198,15 @@
               <div>
                 <div>
                   <label for="armor-uses-armor">{{localize "BITD.Armor"}}</label>
-                  <input id="armor-uses-armor" type="checkbox" name="system.armor-uses.armor" {{checked system.armor-uses.armor}}>
+                  <input id="armor-uses-armor" type="checkbox" data-dType="Boolean" name="system.armor-uses.armor" {{checked system.armor-uses.armor}}>
                 </div>
                 <div>
                   <label for="armor-uses-heavy">{{localize "BITD.Heavy"}}</label>
-                  <input id="armor-uses-heavy" type="checkbox" name="system.armor-uses.heavy" {{checked system.armor-uses.heavy}}>
+                  <input id="armor-uses-heavy" type="checkbox" data-dType="Boolean" name="system.armor-uses.heavy" {{checked system.armor-uses.heavy}}>
                 </div>
                 <div>
                   <label for="armor-uses-special">{{localize "BITD.Special"}}</label>
-                  <input id="armor-uses-special" type="checkbox" name="system.armor-uses.special" {{checked system.armor-uses.special}}>
+                  <input id="armor-uses-special" type="checkbox" data-dType="Boolean" name="system.armor-uses.special" {{checked system.armor-uses.special}}>
                 </div>
               </div>
             </td>
