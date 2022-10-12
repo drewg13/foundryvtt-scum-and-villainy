@@ -66,11 +66,9 @@
 .placeable-hud .control-icon:first-child {
   margin-top: 8px;
 }
-.window-app .window-content {
-	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
-    url('assets/brushed_metal.jpg') repeat;
-}
-.chat-message {
+.window-app .window-content,
+.chat-message,
+.sheet.journal-entry .journal-entry-content {
 	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
     url('assets/brushed_metal.jpg') repeat;
 }
