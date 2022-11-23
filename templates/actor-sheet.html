@@ -93,9 +93,9 @@
           <div class="item-class-label">
             <a class="flag-add-popup" data-distinct="true" data-item-type="ship">{{localize "BITD.Ship"}}</a>
           </div>
-          {{#each flags.scum-and-villainy.ship as |item id|}}
+          {{#each shipActor as |item id|}}
             {{#unless (eq item.name "")}}
-              <div class="item flex-horizontal" data-item-id="{{item._id}}" data-item-type="{{item.type}}">
+              <div class="item flex-horizontal" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
                 <div class="ship-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
                   <div>

@@ -138,7 +138,9 @@ export class SaVHelpers {
   /* -------------------------------------------- */
 
   static async getAllActorsByType(item_type, game) {
-    return game.actors.filter( e => e.type === item_type ).map( e => { return e } ) || [];
+    let actors = game.actors.filter( e => e.type === item_type ).map( e => { return e } ) || [];
+    let addId = actors.map( a => ({...a, id: a._id}));
+    return addId;
   }
 
   /* -------------------------------------------- */

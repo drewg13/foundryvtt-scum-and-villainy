@@ -229,8 +229,8 @@ async _onFlagAddClick(event) {
   let html = `<div id="items-to-add">`;
   items.forEach(e => {
 	  if (e.type === item_type) {
-  	  html += `<input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
-      html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
+  	  html += `<input id="select-item-${e.id}" type="${input_type}" name="select_items" value="${e.id}">`;
+      html += `<label class="flex-horizontal" for="select-item-${e.id}">`;
       html += `${game.i18n.localize(e.name)} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.designation)}</span></i>`;
       html += `</label>`;
 	  }
@@ -285,7 +285,7 @@ async _onFlagAddClick(event) {
 	  let items_to_add = [];
 
     el.find("input:checked").each(function() {
-		  items_to_add.push(items.find(e => e._id === $(this).val()));
+		  items_to_add.push(items.find(e => e.id === $(this).val()));
     });
 
     if ( this.actor.isOwner ) {

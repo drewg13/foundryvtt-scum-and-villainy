@@ -205,3 +205,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.1.3  Fix Trauma checkbox validations
 
 2.1.4  Change background image in new Journal Entries to match sheets/chat cards
+
+2.1.5  Fix ship assignment to characters

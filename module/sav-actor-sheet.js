@@ -36,11 +36,10 @@ export class SaVActorSheet extends SaVSheet {
     sheetData.effects = prepareActiveEffectCategories( this.document.effects );
 
     let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
-    let actor = game.actors.get( ship_actors[0]?._id );
-
+    let shipActor = game.actors.get( ship_actors[0]?.id );
     // If assigned ship no longer exists, remove from flags
-    if( actor === undefined ) { this.actor.setFlag("scum-and-villainy", "ship", ""); }
-
+    if( shipActor === undefined ) { this.actor.setFlag("scum-and-villainy", "ship", ""); }
+    sheetData.shipActor = [shipActor];
 
     // Encumbrance Levels
     let load_level = [ "BITD.Empty","BITD.Light","BITD.Light","BITD.Light","BITD.Normal","BITD.Normal","BITD.Heavy","BITD.Heavy", "BITD.Heavy","BITD.OverMax","BITD.OverMax" ];
@@ -48,7 +47,7 @@ export class SaVActorSheet extends SaVSheet {
 
 	  //look for abilities in assigned ship flags and set actor results
 
-	  if ( actor?.system.installs.loaded_inst === 1 ) {
+	  if ( shipActor?.system.installs.loaded_inst === 1 ) {
 	    sheetData.system.loadout.heavy++;
       sheetData.system.loadout.normal++;
       sheetData.system.loadout.light++;
@@ -58,25 +57,25 @@ export class SaVActorSheet extends SaVSheet {
       sheetData.system.loadout.light = sheetData.system.loadout.light_default;
 	  }
 
-	  if ( actor?.system.installs.stress_max_up === 1 ) {
+	  if ( shipActor?.system.installs.stress_max_up === 1 ) {
       sheetData.system.stress.max++;
     } else {
       sheetData.system.stress.max = sheetData.system.stress.max_default;
   	}
 
-	  if ( actor?.system.installs.trauma_max_up === 1 ) {
+	  if ( shipActor?.system.installs.trauma_max_up === 1 ) {
       sheetData.system.trauma.max++;
     } else {
       sheetData.system.trauma.max = sheetData.system.trauma.max_default;
   	}
 
-	  if ( actor?.system.installs.stun_inst === 1 ) {
+	  if ( shipActor?.system.installs.stun_inst === 1 ) {
       sheetData.system.stun_weapons = 1;
 	  } else {
       sheetData.system.stun_weapons = 0;
 	  }
 
-	  if ( actor?.system.installs.forged_inst === 1 ) {
+	  if ( shipActor?.system.installs.forged_inst === 1 ) {
       sheetData.system.forged = 1;
 	  } else {
       sheetData.system.forged = 0;

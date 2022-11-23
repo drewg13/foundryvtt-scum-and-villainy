@@ -14,7 +14,7 @@
   ],
   "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
   "flags": {},
-  "version": "2.1.4",
+  "version": "2.1.5",
   "minimumCoreVersion": "10",
   "compatibleCoreVersion": "10",
   "compatibility": {
@@ -25,7 +25,7 @@
   "relationships": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v2.1.4.zip",
+  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v2.1.5.zip",
   "protected": false,
   "initiative": "1d20",
   "scripts": [],
