@@ -44,7 +44,7 @@ export class SaVClock {
 
   get image () {
     return {
-      img: `systems/scum-and-villainy/themes/${this.theme}/${this.size}clock_${this.progress}.webp`,
+      img: `systems/scum-and-villainy/themes/${this.theme}/${this.size}clock_${this.progress}.svg`,
       widthTile: 200,
       heightTile: 200,
 	    widthSheet: 350,

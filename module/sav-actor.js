@@ -30,7 +30,7 @@ export class SaVActor extends Actor {
           break;
         }
         case "\uD83D\uDD5B clock": {
-          icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
+          icon = "systems/scum-and-villainy/themes/blue/4clock_0.svg";
           break;
         }
       }
