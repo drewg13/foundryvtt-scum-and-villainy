@@ -131,9 +131,9 @@
         "label": "BITD.SkillsResolve",
 	    "tip": "BITD.SkillsResolveTip",
         "skills": {
-          "attune": {
-            "label": "BITD.SkillsAttune",
-	        "tip": "BITD.SkillsAttuneTip",
+          "intuit": {
+            "label": "BITD.SkillsIntuit",
+	        "tip": "BITD.SkillsIntuitTip",
             "value": [0],
             "max": 3
           },
