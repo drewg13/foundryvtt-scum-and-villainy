@@ -273,7 +273,9 @@ Hooks.once("init", async function() {
  * Once the entire VTT framework is initialized, check to see if we should perform a data migration
  */
 Hooks.once("ready", async function() {
-  //game.savclocks = new SaVClock();
+
+  game.settings.settings.get("core.notesDisplayToggle").default = true;
+
   // Determine whether a system migration is required
   const currentVersion = game.settings.get("scum-and-villainy", "systemMigrationVersion");
   const NEEDS_MIGRATION_VERSION = 1.0;

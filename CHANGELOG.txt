@@ -207,3 +207,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.1.4  Change background image in new Journal Entries to match sheets/chat cards
 
 2.1.5  Fix ship assignment to characters
+
+2.1.6  Default Map Notes Visibility to true, V11 compatibility
