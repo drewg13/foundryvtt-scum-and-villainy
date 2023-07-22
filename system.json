@@ -12,18 +12,18 @@
       "name": "megastruktur"
     }
   ],
-  "url": "https://github.com/drewg13/foundryvtt-scum-and-villainy/",
+  "url": "#{URL}#",
   "flags": {},
-  "version": "2.1.7",
+  "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 10,
-    "verified": 11.300
+    "verified": 11
   },
   "system": [],
   "relationships": [],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/drewg13/foundryvtt-scum-and-villainy/master/system.json",
-  "download": "https://github.com/drewg13/foundryvtt-scum-and-villainy/archive/v2.1.7.zip",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
   "protected": false,
   "initiative": "1d20",
   "scripts": [],
