@@ -1,4 +1,8 @@
 # FoundryVTT Scum and Villainy character and ship sheets
+<p>
+  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/drewg13/foundryvtt-scum-and-villainy">
+  <img alt="GitHub downloads (latest)" src="https://img.shields.io/github/downloads/drewg13/foundryvtt-scum-and-villainy/latest/system.zip">
+</p>
 
 An attempt to adapt the Blades in the Dark system created by megastruktur to Scum and Villainy
 
