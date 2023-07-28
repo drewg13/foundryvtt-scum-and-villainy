@@ -8,9 +8,10 @@ An attempt to adapt the Blades in the Dark system created by megastruktur to Scu
 
 ## IMPORTANT NOTES
 
-I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)
+~~I've seen some reports of loss-of-data from the Notes fields on the character sheets, so please be careful with them.  If you can reproduce the behavior reliably, please let me know. This may have been fixed with the switch to using the tinyMCE for those fields, PLEASE let me know if it continues. (thanks to Lardo#4626 for the suggestion and example code)~~
 
-Loss-of-data is a known issue if one player is editing a TinyMCE field while other updates are occurring on that sheet.  Make sure that only one person at a time is editing a given sheet to avoid.
+~~Loss-of-data is a known issue if one player is editing a TinyMCE field while other updates are occurring on that sheet.  Make sure that only one person at a time is editing a given sheet to avoid.~~
+This should be solved by the switch to ProseMirror.
 
 You DO NOT need to import any items out of the compendiums in order to use them.  Currently, if you do import them, the system should ignore the compendium version on the assumption that you imported the item in order to edit it.
 
