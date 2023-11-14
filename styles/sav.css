@@ -37,6 +37,14 @@
 	--redmed: #ff6666;
 	--redlt: #ffb2b2;
 	--darkblue: #001324;
+
+  --fs-allies:hsl(210, 100%, 40%);
+  --fs-friends:hsl(210, 45%, 35%);
+  --fs-associates:hsl(210, 15%, 50%) ;
+  --fs-neutral:#bfbfbf;
+  --fs-adversaries:hsl(0, 15%, 50%);
+  --fs-enemies: hsl(0, 45%, 35%);
+  --fs-war:hsl(0, 100%, 40%);
 }
 @font-face {
   font-family: 'Exo2';
@@ -130,7 +138,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-* section > *:not(.label-stripe) {
+* section > *:not(.label-stripe):not(.fs-grid-container) {
   margin-right: 10px;
 }
 * section > *:not(.label-stripe):last-child {
@@ -1530,10 +1538,10 @@
 * .tooltip .tooltiptext {
   visibility: collapse;
   opacity: 0;
-  width: 200px;
+  width: 240px;
   background-color: #191813;
   color: #EEEFFF;
-  text-align: center;
+  text-align: left;
   padding: 5px;
   border-radius: 6px;
   position: absolute;
@@ -1850,6 +1858,177 @@
   color: #ffffff;
   font-weight: bold;
   font-family: monospace;
+}
+
+/*# FACTION SHEET */
+.fs-faction-dialog {
+padding: 0px;
+}
+
+.faction-status-sheet {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ddd;
+}
+
+.fs-factions{
+  margin: 0px;
+  margin-right: 0px;
+  padding: 0px;
+}
+
+.fs-faction-type{
+  display: flex;
+  flex-direction: row;
+  background-color: #000;
+  vertical-align: middle;
+  color: #ffffff;
+  align-items: center;
+  padding-left: 3px;
+  margin-bottom: 4px;
+}
+
+.fs-faction-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 12px;
+}
+
+.fs-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 8px; 
+    margin-right: 0px;
+    padding: 0px;
+}
+
+.fs-grid-item {
+    text-align: center; 
+}
+
+.faction-status-items{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 1px solid #838383; 
+  margin-bottom: 4px;
+  text-align: left; 
+  justify-content: flex-start; 
+  align-items: center;
+  height: 42px;
+}
+
+.fs-column{
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.fs-tier-label{
+  margin: 0px;
+}
+
+.fs-column-tier {
+  flex:0 0 24px;
+  align-content: center;
+  width: 24px;
+}
+
+.fs-column-faction-name {
+  display: flex;
+  flex:0 0 120px;
+  width: 120px;
+  align-items: center;
+  margin:0px;
+}
+
+.fs-faction-name{
+  width: 120px;
+}
+
+.fs-tooltip-fix{
+  margin:0px;
+}
+
+.fs-column-status-label {
+  flex:0 0 100;
+  width: 80px;
+  margin-left: 16px;
+}
+
+.fs-faction-status-span {
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+  margin-left: 16px;
+}
+
+.fs-value-readout{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  text-align: right;
+  line-height: 12px;
+  margin: 0px;
+}
+
+.fs-column-status-control {
+  display: flex;
+  width: 40px;
+  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 16px;
+}
+
+ .fs-control{
+  color: #c1c1c1;
+ }
+
+ .fs-control:hover{
+  color: rgb(0, 0, 0);
+ }  
+
+.fs-control-arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  vertical-align: middle;
+  width: 20px;
+}
+
+.fs-action-up{
+  vertical-align: bottom;
+}
+
+.fs-action-down{
+  vertical-align: top;
+}
+
+.fs-value-label{
+  margin: 0px;
+}
+
+.fs-column-item-controls {
+  width: 100%;
+  padding-right: 12px;
+  min-width: 64px;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.fs-bottom-bar{
+  display: flex;
+  height:64px;
+  justify-content: center;
+  align-items: center;
+}
+.fs-add-faction {
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=sav.css.map */

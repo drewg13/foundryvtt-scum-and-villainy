@@ -33,6 +33,10 @@ export class SaVActor extends Actor {
           icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
           break;
         }
+          case "faction-status": {
+          icon = "systems/scum-and-villainy/styles/assets/icons/Icon.6_62.png";
+          break;
+        }
       }
 
       if( data.img === undefined ) {
