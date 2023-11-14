@@ -349,5 +349,13 @@
   "BITD.LogResourceToChat": "Log Resources to Chat:",
   "BITD.LogResourceToChatHint": "Log all changes to Ship Actors with a chat notification",
   "BITD.UseDropdownsInRollDialog": "Use dropdowns in Roll dialogs:",
-  "BITD.UseDropdownsInRollDialogHint": "Use dropdowns instead of radio-button-style selectors for Position and Effect in Roll Dialogs"
+  "BITD.UseDropdownsInRollDialogHint": "Use dropdowns instead of radio-button-style selectors for Position and Effect in Roll Dialogs",
+
+  "BITD.TitleIncreaseStatus": "Increase status",
+  "BITD.TitleDecreaseStatus": "Decrease status",
+  "BITD.TitleIncreaseJobs": "Increase jobs",
+  "BITD.TitleDecreaseJobs": "Decrease jobs",
+  "BITD.Hegemony": "Hegemony",
+  "BITD.Criminal": "Criminal Syndicates"
+
 }

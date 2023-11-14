@@ -15,6 +15,7 @@ import { SaVItemSheet } from "./sav-item-sheet.js";
 import { SaVActorSheet } from "./sav-actor-sheet.js";
 import { SaVNPCSheet } from "./sav-npc-sheet.js";
 import { SaVShipSheet } from "./sav-ship-sheet.js";
+import { SaVFactionStatusSheet } from "./sav-faction-status-sheet.js";
 import { SaVUniverseSheet } from "./sav-universe-sheet.js";
 import * as migrations from "./migration.js";
 /* For Clocks UI */
@@ -53,6 +54,7 @@ Hooks.once("init", async function() {
   Actors.registerSheet("scum-and-villainy", SaVShipSheet, { types: ["ship"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
   Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true});
+  Actors.registerSheet("scum-and-villainy", SaVFactionStatusSheet, { types: ["faction-status"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("scum-and-villainy", SaVItemSheet, {makeDefault: true});
   await preloadHandlebarsTemplates();
@@ -122,6 +124,37 @@ Hooks.once("init", async function() {
     return (a <= b);
   });
 
+  // FACTION SHEET
+  // normalize faction -3 to +3
+  
+  Handlebars.registerHelper('nomalizeFactionValue',function(factionValue) {
+    return (factionValue - 4);
+  })
+
+    Handlebars.registerHelper('romanNumeralTier',function(tierValue) {
+      var romanNumeral = "X"
+      switch (true) {
+        case (tierValue == 1):  
+          romanNumeral = "I";
+          break;
+        case (tierValue == 2):  
+          romanNumeral = "II";
+          break;
+        case (tierValue == 3):
+          romanNumeral = "III";
+          break;
+        case (tierValue == 4):
+          romanNumeral = "IV";
+          break;
+        case (tierValue == 5):
+          romanNumeral = "V";
+          break;
+      }
+    return (romanNumeral);
+    
+  })
+  
+  // end faction sheet
 
   Handlebars.registerHelper('crew_vault_coins', (max_coins, options) => {
 
