@@ -6,13 +6,24 @@
       <div class="fs-grid-item">
         <div id="" class="fs-faction-section">
           <div class="fs-item-body-column">
-            <div class="fs-faction-type">
-              <img src="systems/scum-and-villainy/styles/assets/icons/Icon.7_40.png" width="32" height="32" />
-              <p class="fs-faction-title">
-                {{localize "BITD.Hegemony"}}
-              </p>
+            <div class="fs-faction-header">
+              <div class="fs-faction-type">
+                <img src="systems/scum-and-villainy/styles/assets/icons/Icon.7_40.png" width="32" height="32" />
+                <p class="fs-faction-title">
+                  {{localize "BITD.Hegemony"}}
+                </p>
+              </div>
+              <div class="fs-column-labels">
+                <p class="fs-label-tier">{{localize "BITD.Tier"}}</p>
+                <div class="fs-label-faction" v>
+                  <p>{{localize "BITD.Faction"}}</p>
+                </div>
+                <div class="fs-label-status" v>
+                  <p>{{localize "BITD.Status"}}</p>
+                </div>
+                <p class="fs-label-jobs">{{localize "BITD.Jobs"}}</p>
+              </div>
             </div>
-
             {{#each items as |faction id|}}
             {{#if (eq faction.type "faction")}}
             {{#if (or ../isGM faction.system.visible )}}
@@ -63,7 +74,7 @@
                         class="fas fa-caret-up fs-value-label"></i></a>
                     {{/if}}
                     <p class="fs-value-label">
-                      {{nomalizeFactionValue faction.system.status.value}}
+                      {{normalizeFactionValue faction.system.status.value}}
                     </p>
                     {{#if ../isGM}}
                     <a class="item-control faction-down fs-control" title="{{localize 'BITD.TitleDecreaseStatus'}}"><i
@@ -85,6 +96,7 @@
                         class="fas fa-caret-down"></i></a>
                     {{/if}}
                   </div>
+
                 </div>
               </div>
 
@@ -122,13 +134,24 @@
       <div class="fs-grid-item">
         <div id="" class="fs-faction-section">
           <div class="fs-item-body-column">
-            <div class="fs-faction-type">
-              <img src="systems/scum-and-villainy/styles/assets/icons/Icon.6_10.png" width="32" height="32" />
-              <p class="fs-faction-title">
-                {{localize "BITD.Criminal"}}
-              </p>
+            <div class="fs-faction-header">
+              <div class="fs-faction-type">
+                <img src="systems/scum-and-villainy/styles/assets/icons/Icon.6_10.png" width="32" height="32" />
+                <p class="fs-faction-title">
+                  {{localize "BITD.Criminal"}}
+                </p>
+              </div>
+              <div class="fs-column-labels">
+                <p class="fs-label-tier">{{localize "BITD.Tier"}}</p>
+                <div class="fs-label-faction" v>
+                  <p>{{localize "BITD.Faction"}}</p>
+                </div>
+                <div class="fs-label-status" v>
+                  <p>{{localize "BITD.Status"}}</p>
+                </div>
+                <p class="fs-label-jobs">{{localize "BITD.Jobs"}}</p>
+              </div>
             </div>
-
             {{#each items as |faction id|}}
             {{#if (eq faction.type "faction")}}
             {{#if (or ../isGM faction.system.visible )}}
@@ -179,7 +202,7 @@
                         class="fas fa-caret-up fs-value-label"></i></a>
                     {{/if}}
                     <p class="fs-value-label">
-                      {{nomalizeFactionValue faction.system.status.value}}
+                      {{normalizeFactionValue faction.system.status.value}}
                     </p>
                     {{#if ../isGM}}
                     <a class="item-control faction-down fs-control" title="{{localize 'BITD.TitleDecreaseStatus'}}"><i
@@ -236,13 +259,24 @@
       <div class="fs-grid-item">
         <div id="" class="fs-faction-section">
           <div class="fs-item-body-column">
-            <div class="fs-faction-type">
-              <img src="systems/scum-and-villainy/styles/assets/icons/Icon.1_49.png" width="32" height="32" />
-              <p class="fs-faction-title">
-                {{localize "BITD.Weirdness"}}
-              </p>
+            <div class="fs-faction-header">
+              <div class="fs-faction-type">
+                <img src="systems/scum-and-villainy/styles/assets/icons/Icon.1_49.png" width="32" height="32" />
+                <p class="fs-faction-title">
+                  {{localize "BITD.Weirdness"}}
+                </p>
+              </div>
+              <div class="fs-column-labels">
+                <p class="fs-label-tier">{{localize "BITD.Tier"}}</p>
+                <div class="fs-label-faction" v>
+                  <p>{{localize "BITD.Faction"}}</p>
+                </div>
+                <div class="fs-label-status" v>
+                  <p>{{localize "BITD.Status"}}</p>
+                </div>
+                <p class="fs-label-jobs">{{localize "BITD.Jobs"}}</p>
+              </div>
             </div>
-
             {{#each items as |faction id|}}
             {{#if (eq faction.type "faction")}}
             {{#if (or ../isGM faction.system.visible )}}
@@ -293,7 +327,7 @@
                         class="fas fa-caret-up fs-value-label"></i></a>
                     {{/if}}
                     <p class="fs-value-label">
-                      {{nomalizeFactionValue faction.system.status.value}}
+                      {{normalizeFactionValue faction.system.status.value}}
                     </p>
                     {{#if ../isGM}}
                     <a class="item-control faction-down fs-control" title="{{localize 'BITD.TitleDecreaseStatus'}}"><i

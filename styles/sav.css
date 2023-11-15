@@ -41,7 +41,7 @@
   --fs-allies:hsl(210, 100%, 40%);
   --fs-friends:hsl(210, 45%, 35%);
   --fs-associates:hsl(210, 15%, 50%) ;
-  --fs-neutral:#bfbfbf;
+  --fs-neutral:hsl(0, 0%, 65%);
   --fs-adversaries:hsl(0, 15%, 50%);
   --fs-enemies: hsl(0, 45%, 35%);
   --fs-war:hsl(0, 100%, 40%);
@@ -1885,13 +1885,54 @@ padding: 0px;
   color: #ffffff;
   align-items: center;
   padding-left: 3px;
-  margin-bottom: 4px;
 }
+
 
 .fs-faction-title{
   font-size: 18px;
   font-weight: bold;
   margin-left: 12px;
+}
+
+.fs-column-labels {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight:normal;
+  vertical-align: middle;
+  border: 1px solid #838383; 
+  margin-bottom: 4px;
+  margin-left: 0px;
+  align-content: center;
+  color: #e8e8e8;
+  background-color: #000000;
+
+}
+
+.fs-label-tier {
+  width: 36px;
+  text-align: center;
+  justify-content: center;
+}
+
+.fs-label-faction{
+    display: flex;
+  flex:0 0 140px;
+  width: 140px;
+  text-align: left;
+  padding-left: 4px;
+
+}
+
+.fs-label-status{
+  width: 118px;
+  text-align: right;
+}
+
+
+.fs-label-jobs{
+  text-align: left;
+  padding-left: 8px;
 }
 
 .fs-grid-container {
@@ -1910,7 +1951,7 @@ padding: 0px;
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding-left: 12px;
+  padding-left: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   border: 1px solid #838383; 
@@ -1932,21 +1973,24 @@ padding: 0px;
 }
 
 .fs-column-tier {
-  flex:0 0 24px;
+  display: flex;
+  justify-content: center;
+  flex:0 0 36px;
   align-content: center;
-  width: 24px;
+  width: 36px;
 }
 
 .fs-column-faction-name {
   display: flex;
-  flex:0 0 120px;
-  width: 120px;
+  flex:0 0 140px;
+  width: 140px;
   align-items: center;
   margin:0px;
+  padding-left: 4px;
 }
 
 .fs-faction-name{
-  width: 120px;
+  width: 140px;
 }
 
 .fs-tooltip-fix{
@@ -1954,16 +1998,16 @@ padding: 0px;
 }
 
 .fs-column-status-label {
-  flex:0 0 100;
-  width: 80px;
-  margin-left: 16px;
+  flex:0 0 84px;
+  width: 84px;
+  padding-left: 0px;
 }
 
 .fs-faction-status-span {
   display: inline-block;
-  width: 80px;
+  width: 84px;
   text-align: left;
-  margin-left: 16px;
+  padding-left: 0px;
 }
 
 .fs-value-readout{
@@ -1977,10 +2021,10 @@ padding: 0px;
 
 .fs-column-status-control {
   display: flex;
-  width: 40px;
+  width: 60px;
   justify-content: space-between;
-  margin-left: 8px;
-  margin-right: 16px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
  .fs-control{
@@ -1994,7 +2038,7 @@ padding: 0px;
 .fs-control-arrows {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  justify-content: left;
   vertical-align: middle;
   width: 20px;
 }
@@ -2012,11 +2056,11 @@ padding: 0px;
 }
 
 .fs-column-item-controls {
-  width: 100%;
-  padding-right: 12px;
-  min-width: 64px;
-  justify-content: flex-end;
+  padding-right: 16px;
+  width: 72px;
+  justify-content:right;
   text-align: right;
+  margin-left: 12px ;
 }
 
 .fs-bottom-bar{

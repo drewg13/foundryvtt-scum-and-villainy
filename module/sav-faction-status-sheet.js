@@ -9,9 +9,9 @@ export class SaVFactionStatusSheet extends SaVSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["scum-and-villainy", "sheet", "actor", "fs-faction-dialog"],
       template: "systems/scum-and-villainy/templates/faction-status-sheet.hbs",
-      width: 1200,
+      width: 1250,
       height: "auto",
-      resizable: true,
+      resizable: false,
       tabs: [{ navSelector: ".tabs", contentSelector: ".tab-content" }],
     });
   }
@@ -20,7 +20,6 @@ export class SaVFactionStatusSheet extends SaVSheet {
   async getData(options) {
     const superData = super.getData(options);
     const sheetData = superData.data;
-    //sheetData.document = superData.actor;
     sheetData.owner = superData.owner;
     sheetData.editable = superData.editable;
     sheetData.isGM = game.user.isGM;

@@ -153,7 +153,7 @@ Hooks.once("init", async function () {
   // FACTION SHEET
   // normalize faction -3 to +3
 
-  Handlebars.registerHelper("nomalizeFactionValue", function (factionValue) {
+  Handlebars.registerHelper("normalizeFactionValue", function (factionValue) {
     return factionValue - 4;
   });
 
