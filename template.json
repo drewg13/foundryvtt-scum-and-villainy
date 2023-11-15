@@ -400,7 +400,7 @@
       "max": "4"
     },
 	"status": {
-      "value": [4],
+      "value": 4,
       "max": 7,
       "name": "BITD.Status"
     },

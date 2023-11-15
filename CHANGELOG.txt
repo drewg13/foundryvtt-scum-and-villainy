@@ -213,3 +213,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.1.7  Fix to Jobs macro folder code (reimport to use)
 
 2.1.8  Testing Github Actions for automated releases
+
+2.1.9  Fixes default status for factions to Neutral

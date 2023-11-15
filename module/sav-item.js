@@ -80,7 +80,7 @@ export class SaVItem extends Item {
 	  let status = data.status.value;
 
 	  if ( this ) {
-		  if ( ( status === "0" ) || ( status === 0 ) ) { status = 4; }
+		  if ( ( status === 0 ) || ( typeof( status ) !== "number") ) { status = 4; }
 		  this.system.status.value = status;
 	  }
   };
