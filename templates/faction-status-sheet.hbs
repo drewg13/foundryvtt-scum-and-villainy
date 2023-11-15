@@ -1,0 +1,393 @@
+<form class="{{cssClass}} faction-status-sheet" autocomplete="off">
+
+  <section id="" class="fs-factions">
+    <div class="fs-grid-container">
+      <!-- Hegemon -->
+      <div class="fs-grid-item">
+        <div id="" class="fs-faction-section">
+          <div class="fs-item-body-column">
+            <div class="fs-faction-header">
+              <div class="fs-faction-type">
+                <img src="systems/scum-and-villainy/styles/assets/icons/Icon.7_40.png" width="32" height="32" />
+                <p class="fs-faction-title">
+                  {{localize "BITD.Hegemony"}}
+                </p>
+              </div>
+              <div class="fs-column-labels">
+                <p class="fs-label-tier">{{localize "BITD.Tier"}}</p>
+                <div class="fs-label-faction" v>
+                  <p>{{localize "BITD.Faction"}}</p>
+                </div>
+                <div class="fs-label-status" v>
+                  <p>{{localize "BITD.Status"}}</p>
+                </div>
+                <p class="fs-label-jobs">{{localize "BITD.Jobs"}}</p>
+              </div>
+            </div>
+            {{#each items as |faction id|}}
+            {{#if (eq faction.type "faction")}}
+            {{#if (or ../isGM faction.system.visible )}}
+            {{#if (eq faction.system.type "Hegemony" )}}
+            <div id="faction-items" class="item faction-status-items" data-item-id="{{faction._id}}">
+
+              <div class="fs-column fs-column-tier">
+                <p class="fs-tier-label">
+                  {{romanNumeralTier faction.system.tier}}
+                </p>
+              </div>
+
+              <div id="faction-items" class="fs-column fs-column-faction-name" data-item-id="{{faction._id}}">
+                <a class="fs-item-body tooltip fs-tooltip-fix">
+                  <div class="fs-faction-name item-name">{{faction.name}}<span
+                      class="tooltiptext fs-tooltip">{{{localize
+                      faction.system.description}}}</span></div>
+                </a>
+              </div>
+
+              <div class="fs-column column-status-label">
+                <div id="fs-faction-status-label">
+                  <span class="fs-faction-status-span" style="color: var(--{{#if (eq faction.system.status.value 7)}}fs-allies{{/if}}{{#if (eq
+                    faction.system.status.value 6)}}fs-friends{{/if}}{{#if (eq faction.system.status.value
+                    5)}}fs-associates{{/if}}{{#if (eq faction.system.status.value 4)}}fs-neutral{{/if}}{{#if (eq
+                    faction.system.status.value 3)}}fs-adversaries{{/if}}{{#if (eq faction.system.status.value
+                    2)}}fs-enemies{{/if}}{{#if (eq faction.system.status.value 1)}}fs-war{{/if}}{{#if (eq
+                    faction.system.status.value 0)}}fs-neutral{{/if}});">
+
+                    {{#if (eq faction.system.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq
+                    faction.system.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq
+                    faction.system.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq
+                    faction.system.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq
+                    faction.system.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq
+                    faction.system.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq
+                    faction.system.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq
+                    faction.system.status.value
+                    0)}}{{localize "BITD.Neutral"}}{{/if}}
+                  </span>
+                </div>
+              </div>
+
+              <div class="fs-column fs-column-status-control">
+                <div class="fs-value-readout">
+                  <div class="fs-control-arrows" id="fs-status-arrows">
+                    {{#if ../isGM}}
+                    <a class="item-control faction-up fs-control" title="{{localize 'BITD.TitleIncreaseStatus'}}"><i
+                        class="fas fa-caret-up fs-value-label"></i></a>
+                    {{/if}}
+                    <p class="fs-value-label">
+                      {{normalizeFactionValue faction.system.status.value}}
+                    </p>
+                    {{#if ../isGM}}
+                    <a class="item-control faction-down fs-control" title="{{localize 'BITD.TitleDecreaseStatus'}}"><i
+                        class="fas fa-caret-down"></i></a>
+                    {{/if}}
+                  </div>
+                </div>
+                <div class="fs-value-readout">
+                  <div class="fs-control-arrows" id="faction-jobs-arrows">
+                    {{#if ../isGM}}
+                    <a class="item-control jobs-up fs-control" title="{{localize 'BITD.TitleIncreaseJobs'}}"><i
+                        class="fas fa-caret-up fs-value-label"></i></a>
+                    {{/if}}
+                    <p class="fs-value-label">
+                      {{faction.system.jobs.value}}
+                    </p>
+                    {{#if ../isGM}}
+                    <a class="item-control jobs-down fs-control" title="{{localize 'BITD.TitleDecreaseJobs'}}"><i
+                        class="fas fa-caret-down"></i></a>
+                    {{/if}}
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="fs-column fs-column-item-controls">
+                <div class="">
+                  <p>
+                    {{#if ../isGM}}
+                    <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i
+                        class="fas fa-trash"></i></a>
+                    {{#if faction.system.visible}}
+                    <a class="item-control item-visible" title="{{localize 'BITD.TitleVisibleItem'}}"><i
+                        class="fas fa-eye"></i></a>
+                    {{else}}
+                    <a class="item-control item-visible" title="{{localize 'BITD.TitleInvisibleItem'}}"><i
+                        class="fas fa-eye-slash"></i></a>
+                    {{/if}}
+                    {{/if}}
+                    <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i
+                        class="fas fa-comment"></i></a>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+            {{/if}}
+            {{/if}}
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Criminal-->
+
+      <div class="fs-grid-item">
+        <div id="" class="fs-faction-section">
+          <div class="fs-item-body-column">
+            <div class="fs-faction-header">
+              <div class="fs-faction-type">
+                <img src="systems/scum-and-villainy/styles/assets/icons/Icon.6_10.png" width="32" height="32" />
+                <p class="fs-faction-title">
+                  {{localize "BITD.Criminal"}}
+                </p>
+              </div>
+              <div class="fs-column-labels">
+                <p class="fs-label-tier">{{localize "BITD.Tier"}}</p>
+                <div class="fs-label-faction" v>
+                  <p>{{localize "BITD.Faction"}}</p>
+                </div>
+                <div class="fs-label-status" v>
+                  <p>{{localize "BITD.Status"}}</p>
+                </div>
+                <p class="fs-label-jobs">{{localize "BITD.Jobs"}}</p>
+              </div>
+            </div>
+            {{#each items as |faction id|}}
+            {{#if (eq faction.type "faction")}}
+            {{#if (or ../isGM faction.system.visible )}}
+            {{#if (eq faction.system.type "Criminal" )}}
+            <div id="faction-items" class="item faction-status-items" data-item-id="{{faction._id}}">
+
+              <div class="fs-column fs-column-tier">
+                <p class="fs-tier-label">
+                  {{romanNumeralTier faction.system.tier}}
+                </p>
+              </div>
+
+              <div id="faction-items" class="fs-column fs-column-faction-name" data-item-id="{{faction._id}}">
+                <a class="fs-item-body tooltip ">
+                  <div class="fs-faction-name item-name">{{faction.name}}<span
+                      class="tooltiptext fs-tooltip">{{{localize
+                      faction.system.description}}}</span></div>
+                </a>
+              </div>
+
+              <div class="fs-column column-status-label">
+                <div id="fs-faction-status-label">
+                  <span class="fs-faction-status-span" style="color: var(--{{#if (eq faction.system.status.value 7)}}fs-allies{{/if}}{{#if (eq
+                    faction.system.status.value 6)}}fs-friends{{/if}}{{#if (eq faction.system.status.value
+                    5)}}fs-associates{{/if}}{{#if (eq faction.system.status.value 4)}}fs-neutral{{/if}}{{#if (eq
+                    faction.system.status.value 3)}}fs-adversaries{{/if}}{{#if (eq faction.system.status.value
+                    2)}}fs-enemies{{/if}}{{#if (eq faction.system.status.value 1)}}fs-war{{/if}}{{#if (eq
+                    faction.system.status.value 0)}}fs-neutral{{/if}});">
+
+                    {{#if (eq faction.system.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq
+                    faction.system.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq
+                    faction.system.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq
+                    faction.system.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq
+                    faction.system.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq
+                    faction.system.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq
+                    faction.system.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq
+                    faction.system.status.value
+                    0)}}{{localize "BITD.Neutral"}}{{/if}}
+                  </span>
+                </div>
+              </div>
+
+              <div class="fs-column fs-column-status-control">
+                <div class="fs-value-readout">
+                  <div class="fs-control-arrows" id="fs-status-arrows">
+                    {{#if ../isGM}}
+                    <a class="item-control faction-up fs-control" title="{{localize 'BITD.TitleIncreaseStatus'}}"><i
+                        class="fas fa-caret-up fs-value-label"></i></a>
+                    {{/if}}
+                    <p class="fs-value-label">
+                      {{normalizeFactionValue faction.system.status.value}}
+                    </p>
+                    {{#if ../isGM}}
+                    <a class="item-control faction-down fs-control" title="{{localize 'BITD.TitleDecreaseStatus'}}"><i
+                        class="fas fa-caret-down"></i></a>
+                    {{/if}}
+                  </div>
+                </div>
+                <div class="fs-value-readout">
+                  <div class="fs-control-arrows" id="faction-jobs-arrows">
+                    {{#if ../isGM}}
+                    <a class="item-control jobs-up fs-control" title="{{localize 'BITD.TitleIncreaseJobs'}}"><i
+                        class="fas fa-caret-up fs-value-label"></i></a>
+                    {{/if}}
+                    <p class="fs-value-label">
+                      {{faction.system.jobs.value}}
+                    </p>
+                    {{#if ../isGM}}
+                    <a class="item-control jobs-down fs-control" title="{{localize 'BITD.TitleDecreaseJobs'}}"><i
+                        class="fas fa-caret-down"></i></a>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="fs-column fs-column-item-controls">
+                <div class="">
+                  <p>
+                    {{#if ../isGM}}
+                    <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i
+                        class="fas fa-trash"></i></a>
+                    {{#if faction.system.visible}}
+                    <a class="item-control item-visible" title="{{localize 'BITD.TitleVisibleItem'}}"><i
+                        class="fas fa-eye"></i></a>
+                    {{else}}
+                    <a class="item-control item-visible" title="{{localize 'BITD.TitleInvisibleItem'}}"><i
+                        class="fas fa-eye-slash"></i></a>
+                    {{/if}}
+                    {{/if}}
+                    <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i
+                        class="fas fa-comment"></i></a>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+            {{/if}}
+            {{/if}}
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <!-- Wierdness -->
+      <div class="fs-grid-item">
+        <div id="" class="fs-faction-section">
+          <div class="fs-item-body-column">
+            <div class="fs-faction-header">
+              <div class="fs-faction-type">
+                <img src="systems/scum-and-villainy/styles/assets/icons/Icon.1_49.png" width="32" height="32" />
+                <p class="fs-faction-title">
+                  {{localize "BITD.Weirdness"}}
+                </p>
+              </div>
+              <div class="fs-column-labels">
+                <p class="fs-label-tier">{{localize "BITD.Tier"}}</p>
+                <div class="fs-label-faction" v>
+                  <p>{{localize "BITD.Faction"}}</p>
+                </div>
+                <div class="fs-label-status" v>
+                  <p>{{localize "BITD.Status"}}</p>
+                </div>
+                <p class="fs-label-jobs">{{localize "BITD.Jobs"}}</p>
+              </div>
+            </div>
+            {{#each items as |faction id|}}
+            {{#if (eq faction.type "faction")}}
+            {{#if (or ../isGM faction.system.visible )}}
+            {{#if (eq faction.system.type "Weirdness" )}}
+            <div id="faction-items" class="item faction-status-items" data-item-id="{{faction._id}}">
+
+              <div class="fs-column fs-column-tier">
+                <p class="fs-tier-label">
+                  {{romanNumeralTier faction.system.tier}}
+                </p>
+              </div>
+
+              <div id="faction-items" class="fs-column fs-column-faction-name" data-item-id="{{faction._id}}">
+                <a class="fs-item-body tooltip fs-tooltip-fix">
+                  <div class="fs-faction-name item-name">{{faction.name}}<span
+                      class="tooltiptext fs-tooltip">{{{localize
+                      faction.system.description}}}</span></div>
+                </a>
+              </div>
+
+              <div class="fs-column column-status-label">
+                <div id="fs-faction-status-label">
+                  <span class="fs-faction-status-span" style="color: var(--{{#if (eq faction.system.status.value 7)}}fs-allies{{/if}}{{#if (eq
+                    faction.system.status.value 6)}}fs-friends{{/if}}{{#if (eq faction.system.status.value
+                    5)}}fs-associates{{/if}}{{#if (eq faction.system.status.value 4)}}fs-neutral{{/if}}{{#if (eq
+                    faction.system.status.value 3)}}fs-adversaries{{/if}}{{#if (eq faction.system.status.value
+                    2)}}fs-enemies{{/if}}{{#if (eq faction.system.status.value 1)}}fs-war{{/if}}{{#if (eq
+                    faction.system.status.value 0)}}fs-neutral{{/if}});">
+
+                    {{#if (eq faction.system.status.value 7)}}{{localize "BITD.Allies"}}{{/if}}{{#if (eq
+                    faction.system.status.value 6)}}{{localize "BITD.Friends"}}{{/if}}{{#if (eq
+                    faction.system.status.value 5)}}{{localize "BITD.Associates"}}{{/if}}{{#if (eq
+                    faction.system.status.value 4)}}{{localize "BITD.Neutral"}}{{/if}}{{#if (eq
+                    faction.system.status.value 3)}}{{localize "BITD.Adversaries"}}{{/if}}{{#if (eq
+                    faction.system.status.value 2)}}{{localize "BITD.Enemies"}}{{/if}}{{#if (eq
+                    faction.system.status.value 1)}}{{localize "BITD.AtWar"}}{{/if}}{{#if (eq
+                    faction.system.status.value
+                    0)}}{{localize "BITD.Neutral"}}{{/if}}
+                  </span>
+                </div>
+              </div>
+
+              <div class="fs-column fs-column-status-control">
+                <div class="fs-value-readout">
+                  <div class="fs-control-arrows" id="fs-status-arrows">
+                    {{#if ../isGM}}
+                    <a class="item-control faction-up fs-control" title="{{localize 'BITD.TitleIncreaseStatus'}}"><i
+                        class="fas fa-caret-up fs-value-label"></i></a>
+                    {{/if}}
+                    <p class="fs-value-label">
+                      {{normalizeFactionValue faction.system.status.value}}
+                    </p>
+                    {{#if ../isGM}}
+                    <a class="item-control faction-down fs-control" title="{{localize 'BITD.TitleDecreaseStatus'}}"><i
+                        class="fas fa-caret-down"></i></a>
+                    {{/if}}
+                  </div>
+                </div>
+                <div class="fs-value-readout">
+                  <div class="fs-control-arrows" id="faction-jobs-arrows">
+                    {{#if ../isGM}}
+                    <a class="item-control jobs-up fs-control" title="{{localize 'BITD.TitleIncreaseJobs'}}"><i
+                        class="fas fa-caret-up fs-value-label"></i></a>
+                    {{/if}}
+                    <p class="fs-value-label">
+                      {{faction.system.jobs.value}}
+                    </p>
+                    {{#if ../isGM}}
+                    <a class="item-control jobs-down fs-control" title="{{localize 'BITD.TitleDecreaseJobs'}}"><i
+                        class="fas fa-caret-down"></i></a>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="fs-column fs-column-item-controls">
+                <div class="">
+                  <p>
+                    {{#if ../isGM}}
+                    <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i
+                        class="fas fa-trash"></i></a>
+                    {{#if faction.system.visible}}
+                    <a class="item-control item-visible" title="{{localize 'BITD.TitleVisibleItem'}}"><i
+                        class="fas fa-eye"></i></a>
+                    {{else}}
+                    <a class="item-control item-visible" title="{{localize 'BITD.TitleInvisibleItem'}}"><i
+                        class="fas fa-eye-slash"></i></a>
+                    {{/if}}
+                    {{/if}}
+                    <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i
+                        class="fas fa-comment"></i></a>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+            {{/if}}
+            {{/if}}
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fs-bottom-bar">
+      {{#if isGM}}
+      <div class="fs-add-faction">
+        <a class="item-add-popup" data-item-type="faction">{{localize "BITD.Add"}} {{localize "BITD.Faction"}}</a>
+      </div>
+      {{/if}}
+    </div>
+  </section>
+</form>

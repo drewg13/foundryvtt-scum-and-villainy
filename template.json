@@ -1,6 +1,6 @@
 {
 "Actor": {
-  "types": ["character", "npc", "ship", "\uD83D\uDD5B clock", "universe"],
+  "types": ["character", "npc", "ship", "\uD83D\uDD5B clock", "universe","faction-status"],
   "character": {
     "alias": "",
 	"look": "",
@@ -262,6 +262,9 @@
     "value": "0"
   },
   "universe": {
+  	"name": ""
+  },
+    "faction-status": {
   	"name": ""
   }
 },
