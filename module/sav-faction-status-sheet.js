@@ -9,7 +9,7 @@ export class SaVFactionStatusSheet extends SaVSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["scum-and-villainy", "sheet", "actor", "fs-faction-dialog"],
       template: "systems/scum-and-villainy/templates/faction-status-sheet.hbs",
-      width: 1250,
+      width: 1280,
       height: "auto",
       resizable: false,
       tabs: [{ navSelector: ".tabs", contentSelector: ".tab-content" }],

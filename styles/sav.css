@@ -491,7 +491,7 @@
 * #all-items .item-name {
 	width: 300px;
 }
-* #faction-items .item-name {
+* #faction-items .item-name:not(.fs-faction-name) {
   width: 120px;
 }
 * #friend-list .item .item-body {
@@ -1982,15 +1982,20 @@ padding: 0px;
 
 .fs-column-faction-name {
   display: flex;
-  flex:0 0 140px;
-  width: 140px;
+  flex:0 0 150px;
+  width: 150px;
   align-items: center;
   margin:0px;
   padding-left: 4px;
+  padding-right:4px;
 }
 
 .fs-faction-name{
-  width: 140px;
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 .fs-tooltip-fix{
