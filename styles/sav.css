@@ -1992,6 +1992,7 @@ padding: 0px;
 
 .fs-faction-name{
   width: 100%;
+  hyphens: auto;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Number of lines to show */
