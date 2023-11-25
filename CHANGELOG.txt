@@ -217,3 +217,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.1.9  Fixes default status for factions to Neutral
 
 2.2.0  Adds new Faction Status Actor sheet contributed by MarkPearce
+
+2.2.1  Minor fixes to new Faction sheet, default type for Factions
