@@ -1900,7 +1900,7 @@ padding: 0px;
   font-size: 14px;
   font-weight:normal;
   vertical-align: middle;
-  border: 1px solid #838383; 
+  border: 1px solid #838383;
   margin-bottom: 4px;
   margin-left: 0px;
   align-content: center;
@@ -1937,14 +1937,14 @@ padding: 0px;
 
 .fs-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
-    gap: 8px; 
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
     margin-right: 0px;
     padding: 0px;
 }
 
 .fs-grid-item {
-    text-align: center; 
+    text-align: center;
 }
 
 .faction-status-items{
@@ -1954,10 +1954,10 @@ padding: 0px;
   padding-left: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  border: 1px solid #838383; 
+  border: 1px solid #838383;
   margin-bottom: 4px;
-  text-align: left; 
-  justify-content: flex-start; 
+  text-align: left;
+  justify-content: flex-start;
   align-items: center;
   height: 42px;
 }
@@ -1992,6 +1992,8 @@ padding: 0px;
 
 .fs-faction-name{
   width: 100%;
+  hyphens: auto;
+  overflow-wrap:anywhere;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Number of lines to show */
@@ -2038,7 +2040,7 @@ padding: 0px;
 
  .fs-control:hover{
   color: rgb(0, 0, 0);
- }  
+ }
 
 .fs-control-arrows {
   display: flex;

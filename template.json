@@ -388,7 +388,7 @@
   },
   "faction": {
     "templates": ["default"],
-	"type": "",
+	"type": "Weirdness",
 	"tier": "1",
 	"goal": "",
 	"turf": "",
