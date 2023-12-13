@@ -219,3 +219,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.2.0  Adds new Faction Status Actor sheet contributed by MarkPearce
 
 2.2.1  Minor fixes to new Faction sheet, default type for Factions
+
+2.2.2  Fix making changes to Clock Actors with no active scene
