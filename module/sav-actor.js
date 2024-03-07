@@ -385,6 +385,7 @@ export class SaVActor extends Actor {
 
   async rollAttribute( attribute_name = "", additional_dice_amount = 0, position, effect ) {
     let dice_amount = 0;
+    let speaker_name = this.name;
 
     if ( attribute_name !== "" ) {
       let roll_data = this.getRollData();
@@ -395,7 +396,7 @@ export class SaVActor extends Actor {
     }
     dice_amount += additional_dice_amount;
 
-    await savRoll( dice_amount, attribute_name, position, effect );
+    await savRoll( dice_amount, attribute_name, position, effect, "", speaker_name );
   }
 
   /* -------------------------------------------- */

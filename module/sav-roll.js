@@ -5,8 +5,9 @@
  * @param {string} position
  * @param {string} effect
  * @param {string} purpose
+ * @param {string} speaker_name
  */
-export async function savRoll(dice_amount, attribute_name = "", position = "risky", effect = "standard", purpose = "") {
+export async function savRoll(dice_amount, attribute_name = "", position = "risky", effect = "standard", purpose = "", speaker_name = "") {
 
   let zeromode = false;
 
@@ -17,7 +18,7 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
 
   await r.evaluate({async: true});
 
-  await showChatRollMessage( r, zeromode, attribute_name, position, effect, purpose );
+  await showChatRollMessage( r, zeromode, attribute_name, position, effect, purpose, speaker_name );
 }
 
 /**
@@ -29,10 +30,12 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
  * @param {string} position
  * @param {string} effect
  * @param {string} purpose
+ * @param {string} speaker_name
  */
-async function showChatRollMessage(r, zeromode, attribute_name = "", position = "", effect = "", purpose = "") {
+async function showChatRollMessage(r, zeromode, attribute_name = "", position = "", effect = "", purpose = "", speaker_name = "") {
 
   let speaker = ChatMessage.getSpeaker();
+  if( speaker_name ) { speaker.alias = speaker_name }
   let rolls = (r.terms)[0].results;
   let attribute_label;
   if( attribute_name === "fortune"){
