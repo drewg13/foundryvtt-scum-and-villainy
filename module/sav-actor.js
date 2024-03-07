@@ -303,8 +303,8 @@ export class SaVActor extends Actor {
             label: game.i18n.localize( 'BITD.Roll' ),
             callback: async( html ) => {
               let modifier = parseInt( html.find( '[name="mod"]' )[0].value );
-              let position = $( 'input:radio[name="pos"]:checked' )[0].value;
-              let effect = $( 'input:radio[name="fx"]:checked' )[0].value;
+              let position = html.find( 'input:radio[name="pos"]:checked' )[0].value;
+              let effect = html.find( 'input:radio[name="fx"]:checked' )[0].value;
               await this.rollAttribute( attribute_name, modifier, position, effect );
             }
           },
