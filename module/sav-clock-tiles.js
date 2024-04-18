@@ -15,7 +15,7 @@ const onClick = async () => {
   };
 
   const tile = new TileDocument({
-    img: clock.image.img,
+    texture: { src: clock.image.texture.src },
     width: clock.image.widthTile,
     height: clock.image.heightTile,
     x: dim.x,
@@ -75,7 +75,7 @@ export default {
 
       await TileDocument.updateDocuments([{
         _id: t.id,
-        img: newClock.image.img,
+        texture: { src: newClock.image.texture.src },
         flags: newClock.flags
       }], {parent: canvas.scene});
     });
@@ -104,7 +104,7 @@ export default {
 
       await TileDocument.updateDocuments([{
         _id: t.id,
-        img: newClock.image.img,
+        texture: { src: newClock.image.texture.src },
         flags: newClock.flags
       }], {parent: canvas.scene});
     });

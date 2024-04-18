@@ -16,7 +16,7 @@ export async function savRoll(dice_amount, attribute_name = "", position = "risk
 
   let r = new Roll( `${dice_amount}d6`, {} );
 
-  await r.evaluate({async: true});
+  await r.evaluate();
 
   await showChatRollMessage( r, zeromode, attribute_name, position, effect, purpose, speaker_name );
 }
@@ -46,7 +46,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
 
   // Retrieve Roll status.
   let roll_status;
-  const att_obj = game.system.model.Actor.character.attributes;
+  const att_obj = game.model.Actor.character.attributes;
   const resistance_rolls = Object.keys( att_obj );
   let stress_result = 0;
   let stress_result_display = 0;
@@ -103,11 +103,11 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let messageData = {
     speaker: speaker,
     content: result,
-    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    type: CONST.CHAT_MESSAGE_STYLES.OTHER,
     roll: r
   }
 
-  await CONFIG.ChatMessage.documentClass.create(messageData, {});
+  await ChatMessage.implementation.create(messageData, {});
 }
 
 /**

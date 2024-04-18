@@ -302,14 +302,14 @@ async _onFlagAddClick(event) {
   async _onRollAttributeDieClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
-    const att_obj = game.system.model.Actor.character.attributes;
-	  const sys_obj = game.system.model.Actor.ship.systems;
+    const att_obj = game.model.Actor.character.attributes;
+	  const sys_obj = game.model.Actor.ship.systems;
 	  let systems = Object.keys( sys_obj );
     const resistance = Object.keys( att_obj );
     const remove = ["crew", "upkeep"];
 	  let actions = [];
     resistance.forEach( a => {
-      let skill_obj = game.system.model.Actor.character.attributes[a].skills;
+      let skill_obj = game.model.Actor.character.attributes[a].skills;
       actions.push( Object.keys( skill_obj ) );
     })
 	  systems = systems.filter( system => !remove.includes( system ) );

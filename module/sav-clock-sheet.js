@@ -55,7 +55,7 @@ export class SaVClockSheet extends ActorSheet {
         size: clock.size,
         theme: clock.theme,
         image: {
-          url: clock.image.img,
+          url: clock.image.texture.src,
           width: clock.image.widthSheet,
           height: clock.image.heightSheet
         },
@@ -123,7 +123,7 @@ export class SaVClockSheet extends ActorSheet {
         tokenObj = {
           _id: t.id,
           name: actor.name,
-          img: clock.image.img,
+          "texture.src": newClock.image.texture.src,
           actorLink: true
         };
         update.push( tokenObj );
@@ -133,9 +133,9 @@ export class SaVClockSheet extends ActorSheet {
     // update the Actor
     const persistObj = await this.system.persistClockToActor({ actor, clock });
 	  const visualObj = {
-      img: clock.image.img,
+      img: clock.image.texture.src,
       token: {
-        img: clock.image.img,
+        texture: { src: clock.image.texture.src },
         ...DEFAULT_TOKEN
       }
     };
@@ -171,8 +171,6 @@ export default {
       : event.target.parentElement;
       if (target.classList.contains("cycle-size")) {
         newClock = oldClock.cycleSize();
-      } else if (target.classList.contains("cycle-theme")) {
-        newClock = oldClock.cycleTheme();
 	    } else if (target.dataset.action) {
 		    return;
       } else {
@@ -192,9 +190,9 @@ export default {
       };
 
 	  const visualObj = {
-        img: newClock.image.img,
+      img: newClock.image.texture.src,
         token: {
-          img: newClock.image.img,
+          texture: { src: newClock.image.texture.src },
           ...DEFAULT_TOKEN
         }
       };
@@ -211,7 +209,7 @@ export default {
         tokenObj = {
           _id: t.id,
           name: a.name,
-          img: newClock.image.img,
+          "texture.src": newClock.image.texture.src,
           flags: newClock.flags,
           actorLink: true
         };
@@ -236,6 +234,8 @@ export default {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
       } else if (target.dataset.action) {
 		    return;
       } else {
@@ -255,9 +255,9 @@ export default {
       };
 
 	  const visualObj = {
-        img: newClock.image.img,
+        img: newClock.image.texture.src,
         token: {
-          img: newClock.image.img,
+          texture: { src: newClock.image.texture.src },
           ...DEFAULT_TOKEN
         }
     };
@@ -275,7 +275,7 @@ export default {
         tokenObj = {
           _id: t.id,
           name: a.name,
-          img: newClock.image.img,
+          "texture.src": newClock.image.texture.src,
           flags: newClock.flags,
           actorLink: true
         };

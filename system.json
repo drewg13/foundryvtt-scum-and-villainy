@@ -13,11 +13,15 @@
     }
   ],
   "url": "#{URL}#",
-  "flags": {},
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "json", "js"]
+    }
+  },
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": 10,
-    "verified": 11
+    "minimum": 12,
+    "verified": 12.319
   },
   "system": [],
   "relationships": [],
@@ -51,7 +55,7 @@
       "name": "class",
       "label": "Classes",
       "system": "scum-and-villainy",
-      "path": "./packs/classes.db",
+      "path": "./packs/classes",
       "type": "Item",
       "private": false
     },
@@ -59,7 +63,7 @@
       "name": "heritage",
       "label": "Heritages",
       "system": "scum-and-villainy",
-      "path": "./packs/heritages.db",
+      "path": "./packs/heritages",
       "type": "Item",
       "private": false
     },
@@ -67,7 +71,7 @@
       "name": "vice",
       "label": "Vices",
       "system": "scum-and-villainy",
-      "path": "./packs/vices.db",
+      "path": "./packs/vices",
       "type": "Item",
       "private": false
     },
@@ -75,7 +79,7 @@
       "name": "background",
       "label": "Backgrounds",
       "system": "scum-and-villainy",
-      "path": "./packs/backgrounds.db",
+      "path": "./packs/backgrounds",
       "type": "Item",
       "private": false
     },
@@ -83,7 +87,7 @@
       "name": "item",
       "label": "Items",
       "system": "scum-and-villainy",
-      "path": "./packs/items.db",
+      "path": "./packs/items",
       "type": "Item",
       "private": false
     },
@@ -91,7 +95,7 @@
       "name": "ability",
       "label": "Abilities",
       "system": "scum-and-villainy",
-      "path": "./packs/abilities.db",
+      "path": "./packs/abilities",
       "type": "Item",
       "private": false
     },
@@ -99,7 +103,7 @@
       "name": "crew_reputation",
       "label": "Crew Reputation",
       "system": "scum-and-villainy",
-      "path": "./packs/crew_reputation.db",
+      "path": "./packs/crew_reputation",
       "type": "Item",
       "private": false
     },
@@ -107,7 +111,7 @@
       "name": "crew_type",
       "label": "Ship Types",
       "system": "scum-and-villainy",
-      "path": "./packs/crew_types.db",
+      "path": "./packs/crew_types",
       "type": "Item",
       "private": false
     },
@@ -115,7 +119,7 @@
       "name": "crew_upgrade",
       "label": "Ship Upgrades",
       "system": "scum-and-villainy",
-      "path": "./packs/crew_upgrades.db",
+      "path": "./packs/crew_upgrades",
       "type": "Item",
       "private": false
     },
@@ -123,7 +127,7 @@
       "name": "crew_ability",
       "label": "Ship Abilities",
       "system": "scum-and-villainy",
-      "path": "./packs/crew_abilities.db",
+      "path": "./packs/crew_abilities",
       "type": "Item",
       "private": false
     },
@@ -131,7 +135,7 @@
       "name": "job_tables",
       "label": "Job Tables",
       "system": "scum-and-villainy",
-      "path": "./packs/tables.db",
+      "path": "./packs/tables",
       "type": "RollTable",
       "private": false
     },
@@ -139,7 +143,7 @@
       "name": "star_system",
       "label": "Star Systems",
       "system": "scum-and-villainy",
-      "path": "./packs/star_systems.db",
+      "path": "./packs/star_systems",
       "type": "Item",
       "private": false
     },
@@ -147,7 +151,7 @@
       "name": "planet",
       "label": "Planets",
       "system": "scum-and-villainy",
-      "path": "./packs/planets.db",
+      "path": "./packs/planets",
       "type": "Item",
       "private": false
     },
@@ -155,7 +159,7 @@
       "name": "faction",
       "label": "Factions",
       "system": "scum-and-villainy",
-      "path": "./packs/factions.db",
+      "path": "./packs/factions",
       "type": "Item",
       "private": false
     },
@@ -163,7 +167,7 @@
       "name": "ship_size",
       "label": "Ship Sizes",
       "system": "scum-and-villainy",
-      "path": "./packs/size.db",
+      "path": "./packs/size",
       "type": "Item",
       "private": false
     },
@@ -171,7 +175,7 @@
       "name": "wanted",
       "label": "Wanted Consequences",
       "system": "scum-and-villainy",
-      "path": "./packs/wanted-consequences.db",
+      "path": "./packs/wanted-consequences",
       "type": "JournalEntry",
       "private": false
     },
@@ -179,7 +183,7 @@
       "name": "wanted_tables",
       "label": "Wanted Tables",
       "system": "scum-and-villainy",
-      "path": "./packs/wanted-tables.db",
+      "path": "./packs/wanted-tables",
       "type": "RollTable",
       "private": false
     },
@@ -187,7 +191,7 @@
       "name": "macros",
       "label": "System Macros",
       "system": "scum-and-villainy",
-      "path": "./packs/macros.db",
+      "path": "./packs/macros",
       "type": "Macro",
       "private": false
     },
@@ -195,7 +199,7 @@
       "name": "friend",
       "label": "Friends",
       "system": "scum-and-villainy",
-      "path": "./packs/friends.db",
+      "path": "./packs/friends",
       "type": "Item",
       "private": false
     }

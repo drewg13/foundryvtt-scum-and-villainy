@@ -69,7 +69,7 @@ export class SaVActor extends Actor {
         updateData['system.experienceMax'] = playbookXP;
       }
       if( attributeXP ) {
-        const attributes = Object.keys( game.system.model.Actor.character.attributes );
+        const attributes = Object.keys( game.model.Actor.character.attributes );
         attributes.forEach( a => updateData['system.attributes.'+ a + '.expMax'] = attributeXP );
       }
 
@@ -113,7 +113,7 @@ export class SaVActor extends Actor {
   /** @override */
   getRollData() {
     const data = super.getRollData();
-    const att_obj = game.system.model.Actor.character.attributes;
+    const att_obj = game.model.Actor.character.attributes;
 	  const attributes = Object.keys( att_obj );
     data.dice_amount = this.getAttributeDiceToThrow();
     if ( this.type === "character" ) {
@@ -408,7 +408,7 @@ export class SaVActor extends Actor {
   createListOfActions() {
 
     let text = '';
-    const att_obj = game.system.model.Actor.character.attributes;
+    const att_obj = game.model.Actor.character.attributes;
     const attributes = Object.keys( att_obj );
 
     for ( let attribute in attributes ) {

@@ -88,7 +88,7 @@ function _migrateActor(actor) {
   let updateData = {}
 
   // Migrate Skills
-  const attributes = game.system.model.Actor.character.attributes;
+  const attributes = game.model.Actor.character.attributes;
   for ( let attribute_name of Object.keys(actor.system.attributes || {}) ) {
 
     // Insert attribute label

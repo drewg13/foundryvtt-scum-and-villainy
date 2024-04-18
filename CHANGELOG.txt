@@ -221,3 +221,9 @@ v1.9.4  Fix Trauma tooltip z-indexing
 2.2.1  Minor fixes to new Faction sheet, default type for Factions
 
 2.2.2  Fix making changes to Clock Actors with no active scene
+
+2.2.3  French translations by ghorbey
+
+2.2.4  Fixes for rolls by Bit-Fisto
+
+2.3.0  Updates for V12, EOL for V10/V11 support, deprecation fixes, planet and clock texture fixes

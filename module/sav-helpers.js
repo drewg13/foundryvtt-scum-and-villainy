@@ -167,9 +167,9 @@ export class SaVHelpers {
     const systems = ["crew","upkeep","engines","comms","weapons","hull","shields","encryptor"];
 
     if (skills.indexOf(attribute_name) !== -1 ) {
-      attributes = game.system.model.Actor.character.attributes;
+      attributes = game.model.Actor.character.attributes;
     } else if (systems.indexOf(attribute_name) !== -1 ) {
-      attributes = game.system.model.Actor.ship.systems;
+      attributes = game.model.Actor.ship.systems;
     } else {
       return game.i18n.localize( "BITD." + SaVHelpers.getProperCase(attribute_name) );
     }
@@ -277,7 +277,7 @@ export class SaVHelpers {
         try {
           const t = await loadTexture( tileImg );
           let tileData = {
-            img: tileImg,
+            texture: { src: tileImg },
             width: t.width,
             height: t.height,
             x: data.x,
