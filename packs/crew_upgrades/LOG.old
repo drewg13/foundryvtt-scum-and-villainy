@@ -1,3 +1,5 @@
-2024/03/16-10:32:09.427 4150 Recovering log #115
-2024/03/16-10:32:09.430 4150 Delete type=0 #115
-2024/03/16-10:32:09.431 4150 Delete type=3 #113
+2024/04/18-18:34:48.671 40b8 Log #122: 0 ops saved to Table #125 OK
+2024/04/18-18:34:48.671 40b8 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\crew_upgrades/000122.log: OK
+2024/04/18-18:34:48.671 40b8 Table #124: 65 entries OK
+2024/04/18-18:34:48.673 40b8 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\crew_upgrades/MANIFEST-000120: OK
+2024/04/18-18:34:48.673 40b8 **** Repaired leveldb c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\crew_upgrades; recovered 1 files; 24679 bytes. Some data may have been lost. ****

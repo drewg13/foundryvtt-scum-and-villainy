@@ -1,3 +1,5 @@
-2024/03/16-10:32:09.497 664 Recovering log #116
-2024/03/16-10:32:09.500 664 Delete type=0 #116
-2024/03/16-10:32:09.500 664 Delete type=3 #114
+2024/04/18-18:34:48.800 40b8 Log #123: 0 ops saved to Table #126 OK
+2024/04/18-18:34:48.800 40b8 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\macros/000123.log: OK
+2024/04/18-18:34:48.800 40b8 Table #125: 2 entries OK
+2024/04/18-18:34:48.800 40b8 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\macros/MANIFEST-000121: OK
+2024/04/18-18:34:48.806 40b8 **** Repaired leveldb c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\macros; recovered 1 files; 3592 bytes. Some data may have been lost. ****

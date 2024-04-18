@@ -1,14 +1,11 @@
-2024/04/18-17:51:43.286 2e20 Recovering log #119
-2024/04/18-17:51:43.286 2e20 Delete type=0 #119
-2024/04/18-17:51:43.286 2e20 Delete type=3 #118
-2024/04/18-18:28:54.728 1814 Level-0 table #123: started
-2024/04/18-18:28:54.729 1814 Level-0 table #123: 8046 bytes OK
-2024/04/18-18:28:54.730 1814 Delete type=0 #121
-2024/04/18-18:28:54.741 1814 Manual compaction at level-0 from '!items!2xD2f6JwZo76hxUf' @ 72057594037927935 : 1 .. '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 0 : 0; will stop at '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 116 : 1
-2024/04/18-18:28:54.741 1814 Compacting 1@0 + 1@1 files
-2024/04/18-18:28:54.742 1814 Generated table #124@0: 24 keys, 8046 bytes
-2024/04/18-18:28:54.742 1814 Compacted 1@0 + 1@1 files => 8046 bytes
-2024/04/18-18:28:54.743 1814 compacted to: files[ 0 1 0 0 0 0 0 ]
-2024/04/18-18:28:54.743 1814 Delete type=2 #117
-2024/04/18-18:28:54.744 1814 Delete type=2 #123
-2024/04/18-18:28:54.752 1814 Manual compaction at level-0 from '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 116 : 1 .. '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 0 : 0; will stop at (end)
+2024/04/18-18:34:48.689 4c4 Delete type=3 #1
+2024/04/18-18:35:48.549 1814 Level-0 table #129: started
+2024/04/18-18:35:48.549 1814 Level-0 table #129: 0 bytes OK
+2024/04/18-18:35:48.549 1814 Delete type=0 #127
+2024/04/18-18:35:48.555 1814 Manual compaction at level-0 from '!items!2xD2f6JwZo76hxUf' @ 72057594037927935 : 1 .. '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 0 : 0; will stop at '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 116 : 1
+2024/04/18-18:35:48.555 1814 Compacting 1@0 + 0@1 files
+2024/04/18-18:35:48.555 1814 Generated table #130@0: 24 keys, 8046 bytes
+2024/04/18-18:35:48.555 1814 Compacted 1@0 + 0@1 files => 8046 bytes
+2024/04/18-18:35:48.555 1814 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/04/18-18:35:48.555 1814 Delete type=2 #124
+2024/04/18-18:35:48.561 1814 Manual compaction at level-0 from '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 116 : 1 .. '!items.effects!qUthjEibGn1DD6IC.pkTMzdyQArs2musH' @ 0 : 0; will stop at (end)
