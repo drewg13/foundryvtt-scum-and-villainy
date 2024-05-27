@@ -24,6 +24,8 @@ export class SaVFactionStatusSheet extends SaVSheet {
     sheetData.editable = superData.editable;
     sheetData.isGM = game.user.isGM;
 
+    sheetData.exposeActorName = game.settings.get( "scum-and-villainy", "exposeActorName" );
+
     sheetData.system.description = await TextEditor.enrichHTML(
       sheetData.system.description,
       { secrets: sheetData.owner, async: true }
@@ -43,7 +45,7 @@ export class SaVFactionStatusSheet extends SaVSheet {
   }
 
   /** @override */
-  // a seperate copy of the add function
+  // a separate copy of the add function
 
   async addItemsToSheet(item_type, el) {
     //el is the list of items to add

@@ -328,6 +328,8 @@
     "BITD.LogResourceToChatHint": "Envoyer toutes les modifications apportées au vaisseau via une notification par chat",
     "BITD.UseDropdownsInRollDialog": "Utilisez les listes déroulantes dans la fenêtre des jets :",
     "BITD.UseDropdownsInRollDialogHint": "Utilisez des listes déroulantes au lieu de sélecteurs de type pour la position et l'effet dans la fenêtre de jet.",
+    "BITD.ExposeActorName": "Expose Faction Status Actor name field:",
+    "BITD.ExposeActorNameHint": "Actor name field is normally hidden on Faction Status sheets, check to show field for easier changes",
     "BITD.TitleIncreaseStatus": "Augmenter le statut",
     "BITD.TitleDecreaseStatus": "Diminuer le statut",
     "BITD.TitleIncreaseJobs": "Augmenter les Jobs",
@@ -335,4 +337,3 @@
     "BITD.Hegemony": "Hégémonie",
     "BITD.Criminal": "Syndicats criminels"
   }
-  

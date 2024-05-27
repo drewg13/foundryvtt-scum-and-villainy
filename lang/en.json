@@ -351,6 +351,8 @@
   "BITD.LogResourceToChatHint": "Log all changes to Ship Actors with a chat notification",
   "BITD.UseDropdownsInRollDialog": "Use dropdowns in Roll dialogs:",
   "BITD.UseDropdownsInRollDialogHint": "Use dropdowns instead of radio-button-style selectors for Position and Effect in Roll Dialogs",
+  "BITD.ExposeActorName": "Expose Faction Status Actor name field:",
+  "BITD.ExposeActorNameHint": "Actor name field is normally hidden on Faction Status sheets, check to show field for easier changes",
 
   "BITD.TitleIncreaseStatus": "Increase status",
   "BITD.TitleDecreaseStatus": "Decrease status",

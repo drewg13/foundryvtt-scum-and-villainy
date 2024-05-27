@@ -81,4 +81,13 @@ export const registerSystemSettings = function() {
     type: Boolean,
     default: false
   });
+
+  game.settings.register("scum-and-villainy", "exposeActorName", {
+    name: "BITD.ExposeActorName",
+    hint: "BITD.ExposeActorNameHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
 };
