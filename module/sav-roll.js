@@ -103,11 +103,11 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let messageData = {
     speaker: speaker,
     content: result,
-    type: CONST.CHAT_MESSAGE_STYLES.OTHER,
-    roll: r
+    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    rolls: [r]
   }
 
-  await ChatMessage.implementation.create(messageData, {});
+  await ChatMessage.create(messageData);
 }
 
 /**
