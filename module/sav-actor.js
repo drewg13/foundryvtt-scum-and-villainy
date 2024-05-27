@@ -12,8 +12,6 @@ export class SaVActor extends Actor {
     if( !data.icon || !data.token ) {
       data.prototypeToken = data.prototypeToken || {};
 
-      // For Crew and Character set the Token to sync with charsheet.
-
       let icon, token, size;
       switch( data.type ) {
         case "universe": {
@@ -33,7 +31,7 @@ export class SaVActor extends Actor {
           icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
           break;
         }
-          case "faction-status": {
+        case "faction-status": {
           icon = "systems/scum-and-villainy/styles/assets/icons/Icon.6_62.png";
           break;
         }
@@ -42,15 +40,18 @@ export class SaVActor extends Actor {
       if( data.img === undefined ) {
         data.img = icon;
       }
-
+console.log(data);
       data.prototypeToken.actorLink = true;
       data.prototypeToken.name = data.name;
       data.prototypeToken.displayName = 50;
       data.prototypeToken.height = size ? size : 1;
       data.prototypeToken.width = size ? size : 1;
-      data.prototypeToken.texture = data.prototypeToken.texture || {};
-      data.prototypeToken.texture.src = token ? token : icon;
+      if( data.prototypeToken.texture?.src === "icons/svg/mystery-man.svg" ) {
+        data.prototypeToken.texture = data.prototypeToken.texture || {};
+        data.prototypeToken.texture.src = token ? token : icon;
+      }
     }
+    console.log(data);
     await super.create(data, options);
   }
 
