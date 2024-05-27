@@ -160,10 +160,10 @@
   margin-bottom: 0px;
   justify-content: center;
 }
-* nav {
+* .scum-and-villainy.sheet nav {
   margin-bottom: 10px;
 }
-* nav.tabs > * {
+* .scum-and-villainy.sheet nav.tabs > * {
   flex: 1;
 }
 * .editor,
