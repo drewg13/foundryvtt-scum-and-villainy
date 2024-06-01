@@ -8,50 +8,44 @@ import { SaVHelpers } from "./sav-helpers.js";
 export class SaVActor extends Actor {
 
   /** @override */
+  static getDefaultArtwork( actorData ){
+    let icon;
+    switch( actorData.type ) {
+      case "universe": {
+        icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
+        break;
+      }
+      case "ship": {
+        icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
+        break;
+      }
+      case "character":
+      case "npc": {
+        icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
+        break;
+      }
+      case "\uD83D\uDD5B clock": {
+        icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
+        break;
+      }
+      case "faction-status": {
+        icon = "systems/scum-and-villainy/styles/assets/icons/Icon.6_62.png";
+        break;
+      }
+    }
+    return { img: icon };
+  }
+
+
+  /** @override */
   static async create(data, options={}) {
     if( !data.icon || !data.token ) {
       data.prototypeToken = data.prototypeToken || {};
-
-      let icon, token, size;
-      switch( data.type ) {
-        case "universe": {
-          icon = "systems/scum-and-villainy/styles/assets/icons/galaxy.png";
-          break;
-        }
-        case "ship": {
-          icon = "systems/scum-and-villainy/styles/assets/icons/ufo.png";
-          break;
-        }
-        case "character":
-        case "npc": {
-          icon = "systems/scum-and-villainy/styles/assets/icons/astronaut-helmet.png";
-          break;
-        }
-        case "\uD83D\uDD5B clock": {
-          icon = "systems/scum-and-villainy/themes/blue/4clock_0.webp";
-          break;
-        }
-        case "faction-status": {
-          icon = "systems/scum-and-villainy/styles/assets/icons/Icon.6_62.png";
-          break;
-        }
-      }
-
-      if( data.img === undefined ) {
-        data.img = icon;
-      }
-console.log(data);
       data.prototypeToken.actorLink = true;
       data.prototypeToken.name = data.name;
       data.prototypeToken.displayName = 50;
-      data.prototypeToken.height = size ? size : 1;
-      data.prototypeToken.width = size ? size : 1;
-      if( data.prototypeToken.texture?.src === "icons/svg/mystery-man.svg" ) {
-        data.prototypeToken.texture = data.prototypeToken.texture || {};
-        data.prototypeToken.texture.src = token ? token : icon;
-      }
     }
-    console.log(data);
+
     await super.create(data, options);
   }
 
