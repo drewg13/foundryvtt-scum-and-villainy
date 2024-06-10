@@ -82,8 +82,7 @@ jobs:
       # "version" key required for a valid module manifest.
       - name: Extract Version From Tag
         id: get_version
-        uses: drewg13/get-version-action@v1.0.0
-
+        uses: Simply007/get-version-action@v2
 
       # Modify "module.json" with values specific to the release.
       # Since the values for the "version" and "url" keys aren't known ahead of
