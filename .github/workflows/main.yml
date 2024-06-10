@@ -70,7 +70,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.6
 
 
       # Extract version embedded in the tag.
@@ -82,7 +82,7 @@ jobs:
       # "version" key required for a valid module manifest.
       - name: Extract Version From Tag
         id: get_version
-        uses: Simply007/get-version-action@v2
+        uses: drewg13/get-version-action@v1.0.0
 
 
       # Modify "module.json" with values specific to the release.
