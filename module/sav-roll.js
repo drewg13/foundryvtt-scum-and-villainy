@@ -37,6 +37,12 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let speaker = ChatMessage.getSpeaker();
   if( speaker_name ) { speaker.alias = speaker_name }
   let rolls = (r.terms)[0].results;
+  let method = {};
+  method.type = (r.terms)[0].method;
+  if( method.type ) {
+    method.icon = CONFIG.Dice.fulfillment.methods[method.type].icon;
+    method.label = CONFIG.Dice.fulfillment.methods[method.type].label;
+  }
   let attribute_label;
   if( attribute_name === "fortune"){
     attribute_label = game.i18n.localize("BITD.Fortune");
@@ -98,7 +104,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
       effect_localize = 'BITD.EffectStandard'
   }
 
-  let result = await renderTemplate("systems/scum-and-villainy/templates/sav-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, stress_result_display: stress_result_display, vice_result: vice_result, zeromode: zeromode, purpose: purpose});
+  let result = await renderTemplate("systems/scum-and-villainy/templates/sav-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, stress_result_display: stress_result_display, vice_result: vice_result, zeromode: zeromode, purpose: purpose});
 
   let messageData = {
     speaker: speaker,

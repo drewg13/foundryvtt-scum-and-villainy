@@ -92,6 +92,11 @@
 	color: var(--almost_white);
 	background-size: 24px 24px;
 }
+.dice-tooltip .dice-rolls .roll.method {
+  font-size: var(--font-size-10);
+  background: transparent;
+  min-width: auto;
+}
 .resource-chat-notification table tr td.value {
   font-weight: bold;
   width: 25px;

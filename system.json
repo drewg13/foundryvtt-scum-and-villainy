@@ -15,7 +15,8 @@
   "url": "#{URL}#",
   "flags": {
     "hotReload": {
-      "extensions": ["css", "html", "json", "js"]
+      "extensions": ["css", "html", "json", "js"],
+      "paths": ["module", "templates", "lang", "styles"]
     }
   },
   "version": "#{VERSION}#",
