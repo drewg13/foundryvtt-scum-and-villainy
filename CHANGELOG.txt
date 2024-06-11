@@ -226,10 +226,10 @@ v1.9.4  Fix Trauma tooltip z-indexing
 
 2.2.4  Fixes for rolls by Bit-Fisto
 
-2.3.0  Updates for V12, EOL for V10/V11 support, deprecation fixes, planet and clock texture fixes
+3.0.0  Updates for V12, EOL for V10/V11 support, deprecation fixes, planet and clock texture fixes
 
-2.3.1  Re-enable V11 support (most of those changes were unexpectedly back-compatible!), add setting for exposing the Actor name fields on Faction Status sheets, fix logic for assigning default Token art
+3.1.0  Re-enable V11 support (most of those changes were unexpectedly back-compatible!), add setting for exposing the Actor name fields on Faction Status sheets, fix logic for assigning default Token art
 
-2.3.2  Use getDefaultArtwork for assigning default img instead
+3.1.1  Use getDefaultArtwork for assigning default img instead
 
-2.4.0  Add support for Roll method indicators
+3.2.0  Add support for Roll method indicators
