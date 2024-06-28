@@ -28,7 +28,7 @@
             {{#multiboxes skill.value}}
               {{#times_from 0 skill.max}}
                 <input {{#if (lteq this (oneless skill.min))}}disabled {{/if}}type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}" data-dtype="Number" name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
-                <label {{#if (lteq this skill.min)}}data-tooltip="{{localize "BITD.DisabledByAE"}}" {{/if}}{{#if (lteq this (oneless skill.min))}}style="filter: unset; opacity: unset; cursor: unset;" {{/if}}for="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"></label>
+                <label {{#if (and (gt skill.min 0) (lteq this skill.min))}}data-tooltip="{{localize "BITD.DisabledByAE"}}" {{/if}}{{#if (lteq this (oneless skill.min))}}style="filter: unset; opacity: unset; cursor: unset;" {{/if}}for="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"></label>
               {{/times_from}}
               <div class="attribute-skill-label roll-die-attribute rollable-text" data-roll-attribute="{{skill_name}}" data-tooltip="{{{localize skill.tip}}}">{{localize skill.label}}</div>
             {{/multiboxes}}
