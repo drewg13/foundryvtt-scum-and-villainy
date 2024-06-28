@@ -9,10 +9,10 @@
     <div class="coins coins-hands">
       {{#multiboxes system.coins}}
         <input type="radio" id="coins-{{_id}}-hands-0" name="system.coins" value="0" checked="checked">
-        {{#times_from_1 4}}
+        {{#times_from 1 4}}
           <input type="radio" id="coins-{{../_id}}-hands-{{this}}" name="system.coins" value="{{this}}">
           <label for="coins-{{../_id}}-hands-{{this}}"></label>
-        {{/times_from_1}}
+        {{/times_from}}
       {{/multiboxes}}
     </div>
   </div>
@@ -25,10 +25,10 @@
     <div class="coins coins-stashed">
       {{#multiboxes system.coins_stashed}}
         <input type="radio" id="coins-{{_id}}-stashed-0" name="system.coins_stashed" value="0" checked="checked">
-        {{#times_from_1 40}}
+        {{#times_from 1 40}}
           <input type="radio" id="coins-{{../_id}}-stashed-{{this}}" name="system.coins_stashed" value="{{this}}">
           <label for="coins-{{../_id}}-stashed-{{this}}"></label>
-        {{/times_from_1}}
+        {{/times_from}}
       {{/multiboxes}}
     </div>
   </div>

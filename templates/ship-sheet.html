@@ -88,10 +88,10 @@
 			    <div class="coins coins-hands">
 			      {{#multiboxes system.coins}}
 			        <input type="radio" id="coins-{{_id}}-hands-0" name="system.coins" value="0" checked="checked">
-			        {{#times_from_1 system.coinsMax}}
+			        {{#times_from 1 system.coinsMax}}
                 <input type="radio" id="coins-{{../_id}}-hands-{{this}}" name="system.coins" value="{{this}}">
 			          <label for="coins-{{../_id}}-hands-{{this}}"></label>
-              {{/times_from_1}}
+              {{/times_from}}
 			      {{/multiboxes}}
 			    </div>
 		    </div>
@@ -104,10 +104,10 @@
 			      <div class="coins coins-hands">
 			        {{#multiboxes system.vault}}
 			          <input type="radio" id="coins-{{_id}}-vault-0" name="system.vault" value="0" checked="checked">
-			          {{#times_from_1 4}}
+			          {{#times_from 1 4}}
                   <input type="radio" id="coins-{{../_id}}-vault-{{this}}" name="system.vault" value="{{this}}">
 			            <label for="coins-{{../_id}}-vault-{{this}}"></label>
-                {{/times_from_1}}
+                {{/times_from}}
 			        {{/multiboxes}}
 			      </div>
 		      </div>
@@ -120,10 +120,10 @@
 			    <div class="coins debt">
 			      {{#multiboxes system.debt}}
               <input type="radio" id="coins-{{_id}}-debt-0" name="system.debt" value="0" checked="checked">
-              {{#times_from_1 8}}
+              {{#times_from 1 8}}
                 <input type="radio" id="coins-{{../_id}}-debt-{{this}}" name="system.debt" value="{{this}}">
 			          <label for="coins-{{../_id}}-debt-{{this}}"></label>
-              {{/times_from_1}}
+              {{/times_from}}
 			      {{/multiboxes}}
 			    </div>
         </div>
@@ -139,10 +139,10 @@
 	  		  <div class="coins gambits">
             {{#multiboxes system.gambits.value}}
 	  		      <input type="radio" id="gambits-{{_id}}-0" name="system.gambits.value" value="0" checked="checked">
-              {{#times_from_1 system.gambits.max}}
+              {{#times_from 1 system.gambits.max}}
 	  		        <input type="radio" id="gambits-{{../_id}}-{{this}}" name="system.gambits.value" value="{{this}}">
 	  		        <label for="gambits-{{../_id}}-{{this}}"></label>
-              {{/times_from_1}}
+              {{/times_from}}
             {{/multiboxes}}
   			  </div>
         </div>
@@ -183,10 +183,10 @@
             </label>
             {{#multiboxes system.crew_experience}}
               <input type="radio" id="ship-{{_id}}-experience-0" name="system.crew_experience" value="0" dtype="Radio">
-              {{#times_from_1 system.crew_experienceMax}}
+              {{#times_from 1 system.crew_experienceMax}}
                 <input type="radio" id="ship-{{../_id}}-experience-{{this}}" name="system.crew_experience" value="{{this}}" dtype="Radio">
                 <label for="ship-{{../_id}}-experience-{{this}}"></label>
-              {{/times_from_1}}
+              {{/times_from}}
             {{/multiboxes}}
           </div>
 		    </div>
@@ -244,10 +244,10 @@
             {{#if (eq item.type "friend")}}
 			        <div class="friend-tracker">
 			          {{#multiboxes item.system.status.value}}
-				          {{#times_from_0 2}}
+				          {{#times_from 0 2}}
                     <input class="update-box" data-utype="status" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="friend-{{item._id}}-status-{{this}}" value="{{this}}" dtype="Radio">
 				            <label for="friend-{{item._id}}-status-{{this}}"></label>
-                  {{/times_from_0}}
+                  {{/times_from}}
 			          {{/multiboxes}}
                 <div class="item flex-horizontal" data-item-id="{{item._id}}">
 			            <div class="item-body flex-horizontal">
@@ -339,10 +339,10 @@
 	  			          {{#multiboxes system.value}}
 	  			            <label for="{{../_id}}-{{system_name}}-value-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 	  			            <input type="radio" id="{{../_id}}-{{system_name}}-value-0" name="system.systems.{{system_name}}.value" value="0">
-                      {{#times_from_1 system.max}}
+                      {{#times_from 1 system.max}}
 	  			                <input type="radio" id="{{../../_id}}-{{system_name}}-value-{{this}}" name="system.systems.{{system_name}}.value" value="{{this}}">
 	  			                <label for="{{../../_id}}-{{system_name}}-value-{{this}}"></label>
-	  			            {{/times_from_1}}
+	  			            {{/times_from}}
                     {{/multiboxes}}
 	  		          </div>
 	  		        {{/unless}}
@@ -361,10 +361,10 @@
 	  			          {{#multiboxes system.damage}}
                       <label for="{{../_id}}-{{system_name}}-damage-0"><i	class="fab fa-creative-commons-zero nullifier"></i></label>
 	  			            <input type="radio" id="{{../_id}}-{{system_name}}-damage-0" name="system.systems.{{system_name}}.damage" value="0">
-                      {{#times_from_1 system.max}}
+                      {{#times_from 1 system.max}}
 	  		                <input type="radio" id="{{../../_id}}-{{system_name}}-damage-{{this}}" name="system.systems.{{system_name}}.damage" value="{{this}}">
 	  		                <label for="{{../../_id}}-{{system_name}}-damage-{{this}}"></label>
-	  			            {{/times_from_1}}
+	  			            {{/times_from}}
                     {{/multiboxes}}
 		  	          </div>
 		  	        </div>
@@ -383,10 +383,10 @@
                             <label for="item-{{id}}-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
                             {{#multiboxes item.system.is_damaged}}
                               <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="0"  type="radio" id="item-{{id}}-0" value="0" dtype="Radio">
-					                    {{#times_from_1 1}}
+					                    {{#times_from 1 1}}
 					      	              <input class="update-box" data-utype="is_damaged" data-item="{{item._id}}" data-value="{{this}}" type="radio" id="item-{{id}}-{{this}}" value="{{this}}" dtype="Radio">
 					  			              <label for="item-{{id}}-{{this}}"></label>
-					  		              {{/times_from_1}}
+					  		              {{/times_from}}
 					  		            {{/multiboxes}}
 					  		          </div>
                         </div>

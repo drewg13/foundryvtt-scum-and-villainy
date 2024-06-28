@@ -55,10 +55,10 @@
                   <label for="{{../_id}}-system-{{id}}-heat-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
   		  	        {{#multiboxes system.system.heat.value}}
                     <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="0" type="radio" id="{{../_id}}-system-{{id}}-heat-0" value="0" dtype="Radio">
-                    {{#times_from_1 system.system.heat.max}}
+                    {{#times_from 1 system.system.heat.max}}
 	    		            <input class="update-box" data-utype="heat" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-system-{{id}}-heat-{{this}}" value="{{this}}" dtype="Radio">
                       <label for="{{../../_id}}-system-{{id}}-heat-{{this}}"></label>
-                    {{/times_from_1}}
+                    {{/times_from}}
                   {{/multiboxes}}
                 </div>
 		            <div id="system-wanted" class="teeth-experience-red">
@@ -66,10 +66,10 @@
                   <label for="{{../_id}}-system-{{id}}-wanted-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
 			            {{#multiboxes system.system.wanted.value}}
                     <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="0" type="radio" id="{{../_id}}-system-{{id}}-wanted-0" value="0" dtype="Radio">
-                    {{#times_from_1 system.system.wanted.max}}
+                    {{#times_from 1 system.system.wanted.max}}
   			              <input class="update-box" data-utype="wanted" data-item="{{system._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-system-{{id}}-wanted-{{this}}" value="{{this}}" dtype="Radio">
                       <label for="{{../../_id}}-system-{{id}}-wanted-{{this}}"></label>
-	    		          {{/times_from_1}}
+	    		          {{/times_from}}
                   {{/multiboxes}}
 		            </div>
 		          </div>
@@ -210,10 +210,10 @@
                     <div id="faction-status-meter" class="teeth-experience-faction" style="float:left; width: 16em;">
                       {{#multiboxes faction.system.status.value}}
                         <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../_id}}-faction-{{id}}-status-0" value="0" dtype="Radio">
-                        {{#times_from_1 7}}
+                        {{#times_from 1 7}}
                           <input class="update-box" data-utype="status" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-faction-{{id}}-status-{{this}}" value="{{this}}" dtype="Radio">
                           <label for="{{../../_id}}-faction-{{id}}-status-{{this}}"></label>
-                        {{/times_from_1}}
+                        {{/times_from}}
                       {{/multiboxes}}
                     </div>
                   </div>
@@ -222,10 +222,10 @@
                     <label for="{{../_id}}-faction-{{id}}-jobs-0">{{localize "BITD.Jobs"}} <i class="fab fa-creative-commons-zero nullifier"></i></label>
                     {{#multiboxes faction.system.jobs.value}}
                       <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="0" type="radio" id="{{../_id}}-faction-{{id}}-jobs-0" value="0" dtype="Radio">
-                      {{#times_from_1 faction.system.jobs.max}}
+                      {{#times_from 1 faction.system.jobs.max}}
                         <input class="update-box" data-utype="jobs" data-item="{{faction._id}}" data-value="{{this}}" type="radio" id="{{../../_id}}-faction-{{id}}-jobs-{{this}}" value="{{this}}" dtype="Radio">
                         <label for="{{../../_id}}-faction-{{id}}-jobs-{{this}}"></label>
-                      {{/times_from_1}}
+                      {{/times_from}}
                     {{/multiboxes}}
                   </div>
                 </div>

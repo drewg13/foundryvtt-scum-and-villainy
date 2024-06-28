@@ -101,6 +101,17 @@ export class SaVActor extends Actor {
       let loadout = 0;
       this.items.forEach( i => { loadout += ( i.type === "item" ) ? parseInt( i.system.load ) : 0 } );
       this.system.loadout.current = loadout;
+      let attributes = Object.keys( this.system.attributes );
+      attributes.forEach( a => {
+        let skills = Object.keys( this.system.attributes[a].skills );
+        skills.forEach( s => {
+          if( this.system.attributes[a].skills[s].value <= this.system.attributes[a].skills[s].min ) { this.system.attributes[a].skills[s].value = this.system.attributes[a].skills[s].min; }
+          //if( this.system.attributes[a].skills[s].value > 0 ){
+          //  this.system.attributes[a].skills[s].base = this.system.attributes[a].skills[s].value;
+          //}
+          // this.system.attributes[a].skills[s].display = (this.system.attributes[a].skills[s].base ? this.system.attributes[a].skills[s].base : 0) + (this.system.attributes[a].skills[s].bonus ? this.system.attributes[a].skills[s]?.bonus : 0);
+        });
+      });
     }
   }
 
@@ -139,7 +150,7 @@ export class SaVActor extends Actor {
 		      }
 
 		      for (const s in this.system.attributes[a].skills) {
-		        dice_amount[s] = parseInt(this.system.attributes[a].skills[s]['value'][0])
+		        dice_amount[s] = parseInt(this.system.attributes[a].skills[s]['value'])
 
 		        // We add a +1d for every skill higher than 0.
 		        if ( dice_amount[s] > 0 ) {

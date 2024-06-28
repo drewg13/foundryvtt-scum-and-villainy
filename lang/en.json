@@ -338,6 +338,7 @@
   "BITD.EffectEdit": "Edit Effect",
   "BITD.EffectDelete": "Delete Effect",
   "BITD.EffectWarning": "Managing Active Effects within an Owned Item is not currently supported by FoundryVTT and will be added in a subsequent update.",
+  "BITD.DisabledByAE": "Minimum value set by an Active Effect",
 
   "BITD.ClockSettingDefaultTheme": "Default Clock Theme:",
   "BITD.ClockSettingDefaultThemeHint": "Clock theme for newly created clocks",

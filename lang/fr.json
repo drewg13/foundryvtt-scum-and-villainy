@@ -316,6 +316,7 @@
     "BITD.EffectEdit": "Modifier l'effet",
     "BITD.EffectDelete": "Supprimer l'effet",
     "BITD.EffectWarning": "La gestion des effets actifs au sein d'un élément possédé n'est actuellement pas prise en charge par FoundryVTT et sera ajoutée dans une mise à jour ultérieure.",
+    "BITD.DisabledByAE": "Minimum value set by an Active Effect",
     "BITD.ClockSettingDefaultTheme": "Thème d'horloge par défaut :",
     "BITD.ClockSettingDefaultThemeHint": "Thème d'horloge pour les horloges nouvellement créées",
     "BITD.AttributeXPBarSize": "Taille de la barre d'XP pour les attributs :",

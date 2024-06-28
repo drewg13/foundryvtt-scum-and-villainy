@@ -137,10 +137,10 @@
 	        <label class="black-label" for="character-{{_id}}-stress-0">{{localize system.stress.name}}</label>
           <span class="black-label roll-die-attribute rollable-text" data-roll-attribute="vice">{{localize "BITD.Vice"}}</span>
 	      </div>
-        {{#times_from_1 system.stress.max}}
+        {{#times_from 1 system.stress.max}}
           <input type="radio" id="character-{{../_id}}-stress-{{this}}" name="system.stress.value" value="{{this}}" dtype="Radio">
           <label for="character-{{../_id}}-stress-{{this}}"></label>
-        {{/times_from_1}}
+        {{/times_from}}
       {{/multiboxes}}
     </div>
 
@@ -150,10 +150,10 @@
           <label class="black-label" for="character-{{_id}}-trauma-counter-0">{{localize system.trauma.name}}</label>
           <div id="trauma-teeth" class="small-teeth">
             <input type="radio" id="character-{{_id}}-trauma-counter-0" name="system.trauma.value" value="0" data-dtype="Number">
-            {{#times_from_1 system.trauma.max}}
+            {{#times_from 1 system.trauma.max}}
               <input type="radio" id="character-{{../_id}}-trauma-counter-{{this}}" name="system.trauma.value" value="{{this}}" disabled>
               <label for="character-{{../_id}}-trauma-counter-{{this}}"></label>
-            {{/times_from_1}}
+            {{/times_from}}
           </div>
         </div>
       {{/traumacounter}}
@@ -272,10 +272,10 @@
             </label>
             {{#multiboxes system.experience}}
               <input type="radio" id="character-{{_id}}-experience-0" name="system.experience" value="0" dtype="Radio">
-              {{#times_from_1 system.experienceMax}}
+              {{#times_from 1 system.experienceMax}}
                 <input type="radio" id="character-{{../_id}}-experience-{{this}}" name="system.experience" value="{{this}}" dtype="Radio">
                 <label for="character-{{../_id}}-experience-{{this}}"></label>
-              {{/times_from_1}}
+              {{/times_from}}
             {{/multiboxes}}
           </div>
         </div>
