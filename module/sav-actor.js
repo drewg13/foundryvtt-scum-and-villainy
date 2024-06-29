@@ -144,7 +144,7 @@ export class SaVActor extends Actor {
           dice_amount[a] = 0;
 		      // Add +1d to resistance rolls only for Forged item on ship
 		      let ship_actors = this.getFlag("scum-and-villainy", "ship") || [];
-          let actor = game.actors.get( ship_actors[0]?._id );
+          let actor = game.actors.get( ship_actors[0]?.id );
 		      if (actor?.system.installs.forged_inst === 1) {
 		        dice_amount[a]++;
 		      }
