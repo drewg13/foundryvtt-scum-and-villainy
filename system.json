@@ -204,5 +204,50 @@
       "type": "Item",
       "private": false
     }
+  ],
+  "packFolders": [
+    {
+      "name": "Character Options",
+      "sorting": "m",
+      "packs": [
+        "class",
+        "heritage",
+        "background",
+        "vice",
+        "ability",
+        "item",
+        "friend"
+      ]
+    },
+    {
+      "name": "Ship Options",
+      "sorting": "m",
+      "packs": [
+        "crew_reputation",
+        "crew_type",
+        "crew_ability",
+        "crew_upgrade",
+        "ship_size"
+      ]
+    },
+    {
+      "name": "Universe Options",
+      "sorting": "m",
+      "packs": [
+        "star_system",
+        "planet",
+        "faction"
+      ]
+    },
+    {
+      "name": "Tables and Macros",
+      "sorting": "m",
+      "packs": [
+        "job_tables",
+        "wanted",
+        "wanted_tables",
+        "macros"
+      ]
+    }
   ]
 }
