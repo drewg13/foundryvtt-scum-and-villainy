@@ -18,9 +18,8 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <div class="tooltip">
+                  <div data-tooltip="{{{item.system.description}}}<br />{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />{{item.system.experience_clues}}">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.system.description}}}<br />{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />{{item.system.experience_clues}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -37,9 +36,8 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <div class="tooltip">
+                  <div data-tooltip="{{{item.system.description}}}">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.system.description}}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -56,9 +54,8 @@
             <div class="item flex-horizontal" data-item-id="{{item._id}}">
               <div class="item-body flex-horizontal">
                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                <div class="tooltip">
+                <div data-tooltip="{{{item.system.description}}}">
                   <a class="item-name">{{item.name}}</a>
-                  <span class="tooltiptext">{{{item.system.description}}}</span>
                 </div>
               </div>
               <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -76,9 +73,8 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <div class="tooltip">
+                  <div data-tooltip="{{{item.system.description}}}">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.system.description}}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -161,8 +157,7 @@
 
     <div id="trauma-list">
       {{#each system.trauma.list}}
-        <div class="tooltip">
-          <span class="tooltiptext bottom">{{localize (concat "BITD.Trauma" (pc @key) "Tip")}}</span>
+        <div data-tooltip="{{localize (concat "BITD.Trauma" (pc @key) "Tip")}}">
           <label>
             <input type="checkbox" data-dType="Boolean" name="system.trauma.list.{{@key}}" value="{{this}}" {{checked this}}>
             <span class="checkmark">{{localize (concat "BITD.Trauma" (pc @key) )}}</span>
@@ -260,16 +255,15 @@
         <div class="label-stripe">
           <p><label for="character-{{_id}}-experience-0">{{localize "BITD.Abilities"}}</label>
           <a class="item-add-popup" data-item-type="ability" data-limiter="{{system.character_class}}"><i class="fas fa-plus-square"></i></a></p>
-          <div id="character-experience" class="teeth-experience tooltip">
-            <label for="character-{{_id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
-              <span class="tooltiptext left">{{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />
+          <div id="character-experience" class="teeth-experience">
+            <label for="character-{{_id}}-experience-0" data-tooltip="
+              {{localize "BITD.ClassExpClueDescription"}}<br />{{localize "BITD.ClassExpClue2"}}<br />{{localize "BITD.ClassExpClue3"}}<br />
                 {{#each items as |item|}}
                   {{#if (eq item.type "class")}}
                     {{item.system.experience_clues}}
                   {{/if}}
                 {{/each}}
-              </span>
-            </label>
+              ">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i></label>
             {{#multiboxes system.experience}}
               <input type="radio" id="character-{{_id}}-experience-0" name="system.experience" value="0" dtype="Radio">
               {{#times_from 1 system.experienceMax}}

@@ -16,9 +16,8 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <div class="tooltip">
+                  <div data-tooltip="{{{item.system.description}}}<br />{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />{{item.system.experience_clues}}">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.system.description}}}<br />{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />{{item.system.experience_clues}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -35,9 +34,8 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <div class="tooltip">
+                  <div data-tooltip="{{{item.system.description}}}">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.system.description}}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -54,9 +52,8 @@
               <div class="item flex-horizontal" data-item-id="{{item._id}}">
                 <div class="item-body flex-horizontal">
                   <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                  <div class="tooltip">
+                  <div data-tooltip="{{{item.system.description}}}">
                     <a class="item-name">{{item.name}}</a>
-                    <span class="tooltiptext">{{{item.system.description}}}</span>
                   </div>
                 </div>
                 <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -171,15 +168,13 @@
         <div class="label-stripe">
           <p>{{localize "BITD.SpecialAbilities"}}
           <a class="item-add-popup" data-item-type="crew_ability" data-limiter=system.ship_class><i class="fas fa-plus-square"></i></a></p>
-          <div id="ship-experience" class="teeth-experience tooltip">
-            <label for="ship-{{_id}}-experience-0">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
-              <span class="tooltiptext left">{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />
+          <div id="ship-experience" class="teeth-experience">
+            <label for="ship-{{_id}}-experience-0" data-tooltip="{{localize "BITD.CrewExpClueDescription"}}<br />{{localize "BITD.CrewExpClue2"}}<br />{{localize "BITD.CrewExpClue3"}}<br />{{localize "BITD.CrewExpClue4"}}<br />
                 {{#each items as |item id|}}
-                  {{#if (eq item.type "crew_type")}}
-                    {{item.system.experience_clues}}
-                  {{/if}}
-                {{/each}}
-              </span>
+              {{#if (eq item.type "crew_type")}}
+                {{item.system.experience_clues}}
+              {{/if}}
+            {{/each}}">{{localize "BITD.PExperience"}}<i class="fab fa-creative-commons-zero nullifier"></i>
             </label>
             {{#multiboxes system.crew_experience}}
               <input type="radio" id="ship-{{_id}}-experience-0" name="system.crew_experience" value="0" dtype="Radio">
@@ -310,26 +305,21 @@
 			      <div id="systems-{{system_name}}-title" class="systems-value">
 		  		    <div class="stripe flex-horizontal system-label">
 	  			      {{#if (eq system_name "upkeep")}}
-	  			        <a class="roll-die-attribute rollable-text tooltip" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}
-                    <span class="tooltiptext left">{{{localize system.tip}}}</span>
-                  </a>
+	  			        <a class="roll-die-attribute rollable-text" data-tooltip="{{{localize system.tip}}}" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}</a>
                   <span style="margin-right: 5px;"> = {{system.value}} {{localize "BITD.Coin"}}</span>
 	  			      {{/if}}
 	  			      {{#if (eq system_name "shields")}}
-	  			        <span class="system-label tooltip">{{localize (concat system.label 'Short')}}
-                    <span class="tooltiptext left">{{{localize system.tip}}}</span>
+	  			        <span class="system-label" data-tooltip="{{{localize system.tip}}}">{{localize (concat system.label 'Short')}}
                   </span>
 		  		      {{/if}}
 		  		      {{#if (eq system_name "encryptor")}}
-		  		        <span class="system-label tooltip">{{localize (concat system.label 'Short')}}
-                    <span class="tooltiptext left">{{{localize system.tip}}}</span>
+		  		        <span class="system-label" data-tooltip="{{{localize system.tip}}}">{{localize (concat system.label 'Short')}}
                   </span>
 			  	      {{/if}}
 			  	      {{#unless (eq system_name "upkeep")}}
 			  	        {{#unless (eq system_name "shields")}}
 			  	          {{#unless (eq system_name "encryptor")}}
-			  	            <a class="system-label roll-die-attribute rollable-text tooltip" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}
-                        <span class="tooltiptext left">{{{localize system.tip}}}</span>
+			  	            <a class="system-label roll-die-attribute rollable-text" data-tooltip="{{{localize system.tip}}}" data-roll-attribute="{{system_name}}">{{localize (concat system.label 'Short')}}
                       </a>
 				            {{/unless}}
 				          {{/unless}}

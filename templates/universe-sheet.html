@@ -36,9 +36,8 @@
             <div id="systems-tab" class="{{#if (gt ../totalSystems 1) }}tab {{/if}}flex-vertical"{{#if (gt ../totalSystems 1) }} data-tab="{{system.name}}"{{/if}}>
     		      <div id="system-label" class="label-stripe item" data-item-id="{{system._id}}">
                 <div>
-                  <div class="tooltip item-body hoverlink inline">
+                  <div class="item-body hoverlink inline" data-tooltip="{{{localize system.system.description}}}">
                     {{system.name}}
-                    <span class="tooltiptext">{{{localize system.system.description}}}</span>
                   </div>
                   {{#if ../isGM}}
                     <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -80,8 +79,8 @@
     				        {{#if (eq planet.system.system system.name)}}
                       {{#if (or ../../isGM planet.system.visible )}}
     				            <div class="item flex-horizontal" data-item-id="{{planet._id}}">
-    				              <div class="item-body flex-horizontal tooltip">
-    					              <p><a class="item-name"><b>{{planet.name}}</b><span class="tooltiptext">{{{localize planet.system.description}}}</span></a></p>
+    				              <div class="item-body flex-horizontal">
+    					              <p><a class="item-name" data-tooltip="{{{localize planet.system.description}}}"><b>{{planet.name}}</b></a></p>
     				              </div>
                           <div>
     					              <p>
@@ -150,9 +149,9 @@
             {{#if (eq faction.type "faction")}}
               {{#if (or ../isGM faction.system.visible )}}
                 <div id="faction-items" class="label-stripe-gray item flex-horizontal" data-item-id="{{faction._id}}">
-                  <a class="item-body flex-horizontal tooltip">
+                  <a class="item-body flex-horizontal">
                     <img src="{{faction.img}}" title="{{faction.name}}" width="24" height="24"/>
-				            <div class="item-name">{{faction.name}}<span class="tooltiptext">{{{localize faction.system.description}}}</span><br>{{localize "BITD.Tier"}}: {{faction.system.tier}}</div>
+				            <div class="item-name" data-tooltip="{{{localize faction.system.description}}}">{{faction.name}}<br>{{localize "BITD.Tier"}}: {{faction.system.tier}}</div>
                   </a>
                   <div class="flex-horizontal">
                     <p>
@@ -169,7 +168,8 @@
                   </div>
                   <div class="flex-horizontal clocks">
                     <div class="flex-vertical center" id="faction-goal-clock-{{id}}">
-                      <div class="flex-horizontal tooltip" id="faction-clock-{{id}}">
+                      <div class="flex-horizontal" {{#if ../isGM}}data-tooltip="{{localize "BITD.Goal"}}:<br>
+                              {{faction.system.goal}}"{{/if}} id="faction-clock-{{id}}">
                         {{#if (gt faction.system.status.value 4)}}
                           {{{sav-clock "system.goal_clock.value" faction.system.goal_clock.max faction.system.goal_clock.value id "blue"}}}
                         {{else}}
@@ -178,12 +178,6 @@
                           {{else}}
                             {{{sav-clock "system.goal_clock.value" faction.system.goal_clock.max faction.system.goal_clock.value id "yellow"}}}
                           {{/if}}
-                        {{/if}}
-                        {{#if ../isGM}}
-                          <div class="tooltiptext faction-goal">
-                            <p>{{localize "BITD.Goal"}}:<br>
-                              {{faction.system.goal}}</p>
-                          </div>
                         {{/if}}
                         {{!--
                         {{#if ../isGM}}

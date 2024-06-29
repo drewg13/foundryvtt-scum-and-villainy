@@ -101,7 +101,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one">${addition_price_load}</div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+					html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "crew_ability") {
@@ -113,7 +113,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+					html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "ability") {
@@ -128,7 +128,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 			    html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 			    html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+					html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "item") {
@@ -138,7 +138,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
 					html += `<div class="flex one">${addition_price_load}</div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+					html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "friend") {
@@ -147,7 +147,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+					html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 					html += `</div></div>`;
 		    }
 	    } else if (e.type ==="faction") {
@@ -155,7 +155,7 @@ export class SaVSheet extends ActorSheet {
 				html += `<div class="flex ten new-item"><input id="select-item-${ e._id }" type="${ input_type }" name="select_items" value="${ e._id }">`;
 				html += `<label class="flex-horizontal" for="select-item-${ e._id }">`;
 				html += `${ game.i18n.localize( e.name ) }</label></div>`;
-				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${ game.i18n.localize( e.system.description ) }</span></i>`;
+				html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 				html += `</div></div>`;
 			} else if (e.type === "planet") {
 				if ( e.system.system === limiter ) {
@@ -163,7 +163,7 @@ export class SaVSheet extends ActorSheet {
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 					html += `${game.i18n.localize(e.name)}</label></div>`;
-					html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+					html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 					html += `</div></div>`;
 				}
 			} else {
@@ -172,7 +172,7 @@ export class SaVSheet extends ActorSheet {
 				html += `<label class="flex-horizontal" for="select-item-${e._id}">`;
 				html += `${game.i18n.localize(e.name)}</label></div>`;
 				html += `<div class="flex one">${addition_price_load}</div>`;
-				html += `<div class="flex one"><i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.description)}</span></i>`;
+				html += `<div class="flex one"><i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.description)}"></i>`;
 				html += `</div></div>`;
 			}
     });
@@ -231,7 +231,7 @@ async _onFlagAddClick(event) {
 	  if (e.type === item_type) {
   	  html += `<input id="select-item-${e.id}" type="${input_type}" name="select_items" value="${e.id}">`;
       html += `<label class="flex-horizontal" for="select-item-${e.id}">`;
-      html += `${game.i18n.localize(e.name)} <i class="tooltip fas fa-question-circle"><span class="tooltiptext left">${game.i18n.localize(e.system.designation)}</span></i>`;
+      html += `${game.i18n.localize(e.name)} <i class="fas fa-question-circle" data-tooltip="${game.i18n.localize(e.system.designation)}"></i>`;
       html += `</label>`;
 	  }
   });

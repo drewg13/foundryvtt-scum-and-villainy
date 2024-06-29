@@ -1537,43 +1537,6 @@
 * #items-to-add div.flex {
   height: 20px;
 }
-* .tooltip {
-  position: relative;
-}
-* .tooltip .tooltiptext {
-  visibility: collapse;
-  opacity: 0;
-  width: 240px;
-  background-color: #191813;
-  color: #EEEFFF;
-  text-align: left;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 9999;
-  text-transform: none;
-  font-size: small;
-  font-weight: normal;
-  cursor: default;
-  transition: 0.2s;
-}
-* .tooltip .tooltiptext.left {
-  right: 105%;
-}
-* .tooltip .tooltiptext.bottom {
-  top: 105%;
-  right: 75%;
-}
-* .tooltip .tooltiptext.top {
-  bottom: 105%;
-  right: 75%;
-}
-* .tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0.5s;
-  transition-timing-function: ease-in;
-}
 * .sav-die-tooltip .die {
   font-weight: bold;
   text-transform: capitalize;
