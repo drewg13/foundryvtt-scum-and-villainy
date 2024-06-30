@@ -70,24 +70,28 @@
           "doctor": {
             "label": "BITD.SkillsDoctor",
             "tip": "BITD.SkillsDoctorTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "hack": {
             "label": "BITD.SkillsHack",
 	        "tip": "BITD.SkillsHackTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "rig": {
             "label": "BITD.SkillsRig",
 	        "tip": "BITD.SkillsRigTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "study": {
             "label": "BITD.SkillsStudy",
 	        "tip": "BITD.SkillsStudyTip",
+            "value": 0,
             "min": 0,
             "max": 3
           }
@@ -102,24 +106,28 @@
           "helm": {
             "label": "BITD.SkillsHelm",
             "tip": "BITD.SkillsHelmTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "scramble": {
             "label": "BITD.SkillsScramble",
 	        "tip": "BITD.SkillsScrambleTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "scrap": {
             "label": "BITD.SkillsScrap",
 	        "tip": "BITD.SkillsScrapTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "skulk": {
             "label": "BITD.SkillsSkulk",
 	        "tip": "BITD.SkillsSkulkTip",
+            "value": 0,
             "min": 0,
             "max": 3
           }
@@ -134,24 +142,28 @@
           "attune": {
             "label": "BITD.SkillsAttune",
 	        "tip": "BITD.SkillsAttuneTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "command": {
             "label": "BITD.SkillsCommand",
 	        "tip": "BITD.SkillsCommandTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "consort": {
             "label": "BITD.SkillsConsort",
 	        "tip": "BITD.SkillsConsortTip",
+            "value": 0,
             "min": 0,
             "max": 3
           },
           "sway": {
             "label": "BITD.SkillsSway",
             "tip": "BITD.SkillsSwayTip",
+            "value": 0,
             "min": 0,
             "max": 3
           }

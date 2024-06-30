@@ -237,3 +237,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 3.2.1  Fix for changing Clock Actors via sheet controls
 
 3.3.0  Converted to using core tooltip engine, Playbooks now set appropriate minimum Action dots, sort compendium packs into folders, fix Forged In Fire automation
+
+3.3.1  Fix Action dots for new characters
