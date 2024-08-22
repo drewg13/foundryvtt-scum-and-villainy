@@ -239,3 +239,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 3.3.0  Converted to using core tooltip engine, Playbooks now set appropriate minimum Action dots, sort compendium packs into folders, fix Forged In Fire automation
 
 3.3.1  Fix Action dots for new characters
+
+3.3.2  Fix Ship Type sheets not opening
