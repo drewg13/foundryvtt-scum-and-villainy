@@ -241,3 +241,6 @@ v1.9.4  Fix Trauma tooltip z-indexing
 3.3.1  Fix Action dots for new characters
 
 3.3.2  Fix Ship Type sheets not opening
+
+3.4.0  Added Spanish translations (thanks to Juan Lucha!)
+
