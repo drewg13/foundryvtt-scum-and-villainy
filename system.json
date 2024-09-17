@@ -32,13 +32,8 @@
   "protected": false,
   "initiative": "1d20",
   "scripts": [],
-  "esmodules": [
-    "module/sav.js"
-  ],
-  "styles": [
-    "styles/sav.css",
-    "styles/hide-ui.css"
-  ],
+  "esmodules": ["module/sav.js"],
+  "styles": ["styles/sav.css", "styles/hide-ui.css"],
   "languages": [
     {
       "lang": "en",
@@ -49,6 +44,11 @@
       "lang": "fr",
       "name": "Français",
       "path": "lang/fr.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
     }
   ],
   "packs": [
@@ -233,21 +233,12 @@
     {
       "name": "Universe Options",
       "sorting": "m",
-      "packs": [
-        "star_system",
-        "planet",
-        "faction"
-      ]
+      "packs": ["star_system", "planet", "faction"]
     },
     {
       "name": "Tables and Macros",
       "sorting": "m",
-      "packs": [
-        "job_tables",
-        "wanted",
-        "wanted_tables",
-        "macros"
-      ]
+      "packs": ["job_tables", "wanted", "wanted_tables", "macros"]
     }
   ]
 }
