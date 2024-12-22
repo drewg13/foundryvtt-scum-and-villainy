@@ -69,12 +69,6 @@ export class SaVActorSheet extends SaVSheet {
       sheetData.system.trauma.max = sheetData.system.trauma.max_default;
   	}
 
-	  if ( shipActor?.system.installs.stun_inst === 1 ) {
-      sheetData.system.stun_weapons = 1;
-	  } else {
-      sheetData.system.stun_weapons = 0;
-	  }
-
 	  if ( shipActor?.system.installs.forged_inst === 1 ) {
       sheetData.system.forged = 1;
 	  } else {

@@ -60,13 +60,6 @@ export class SaVSheet extends ActorSheet {
 		let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
 		let actor = game.actors.get( ship_actors[0]?._id );
 
-	  let stun_weapons = 0;
-    if (actor?.system.installs.stun_inst === 1) {
-      stun_weapons = 1;
-    } else {
-		  stun_weapons = 0;
-	  }
-
 		let main_systems = ["Engines", "Hull", "Comms", "Weapons"];
 		let overloaded = {};
 
@@ -132,7 +125,7 @@ export class SaVSheet extends ActorSheet {
 					html += `</div></div>`;
 		    }
 	    } else if (e.type === "item") {
-		    if ((e.system.class === "Standard") || ((stun_weapons === 1) && (e.system.class === "Non-Lethal")) || (e.system.class === this.actor.system.character_class)) {
+		    if ((e.system.class === "Standard") || ((this.actor.system.stun_weapons === 1) && (e.system.class === "Non-Lethal")) || (e.system.class === this.actor.system.character_class)) {
 					html += `<div class="flex-horizontal">`;
 					html += `<div class="flex ten new-item"><input id="select-item-${e._id}" type="${input_type}" name="select_items" value="${e._id}">`;
 					html += `<label class="flex-horizontal" for="select-item-${e._id}">`;

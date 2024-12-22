@@ -112,6 +112,13 @@ export class SaVActor extends Actor {
           // this.system.attributes[a].skills[s].display = (this.system.attributes[a].skills[s].base ? this.system.attributes[a].skills[s].base : 0) + (this.system.attributes[a].skills[s].bonus ? this.system.attributes[a].skills[s]?.bonus : 0);
         });
       });
+      let ship_actors = this.getFlag("scum-and-villainy", "ship") || [];
+      let shipActor = game.actors.get( ship_actors[0]?.id );
+      if ( shipActor?.system.installs.stun_inst === 1 ) {
+        this.system.stun_weapons = 1;
+      } else {
+        this.system.stun_weapons = 0;
+      }
     }
   }
 
