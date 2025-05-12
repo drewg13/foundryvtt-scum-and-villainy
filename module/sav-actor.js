@@ -40,10 +40,17 @@ export class SaVActor extends Actor {
   /** @override */
   static async create(data, options={}) {
     if( !data.icon || !data.token ) {
-      data.prototypeToken = data.prototypeToken || {};
-      data.prototypeToken.actorLink = true;
-      data.prototypeToken.name = data.name;
-      data.prototypeToken.displayName = 50;
+      data.prototypeToken = foundry.utils.mergeObject(
+        data.prototypeToken || {}, 
+        {
+          actorLink: true,
+          displayName: 50,
+          sight: {
+            enabled: true
+          },
+        },
+        { overwrite: false }
+      )
     }
 
     await super.create(data, options);
@@ -59,6 +66,7 @@ export class SaVActor extends Actor {
     if( createData.type === "character" ) {
       const playbookXP = game.settings.get( "scum-and-villainy", "defaultPlaybookXPBarSize" );
       const attributeXP = game.settings.get( "scum-and-villainy", "defaultAttributeXPBarSize" );
+      updateData['prototypeToken.disposition'] = 1;
 
       if( playbookXP ) {
         updateData['system.experienceMax'] = playbookXP;
@@ -76,6 +84,7 @@ export class SaVActor extends Actor {
 
     if( createData.type === "ship" ) {
       const crewXP = game.settings.get( "scum-and-villainy", "defaultCrewXPBarSize" );
+      updateData['prototypeToken.disposition'] = 1;
 
       if( crewXP ) {
         updateData['system.crew_experienceMax'] = crewXP;
