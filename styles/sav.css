@@ -1762,14 +1762,14 @@
   opacity: 0.9;
   color: red;
 }
-.clocks.sheet .clock-progress {
+.clocks.sheet .scum-and-villainy  .clock-progress {
   text-align: center;
 }
-.clocks.sheet .clock-name {
+.clocks.sheet .scum-and-villainy  .clock-name {
   height: 60px;
   text-align: left;
 }
-.clocks.sheet .clock-name input {
+.clocks.sheet .scum-and-villainy  .clock-name input {
   height: 40px;
   line-height: 48px;
   font-size: 32px;
@@ -1782,44 +1782,44 @@
   color: rgb(25, 24, 19);
   margin: 0;
 }
-.clocks.sheet .clock-name.editable input:hover, .clocks.sheet .clock-name.editable input:focus {
+.clocks.sheet .scum-and-villainy  .clock-name.editable input:hover, .clocks.sheet .clock-name.editable input:focus {
   border: 1px solid rgb(25, 24, 19);
 }
-.clocks.sheet .clock-progress button {
+.clocks.sheet .scum-and-villainy  .clock-progress button {
   width: 140px;
   margin: 0;
 }
-.clocks.sheet .clock-progress button[name=reset] {
+.clocks.sheet .scum-and-villainy  .clock-progress button[name=reset] {
   width: 40px;
 }
-.clocks.sheet .clock-progress button:disabled {
+.clocks.sheet .scum-and-villainy  .clock-progress button:disabled {
   color: #aaaaaa;
   border: none;
 }
-.clocks.sheet .clock-image img {
+.clocks.sheet .scum-and-villainy  .clock-image img {
   border: none;
   padding: 10px;
 }
-.clocks.sheet .clock-config {
+.clocks.sheet .scum-and-villainy  .clock-config {
   text-align: center;
 }
-.clocks.sheet .clock-config .clock-config-group {
+.clocks.sheet .scum-and-villainy  .clock-config .clock-config-group {
   margin-left: 1.5em;
   display: inline-block;
 }
-.clocks.sheet .clock-config .clock-config-group:first-child {
+.clocks.sheet .scum-and-villainy  .clock-config .clock-config-group:first-child {
   margin-left: 0;
 }
-.clocks.sheet .clock-config .clock-config-group label {
+.clocks.sheet .scum-and-villainy  .clock-config .clock-config-group label {
   margin-right: 3px;
 }
-.clocks.sheet .clock-config .clock-config-group select {
+.clocks.sheet .scum-and-villainy  .clock-config .clock-config-group select {
   width: 50px;
 }
-.clocks.sheet .clock-config .clock-config-group.theme select {
+.clocks.sheet .scum-and-villainy  .clock-config .clock-config-group.theme select {
   width: 175px;
 }
-.clocks.sheet .clock-debug {
+.clocks.sheet .scum-and-villainy  .clock-debug {
   background-color: #ff0000;
   color: #ffffff;
   font-weight: bold;

@@ -1,6 +1,5 @@
 {
   "id": "scum-and-villainy",
-  "name": "scum-and-villainy",
   "title": "Scum and Villainy",
   "description": "Scum and Villainy game system.",
   "authors": [
@@ -22,16 +21,12 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 13,
-    "verified": 13.341
+    "verified": 13.344
   },
-  "system": [],
-  "relationships": [],
   "socket": false,
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "protected": false,
-  "initiative": "1d20",
-  "scripts": [],
   "esmodules": [
     "module/sav.js"
   ],
