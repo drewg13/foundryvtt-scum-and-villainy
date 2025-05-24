@@ -1,5 +1,7 @@
-2024/04/18-18:34:48.729 4c4 Log #122: 0 ops saved to Table #125 OK
-2024/04/18-18:34:48.729 4c4 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\planets/000122.log: OK
-2024/04/18-18:34:48.729 4c4 Table #124: 12 entries OK
-2024/04/18-18:34:48.729 4c4 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\planets/MANIFEST-000120: OK
-2024/04/18-18:34:48.729 4c4 **** Repaired leveldb c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\planets; recovered 1 files; 18148 bytes. Some data may have been lost. ****
+2025/05/24-08:07:29.196 3d10 Recovering log #287
+2025/05/24-08:07:29.199 3d10 Delete type=0 #287
+2025/05/24-08:07:29.199 3d10 Delete type=3 #286
+2025/05/24-08:11:21.068 4d7c Level-0 table #291: started
+2025/05/24-08:11:21.068 4d7c Level-0 table #291: 0 bytes OK
+2025/05/24-08:11:21.069 4d7c Delete type=0 #289
+2025/05/24-08:11:21.071 4d7c Manual compaction at level-0 from '!items!1QddPCQVR0UVLvlP' @ 72057594037927935 : 1 .. '!items!zR4Mu4PeeXAXotol' @ 0 : 0; will stop at (end)

@@ -245,3 +245,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 3.4.0  Added Spanish translations (thanks to Juan Lucha!)
 
 3.4.1  Fix Stun Weapons Cerberus upgrade
+
+4.0.0  Updates for V13, EOL for V12 support

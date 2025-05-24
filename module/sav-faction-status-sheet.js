@@ -26,7 +26,7 @@ export class SaVFactionStatusSheet extends SaVSheet {
 
     sheetData.exposeActorName = game.settings.get( "scum-and-villainy", "exposeActorName" );
 
-    sheetData.system.description = await TextEditor.enrichHTML(
+    sheetData.system.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
       sheetData.system.description,
       { secrets: sheetData.owner, async: true }
     );

@@ -275,7 +275,7 @@ export class SaVHelpers {
         let tileImg = sourceData.img.replace( /webp/g, "webm" );
 
         try {
-          const t = await loadTexture( tileImg );
+          const t = await foundry.canvas.loadTexture( tileImg );
           let tileData = {
             texture: { src: tileImg },
             width: t.width,

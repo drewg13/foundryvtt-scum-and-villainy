@@ -200,7 +200,7 @@ export class SaVActor extends Actor {
       new Dialog( {
         title: `${ game.i18n.localize( 'BITD.Roll' ) } ${ game.i18n.localize( attribute_label ) }`,
         content: `
-        <div id="skill-roll">
+        <div class="scum-and-villainy" id="skill-roll">
 		      <h2>${ game.i18n.localize( 'BITD.Roll' ) } ${ game.i18n.localize( attribute_label ) } (${ total_dice }d)</h2>
           <form>
             <div class="form-group roll position">
@@ -263,7 +263,7 @@ export class SaVActor extends Actor {
       new Dialog( {
         title: `${ game.i18n.localize( 'BITD.Roll' ) } ${ game.i18n.localize( attribute_label ) }`,
         content: `
-        <div id="skill-roll">
+        <div class="scum-and-villainy" id="skill-roll">
 		      <h2>${ game.i18n.localize( 'BITD.Roll' ) } ${ game.i18n.localize( attribute_label ) } (${ total_dice }d)</h2>
           <form>
             <div class="form-group roll position">
@@ -349,7 +349,7 @@ export class SaVActor extends Actor {
     new Dialog({
       title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
       content: `
-        <div id="skill-roll">
+        <div class="scum-and-villainy" id="skill-roll">
 		      <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)} (${total_dice}d)</h2>
           <form>
             <div class="form-group roll base-dice">

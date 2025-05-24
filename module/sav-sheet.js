@@ -3,18 +3,18 @@
  * @extends {ActorSheet}
  */
 
-export class SaVSheet extends ActorSheet {
+export class SaVSheet extends foundry.appv1.sheets.ActorSheet {
 
-  /* -------------------------------------------- */
+/* -------------------------------------------- */
 
-  /** @override */
-	activateListeners(html) {
+/** @override */
+  activateListeners(html) {
     super.activateListeners(html);
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
-	  html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
-	  html.find(".update-sheet").click(this._onUpdateClick.bind(this));
-	  html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
-	  html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
+	html.find(".flag-add-popup").click(this._onFlagAddClick.bind(this));
+	html.find(".update-sheet").click(this._onUpdateClick.bind(this));
+	html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
+	html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
 
 
 
@@ -26,42 +26,42 @@ export class SaVSheet extends ActorSheet {
 
   }
 
-  /* -------------------------------------------- */
+/* -------------------------------------------- */
 
   async _onItemAddClick(event) {
     event.preventDefault();
-	  const item_type = $(event.currentTarget).data("itemType")
-		const limiter = $(event.currentTarget).data("limiter")
-		const distinct = $(event.currentTarget).data("distinct")
+    const item_type = $(event.currentTarget).data("itemType")
+    const limiter = $(event.currentTarget).data("limiter")
+    const distinct = $(event.currentTarget).data("distinct")
     let input_type = "checkbox";
 
     if (typeof distinct !== "undefined") {
       input_type = "radio";
-    }
+    };
 
-	  let items = await SaVHelpers.getAllItemsByType(item_type, game);
-    let html = `<div id="items-to-add">`;
-		html += `<label class="label-stripe-gray flex-horizontal">`;
+	let items = await SaVHelpers.getAllItemsByType(item_type, game);
+    let html = `<div class="scum-and-villainy" id="items-to-add">`;
+	html += `<label class="label-stripe-gray flex-horizontal">`;
     if (item_type === "ability") {
-			html += `<div class="flex one">${game.i18n.localize("BITD.StartAbility")}</div>`;
-		}
-		if ( (item_type === "ability") || (item_type === "crew_ability") ) {
-			html += `<div class="flex one">${game.i18n.localize("BITD.RecommAbility")}</div>`;
-		}
-		html += `<div class="flex ten">${game.i18n.localize("BITD." + item_type )}</div>`;
-		if (item_type === "item") {
-			html += `<div class="flex one">${game.i18n.localize("BITD.Load")}</div>`;
-		} else if ( item_type === "crew_upgrade" ){
-			html += `<div class="flex one">${game.i18n.localize("BITD.Cost")}</div>`;
-		}
-		html += `<div class="flex one">${game.i18n.localize("BITD.Info")}</div>`;
-		html += `</label>`;
+	  html += `<div class="flex one">${game.i18n.localize("BITD.StartAbility")}</div>`;
+	}
+	if ( (item_type === "ability") || (item_type === "crew_ability") ) {
+	  html += `<div class="flex one">${game.i18n.localize("BITD.RecommAbility")}</div>`;
+	}
+	html += `<div class="flex ten">${game.i18n.localize("BITD." + item_type )}</div>`;
+	if (item_type === "item") {
+      html += `<div class="flex one">${game.i18n.localize("BITD.Load")}</div>`;
+	} else if ( item_type === "crew_upgrade" ){
+		html += `<div class="flex one">${game.i18n.localize("BITD.Cost")}</div>`;
+	}
+	html += `<div class="flex one">${game.i18n.localize("BITD.Info")}</div>`;
+	html += `</label>`;
 
-		let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
-		let actor = game.actors.get( ship_actors[0]?._id );
+	let ship_actors = this.actor.getFlag("scum-and-villainy", "ship") || [];
+	let actor = game.actors.get( ship_actors[0]?._id );
 
-		let main_systems = ["Engines", "Hull", "Comms", "Weapons"];
-		let overloaded = {};
+	let main_systems = ["Engines", "Hull", "Comms", "Weapons"];
+	let overloaded = {};
 
     if ( this.actor.type === "ship" ) {
 		  main_systems.forEach( m => {
@@ -219,7 +219,7 @@ async _onFlagAddClick(event) {
   }
 
 	let items = await SaVHelpers.getAllActorsByType(item_type, game);
-  let html = `<div id="items-to-add">`;
+  let html = `<div class="scum-and-villainy" id="items-to-add">`;
   items.forEach(e => {
 	  if (e.type === item_type) {
   	  html += `<input id="select-item-${e.id}" type="${input_type}" name="select_items" value="${e.id}">`;

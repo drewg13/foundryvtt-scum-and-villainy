@@ -336,5 +336,10 @@
     "BITD.TitleIncreaseJobs": "Augmenter les Jobs",
     "BITD.TitleDecreaseJobs": "Diminuer les Jobs",
     "BITD.Hegemony": "Hégémonie",
-    "BITD.Criminal": "Syndicats criminels"
+    "BITD.Criminal": "Syndicats criminels",
+
+  "BITD.IncrementClock": "Increment Clock",
+  "BITD.DecrementClock": "Decrement Clock",
+  "BITD.CycleClockSize": "Cycle Clock Size",
+  "BITD.CycleClockTheme": "Cycle Clock Theme"
   }

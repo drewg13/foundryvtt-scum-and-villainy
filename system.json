@@ -21,8 +21,8 @@
   },
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": 11,
-    "verified": 12.331
+    "minimum": 13,
+    "verified": 13.341
   },
   "system": [],
   "relationships": [],

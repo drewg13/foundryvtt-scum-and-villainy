@@ -263,7 +263,7 @@
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
-        {{{editor system.description target="system.description" button=true owner=owner editable=editable}}}
+        {{{editor system.description target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}}
 		    {{#if editable}}
           <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> {{localize "JOURNAL.Submit"}}</button>
         {{/if}}

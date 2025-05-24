@@ -31,7 +31,7 @@ export class SaVNPCSheet extends SaVSheet {
     sheetData.isGM = game.user.isGM;
 
     sheetData.size_list = SaVHelpers.createListOfClockSizes( game.system.savclocks.sizes, parseInt( sheetData.system.goal_clock.max ), parseInt( sheetData.system.goal_clock.max ) );
-    sheetData.system.notes = await TextEditor.enrichHTML(sheetData.system.notes, {secrets: sheetData.owner, async: true});
+    sheetData.system.notes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(sheetData.system.notes, {secrets: sheetData.owner, async: true});
 
     return sheetData;
   }

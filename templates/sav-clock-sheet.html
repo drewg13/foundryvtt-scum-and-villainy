@@ -41,21 +41,13 @@
     <div class="clock-config-group theme">
       <label for="theme"><i class="fa fa-palette"></i></label>
       <select name="theme">
-        {{#select clock.theme}}
-        {{#each clock.settings.themes as |theme|}}
-        <option value="{{theme}}">{{theme}}</option>
-        {{/each}}
-        {{/select}}
+        {{selectOptions clock.settings.themes selected=clock.theme}}
       </select>
     </div>
     <div class="clock-config-group">
       <label for="size"><i class="fa fa-chart-pie"></i></label>
       <select name="size">
-        {{#select clock.size}}
-        {{#each clock.settings.sizes as |size|}}
-        <option value="{{size}}">{{size}}</option>
-        {{/each}}
-        {{/select}}
+        {{selectOptions clock.settings.sizes selected=clock.size}}
       </select>
     </div>
   </div>

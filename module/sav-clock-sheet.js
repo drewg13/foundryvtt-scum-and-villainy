@@ -15,7 +15,7 @@ const DEFAULT_TOKEN = {
   actorLink: true
 };
 
-export class SaVClockSheet extends ActorSheet {
+export class SaVClockSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
     const supportedSystem = getSystemMapping(game.system.id);
     return foundry.utils.mergeObject(
@@ -48,11 +48,18 @@ export class SaVClockSheet extends ActorSheet {
   getData (options) {
 
     let clock = new SaVClock(this.system.loadClockFromActor({ actor: this.actor }));
-
+    const sizesObject = {};
+    SaVClock.sizes.forEach((item) => {
+      sizesObject[item] = String(item);
+    });
+    const themesObject = {};
+    SaVClock.themes.forEach((item) => {
+      themesObject[item] = String(item);
+    });
     const data = foundry.utils.mergeObject(super.getData(options), {
       clock: {
         progress: clock.progress,
-        size: clock.size,
+        size: String(clock.size),
         theme: clock.theme,
         image: {
           url: clock.image.texture.src,
@@ -60,10 +67,10 @@ export class SaVClockSheet extends ActorSheet {
           height: clock.image.heightSheet
         },
         settings: {
-          sizes: SaVClock.sizes,
-          themes: SaVClock.themes
+          sizes: sizesObject,
+          themes: themesObject
         },
-		    flags: clock.flags
+        flags: clock.flags
       }
     });
     data.editable = data.options.editable;
@@ -132,7 +139,7 @@ export class SaVClockSheet extends ActorSheet {
     }
     // update the Actor
     const persistObj = await this.system.persistClockToActor({ actor, clock });
-	  const visualObj = {
+    const visualObj = {
       img: clock.image.texture.src,
       token: {
         texture: { src: clock.image.texture.src },
@@ -155,10 +162,11 @@ export default {
     return false;
   }
 
-  const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
-  const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
+  const button1HTML = await foundry.applications.handlebars.renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
+  const button2HTML = await foundry.applications.handlebars.renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
 
-  html.find("div.left").append(button1HTML).click(async (event) => {
+  html.querySelector("div.left").insertAdjacentHTML('beforeend', button1HTML);
+  html.querySelector("div.left").addEventListener('click', async (event) => {
     log("HUD Clicked")
     // re-get in case there has been an update
     t = canvas.tokens.get(token.id);
@@ -171,25 +179,31 @@ export default {
       : event.target.parentElement;
       if (target.classList.contains("cycle-size")) {
         newClock = oldClock.cycleSize();
-	    } else if (target.dataset.action) {
-		    return;
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
+        newClock = oldClock.increment();
+      } else if (target.classList.contains("progress-down")) {
+        newClock = oldClock.decrement();
+      } else if (target.dataset.action) {
+        return;
       } else {
         return error("ERROR: Unknown TokenHUD Button");
       }
 
-	  const persistObj = {
+      const persistObj = {
         flags: {
           "scum-and-villainy": {
-		        clocks: {
+            clocks: {
               progress: newClock.progress,
               size: newClock.size,
               theme: newClock.theme
             }
           }
-		    }
+        }
       };
 
-	  const visualObj = {
+    const visualObj = {
       img: newClock.image.texture.src,
         token: {
           texture: { src: newClock.image.texture.src },
@@ -219,7 +233,8 @@ export default {
     }
   });
 
-  html.find("div.right").append(button2HTML).click(async (event) => {
+  html.querySelector("div.right").insertAdjacentHTML('beforeend', button2HTML);
+  html.querySelector("div.right").addEventListener('click', async (event) => {
     log("HUD Clicked")
     // re-get in case there has been an update
     t = canvas.tokens.get(token.id);
@@ -230,31 +245,33 @@ export default {
     const target = event.target.classList.contains("control-icon")
       ? event.target
       : event.target.parentElement;
-      if (target.classList.contains("progress-up")) {
+      if (target.classList.contains("cycle-size")) {
+        newClock = oldClock.cycleSize();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();
-      } else if (target.classList.contains("cycle-theme")) {
-        newClock = oldClock.cycleTheme();
       } else if (target.dataset.action) {
-		    return;
+        return;
       } else {
         return error("ERROR: Unknown TokenHUD Button");
       }
 
-	  const persistObj = {
+    const persistObj = {
         flags: {
           "scum-and-villainy": {
-		        clocks: {
+            clocks: {
               progress: newClock.progress,
               size: newClock.size,
               theme: newClock.theme
             }
           }
-		    }
+        }
       };
 
-	  const visualObj = {
+    const visualObj = {
         img: newClock.image.texture.src,
         token: {
           texture: { src: newClock.image.texture.src },
@@ -269,7 +286,7 @@ export default {
     await Actor.updateDocuments(update);
 
     update = [];
-	  const tokens = a.getActiveTokens();
+    const tokens = a.getActiveTokens();
     if( tokens.length !== 0 ) {
       for( const t of tokens ) {
         tokenObj = {

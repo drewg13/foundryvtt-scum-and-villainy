@@ -104,12 +104,11 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
       effect_localize = 'BITD.EffectStandard'
   }
 
-  let result = await renderTemplate("systems/scum-and-villainy/templates/sav-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, stress_result_display: stress_result_display, vice_result: vice_result, zeromode: zeromode, purpose: purpose});
+  let result = await foundry.applications.handlebars.renderTemplate("systems/scum-and-villainy/templates/sav-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, stress_result_display: stress_result_display, vice_result: vice_result, zeromode: zeromode, purpose: purpose});
 
   let messageData = {
     speaker: speaker,
     content: result,
-    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
     rolls: [r]
   }
 

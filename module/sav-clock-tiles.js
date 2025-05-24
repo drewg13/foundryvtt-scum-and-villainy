@@ -32,14 +32,13 @@ const onClick = async () => {
 
 export default {
   getSceneControlButtons: (controls) => {
-    const tiles = controls.find((c) => c.name === "tiles");
-    tiles.tools.push({
+    controls.tiles.tools.clocks = {
       name: "clocks",
       title: "Clocks",
       icon: "fas fa-clock",
-      onClick,
+      onChange: async () => await onClick(),
       button: true
-    });
+    };
   },
 
   renderTileHUD: async (_hud, html, tileData) => {
@@ -49,9 +48,11 @@ export default {
     if (!t?.flags['scum-and-villainy']?.clocks) {
       return;
     }
-    const button1HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
-    const button2HTML = await renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
-    html.find("div.left").append(button1HTML).click(async (event) => {
+    const button1HTML = await foundry.applications.handlebars.renderTemplate('systems/scum-and-villainy/templates/sav-clock-button1.html');
+    const button2HTML = await foundry.applications.handlebars.renderTemplate('systems/scum-and-villainy/templates/sav-clock-button2.html');
+    
+    html.querySelector("div.left").insertAdjacentHTML('beforeend', button1HTML);
+    html.querySelector("div.left").addEventListener('click', async (event) => {
       log("HUD Clicked")
       // re-get in case there has been an update
 
@@ -67,6 +68,10 @@ export default {
         newClock = oldClock.cycleSize();
       } else if (target.classList.contains("cycle-theme")) {
         newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
+        newClock = oldClock.increment();
+      } else if (target.classList.contains("progress-down")) {
+        newClock = oldClock.decrement();
       } else if (target.dataset.action) {
         return;
       } else {
@@ -80,7 +85,8 @@ export default {
       }], {parent: canvas.scene});
     });
 
-    html.find("div.right").append(button2HTML).click(async (event) => {
+    html.querySelector("div.right").insertAdjacentHTML('beforeend', button2HTML);
+    html.querySelector("div.right").addEventListener('click', async (event) => {
       log("HUD Clicked")
       // re-get in case there has been an update
 
@@ -92,7 +98,11 @@ export default {
       const target = event.target.classList.contains("control-icon")
         ? event.target
         : event.target.parentElement;
-      if (target.classList.contains("progress-up")) {
+      if (target.classList.contains("cycle-size")) {
+        newClock = oldClock.cycleSize();
+      } else if (target.classList.contains("cycle-theme")) {
+        newClock = oldClock.cycleTheme();
+      } else if (target.classList.contains("progress-up")) {
         newClock = oldClock.increment();
       } else if (target.classList.contains("progress-down")) {
         newClock = oldClock.decrement();

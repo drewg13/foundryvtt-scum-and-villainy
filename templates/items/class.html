@@ -16,7 +16,7 @@
     <div><i>- {{localize "BITD.ClassExpClue3"}}</i></div>
     <br>
     <label class="label-stripe">{{localize "BITD.ClassExpClue"}}</label>
-    {{{editor system.experience_clues target="system.experience_clues" button=true owner=owner editable=editable}}}
+    {{{editor system.experience_clues target="system.experience_clues" engine="prosemirror" button=true owner=owner editable=editable}}}
     {{#if isGM}}
       <label class="label-stripe">{{localize "BITD.AddUpgrades"}}</label>
       <textarea name="system.def_abilities">{{system.def_abilities}}</textarea>

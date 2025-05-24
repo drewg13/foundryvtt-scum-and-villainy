@@ -8,7 +8,7 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body flex-vertical">
-      {{{editor system.description target="system.description" button=true owner=owner editable=editable}}}
+      {{{editor system.description target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}}
       <label class="label-stripe">{{localize "BITD.Class"}}</label>
       <input id="item-class" type="text" name="system.class" value="{{system.class}}">
     </section>

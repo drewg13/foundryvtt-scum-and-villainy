@@ -5,11 +5,11 @@
 
 import {onManageActiveEffect, prepareActiveEffectCategories} from "./effects.js";
 
-export class SaVItemSheet extends ItemSheet {
+export class SaVItemSheet extends foundry.appv1.sheets.ItemSheet {
 
   /** @override */
 	static get defaultOptions() {
-	  return foundry.utils.mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
 			classes: ["scum-and-villainy", "sheet", "item"],
 			width: 900,
 			height: 'auto',
@@ -30,8 +30,8 @@ export class SaVItemSheet extends ItemSheet {
 
     // Prepare Active Effects
     sheetData.effects = prepareActiveEffectCategories(this.document.effects);
-    sheetData.system.notables = await TextEditor.enrichHTML(sheetData.system.notables, {secrets: sheetData.owner, async: true});
-    sheetData.system.description = await TextEditor.enrichHTML(sheetData.system.description, {secrets: sheetData.owner, async: true});
+    sheetData.system.notables = await foundry.applications.ux.TextEditor.implementation.enrichHTML(sheetData.system.notables, {secrets: sheetData.owner, async: true});
+    sheetData.system.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(sheetData.system.description, {secrets: sheetData.owner, async: true});
 
 		return sheetData;
   }

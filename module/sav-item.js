@@ -91,7 +91,7 @@ export class SaVItem extends Item {
     if (itemData.img.includes("/mystery-man")) {
       itemData.img = null;
     }
-    const html = await renderTemplate("systems/scum-and-villainy/templates/items/chat-item.html", itemData);
+    const html = await foundry.applications.handlebars.renderTemplate("systems/scum-and-villainy/templates/items/chat-item.html", itemData);
     const chatData = {
       user: game.userId,
       content: html,

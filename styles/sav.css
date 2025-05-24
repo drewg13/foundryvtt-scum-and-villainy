@@ -50,22 +50,22 @@
   font-family: 'Exo2';
   src: url("assets/fonts/Exo2-VariableFont_wght.ttf");
 }
-* {
+*:not(.icon, .fa, .fas, .far, .fa-solid, .fab) {
 	font-family: 'Exo2', 'Signika', sans-serif;
 }
-* .sheet header {
+* .scum-and-villainy .sheet header {
   margin-bottom: 10px;
 }
-* ul {
+* .scum-and-villainy ul {
   list-style: none;
 }
-* .sheet .editor-content ul {
+* .scum-and-villainy .sheet .editor-content ul {
   list-style: unset;
 }
-* form.actor-sheet {
+* .scum-and-villainy form.actor-sheet {
   padding: 20px;
 }
-* form .form-group.roll > * {
+* .scum-and-villainy form .form-group.roll > * {
     flex: 3;
     flex-grow: 3;
     flex-shrink: 1;
@@ -115,10 +115,10 @@
 .resource-chat-notification table tr td .red {
   color: red;
 }
-* .stats table {
+* .scum-and-villainy .stats table {
   width: 50%;
 }
-* .stats table tr td textarea {
+* .scum-and-villainy .stats table tr td textarea {
   resize: none;
   text-align: right;
   min-height: 10px;
@@ -127,41 +127,41 @@
   height: 30px;
   margin-right: 2px;
 }
-* .dialog-buttons {
+* .scum-and-villainy .dialog-buttons {
 	margin-top: 5px;
 }
-* textarea {
+* .scum-and-villainy textarea {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-* td {
+* .scum-and-villainy td {
   padding: 5px;
 }
-* section {
+* .scum-and-villainy section {
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-* section > *:not(.label-stripe):not(.fs-grid-container) {
+* .scum-and-villainy section > *:not(.label-stripe):not(.fs-grid-container) {
   margin-right: 10px;
 }
-* section > *:not(.label-stripe):last-child {
+* .scum-and-villainy section > *:not(.label-stripe):last-child {
   margin-right: 0px;
 }
-* section .grow-one {
+* .scum-and-villainy section .grow-one {
   flex-grow: 1;
 }
-* section .grow-two {
+* .scum-and-villainy section .grow-two {
   flex-grow: 2;
 }
-* section .grow-three {
+* .scum-and-villainy section .grow-three {
   flex-grow: 3;
 }
-* section .grow-four {
+* .scum-and-villainy section .grow-four {
   flex-grow: 4;
 }
-* section.experience {
+* .scum-and-villainy section.experience {
   margin-bottom: 0px;
   justify-content: center;
 }
@@ -171,38 +171,38 @@
 * .scum-and-villainy.sheet nav.tabs > * {
   flex: 1;
 }
-* .editor,
-* .editor-content {
+* .scum-and-villainy .editor,
+* .scum-and-villainy .editor-content {
   min-height: 120px;
 }
-* .flex-horizontal {
+* .scum-and-villainy .flex-horizontal {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-* .flex.one {
+* .scum-and-villainy .flex.one {
   display: flex;
   flex-direction: row;
   flex: 1;
   margin-right: 10px;
 }
-* .flex.ten {
+* .scum-and-villainy .flex.ten {
   display: flex;
   flex-direction: row;
   flex: 10;
   margin-right: 10px;
 }
-* .flex-vertical {
+* .scum-and-villainy .flex-vertical:not(.tab) {
   display: flex;
   flex-direction: column;
 }
-* .inline {
+* .scum-and-villainy .inline {
   display: inline-block;
 }
-* .center {
+* .scum-and-villainy .center {
   align-items: center;
 }
-* .black-label {
+* .scum-and-villainy .black-label {
   background-color: #191813;
   color: #EEEFFF;
   font-size: 21px;
@@ -211,7 +211,7 @@
   height: 30px !important;
   text-transform: capitalize;
 }
-* .gray-label {
+* .scum-and-villainy .gray-label {
   background-color: #999;
   color: #191813;
   font-size: 21px;
@@ -316,44 +316,44 @@
   display: flex;
   font-weight: bold;
 }
-* .description {
+* .scum-and-villainy .description {
   font-style: italic;
 }
-* .rollable-text {
+* .scum-and-villainy .rollable-text {
   transition: color 0.2s;
 }
-* .rollable-text:hover {
+* .scum-and-villainy .rollable-text:hover {
   cursor: pointer;
   color: red;
 }
-* .rollable-text label:hover {
+* .scum-and-villainy .rollable-text label:hover {
   cursor: pointer;
   color: red !important;
 }
-* #stress-vice {
+* .scum-and-villainy #stress-vice {
   width: 72px;
 }
-* .big-teeth-section {
+* .scum-and-villainy .big-teeth-section {
   border-top: 3px solid #191813;
   display: flex;
   flex-direction: row;
   margin-bottom: 0px;
   /* Trauma */
 }
-* .big-teeth-section > * {
+* .scum-and-villainy .big-teeth-section > * {
   margin-right: 10px;
 }
-* .big-teeth-section > *:last-child {
+* .scum-and-villainy .big-teeth-section > *:last-child {
   margin-right: 0px;
 }
-* .big-teeth-section:last-child {
+* .scum-and-villainy .big-teeth-section:last-child {
   margin-right: 0px;
 }
-* .big-teeth-section .big-teeth {
+* .scum-and-villainy .big-teeth-section .big-teeth {
   display: flex;
   /* Hide the browser's default checkbox */
 }
-* .big-teeth-section .big-teeth label {
+* .scum-and-villainy .big-teeth-section .big-teeth label {
   height: 50px;
   width: 17px;
   background-image: url("assets/teeth/stresstooth-red.png");
@@ -363,36 +363,36 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .big-teeth-section .big-teeth label:last-of-type {
+* .scum-and-villainy .big-teeth-section .big-teeth label:last-of-type {
   margin-right: 0px;
 }
-* .big-teeth-section .big-teeth label[for$="-0"] {
+* .scum-and-villainy .big-teeth-section .big-teeth label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* .big-teeth-section .big-teeth label[for$="-0"]:hover {
+* .scum-and-villainy .big-teeth-section .big-teeth label[for$="-0"]:hover {
   color: red;
 }
-* .big-teeth-section .big-teeth label[for$="-0"] i {
+* .scum-and-villainy .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
 }
-* .big-teeth-section .big-teeth input {
+* .scum-and-villainy .big-teeth-section .big-teeth input {
   display: none;
 }
-* .big-teeth-section .big-teeth input:checked ~ label {
+* .scum-and-villainy .big-teeth-section .big-teeth input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.png");
 }
-* .big-teeth-section .big-teeth input:checked + label {
+* .scum-and-villainy .big-teeth-section .big-teeth input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.png");
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
   /* Hide the browser's default checkbox */
   flex-direction: column;
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap label {
   height: 50px;
   width: 17px;
   background-image: url("assets/teeth/shorttooth-red.png");
@@ -401,38 +401,38 @@
   margin-right: 5px;
   cursor: not-allowed;
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap label:last-of-type {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap label:last-of-type {
   margin-right: 0px;
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
   margin-top: 4px;
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap input {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap input {
   display: none;
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
   background-image: url("assets/teeth/shorttooth-grey.png");
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
   background-image: url("assets/teeth/shorttooth-red.png");
 }
-* .big-teeth-section .small-teeth-container .small-teeth-wrap .small-teeth {
+* .scum-and-villainy .big-teeth-section .small-teeth-container .small-teeth-wrap .small-teeth {
   display: flex;
   flex-direction: row;
 }
-* .big-teeth-section #trauma-list {
+* .scum-and-villainy .big-teeth-section #trauma-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 }
-* .big-teeth-section #trauma-list label {
+* .scum-and-villainy .big-teeth-section #trauma-list label {
   cursor: pointer;
   font-size: 19px;
   -webkit-user-select: none;
@@ -444,110 +444,110 @@
   cursor: pointer;
   /* Hide the browser's default checkbox */
 }
-* .big-teeth-section #trauma-list label:hover {
+* .scum-and-villainy .big-teeth-section #trauma-list label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .big-teeth-section #trauma-list label input {
+* .scum-and-villainy .big-teeth-section #trauma-list label input {
   display: none;
 }
-* .big-teeth-section #trauma-list label input:checked ~ .checkmark {
+* .scum-and-villainy .big-teeth-section #trauma-list label input:checked ~ .checkmark {
   color: red;
 }
-* .big-teeth-section #trauma-list label .checkmark {
+* .scum-and-villainy .big-teeth-section #trauma-list label .checkmark {
   text-decoration: none;
   font-weight: bold;
 }
-* #effects .flex {
+* .scum-and-villainy #effects .flex {
   display: flex;
 }
-* #effects table {
+* .scum-and-villainy #effects table {
   background: unset;
   border-top: unset;
   border-bottom: unset;
   margin: unset;
 }
-* #effects table .item {
+* .scum-and-villainy #effects table .item {
   font-weight: unset;
 }
-* #effects table tr:nth-child(even) {
+* .scum-and-villainy #effects table tr:nth-child(even) {
   background-color: unset;
 }
-* #effects table thead {
+* .scum-and-villainy #effects table thead {
   background: unset;
   color: unset;
   text-shadow: unset;
   border-bottom: unset;
 }
-* #effects table .item-controls {
+* .scum-and-villainy #effects table .item-controls {
   justify-content: space-evenly;
 }
-* #character-stress label[for$="-0"] {
+* .scum-and-villainy #character-stress label[for$="-0"] {
   margin-right: 0px;
 }
-* #friend-list .item-name {
+* .scum-and-villainy #friend-list .item-name {
 	width: 60px;
 }
-* #upgrades .item-name,
-* #abilities .item-name,
-* #loadout .item-name {
+* .scum-and-villainy #upgrades .item-name,
+* .scum-and-villainy #abilities .item-name,
+* .scum-and-villainy #loadout .item-name {
 	width: 120px;
 }
-* #all-items .item-name {
+* .scum-and-villainy #all-items .item-name {
 	width: 300px;
 }
-* #faction-items .item-name:not(.fs-faction-name) {
+* .scum-and-villainy #faction-items .item-name:not(.fs-faction-name) {
   width: 120px;
 }
-* #friend-list .item .item-body {
+* .scum-and-villainy #friend-list .item .item-body {
 	margin-left: 20px;
 }
-* #planet-list .item-body {
+* .scum-and-villainy #planet-list .item-body {
 	max-width: 5rem;
 }
-* #friend-list .item-body,
-* #faction-items .item-body,
-* #loadout .item-body,
-* #upgrades .item-body,
-* #abilities .item-body,
-* #system-label .item-body {
+* .scum-and-villainy #friend-list .item-body,
+* .scum-and-villainy #faction-items .item-body,
+* .scum-and-villainy #loadout .item-body,
+* .scum-and-villainy #upgrades .item-body,
+* .scum-and-villainy #abilities .item-body,
+* .scum-and-villainy #system-label .item-body {
   width: auto;
 }
-* #planet-list .item-description {
+* .scum-and-villainy #planet-list .item-description {
 	width: 400px;
 	padding-left: 5px;
 }
-* #friend-list .item-description {
+* .scum-and-villainy #friend-list .item-description {
 	width: 300px;
 }
-* #faction-items .item-description,
-* #loadout .item-description,
-* #upgrades .item-description,
-* #abilities .item-description {
+* .scum-and-villainy #faction-items .item-description,
+* .scum-and-villainy #loadout .item-description,
+* .scum-and-villainy #upgrades .item-description,
+* .scum-and-villainy #abilities .item-description {
   width: 300px;
 }
-* #friends .label-stripe p:first-child,
-* #factions .label-stripe p:first-child,
-* #loadout .label-stripe p:first-child,
-* #loadout .label-stripe-red p:first-child,
-* #upgrades .label-stripe p:first-child,
-* #abilities .label-stripe p:first-child {
+* .scum-and-villainy #friends .label-stripe p:first-child,
+* .scum-and-villainy #factions .label-stripe p:first-child,
+* .scum-and-villainy #loadout .label-stripe p:first-child,
+* .scum-and-villainy #loadout .label-stripe-red p:first-child,
+* .scum-and-villainy #upgrades .label-stripe p:first-child,
+* .scum-and-villainy #abilities .label-stripe p:first-child {
   margin-right: 10px;
 }
-* .teeth-experience-red {
+* .scum-and-villainy .teeth-experience-red {
   display: flex;
   /* Hide the browser's default checkbox */
   position: float;
   top: 0px;
   right: 10px;
 }
-* .friend-tracker {
+* .scum-and-villainy .friend-tracker {
   display: flex;
   /* Hide the browser's default checkbox */
   top: 0px;
   right: 10px;
 }
-* .friend-tracker label {
+* .scum-and-villainy .friend-tracker label {
   height: 30px;
   min-width: 10px;
   background-image: url("assets/teeth/stresstooth-blue.png");
@@ -557,42 +557,42 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .friend-tracker label:last-of-type {
+* .scum-and-villainy .friend-tracker label:last-of-type {
   margin-right: 0px;
 }
-* .friend-tracker label:hover {
+* .scum-and-villainy .friend-tracker label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .friend-tracker input {
+* .scum-and-villainy .friend-tracker input {
   display: none;
 }
-* .friend-tracker input + label[for$="-2"] {
+* .scum-and-villainy .friend-tracker input + label[for$="-2"] {
   background-image: url("assets/teeth/arrow-down.png");
 }
-* .friend-tracker input + label[for$="-1"] {
+* .scum-and-villainy .friend-tracker input + label[for$="-1"] {
   background-image: url("assets/teeth/arrow-grey.png");
 }
-* .friend-tracker input + label[for$="-0"] {
+* .scum-and-villainy .friend-tracker input + label[for$="-0"] {
   background-image: url("assets/teeth/arrow-up.png");
 }
-* .friend-tracker input:checked + label[for$="-2"] {
+* .scum-and-villainy .friend-tracker input:checked + label[for$="-2"] {
   background-image: url("assets/teeth/arrow-red.png");
 }
-* .friend-tracker input:checked + label[for$="-1"] {
+* .scum-and-villainy .friend-tracker input:checked + label[for$="-1"] {
   background-image: url("assets/teeth/arrow-middle.png");
 }
-* .friend-tracker input:checked + label[for$="-0"] {
+* .scum-and-villainy .friend-tracker input:checked + label[for$="-0"] {
   background-image: url("assets/teeth/arrow-blue.png");
 }
-* .teeth-experience-faction {
+* .scum-and-villainy .teeth-experience-faction {
   display: flex;
   /* Hide the browser's default checkbox */
   position: float !important;
   top: 0px;
   right: 10px;
 }
-* .teeth-experience-faction label {
+* .scum-and-villainy .teeth-experience-faction label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/stresstooth-blue.png");
@@ -602,57 +602,57 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .teeth-experience-faction label:last-of-type {
+* .scum-and-villainy .teeth-experience-faction label:last-of-type {
   margin-right: 0px;
 }
-* .teeth-experience-faction label[for$="-0"] {
+* .scum-and-villainy .teeth-experience-faction label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* .teeth-experience-faction label[for$="-0"] i {
+* .scum-and-villainy .teeth-experience-faction label[for$="-0"] i {
   margin-top: 4px;
 }
-* .teeth-experience-faction label:hover {
+* .scum-and-villainy .teeth-experience-faction label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .teeth-experience-faction input {
+* .scum-and-villainy .teeth-experience-faction input {
   display: none;
 }
-* .teeth-experience-faction input + label {
+* .scum-and-villainy .teeth-experience-faction input + label {
   background-image: url("assets/teeth/stresstooth-halfgrey.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-7"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-7"] {
   background-image: url("assets/teeth/stresstooth-blue.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-6"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-6"] {
   background-image: url("assets/teeth/stresstooth-6.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-5"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-5"] {
   background-image: url("assets/teeth/stresstooth-5.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-4"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-4"] {
   background-image: url("assets/teeth/stresstooth-4.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-3"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-3"] {
   background-image: url("assets/teeth/stresstooth-3.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-2"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-2"] {
   background-image: url("assets/teeth/stresstooth-2.png");
 }
-* .teeth-experience-faction input:checked + label[for$="-1"] {
+* .scum-and-villainy .teeth-experience-faction input:checked + label[for$="-1"] {
   background-image: url("assets/teeth/stresstooth-red.png");
 }
-* .teeth-experience {
+* .scum-and-villainy .teeth-experience {
   display: flex;
   /* Hide the browser's default checkbox */
   position: absolute;
   top: 0px;
   right: 10px;
 }
-* .teeth-experience label {
+* .scum-and-villainy .teeth-experience label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/stresstooth-blue.png");
@@ -662,7 +662,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .teeth-experience-red label {
+* .scum-and-villainy .teeth-experience-red label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/stresstooth-red.png");
@@ -672,96 +672,96 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .teeth-experience-red span {
+* .scum-and-villainy .teeth-experience-red span {
   margin-right: 5px;
   padding-top: 5px;
 }
-* .teeth-experience-red span.hover {
+* .scum-and-villainy .teeth-experience-red span.hover {
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .teeth-experience-red span.hover:hover {
+* .scum-and-villainy .teeth-experience-red span.hover:hover {
   color:red;
 }
-* .teeth-experience-red label:last-of-type,
-* .teeth-experience label:last-of-type {
+* .scum-and-villainy .teeth-experience-red label:last-of-type,
+* .scum-and-villainy .teeth-experience label:last-of-type {
   margin-right: 0px;
 }
-* .teeth-experience-red label[for$="-0"],
-* .teeth-experience label[for$="-0"] {
+* .scum-and-villainy .teeth-experience-red label[for$="-0"],
+* .scum-and-villainy .teeth-experience label[for$="-0"] {
   width: auto;
   height: auto;
   padding-top: 4px;
   background-image: none !important;
   color: #EEEFFF;
 }
-* .teeth-experience-red label[for$="-0"]:hover,
-* .teeth-experience label[for$="-0"]:hover {
+* .scum-and-villainy .teeth-experience-red label[for$="-0"]:hover,
+* .scum-and-villainy .teeth-experience label[for$="-0"]:hover {
   color: red;
 }
-* .teeth-experience-red label[for$="-0"] i,
-* .teeth-experience label[for$="-0"] i {
+* .scum-and-villainy .teeth-experience-red label[for$="-0"] i,
+* .scum-and-villainy .teeth-experience label[for$="-0"] i {
   margin-top: 4px;
 }
-* .teeth-experience-red label:hover,
-* .teeth-experience label:hover {
+* .scum-and-villainy .teeth-experience-red label:hover,
+* .scum-and-villainy .teeth-experience label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .teeth-experience-red input,
-* .teeth-experience input {
+* .scum-and-villainy .teeth-experience-red input,
+* .scum-and-villainy .teeth-experience input {
   display: none;
 }
-* .teeth-experience-red input:checked ~ label,
-* .teeth-experience input:checked ~ label {
+* .scum-and-villainy .teeth-experience-red input:checked ~ label,
+* .scum-and-villainy .teeth-experience input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.png");
 }
-* .teeth-experience-red input:checked + label {
+* .scum-and-villainy .teeth-experience-red input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.png");
 }
-* .teeth-experience input:checked + label {
+* .scum-and-villainy .teeth-experience input:checked + label {
   background-image: url("assets/teeth/stresstooth-blue.png");
 }
-* #harm-armor {
+* .scum-and-villainy #harm-armor {
   display: flex;
 }
-* #harm-armor #character-harm {
+* .scum-and-villainy #harm-armor #character-harm {
   width: 100%;
 }
-* #harm-armor #character-harm table {
+* .scum-and-villainy #harm-armor #character-harm table {
   width: 100%;
 }
-* #harm-armor #character-harm table th {
+* .scum-and-villainy #harm-armor #character-harm table th {
   background-color: #191813;
   color: #EEEFFF;
 }
-* #harm-armor #character-harm table input[type=text] {
+* .scum-and-villainy #harm-armor #character-harm table input[type=text] {
   width: 100%;
 }
-* #harm-armor #character-health-clock {
+* .scum-and-villainy #harm-armor #character-health-clock {
   margin-left: 15px;
   position: relative;
 }
-* #faction-list .clocks {
+* .scum-and-villainy #faction-list .clocks {
   max-width: 180px;
 }
-* #faction-list .sav-clock {
+* .scum-and-villainy #faction-list .sav-clock {
   width: 60px;
   height: 60px;
 }
-* #faction-list .sav-clock label{
+* .scum-and-villainy #faction-list .sav-clock label{
   cursor: default;
 }
-* #faction-list .clock-zero-label {
+* .scum-and-villainy #faction-list .clock-zero-label {
   display:none;
 }
-* div#faction-status {
+* .scum-and-villainy div#faction-status {
   min-width: 340px;
 }
-* #clock-max select {
+* .scum-and-villainy #clock-max select {
   margin-bottom: 10px;
 }
-* div.faction-goal {
+* .scum-and-villainy div.faction-goal {
   font-size: 10px;
   display: flex;
   justify-content: center;
@@ -769,7 +769,7 @@
   flex-direction: column;
   text-align: center;
 }
-* #harm-armor #character-health-clock .sav-clock {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock {
   position: relative;
   padding: 0;
   width: 88px;
@@ -779,7 +779,7 @@
   overflow: hidden;
   background-size: cover;
 }
-* #harm-armor #character-health-clock .sav-clock label {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock label {
   overflow: hidden;
   position: absolute;
   top: -50%;
@@ -790,81 +790,81 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #harm-armor #character-health-clock .sav-clock label:hover {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #harm-armor #character-health-clock .sav-clock input {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock input {
   position: absolute;
   display: none;
 }
-* #harm-armor #character-health-clock .sav-clock input[value="0"] {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock input[value="0"] {
   display: none;
 }
-* #harm-armor #character-health-clock .sav-clock *:nth-child(3) {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock * .scum-and-villainy:nth-child(3) {
   transform: rotate(-30deg) skewY(150deg);
 }
-* #harm-armor #character-health-clock .sav-clock *:nth-child(5) {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock * .scum-and-villainy:nth-child(5) {
   transform: rotate(30deg) skewY(150deg);
 }
-* #harm-armor #character-health-clock .sav-clock *:nth-child(7) {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock * .scum-and-villainy:nth-child(7) {
   transform: rotate(90deg) skewY(150deg);
 }
-* #harm-armor #character-health-clock .sav-clock *:nth-child(9) {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock * .scum-and-villainy:nth-child(9) {
   transform: rotate(150deg) skewY(150deg);
 }
-* #harm-armor #character-health-clock .sav-clock *:nth-child(11) {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock * .scum-and-villainy:nth-child(11) {
   transform: rotate(210deg) skewY(150deg);
 }
-* #harm-armor #character-health-clock .sav-clock *:nth-child(13) {
+* .scum-and-villainy #harm-armor #character-health-clock .sav-clock * .scum-and-villainy:nth-child(13) {
   transform: rotate(270deg) skewY(150deg);
 }
-* #harm-armor #character-harm td {
+* .scum-and-villainy #harm-armor #character-harm td {
   padding-left: 4px;
 }
-* #harm-armor #character-armor-uses div > div {
+* .scum-and-villainy #harm-armor #character-armor-uses div > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-* #harm-armor #character-armor-uses div {
+* .scum-and-villainy #harm-armor #character-armor-uses div {
   height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-* #attributes {
+* .scum-and-villainy #attributes {
   display: flex;
   flex-direction: column;
   width: 245px;
 }
-* #attributes .stripe {
+* .scum-and-villainy #attributes .stripe {
   background-color: #191813;
   color: #EEEFFF;
   font-size: 17px;
   padding-left: 5px;
 }
-* #attributes .attribute-label,
-* #attributes .attribute-skill-label {
+* .scum-and-villainy #attributes .attribute-label,
+* .scum-and-villainy #attributes .attribute-skill-label {
   font-weight: bold;
   text-transform: uppercase;
 }
-* #attributes .attribute-skill-label {
+* .scum-and-villainy #attributes .attribute-skill-label {
   letter-spacing: 1px;
 }
-* #attributes .attributes-exp {
+* .scum-and-villainy #attributes .attributes-exp {
   position: relative;
   margin-bottom: 10px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red {
   display: flex;
   /* Hide the browser's default checkbox */
   position: absolute;
   top: 0px;
   right: 0px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue {
   display: flex;
   /* Hide the browser's default checkbox */
   position: absolute;
@@ -872,7 +872,7 @@
   right: 0px;
   margin-left: 40px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red label {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/xptooth-red.png");
@@ -882,7 +882,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue label {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/xptooth-blue.png");
@@ -892,66 +892,66 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red label:last-of-type {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red label:last-of-type {
   margin-right: 0px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue label:last-of-type {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue label:last-of-type {
   margin-right: 0px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"] {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"]:hover {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"]:hover {
   color: red;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] i {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red label[for$="-0"] i {
   margin-top: 4px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"] i {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue label[for$="-0"] i {
   margin-top: 4px;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red label:hover {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue label:hover {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red input {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red input {
   display: none;
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue input {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue input {
   display: none;
 }
-* #attributes .attributes-exp .stripe-tooth-body-red input:checked ~ label {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.png");
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue input:checked ~ label {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.png");
 }
-* #attributes .attributes-exp .stripe-tooth-body-red input:checked + label {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-red input:checked + label {
   background-image: url("assets/teeth/xptooth-red.png");
 }
-* #attributes .attributes-exp .stripe-tooth-body-blue input:checked + label {
+* .scum-and-villainy #attributes .attributes-exp .stripe-tooth-body-blue input:checked + label {
   background-image: url("assets/teeth/xptooth-blue.png");
 }
-* #attributes .attributes-container {
+* .scum-and-villainy #attributes .attributes-container {
   display: flex;
   margin: 3px 0px;
   display: flex;
   /* Hide the browser's default checkbox */
 }
-* #attributes .attributes-container label {
+* .scum-and-villainy #attributes .attributes-container label {
   height: 15px;
   width: 15px;
   background-color: #191813;
@@ -961,7 +961,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #attributes .attributes-container label[for$="-0"] {
+* .scum-and-villainy #attributes .attributes-container label[for$="-0"] {
   height: 5px;
   width: 5px;
   border-radius: 24px;
@@ -969,80 +969,80 @@
   background-color: red !important;
   margin-right: 0px;
 }
-* #attributes .attributes-container label:hover {
+* .scum-and-villainy #attributes .attributes-container label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
 }
-* #attributes .attributes-container input {
+* .scum-and-villainy #attributes .attributes-container input {
   display: none;
 }
-* #attributes .attributes-container input:checked ~ label {
+* .scum-and-villainy #attributes .attributes-container input:checked ~ label {
   background-color: #EEEFFF;
 }
-* #attributes .attributes-container input:checked + label {
+* .scum-and-villainy #attributes .attributes-container input:checked + label {
   transition: filter 0.1s;
   cursor: pointer;
   background-color: #191813;
 }
-* #attributes .attributes-container input:checked + label:hover {
+* .scum-and-villainy #attributes .attributes-container input:checked + label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
 }
-* #attributes .attributes-container * {
+* .scum-and-villainy #attributes .attributes-container * {
   margin-right: 5px;
 }
-* #systems {
+* .scum-and-villainy #systems {
   display: flex;
   flex-direction: column;
   width: 245px;
   overflow: visible;
 }
-* #systems .stripe {
+* .scum-and-villainy #systems .stripe {
   background-color: #191813;
   color: #EEEFFF;
   font-size: 17px;
   padding-left: 5px;
 }
-* #systems .stripe-damage {
+* .scum-and-villainy #systems .stripe-damage {
   background-color: #6E0101;
   color: #EEEFFF;
   font-size: 17px;
   padding-left: 5px;
 }
-* #systems .system-label,
-* #systems .system-skill-label {
+* .scum-and-villainy #systems .system-label,
+* .scum-and-villainy #systems .system-skill-label {
   text-transform: uppercase;
 }
-* #systems .system-label-damage {
+* .scum-and-villainy #systems .system-label-damage {
   padding-left: 25px;
   text-transform: uppercase;
 }
-* #systems .system-skill-label {
+* .scum-and-villainy #systems .system-skill-label {
   letter-spacing: 1px;
 }
-* #systems .systems-value {
+* .scum-and-villainy #systems .systems-value {
   position: relative;
   margin-bottom: 10px;
 }
-* #systems .systems-value .stripe-tooth-body-red {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red {
   display: flex;
   /* Hide the browser's default checkbox */
   top: 0px;
   right: 0px;
 }
-* #system-upgrades .item .item-body {
+* .scum-and-villainy #system-upgrades .item .item-body {
 	max-width: 150px;
 }
-* #system-subitem.stripe-tooth-body-red {
+* .scum-and-villainy #system-subitem.stripe-tooth-body-red {
 	position: absolute;
 }
-* #systems .systems-value .stripe-tooth-body-blue {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue {
   display: flex;
   /* Hide the browser's default checkbox */
   top: 0px;
   right: 0px;
 }
-* #systems .systems-value .stripe-tooth-body-red label {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/xptooth-red.png");
@@ -1052,7 +1052,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #systems .systems-value .stripe-tooth-body-blue label {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue label {
   height: 30px;
   width: 10px;
   background-image: url("assets/teeth/xptooth-blue.png");
@@ -1062,63 +1062,63 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #systems .systems-value .stripe-tooth-body-red label:last-of-type {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red label:last-of-type {
   margin-right: 0px;
 }
-* #systems .systems-value .stripe-tooth-body-blue label:last-of-type {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue label:last-of-type {
   margin-right: 0px;
 }
-* #systems .systems-value .stripe-tooth-body-red label[for$="-0"] {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #systems .systems-value .stripe-tooth-body-blue label[for$="-0"] {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #systems .systems-value .stripe-tooth-body-red label[for$="-0"] i {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red label[for$="-0"] i {
   margin-top: 4px;
 }
-* #systems .systems-value .stripe-tooth-body-blue label[for$="-0"] i {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue label[for$="-0"] i {
   margin-top: 4px;
 }
-* #systems .systems-value .stripe-tooth-body-red label:hover {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #systems .systems-value .stripe-tooth-body-blue label:hover {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #systems .systems-value .stripe-tooth-body-red input {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red input {
   display: none;
 }
-* #systems .systems-value .stripe-tooth-body-blue input {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue input {
   display: none;
 }
-* #systems .systems-value .stripe-tooth-body-red input:checked ~ label {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.png");
 }
-* #systems .systems-value .stripe-tooth-body-blue input:checked ~ label {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.png");
 }
-* #systems .systems-value .stripe-tooth-body-red input:checked + label {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-red input:checked + label {
   background-image: url("assets/teeth/xptooth-red.png");
 }
-* #systems .systems-value .stripe-tooth-body-blue input:checked + label {
+* .scum-and-villainy #systems .systems-value .stripe-tooth-body-blue input:checked + label {
   background-image: url("assets/teeth/xptooth-blue.png");
 }
-* #systems .systems-container {
+* .scum-and-villainy #systems .systems-container {
   display: flex;
   margin: 3px 0px;
   display: flex;
   /* Hide the browser's default checkbox */
 }
-* #systems .systems-container label {
+* .scum-and-villainy #systems .systems-container label {
   height: 15px;
   width: 15px;
   background-color: #191813;
@@ -1128,7 +1128,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #systems .systems-container label[for$="-0"] {
+* .scum-and-villainy #systems .systems-container label[for$="-0"] {
   height: 5px;
   width: 5px;
   border-radius: 24px;
@@ -1136,92 +1136,92 @@
   background-color: red !important;
   margin-right: 0px;
 }
-* #systems .systems-container label:hover {
+* .scum-and-villainy #systems .systems-container label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
 }
-* #systems .systems-container input {
+* .scum-and-villainy #systems .systems-container input {
   display: none;
 }
-* #systems .systems-container input:checked ~ label {
+* .scum-and-villainy #systems .systems-container input:checked ~ label {
   background-color: #EEEFFF;
 }
-* #systems .systems-container input:checked + label {
+* .scum-and-villainy #systems .systems-container input:checked + label {
   transition: filter 0.1s;
   cursor: pointer;
   background-color: #191813;
 }
-* #systems .systems-container input:checked + label:hover {
+* .scum-and-villainy #systems .systems-container input:checked + label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
 }
-* #systems .systems-container * {
+* .scum-and-villainy #systems .systems-container * {
   margin-right: 5px;
 }
-* .item {
+* .scum-and-villainy .item {
   justify-content: space-between;
   font-weight: bold;
 }
-* #abilities .item,
-* #loadout .item,
-* #friends .item,
-* #upgrades .item {
+* .scum-and-villainy #abilities .item,
+* .scum-and-villainy #loadout .item,
+* .scum-and-villainy #friends .item,
+* .scum-and-villainy #upgrades .item {
     margin-right: 5px;
 }
-* .item .ship-body,
-* .item .item-body {
+* .scum-and-villainy .item .ship-body,
+* .scum-and-villainy .item .item-body {
   margin-bottom: 5px;
   margin-right: 5px;
 }
-* .item .ship-body *,
-* .item .item-body * {
+* .scum-and-villainy .item .ship-body *,
+* .scum-and-villainy .item .item-body * {
   margin-right: 10px;
 }
-* .item .item-body .item-description {
+* .scum-and-villainy .item .item-body .item-description {
   font-style: italic;
   text-align: justify;
 }
-* #all-items .item div {
+* .scum-and-villainy #all-items .item div {
 	flex-grow: 4;
 }
-* .item-block .item div {
+* .scum-and-villainy .item-block .item div {
   flex-grow: 3;
 }
-* .item .item-control {
+* .scum-and-villainy .item .item-control {
   flex-grow: 1;
 }
-* #all-items .item .item-body {
+* .scum-and-villainy #all-items .item .item-body {
 	width: auto;
 }
-* .item .ship-body,
-* .item .item-body,
-* .item .item-class-label {
+* .scum-and-villainy .item .ship-body,
+* .scum-and-villainy .item .item-body,
+* .scum-and-villainy .item .item-class-label {
   width: 135px;
 }
-* .item-class-label {
+* .scum-and-villainy .item-class-label {
   margin-bottom: 10px;
 }
-* #name,
-* #look,
-* #alias,
-* #designation {
+* .scum-and-villainy #name,
+* .scum-and-villainy #look,
+* .scum-and-villainy #alias,
+* .scum-and-villainy #designation {
   margin-bottom: 10px;
   display: flex;
 }
-* #name label,
-* #look label,
-* #alias label,
-* #designation label {
+* .scum-and-villainy #name label,
+* .scum-and-villainy #look label,
+* .scum-and-villainy #alias label,
+* .scum-and-villainy #designation label {
   padding-right: 4px;
   padding-top: 3px;
 }
-* .character-healing-clock,
-* .coins {
+* .scum-and-villainy .character-healing-clock,
+* .scum-and-villainy .coins {
   display: flex;
   /* Hide the browser's default checkbox */
   flex-wrap: wrap;
 }
-* .coins label {
+* .scum-and-villainy .coins label {
   height: 15px;
   width: 15px;
   background-color: #DAA520;
@@ -1230,8 +1230,8 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .coins.healing label,
-* .coins.debt label {
+* .scum-and-villainy .coins.healing label,
+* .scum-and-villainy .coins.debt label {
   height: 15px;
   width: 15px;
   background-color: #FC0303;
@@ -1240,7 +1240,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .coins.gambits label {
+* .scum-and-villainy .coins.gambits label {
   height: 15px;
   width: 15px;
   background-color: #03A33E;
@@ -1249,7 +1249,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .coins.loadout label {
+* .scum-and-villainy .coins.loadout label {
   height: 15px;
   width: 15px;
   background-color: #191813;
@@ -1258,7 +1258,7 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .abilities label {
+* .scum-and-villainy .abilities label {
   height: 15px;
   width: 15px;
   background-color: #eeefff;
@@ -1269,78 +1269,76 @@
   margin-left: 5px;
   margin-top: 2px;
 }
-* .coins label[for$="-0"] {
+* .scum-and-villainy .coins label[for$="-0"] {
   margin-right: 0px;
 }
-* .coins label:hover {
+* .scum-and-villainy .coins label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .coins input {
+* .scum-and-villainy .coins input,
+* .scum-and-villainy .abilities input {
   display: none;
 }
-* .abilities input {
-  display: none;
-}
-* .coins input:checked ~ label {
+* .scum-and-villainy .coins input:checked ~ label {
   background-color: #EEEFFF;
 }
-* .coins input:checked + label {
+* .scum-and-villainy .coins input:checked + label {
   background-color: #DAA520;
 }
-* .coins.healing input:checked + label,
-* .coins.debt input:checked + label {
+* .scum-and-villainy .coins.healing input:checked + label,
+* .scum-and-villainy .coins.debt input:checked + label {
   background-color: #FC0303;
 }
-* .coins.gambits input:checked + label {
+* .scum-and-villainy .coins.gambits input:checked + label {
   background-color: #03A33E;
 }
-* .coins.loadout input:checked + label {
+* .scum-and-villainy .coins.loadout input:checked + label {
   background-color: #191813;
 }
-* .abilities input:checked + label {
+* .scum-and-villainy .abilities input:checked + label {
   background-color: #191813;
 }
-* #loadout-max .coins label {
+* .scum-and-villainy #loadout-max .coins label {
   margin-left: 15px;
 }
-* #loadout-max div > span {
+* .scum-and-villainy #loadout-max div > span {
   margin-left: 25px;
 }
-* #coins div.stripe,
-* #loadout-max div.stripe {
+* .scum-and-villainy #coins div.stripe,
+* .scum-and-villainy #loadout-max div.stripe {
   padding-bottom: 4px;
   padding-top: 5px;
 }
-* .coins input ~ label {
+* .scum-and-villainy .coins input ~ label {
   margin-right: 3px;
   margin-bottom: 3px;
   transition: filter 0.2s;
   cursor: pointer;
 }
-* .coins input ~ label[for$="0"] {
+* .scum-and-villainy .coins input ~ label[for$="0"] {
   border-width: 2px;
 }
-* .coins input ~ label:hover {
+* .scum-and-villainy .coins input ~ label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .coins.healing {
+* .scum-and-villainy .coins.healing {
   width: 42px;
 }
-* .coins.coins-hands {
+* .scum-and-villainy .coins.coins-hands {
   width: 72px;
 }
-* .coins.coins-stashed {
+* .scum-and-villainy .coins.coins-stashed {
   width: 190px;
 }
-* .crew-coins {
+* .scum-and-villainy .crew-coins {
   display: flex;
   /* Hide the browser's default checkbox */
   flex-wrap: wrap;
   max-width: 72px;
 }
-* .crew-coins label {
+* .scum-and-villainy .crew-coins label {
   height: 15px;
   width: 15px;
   background-color: #DAA520;
@@ -1349,32 +1347,32 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .crew-coins label[for$="-0"] {
+* .scum-and-villainy .crew-coins label[for$="-0"] {
   margin-right: 0px;
 }
-* .crew-coins label:hover {
+* .scum-and-villainy .crew-coins label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .crew-coins input {
+* .scum-and-villainy .crew-coins input {
   display: none;
 }
-* .crew-coins input:checked ~ label {
+* .scum-and-villainy .crew-coins input:checked ~ label {
   background-color: #EEEFFF;
 }
-* .crew-coins input:checked + label {
+* .scum-and-villainy .crew-coins input:checked + label {
   background-color: #DAA520;
 }
-* .crew-coins label {
+* .scum-and-villainy .crew-coins label {
   margin-right: 3px;
   margin-bottom: 3px;
 }
-* #crew-reputation {
+* .scum-and-villainy #crew-reputation {
   border-top: 3px solid #191813;
   display: flex;
   /* Hide the browser's default checkbox */
 }
-* #crew-reputation label {
+* .scum-and-villainy #crew-reputation label {
   height: 50px;
   width: 17px;
   background-image: url("assets/teeth/stresstooth-red.png");
@@ -1384,35 +1382,35 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #crew-reputation label:last-of-type {
+* .scum-and-villainy #crew-reputation label:last-of-type {
   margin-right: 0px;
 }
-* #crew-reputation label[for$="-0"] {
+* .scum-and-villainy #crew-reputation label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
   color: #EEEFFF;
 }
-* #crew-reputation label[for$="-0"] i {
+* .scum-and-villainy #crew-reputation label[for$="-0"] i {
   margin-top: 4px;
 }
-* #crew-reputation label:hover {
+* .scum-and-villainy #crew-reputation label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #crew-reputation input {
+* .scum-and-villainy #crew-reputation input {
   display: none;
 }
-* #crew-reputation input:checked ~ label {
+* .scum-and-villainy #crew-reputation input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.png");
 }
-* #crew-reputation input:checked + label {
+* .scum-and-villainy #crew-reputation input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.png");
 }
-* #crew-reputation input[disabled=disabled] + label {
+* .scum-and-villainy #crew-reputation input[disabled=disabled] + label {
   background-image: url(assets/teeth/stresstooth-black.png);
 }
-* #crew-qual {
+* .scum-and-villainy #crew-qual {
   background-color: #999;
   height: 33px;
   width: 145px;
@@ -1422,15 +1420,15 @@
   display: flex;
   /* Hide the browser's default checkbox */
 }
-* #crew-qual label {
+* .scum-and-villainy #crew-qual label {
   transition: filter 0.1s;
   cursor: pointer;
 }
-* #crew-qual label:hover {
+* .scum-and-villainy #crew-qual label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* #crew-qual label:not([for$="-0"]) {
+* .scum-and-villainy #crew-qual label:not([for$="-0"]) {
   height: 18px;
   width: 18px;
   background-color: #191813;
@@ -1438,34 +1436,34 @@
   border: 2px solid #191813;
   border-radius: 9px;
 }
-* #crew-qual input {
+* .scum-and-villainy #crew-qual input {
   display: none;
 }
-* #crew-qual input:checked ~ label:not([for$="-0"]) {
+* .scum-and-villainy #crew-qual input:checked ~ label:not([for$="-0"]) {
   border-color: gray;
   background-color: #EEEFFF;
 }
-* #crew-qual input:checked + label:not([for$="-0"]) {
+* .scum-and-villainy #crew-qual input:checked + label:not([for$="-0"]) {
   background-color: #191813;
   border-color: #191813;
 }
-* #crew-qual > * {
+* .scum-and-villainy #crew-qual > * {
   margin-right: 5px;
 }
-* #heat-wanted {
+* .scum-and-villainy #heat-wanted {
   justify-content: none;
 }
-* .experience-clues-container {
+* .scum-and-villainy .experience-clues-container {
   width: 340px;
   font-size: 12px;
 }
-* .experience-clues-container .experience-clues-description {
+* .scum-and-villainy .experience-clues-container .experience-clues-description {
   font-weight: bold;
 }
-* .experience-clues-container .experience-clues {
+* .scum-and-villainy .experience-clues-container .experience-clues {
   font-style: italic;
 }
-* .class-name {
+* .scum-and-villainy .class-name {
   width: 512px;
   height: 120px;
   display: flex;
@@ -1475,99 +1473,99 @@
   text-transform: uppercase;
   border: 3px solid #191813;
 }
-* .class-name .big-name {
+* .scum-and-villainy .class-name .big-name {
   font-weight: bold;
 }
-* .class-name .big-description {
+* .scum-and-villainy .class-name .big-description {
   font-size: 20px;
   color: #191813;
 }
-* .edgeflaw input {
+* .scum-and-villainy .edgeflaw input {
   display: none;
 }
-* .edgeflaw input:checked + label {
+* .scum-and-villainy .edgeflaw input:checked + label {
   color: red;
 }
-* #gang-expert-type-selector #gang-type-boxes {
+* .scum-and-villainy #gang-expert-type-selector #gang-type-boxes {
   flex-wrap: wrap;
 }
-* .cohorts {
+* .scum-and-villainy .cohorts {
   flex-wrap: wrap;
 }
-* .cohorts .cohort-block-wrapper {
+* .scum-and-villainy .cohorts .cohort-block-wrapper {
   width: 400px;
 }
-* .cohorts .label-stripe {
+* .scum-and-villainy .cohorts .label-stripe {
   margin-bottom: 0px;
 }
-* .cohorts .cohort-body > div {
+* .scum-and-villainy .cohorts .cohort-body > div {
   margin-bottom: 10px;
 }
-* .cohorts .cohort-block-harm {
+* .scum-and-villainy .cohorts .cohort-block-harm {
   justify-content: space-around;
 }
-* .cohorts .cohort-block-harm input[type=radio] {
+* .scum-and-villainy .cohorts .cohort-block-harm input[type=radio] {
   display: none;
 }
-* .cohorts .cohort-block-harm input[type=radio]:checked + label {
+* .scum-and-villainy .cohorts .cohort-block-harm input[type=radio]:checked + label {
   color: #EEEFFF;
   font-weight: bold;
   background-color: #191813;
 }
-* .cohorts .cohort-block-harm label {
+* .scum-and-villainy .cohorts .cohort-block-harm label {
   border: 2px solid #191813;
   border-top: none;
   padding: 5px;
 }
-* #items-to-add {
+* #items-to-add.scum-and-villainy  {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-* #items-to-add input[type=radio],
-* #items-to-add input[type=checkbox] {
+* #items-to-add.scum-and-villainy input[type=radio],
+* #items-to-add.scum-and-villainy input[type=checkbox] {
   display: none;
 }
-* #items-to-add input[type=radio]:checked + label,
-* #items-to-add input[type=checkbox]:checked + label {
+* #items-to-add.scum-and-villainy input[type=radio]:checked + label,
+* #items-to-add.scum-and-villainy input[type=checkbox]:checked + label {
   font-weight: bolder;
   text-transform: uppercase;
 }
-* #items-to-add div.flex {
+* #items-to-add.scum-and-villainy div.flex {
   height: 20px;
 }
-* .sav-die-tooltip .die {
+* .scum-and-villainy .sav-die-tooltip .die {
   font-weight: bold;
   text-transform: capitalize;
   font-size: large;
   margin-top: 10px;
 }
-* .sav-die-tooltip .die.great,
-* .sav-die-tooltip .die.critical-resist,
-* .sav-die-tooltip .die.critical-success {
+* .scum-and-villainy .sav-die-tooltip .die.great,
+* .scum-and-villainy .sav-die-tooltip .die.critical-resist,
+* .scum-and-villainy .sav-die-tooltip .die.critical-success {
   color: #12a012;
 }
-* .sav-die-tooltip .die.nodamage,
-* .sav-die-tooltip .die.standard,
-* .sav-die-tooltip .die.resist,
-* .sav-die-tooltip .die.success {
+* .scum-and-villainy .sav-die-tooltip .die.nodamage,
+* .scum-and-villainy .sav-die-tooltip .die.standard,
+* .scum-and-villainy .sav-die-tooltip .die.resist,
+* .scum-and-villainy .sav-die-tooltip .die.success {
   color: #008000;
 }
-* .sav-die-tooltip .die.malfunction,
-* .sav-die-tooltip .die.limited,
-* .sav-die-tooltip .die.partial-success {
+* .scum-and-villainy .sav-die-tooltip .die.malfunction,
+* .scum-and-villainy .sav-die-tooltip .die.limited,
+* .scum-and-villainy .sav-die-tooltip .die.partial-success {
   color: #04578f;
 }
-* .sav-die-tooltip .die.damaged,
-* .sav-die-tooltip .die.poor,
-* .sav-die-tooltip .die.failure {
+* .scum-and-villainy .sav-die-tooltip .die.damaged,
+* .scum-and-villainy .sav-die-tooltip .die.poor,
+* .scum-and-villainy .sav-die-tooltip .die.failure {
   color: red;
 }
-* form .rollRadio input {
+* .scum-and-villainy form .rollRadio input {
   display: none;
 }
-* form .rollRadio label {
+* .scum-and-villainy form .rollRadio label {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1576,18 +1574,18 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* form div.rollRadio {
+* .scum-and-villainy form div.rollRadio {
   display: flex;
 }
-* form .rollRadio input:checked + label {
+* .scum-and-villainy form .rollRadio input:checked + label {
   color: red;
   font-weight: bold;
   text-decoration: underline 2px;
 }
-* .clock-zero-label {
+* .scum-and-villainy .clock-zero-label {
   color: #191813;
 }
-* .sav-clock {
+* .scum-and-villainy .sav-clock {
   position: relative;
   padding: 0;
   width: 100px;
@@ -1597,7 +1595,7 @@
   overflow: hidden;
   background-size: cover;
 }
-* .sav-clock label {
+* .scum-and-villainy .sav-clock label {
   overflow: hidden;
   position: absolute;
   top: -50%;
@@ -1608,158 +1606,158 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
-* .sav-clock label:hover {
+* .scum-and-villainy .sav-clock label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-* .sav-clock input {
+* .scum-and-villainy .sav-clock input {
   position: absolute;
   display: none;
 }
-* .sav-clock.clock-4 input[value="0"] {
+* .scum-and-villainy .sav-clock.clock-4 input[value="0"] {
   display: none;
 }
-* .sav-clock.clock-4 *:nth-child(3) {
+* .scum-and-villainy .sav-clock.clock-4 *:nth-child(3) {
   transform: rotate(-45deg) skewY(180deg);
 }
-* .sav-clock.clock-4 *:nth-child(5) {
+* .scum-and-villainy .sav-clock.clock-4 *:nth-child(5) {
   transform: rotate(45deg) skewY(180deg);
 }
-* .sav-clock.clock-4 *:nth-child(7) {
+* .scum-and-villainy .sav-clock.clock-4 *:nth-child(7) {
   transform: rotate(135deg) skewY(180deg);
 }
-* .sav-clock.clock-4 *:nth-child(9) {
+* .scum-and-villainy .sav-clock.clock-4 *:nth-child(9) {
   transform: rotate(225deg) skewY(180deg);
 }
-* .sav-clock.clock-6 input[value="0"] {
+* .scum-and-villainy .sav-clock.clock-6 input[value="0"] {
   display: none;
 }
-* .sav-clock.clock-6 *:nth-child(3) {
+* .scum-and-villainy .sav-clock.clock-6 *:nth-child(3) {
   transform: rotate(-30deg) skewY(150deg);
 }
-* .sav-clock.clock-6 *:nth-child(5) {
+* .scum-and-villainy .sav-clock.clock-6 *:nth-child(5) {
   transform: rotate(30deg) skewY(150deg);
 }
-* .sav-clock.clock-6 *:nth-child(7) {
+* .scum-and-villainy .sav-clock.clock-6 *:nth-child(7) {
   transform: rotate(90deg) skewY(150deg);
 }
-* .sav-clock.clock-6 *:nth-child(9) {
+* .scum-and-villainy .sav-clock.clock-6 *:nth-child(9) {
   transform: rotate(150deg) skewY(150deg);
 }
-* .sav-clock.clock-6 *:nth-child(11) {
+* .scum-and-villainy .sav-clock.clock-6 *:nth-child(11) {
   transform: rotate(210deg) skewY(150deg);
 }
-* .sav-clock.clock-6 *:nth-child(13) {
+* .scum-and-villainy .sav-clock.clock-6 *:nth-child(13) {
   transform: rotate(270deg) skewY(150deg);
 }
-* .sav-clock.clock-8 input[value="0"] {
+* .scum-and-villainy .sav-clock.clock-8 input[value="0"] {
   display: none;
 }
-* .sav-clock.clock-8 *:nth-child(3) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(3) {
   transform: rotate(-22.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(5) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(5) {
   transform: rotate(22.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(7) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(7) {
   transform: rotate(67.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(9) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(9) {
   transform: rotate(112.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(11) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(11) {
   transform: rotate(157.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(13) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(13) {
   transform: rotate(202.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(15) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(15) {
   transform: rotate(247.5deg) skewY(135deg);
 }
-* .sav-clock.clock-8 *:nth-child(17) {
+* .scum-and-villainy .sav-clock.clock-8 *:nth-child(17) {
   transform: rotate(292.5deg) skewY(135deg);
 }
-* .sav-clock.clock-10 input[value="0"] {
+* .scum-and-villainy .sav-clock.clock-10 input[value="0"] {
   display: none;
 }
-* .sav-clock.clock-10 *:nth-child(3) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(3) {
   transform: rotate(-18deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(5) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(5) {
   transform: rotate(18deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(7) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(7) {
   transform: rotate(54deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(9) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(9) {
   transform: rotate(90deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(11) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(11) {
   transform: rotate(126deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(13) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(13) {
   transform: rotate(162deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(15) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(15) {
   transform: rotate(198deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(17) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(17) {
   transform: rotate(234deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(19) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(19) {
   transform: rotate(270deg) skewY(127.5deg);
 }
-* .sav-clock.clock-10 *:nth-child(21) {
+* .scum-and-villainy .sav-clock.clock-10 *:nth-child(21) {
   transform: rotate(306deg) skewY(127.5deg);
 }
-* .sav-clock.clock-12 input[value="0"] {
+* .scum-and-villainy .sav-clock.clock-12 input[value="0"] {
   display: none;
 }
-* .sav-clock.clock-12 *:nth-child(3) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(3) {
   transform: rotate(-15deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(5) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(5) {
   transform: rotate(15deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(7) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(7) {
   transform: rotate(45deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(9) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(9) {
   transform: rotate(75deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(11) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(11) {
   transform: rotate(105deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(13) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(13) {
   transform: rotate(135deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(15) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(15) {
   transform: rotate(165deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(17) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(17) {
   transform: rotate(195deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(19) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(19) {
   transform: rotate(225deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(21) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(21) {
   transform: rotate(255deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(23) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(23) {
   transform: rotate(285deg) skewY(123.75deg);
 }
-* .sav-clock.clock-12 *:nth-child(25) {
+* .scum-and-villainy .sav-clock.clock-12 *:nth-child(25) {
   transform: rotate(315deg) skewY(123.75deg);
 }
-* .sav-clock-name-type > * {
+* .scum-and-villainy .sav-clock-name-type > * {
   margin-bottom: 10px;
   max-width: 220px;
 }
-* .nullifier {
+* .scum-and-villainy .nullifier {
   transition: filter 0.2s;
   cursor: pointer;
 }
-* .nullifier:hover {
+* .scum-and-villainy .nullifier:hover {
   filter: brightness(0.8);
   opacity: 0.9;
   color: red;

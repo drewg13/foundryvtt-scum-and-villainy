@@ -1,5 +1,7 @@
-2024/04/18-18:34:48.597 4c4 Log #122: 0 ops saved to Table #125 OK
-2024/04/18-18:34:48.599 4c4 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\backgrounds/000122.log: OK
-2024/04/18-18:34:48.599 4c4 Table #124: 7 entries OK
-2024/04/18-18:34:48.599 4c4 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\backgrounds/MANIFEST-000120: OK
-2024/04/18-18:34:48.599 4c4 **** Repaired leveldb c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\backgrounds; recovered 1 files; 2272 bytes. Some data may have been lost. ****
+2025/05/24-08:07:29.131 3d10 Recovering log #287
+2025/05/24-08:07:29.134 3d10 Delete type=0 #287
+2025/05/24-08:07:29.134 3d10 Delete type=3 #286
+2025/05/24-08:11:21.050 4d7c Level-0 table #291: started
+2025/05/24-08:11:21.050 4d7c Level-0 table #291: 0 bytes OK
+2025/05/24-08:11:21.051 4d7c Delete type=0 #289
+2025/05/24-08:11:21.053 4d7c Manual compaction at level-0 from '!items!C4nNpOo5DtJw69GH' @ 72057594037927935 : 1 .. '!items!rNP2bK1MfhFnTqMl' @ 0 : 0; will stop at (end)

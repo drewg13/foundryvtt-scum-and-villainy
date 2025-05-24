@@ -48,15 +48,15 @@ Hooks.once("init", async function() {
   registerSystemSettings();
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("scum-and-villainy", SaVActorSheet, { types: ["character"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", SaVNPCSheet, { types: ["npc"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", SaVShipSheet, { types: ["ship"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", SaVClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true });
-  Actors.registerSheet("scum-and-villainy", SaVFactionStatusSheet, { types: ["faction-status"], makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("scum-and-villainy", SaVItemSheet, { makeDefault: true });
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet("scum-and-villainy", SaVActorSheet, { types: ["character"], makeDefault: true });
+  foundry.documents.collections.Actors.registerSheet("scum-and-villainy", SaVNPCSheet, { types: ["npc"], makeDefault: true });
+  foundry.documents.collections.Actors.registerSheet("scum-and-villainy", SaVShipSheet, { types: ["ship"], makeDefault: true });
+  foundry.documents.collections.Actors.registerSheet("scum-and-villainy", SaVClockSheet, { types: ["\uD83D\uDD5B clock"], makeDefault: true });
+  foundry.documents.collections.Actors.registerSheet("scum-and-villainy", SaVUniverseSheet, { types: ["universe"], makeDefault: true });
+  foundry.documents.collections.Actors.registerSheet("scum-and-villainy", SaVFactionStatusSheet, { types: ["faction-status"], makeDefault: true });
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet("scum-and-villainy", SaVItemSheet, { makeDefault: true });
   await preloadHandlebarsTemplates();
 
   Handlebars.registerHelper({
@@ -407,21 +407,19 @@ Hooks.on("preUpdateItem", (item, data, options, userId) => {
   }
 });
 
-// getSceneControlButtons
-Hooks.on("renderSceneControls", async (app, html) => {
-  let dice_roller = $( '<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>' );
-  dice_roller.on( "click", function() {
-    simpleRollPopup();
-  })
-  html.children().first().append( dice_roller );
-});
-
 //For Clocks UI
 Hooks.once("init", () => {
   log(`Init ${game.data.system.id}`);
 });
 
 Hooks.on("getSceneControlButtons", async (controls) => {
+  controls.tokens.tools.savdice = {
+    name: "savdice",
+    title: "Dice Roller",
+    icon: "fas fa-dice",
+    onChange: () => simpleRollPopup(),
+    button: true
+  };
   await ClockTiles.getSceneControlButtons(controls);
 });
 

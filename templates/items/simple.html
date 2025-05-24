@@ -9,7 +9,7 @@
   {{!-- Sheet Body --}}
   <section class="sheet-body flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    {{{editor system.description target="system.description" button=true owner=owner editable=editable}}}
+    {{{editor system.description target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}}
     {{#if isGM}}
       <div class="label-stripe">{{localize "BITD.Effects"}}</div>
       <div id="effects">{{> "systems/scum-and-villainy/templates/parts/active-effects.html"}}</div>

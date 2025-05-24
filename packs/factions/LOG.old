@@ -1,5 +1,7 @@
-2024/04/18-18:34:48.744 718 Log #122: 0 ops saved to Table #125 OK
-2024/04/18-18:34:48.744 718 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\factions/000122.log: OK
-2024/04/18-18:34:48.744 718 Table #124: 36 entries OK
-2024/04/18-18:34:48.744 718 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\factions/MANIFEST-000120: OK
-2024/04/18-18:34:48.749 718 **** Repaired leveldb c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\factions; recovered 1 files; 42046 bytes. Some data may have been lost. ****
+2025/05/24-08:07:29.203 1688 Recovering log #287
+2025/05/24-08:07:29.207 1688 Delete type=0 #287
+2025/05/24-08:07:29.207 1688 Delete type=3 #286
+2025/05/24-08:11:21.066 4d7c Level-0 table #291: started
+2025/05/24-08:11:21.066 4d7c Level-0 table #291: 0 bytes OK
+2025/05/24-08:11:21.067 4d7c Delete type=0 #289
+2025/05/24-08:11:21.071 4d7c Manual compaction at level-0 from '!items!084uxUH9TS6mzmsV' @ 72057594037927935 : 1 .. '!items!zNLPTvJtfyKDoEc8' @ 0 : 0; will stop at (end)

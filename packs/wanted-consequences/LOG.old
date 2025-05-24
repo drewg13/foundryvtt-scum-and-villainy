@@ -1,5 +1,7 @@
-2024/04/18-18:34:48.771 4c4 Log #123: 0 ops saved to Table #126 OK
-2024/04/18-18:34:48.771 4c4 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\wanted-consequences/000123.log: OK
-2024/04/18-18:34:48.771 4c4 Table #125: 28 entries OK
-2024/04/18-18:34:48.771 4c4 Archiving c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\wanted-consequences/MANIFEST-000121: OK
-2024/04/18-18:34:48.771 4c4 **** Repaired leveldb c:\users\andrew\foundrydata12\Data\systems\scum-and-villainy\packs\wanted-consequences; recovered 1 files; 7470 bytes. Some data may have been lost. ****
+2025/05/24-08:07:29.218 22d4 Recovering log #289
+2025/05/24-08:07:29.222 22d4 Delete type=0 #289
+2025/05/24-08:07:29.222 22d4 Delete type=3 #288
+2025/05/24-08:11:21.067 4d7c Level-0 table #293: started
+2025/05/24-08:11:21.067 4d7c Level-0 table #293: 0 bytes OK
+2025/05/24-08:11:21.068 4d7c Delete type=0 #291
+2025/05/24-08:11:21.071 4d7c Manual compaction at level-0 from '!journal!5NdDWbDu3xmkXXLn' @ 72057594037927935 : 1 .. '!journal.pages!yVlyH8pgNclpbi33.lSrvL0ASCvUtZp5T' @ 0 : 0; will stop at (end)

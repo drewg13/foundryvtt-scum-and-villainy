@@ -32,7 +32,7 @@ export class SaVShipSheet extends SaVSheet {
     // Prepare active effects
     sheetData.effects = prepareActiveEffectCategories(this.document.effects);
 
-    sheetData.system.description = await TextEditor.enrichHTML(sheetData.system.description, {secrets: sheetData.owner, async: true});
+    sheetData.system.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(sheetData.system.description, {secrets: sheetData.owner, async: true});
 
     return sheetData;
   }
