@@ -50,7 +50,7 @@
   font-family: 'Exo2';
   src: url("assets/fonts/Exo2-VariableFont_wght.ttf");
 }
-*:not(.icon, .fa, .fas, .far, .fa-solid, .fab) {
+*:not(i, button) {
 	font-family: 'Exo2', 'Signika', sans-serif;
 }
 * .scum-and-villainy .sheet header {

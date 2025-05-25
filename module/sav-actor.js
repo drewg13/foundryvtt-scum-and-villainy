@@ -33,7 +33,7 @@ export class SaVActor extends Actor {
         break;
       }
     }
-    return { img: icon };
+    return { img: icon, texture:{ src: icon } };
   }
 
 

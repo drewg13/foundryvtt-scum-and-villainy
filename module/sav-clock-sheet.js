@@ -9,7 +9,6 @@ const DISPOSITION = {
   NEUTRAL: 0
 };
 const DEFAULT_TOKEN = {
-  scale: 1,
   disposition: DISPOSITION.NEUTRAL,
   displayName: DISPLAY_NAME.ALWAYS_FOR_EVERYONE,
   actorLink: true
@@ -141,7 +140,7 @@ export class SaVClockSheet extends foundry.appv1.sheets.ActorSheet {
     const persistObj = await this.system.persistClockToActor({ actor, clock });
     const visualObj = {
       img: clock.image.texture.src,
-      token: {
+      prototypeToken: {
         texture: { src: clock.image.texture.src },
         ...DEFAULT_TOKEN
       }
@@ -205,11 +204,11 @@ export default {
 
     const visualObj = {
       img: newClock.image.texture.src,
-        token: {
-          texture: { src: newClock.image.texture.src },
-          ...DEFAULT_TOKEN
-        }
-      };
+      prototypeToken: {
+        texture: { src: newClock.image.texture.src },
+        ...DEFAULT_TOKEN
+      }
+    };
 
     let newObj = foundry.utils.mergeObject(visualObj, persistObj);
     let tokenObj = {};
@@ -273,7 +272,7 @@ export default {
 
     const visualObj = {
         img: newClock.image.texture.src,
-        token: {
+        prototypeToken: {
           texture: { src: newClock.image.texture.src },
           ...DEFAULT_TOKEN
         }
