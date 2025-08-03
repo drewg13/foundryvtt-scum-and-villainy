@@ -251,3 +251,5 @@ v1.9.4  Fix Trauma tooltip z-indexing
 4.0.1  Fixes for Clock token initial images, FontAwesome icon CSS, and default image bug
 
 4.0.2  Fix adding new Active Effects (thanks to madcar_1)
+
+4.0.3  Fix Dark Mode Journal Entry readability

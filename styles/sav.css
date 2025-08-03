@@ -79,6 +79,27 @@
 .sheet.journal-entry .journal-entry-content {
 	background: linear-gradient(rgba(216, 227, 230, 0.75), rgba(121, 129, 130, 0.75)),
     url('assets/brushed_metal.jpg') repeat;
+  color: var(--color-dark-2);
+}
+.window-app .window-content h1,
+.chat-message h1,
+.sheet.journal-entry .journal-entry-content h1,
+.window-app .window-content h2,
+.chat-message h2,
+.sheet.journal-entry .journal-entry-content h2,
+.window-app .window-content h3,
+.chat-message h3,
+.sheet.journal-entry .journal-entry-content h3,
+.window-app .window-content h4,
+.chat-message h4,
+.sheet.journal-entry .journal-entry-content h4,
+.window-app .window-content h5,
+.chat-message h5,
+.sheet.journal-entry .journal-entry-content h5,
+.window-app .window-content h6,
+.chat-message h6,
+.sheet.journal-entry .journal-entry-content h6 {
+  color: var(--color-dark-2);
 }
 .chat-item img {
   width: 40px;

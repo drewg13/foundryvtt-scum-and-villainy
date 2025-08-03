@@ -44,6 +44,9 @@ Hooks.once("init", async function() {
   CONFIG.Item.documentClass = SaVItem;
   CONFIG.Actor.documentClass = SaVActor;
 
+  // disable token ruler feature
+  CONFIG.Token.rulerClass = null;
+
   // Register System Settings
   registerSystemSettings();
 
